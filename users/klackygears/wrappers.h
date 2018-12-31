@@ -8,9 +8,9 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #if (!defined(LAYOUT) && defined(KEYMAP))
 #define LAYOUT KEYMAP
 #endif
-#if (!defined(LAYOUT_kc) && defined(KEYMAP))
-#define LAYOUT_kc KEYMAP
-#endif
+// #if (!defined(LAYOUT_kc) && defined(KEYMAP))
+// #define LAYOUT_kc KEYMAP
+// #endif
 
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
 #define LAYOUT_ergodox_pretty_wrapper(...)   LAYOUT_ergodox_pretty(__VA_ARGS__)

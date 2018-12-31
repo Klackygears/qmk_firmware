@@ -25,13 +25,13 @@ extern rgblight_config_t rgblight_config;
 extern uint8_t is_master;
 
 
-#if HELIX_ROWS == 5
+//#if HELIX_ROWS == 5
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
   [_DVRK] = LAYOUT_wrapper( \
-      KC_LRMOD,   _________________DVRK_L1___________________,                     _________________KC_BLANK__________________, KC______, \
+      KC_LRMOD,   _________________KC_BLANK__________________,                     _________________KC_BLANK__________________, KC______, \
       KC_ESC,     _________________DVRK_L1___________________,                     _________________DVRK_R1___________________, KC______, \
       KC_LSFT,    _________________DVRK_L2___________________,                     _________________DVRK_R2___________________, KC_RSFT, \
       KC_LSFT,    _________________DVRK_L3___________________, KC_MCRT2, KC_MCRTG, _________________DVRK_R3___________________, KC_RSFT, \
@@ -75,9 +75,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  };
 
-#else
-#error "undefined keymaps"
-#endif
+// #else
+// #error "undefined keymaps"
+// #endif
 
 
 #ifdef AUDIO_ENABLE
