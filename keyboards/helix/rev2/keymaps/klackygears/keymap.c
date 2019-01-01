@@ -12,7 +12,7 @@
 #endif
 
 
-#include "wait.h"
+//#include "wait.h"
 #include "klackygears.h"
 
 extern keymap_config_t keymap_config;
@@ -24,12 +24,63 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
+/*#define LAYOUT_helix_base( \
+    K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, \
+    K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, \
+    K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, \
+    K31, K32, K33, K34, K35, K36, K37, K38, K39, K3A \
+  ) \
+  LAYOUT_wrapper( \
+    KC_LRMOD, K01,        K02, K03,      K04,     K05,                        K06,     K07,     K08,     K09,     K0A,     KC_MINS, \
+    KC_ESC,   ALT_T(K11), K12, K13,      K14,     K15,                        K16,     K17,     K18,     K19,     K1A, RGUI_T(KC_QUOT), \
+    KC_LSFT,  CTL_T(K21), K22, K23,      K24,     K25,                        K26,     K27,     K28,     K29,  CTL_T(K2A), KC_RSFT, \
+    KC_LSFT,  K31,        K32, K33,      K34,     K35,    KC_MCRT2, KC_MCRTG, K36,     K37,     K38,     K39,  K3A,        KC_RSFT,
+    KC_ADJS,  KC_TAB, KC_LALT, KC_ENT, KC_ENT, KC_SPSY,   KC_BSNB,  KC_TBNB,  KC_ENSY, KC_ADJS, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT \
+    )
+#define LAYOUT_helix_base_wrapper(...)       LAYOUT_helix_base(__VA_ARGS__)
+*/
 
 //#if HELIX_ROWS == 5
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
+  [_DVRK] = LAYOUT_kc( \
+      LRMOD,   _____, _____, _____, _____, _____,                   _____, _____, _____, _____, _____, _____, \
+      ESC,     QUOT,    COMQUES, DTEX,    P,       Y,                         F,       G,       C,       R,       L,       _____, \
+      LSFT,    A,       O,       E,       U,       I,                         D,       H,       T,       N,       S,       RSFT, \
+      LSFT,    CSCN,    ALTQ,    GUIJ,    K,       X,       MCRT2,  MCRTG,    B,       M,       GUIW,    ALTV,    MDAZ,    RSFT, \
+      ADJS,    ENT,     LALT,    ENT,     SPSY,    BSNB,    BSNB,   TBNB,     TBNB,    ENSY,    LEFT,    DOWN,    UP,      RGHT \
+      ),
+
+
+
+  [_SYMB] = LAYOUT_kc( \
+      _____, _____, _____, _____, _____, _____,                   _____, _____, _____, _____, _____, _____, \
+      _____, BSLS,    AT,      HASH,    DLR,     PERC,                      _____, F9,      F10,     F11,     F12,     _____, \
+      _____, PLUS,    MINS,    ASTR,    SLSH,    EQL,                       _____, F5,      F6,      F7,      F8,      _____, \
+      _____, LBRC,    RBRC,    LPRN,    RPRN,    AMPR,    _____, _____, GRV,     F1,      F2,      F3,      F4,      _____, \
+      _____, _____, _____, _____, SPC,     DEL,     _____, _____, CAPS,    _____, _____, _____, _____, _____ \
+      ),
+
+
+  [_NUMB] = LAYOUT_kc( \
+      GRV,     1,       2,       3,       4,       5,                         6,       7,       8,       9,       0,       _____, \
+      _____, PGUP,    PGDN,    HOME,    END,     FNDR,                      MINPLS,  7,       8,       9,       COLN,    _____, \
+      _____, LEFT,    UP,      DOWN,    RIGHT,   _____,                   DIVMLT,  4,       5,       6,       CSTC,    _____, \
+      _____, _____, CTLA,    MCCPY,   MCPIN,   DEL,     _____, _____, DOTEQL,  1,       2,       ALT3,    RWIN,    _____, \
+      _____, _____, _____, _____, SPC,     BSPC,    _____, _____, _____, 0,       0,       _____, _____, _____ \
+      ),
+
+
+  [_MDIA] =  LAYOUT_kc( \
+      _____, _____, _____, _____, _____, _____,                   LRST,    _____, _____, _____, _____, _____, \
+      _____, _____, _____, _____, _____, _____,                   _____, LHUI,    LSAI,    LVAI,    LSPI,    _____, \
+      _____, _____, _____, _____, _____, _____,                   LRMOD,   LHUD,    LSAD,    LVAD,    LSPD,    _____, \
+      _____, _____, _____, _____, _____, _____, _____, _____, MPLY,    MUTE,    VOLD,    VOLU,    _____, _____, \
+      _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____ \
+      )
+/*
   [_DVRK] = LAYOUT_wrapper( \
       KC_LRMOD,   _________________KC_BLANK__________________,                     _________________KC_BLANK__________________, KC______, \
       KC_ESC,     _________________DVRK_L1___________________,                     _________________DVRK_R1___________________, KC______, \
@@ -72,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC______, _________________KC_BLANK__________________, KC______, KC______, _________________MEDIA_____________________, KC______, \
       KC______, _________________KC_BLANK__________________, KC______, KC______, _________________KC_BLANK__________________, KC______ \
       )
-
+*/
  };
 
 // #else

@@ -3,7 +3,7 @@
 
 #include "quantum.h"
 #include "action.h"
-#include "process_keycode/process_tap_dance.h"
+//#include "process_keycode/process_tap_dance.h"
 #include "dynamic_macro.h"
 
 #ifdef RGBLIGHT_ENABLE
@@ -73,7 +73,7 @@ static tap xtap_state = {
   .is_press_action = true,
   .state = 0
 };
-
+/*
 void sftswap (qk_tap_dance_state_t *state, void *user_data) {
   xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
@@ -98,6 +98,7 @@ void reset_sftswap (qk_tap_dance_state_t *state, void *user_data) {
   }
   xtap_state.state = 0;
 }
+*/
 
 // define variables for reactive RGB
 bool TOG_STATUS = false;
@@ -126,6 +127,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
+/*
   #if defined(KEYBOARD_helix)
     switch (keycode) {
 
@@ -206,30 +208,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       #endif
       return false;
       break;
-    // case EISU:
-    //   if (record->event.pressed) {
-    //     if(keymap_config.swap_lalt_lgui==false){
-    //       register_code(KC_LANG2);
-    //     }else{
-    //       SEND_STRING(SS_LALT("`"));
-    //     }
-    //   } else {
-    //     unregister_code(KC_LANG2);
-    //   }
-    //   return false;
-    //   break;
-    // case KANA:
-    //   if (record->event.pressed) {
-    //     if(keymap_config.swap_lalt_lgui==false){
-    //       register_code(KC_LANG1);
-    //     }else{
-    //       SEND_STRING(SS_LALT("`"));
-    //     }
-    //   } else {
-    //     unregister_code(KC_LANG1);
-    //   }
-    //   return false;
-    //   break;
     case RGBRST:
       #ifdef RGBLIGHT_ENABLE
         if (record->event.pressed) {
@@ -242,7 +220,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 
   #endif
-
+*/
   return true;
 }
 
@@ -259,7 +237,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //     #endif
 // }
 /*
-case maker:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
+case KC_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
     if (!record->event.pressed) {
       uint8_t temp_mod = get_mods();
       uint8_t temp_osm = get_oneshot_mods();
@@ -515,7 +493,7 @@ void mcpstin(qk_tap_dance_state_t *state, void *user_data)
 
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [SSWAP]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL,sftswap, reset_sftswap),
+  //[SSWAP]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL,sftswap, reset_sftswap),
   [TD_MCROTOG]  = ACTION_TAP_DANCE_FN(macroTogKey),
   [TD_MCROTG2] = ACTION_TAP_DANCE_FN(macroTogKey2),
   [TD_PSTI] = ACTION_TAP_DANCE_FN(pstinsrt),

@@ -5,7 +5,7 @@
 #include "quantum.h"
 #include "process_keycode/process_tap_dance.h"
 
-#include "wrappers.h"
+//#include "wrappers.h"
 
 #ifndef PERMISSIVE_HOLD
 #define PERMISSIVE_HOLD
@@ -52,10 +52,10 @@ enum {
 enum custom_keycodes {
   DVRK = SAFE_RANGE,
   MDVK,
-  NUMB,
+  //NUMB,
   MNMB,
   SYMB,
-  MDIA,
+  //MDIA,
   RGBRST,
   ADJUST,
   KC_MAKE,
@@ -66,8 +66,8 @@ enum custom_keycodes {
 
 //Tap dance enums
 enum {
-  SSWAP = 0,
-  TD_MCROTOG,
+  //SSWAP = 0,
+  TD_MCROTOG = 0,
   TD_MCROTG2,
   TD_BTK,
   TD_TDE,
@@ -109,7 +109,7 @@ enum {
 #define KC_QUER TO(_QUER)
 #define KC_MACD TO(_MDVK)
 #define KC_MCNB TO(_MNMB)
-#define KC_ADJS ADJUST
+#define KC_ADJS TO(_MDIA)
 
 #define KC_RST   RESET
 
