@@ -4,9 +4,9 @@
 #include "lufa.h"
 #include "split_util.h"
 #endif
-#ifdef AUDIO_ENABLE
-  #include "audio.h"
-#endif
+//#ifdef AUDIO_ENABLE
+//  #include "audio.h"
+//#endif
 #ifdef SSD1306OLED
   #include "ssd1306.h"
 #endif
@@ -22,53 +22,15 @@ extern rgblight_config_t rgblight_config;
 #endif
 
 extern uint8_t is_master;
-/*
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
-enum layer_number {
-    _QWERTY = 0,
-    _COLEMAK,
-    _DVORAK,
-    _LOWER,
-    _RAISE,
-    _ADJUST
-};
 
-enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
-  COLEMAK,
-  DVORAK,
-  LOWER,
-  RAISE,
-  ADJUST,
-  BACKLIT,
-  EISU,
-  KANA,
-  RGBRST
-};
-
-enum macro_keycodes {
-  KC_SAMPLEMACRO,
-};
-
-
-// Fillers to make layering more clear
-#define _______ KC_TRNS
-#define XXXXXXX KC_NO
-//Macros
-#define M_SAMPLE M(KC_SAMPLEMACRO)
-*/
-
-#if HELIX_ROWS == 5
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
 
 
   [_DVRK] = LAYOUT( \
       KC_LRMOD,   KC______, KC______,   KC______, KC______, KC______,                           KC______, KC______, KC______, KC______, KC______, KC______, \
       KC_ESC,     KC_QUOT,  KC_COMQUES, KC_DTEX,  KC_P,     KC_Y,                               KC_F,     KC_G,     KC_C,     KC_R,     KC_L,     KC______, \
-      KC_LSFT,    KC_A,     KC_O,       KC_E,     KC_U,     KC_I,                               KC_D,     KC_H,     KC_T,     KC_N,     KC_S,     KC_RSFT, \
+      KC_LSFT,    KC_A,     KC_O,       KC_A,     KC_U,     KC_I,                               KC_D,     KC_H,     KC_T,     KC_N,     KC_S,     KC_RSFT, \
       KC_LSFT,    KC_CSCN,  KC_ALTQ,    KC_GUIJ,  KC_K,     KC_X,       KC_MCRT2,  KC_MCRTG,    KC_B,     KC_M,     KC_GUIW,  KC_ALTV,  KC_MDAZ,  KC_RSFT, \
       KC_ADJS,    KC_ENT,   KC_LALT,    KC_ENT,   KC_SPSY,  KC_SPSY,    KC_BSNB,   KC_TBNB,     KC_ENSY,  KC_ENSY,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT \
       ),
@@ -102,172 +64,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       )
 };
 
-#else
-#error "undefined keymaps"
-#endif
 
 
-#ifdef AUDIO_ENABLE
-
-float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
-float tone_dvorak[][2]     = SONG(DVORAK_SOUND);
-float tone_colemak[][2]    = SONG(COLEMAK_SOUND);
-float tone_plover[][2]     = SONG(PLOVER_SOUND);
-float tone_plover_gb[][2]  = SONG(PLOVER_GOODBYE_SOUND);
-float music_scale[][2]     = SONG(MUSIC_SCALE_SOUND);
-#endif
-/*
 // define variables for reactive RGB
-bool TOG_STATUS = false;
-int RGB_current_mode;
 
+int RGB_current_mode;
+/*
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
 }
+*/
 
-// Setting ADJUST layer RGB back to default
-void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
-  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
-    #ifdef RGBLIGHT_ENABLE
-      //rgblight_mode(RGB_current_mode);
-    #endif
-    layer_on(layer3);
-  } else {
-    layer_off(layer3);
-  }
-}
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case QWERTY:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_qwerty);
-        #endif
-        persistent_default_layer_set(1UL<<_QWERTY);
-      }
-      return false;
-      break;
-    case COLEMAK:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_colemak);
-        #endif
-        persistent_default_layer_set(1UL<<_COLEMAK);
-      }
-      return false;
-      break;
-    case DVORAK:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_dvorak);
-        #endif
-        persistent_default_layer_set(1UL<<_DVORAK);
-      }
-      return false;
-      break;
-    case LOWER:
-      if (record->event.pressed) {
-          //not sure how to have keyboard check mode and set it to a variable, so my work around
-          //uses another variable that would be set to true after the first time a reactive key is pressed.
-        if (TOG_STATUS) { //TOG_STATUS checks is another reactive key currently pressed, only changes RGB mode if returns false
-        } else {
-          TOG_STATUS = !TOG_STATUS;
-          #ifdef RGBLIGHT_ENABLE
-            //rgblight_mode(RGBLIGHT_MODE_SNAKE + 1);
-          #endif
-        }
-        layer_on(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      } else {
-        #ifdef RGBLIGHT_ENABLE
-          //rgblight_mode(RGB_current_mode);   // revert RGB to initial mode prior to RGB mode change
-        #endif
-        TOG_STATUS = false;
-        layer_off(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-      break;
-    case RAISE:
-      if (record->event.pressed) {
-        //not sure how to have keyboard check mode and set it to a variable, so my work around
-        //uses another variable that would be set to true after the first time a reactive key is pressed.
-        if (TOG_STATUS) { //TOG_STATUS checks is another reactive key currently pressed, only changes RGB mode if returns false
-        } else {
-          TOG_STATUS = !TOG_STATUS;
-          #ifdef RGBLIGHT_ENABLE
-            //rgblight_mode(RGBLIGHT_MODE_SNAKE);
-          #endif
-        }
-        layer_on(_RAISE);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      } else {
-        #ifdef RGBLIGHT_ENABLE
-          //rgblight_mode(RGB_current_mode);  // revert RGB to initial mode prior to RGB mode change
-        #endif
-        layer_off(_RAISE);
-        TOG_STATUS = false;
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-      break;
-    case ADJUST:
-        if (record->event.pressed) {
-          layer_on(_ADJUST);
-        } else {
-          layer_off(_ADJUST);
-        }
-        return false;
-        break;
-      //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
-    case RGB_MOD:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          rgblight_mode(RGB_current_mode);
-          rgblight_step();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
-      return false;
-      break;
-    case EISU:
-      if (record->event.pressed) {
-        if(keymap_config.swap_lalt_lgui==false){
-          register_code(KC_LANG2);
-        }else{
-          SEND_STRING(SS_LALT("`"));
-        }
-      } else {
-        unregister_code(KC_LANG2);
-      }
-      return false;
-      break;
-    case KANA:
-      if (record->event.pressed) {
-        if(keymap_config.swap_lalt_lgui==false){
-          register_code(KC_LANG1);
-        }else{
-          SEND_STRING(SS_LALT("`"));
-        }
-      } else {
-        unregister_code(KC_LANG1);
-      }
-      return false;
-      break;
-    case RGBRST:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          eeconfig_update_rgblight_default();
-          rgblight_enable();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
-      break;
-  }
-  return true;
-}
 
 void matrix_init_user(void) {
     #ifdef AUDIO_ENABLE
@@ -318,9 +127,22 @@ void music_scale_user(void)
 __attribute__ ((weak))
 void led_test_init(void) {}
 
+
 void matrix_scan_user(void) {
+  //  rgblight_setrgb_at(0,255,0,0);
+  //  rgblight_setrgb_at(0,255,0,1);
+  //  rgblight_setrgb_at(0,255,0,2);
+  //  rgblight_setrgb_at(0,255,0,3);
+  //  rgblight_setrgb_at(0,255,0,4);
+  //  rgblight_setrgb_at(0,255,0,5);
+  //  rgblight_setrgb_at(0,0,255,6);
+  //  rgblight_setrgb_at(10,0,255,17);
+  //  rgblight_setrgb_at(10,0,230,18);
+  //  rgblight_setrgb_at(20,0,220,31);
+
      led_test_init();
      iota_gfx_task();  // this is what updates the display continuously
+
 }
 
 void matrix_update(struct CharacterMatrix *dest,
@@ -333,10 +155,10 @@ void matrix_update(struct CharacterMatrix *dest,
 
 //assign the right code to your layers for OLED display
 #define L_BASE 0
-#define L_LOWER (1<<_LOWER)
-#define L_RAISE (1<<_RAISE)
-#define L_ADJUST (1<<_ADJUST)
-#define L_ADJUST_TRI (L_ADJUST|L_RAISE|L_LOWER)
+#define L_SYMB (1<<_SYMB)
+#define L_NUMB (1<<_NUMB)
+#define L_MDIA (1<<_MDIA)
+#define L_MDIA_TRI (L_MDIA|L_NUMB|L_SYMB)
 
 static void render_logo(struct CharacterMatrix *matrix) {
 
@@ -371,17 +193,17 @@ void render_status(struct CharacterMatrix *matrix) {
   matrix_write_P(matrix, PSTR("\nLayer: "));
     switch (layer_state) {
         case L_BASE:
-           matrix_write_P(matrix, PSTR("Default"));
+           matrix_write_P(matrix, PSTR("Dvorak"));
            break;
-        case L_RAISE:
-           matrix_write_P(matrix, PSTR("Raise"));
+        case L_NUMB:
+           matrix_write_P(matrix, PSTR("Numeric"));
            break;
-        case L_LOWER:
-           matrix_write_P(matrix, PSTR("Lower"));
+        case L_SYMB:
+           matrix_write_P(matrix, PSTR("Punctuation"));
            break;
-        case L_ADJUST:
-        case L_ADJUST_TRI:
-           matrix_write_P(matrix, PSTR("Adjust"));
+        case L_MDIA:
+        case L_MDIA_TRI:
+           matrix_write_P(matrix, PSTR("RGB-VOL"));
            break;
         default:
            matrix_write(matrix, buf);
@@ -416,4 +238,3 @@ void iota_gfx_task_user(void) {
 }
 
 #endif
-*/

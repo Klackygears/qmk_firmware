@@ -190,7 +190,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ESC,     QUOT,    COMQUES, DTEX,    P,       Y,                         F,       G,       C,       R,       L,       _______, \
       LSFT,    A,       O,       E,       U,       I,                         D,       H,       T,       N,       S,       RSFT, \
       LSFT,    CSCN,    ALTQ,    GUIJ,    K,       X,       MCTG2,  MCRTG,    B,       M,       GUIW,    ALTV,    MDAZ,    RSFT, \
-      ADJUST,  ENT,     LALT,    ENT,     SPSY,    BSNB,    BSNB,   TBNB,     TBNB,    ENSY,    LEFT,    DOWN,    UP,      RGHT \
+      ADJUST,  ENT,     LALT,    ENT,     SPSY,    SPSY,    BSNB,   TBNB,     ENSY,    ENSY,    LEFT,    DOWN,    UP,      RGHT \
       ),
 
 

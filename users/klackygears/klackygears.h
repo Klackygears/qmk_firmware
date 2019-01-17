@@ -7,6 +7,8 @@
 
 //#include "wrappers.h"
 
+
+
 #ifndef PERMISSIVE_HOLD
 #define PERMISSIVE_HOLD
 #endif
@@ -24,21 +26,22 @@ typedef struct {
 
 enum layer_number {
     _DVRK = 0,
-    _MDVK,
     _QUER,
-    _SYMB,
+    _MDVK,
     _NUMB,
     _MNMB,
+    _SYMB,
     _MDIA
 };
-/*
+
 #define _DVRK 0
-#define _NUMB 1
+#define _QUER 1
 #define _MDVK 2
-#define _MNMB 3
-#define _SYMB 4
-#define _MDIA 5
-*/
+#define _NUMB 3
+#define _MNMB 4
+#define _SYMB 5
+#define _MDIA 6
+
 enum {
   SINGLE_TAP = 1,
   SINGLE_HOLD = 2,
@@ -52,10 +55,10 @@ enum {
 enum custom_keycodes {
   DVRK = SAFE_RANGE,
   MDVK,
-  //NUMB,
+  NUMB,
   MNMB,
   SYMB,
-  //MDIA,
+  MDIA,
   RGBRST,
   ADJUST,
   KC_MAKE,
@@ -108,7 +111,7 @@ enum {
 #define KC_DVRK TO(_DVRK)
 #define KC_QUER TO(_QUER)
 #define KC_MACD TO(_MDVK)
-#define KC_MCNB TO(_MNMB)
+#define KC__MNMB TO(_MNMB)
 #define KC_ADJS TO(_MDIA)
 
 #define KC_RST   RESET

@@ -3,7 +3,7 @@
 
 #include "quantum.h"
 #include "action.h"
-//#include "process_keycode/process_tap_dance.h"
+#include "process_keycode/process_tap_dance.h"
 #include "dynamic_macro.h"
 
 #ifdef RGBLIGHT_ENABLE
