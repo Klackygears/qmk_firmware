@@ -14,7 +14,7 @@
 
 #include "klackygears.h"
 
-extern keymap_config_t keymap_config;
+//extern keymap_config_t keymap_config;
 
 #ifdef RGBLIGHT_ENABLE
 //Following line allows macro to read current RGB settings
@@ -30,9 +30,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_DVRK] = LAYOUT( \
       KC_LRMOD,   KC______, KC______,   KC______, KC______, KC______,                           KC______, KC______, KC______, KC______, KC______, KC______, \
       KC_ESC,     KC_QUOT,  KC_COMQUES, KC_DTEX,  KC_P,     KC_Y,                               KC_F,     KC_G,     KC_C,     KC_R,     KC_L,     KC______, \
-      KC_LSFT,    KC_A,     KC_O,       KC_A,     KC_U,     KC_I,                               KC_D,     KC_H,     KC_T,     KC_N,     KC_S,     KC_RSFT, \
+      KC_LSFT,    KC_A,     KC_O,       KC_E,     KC_U,     KC_I,                               KC_D,     KC_H,     KC_T,     KC_N,     KC_S,     KC_RSFT, \
       KC_LSFT,    KC_CSCN,  KC_ALTQ,    KC_GUIJ,  KC_K,     KC_X,       KC_MCRT2,  KC_MCRTG,    KC_B,     KC_M,     KC_GUIW,  KC_ALTV,  KC_MDAZ,  KC_RSFT, \
-      KC_ADJS,    KC_ENT,   KC_LALT,    KC_ENT,   KC_SPSY,  KC_SPSY,    KC_BSNB,   KC_TBNB,     KC_ENSY,  KC_ENSY,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT \
+      MO(_MDIA),  KC_ENT,   KC_LALT,    KC_ENT,   KC_SPSY,  KC_SPSY,    KC_BSNB,   KC_TBNB,     KC_ENSY,  KC_ENSY,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT \
       ),
 
 

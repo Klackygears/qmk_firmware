@@ -8,7 +8,7 @@
 //#include "wrappers.h"
 
 
-/*
+
 #ifndef PERMISSIVE_HOLD
 #define PERMISSIVE_HOLD
 #endif
@@ -19,11 +19,11 @@
 #define IGNORE_MOD_TAP_INTERRUPT
 #endif
 
-
+/*
 #ifdef TAP_DANCE_ENABLE
   #include "tap_dances.h"
 #endif // TAP_DANCE_ENABLE
-
+*/
 
 
 typedef struct {
@@ -60,14 +60,14 @@ enum {
 };
 
 enum custom_keycodes {
-  //DVRK = SAFE_RANGE,
-  //MDVK,
-  //NUMB,
-  //MNMB,
-  //SYMB,
-  //MDIA,
-  RGBRST = SAFE_RANGE,
-  //ADJUST,
+  DVRK = SAFE_RANGE,
+  MDVK,
+  NUMB,
+  MNMB,
+  SYMB,
+  MDIA,
+  RGBRST,
+  ADJUST,
   KC_MAKE,
   DYNAMIC_MACRO_RANGE,
 };
@@ -109,7 +109,7 @@ enum {
 
 #define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
-//#define KC_KANJI KC_GRV
+#define KC_KANJI KC_GRV
 
 
 #define KC_SYMB SYMB
@@ -118,9 +118,8 @@ enum {
 #define KC_DVRK TO(_DVRK)
 #define KC_QUER TO(_QUER)
 #define KC_MACD TO(_MDVK)
-#define KC_MNMB TO(_MNMB)
+#define KC__MNMB TO(_MNMB)
 #define KC_ADJS TO(_MDIA)
-
 
 #define KC_RST   RESET
 
@@ -141,7 +140,7 @@ enum {
 #define KC_MBNB LT(_MNMB,KC_BSPC)
 #define KC_MTNB LT(_MNMB,KC_TAB)
 
-//Define tap dance macros as kc_ to make keymap more legible
+
 #define KC_MCRTG   TD(TD_MCROTOG)
 #define KC_MCRT2   TD(TD_MCROTG2)
 #define KC_CMWN    TD(TD_CMWN)
@@ -164,9 +163,8 @@ enum {
 #define KC_MCCPY   TD(TD_MCCCPY)
 #define KC_MCPIN   TD(TD_MCPSTIN)
 
-//#define KC_QUAD TD(SSWAP)
+#define KC_QUAD TD(SSWAP)
 
-//mod tap keys
 #define KC_WNL  LGUI(KC_L)
 #define KC_MCL  LCTL(LALT(KC_Q))
 #define KC_WNSC MT(MOD_LGUI,KC_SCLN)
@@ -185,12 +183,9 @@ enum {
 #define KC_ALT3 MT(MOD_LALT,KC_3)
 #define KC_CSTC C_S_T(KC_COLN)
 //#define KC_SWP  SH_TT
-
-//dynamic macros
 #define KC_MRC1 DYN_REC_START1
 #define KC_MPL1 DYN_MACRO_PLAY1
 #define KC_MSP  DYN_REC_STOP
-
 
 #define KC_LRST  RGBRST
 #define KC_LTOG  RGB_TOG
@@ -216,4 +211,3 @@ void sftswap (qk_tap_dance_state_t *state, void *user_data);
 void reset_sftswap (qk_tap_dance_state_t *state, void *user_data);
 
 #endif
-*/

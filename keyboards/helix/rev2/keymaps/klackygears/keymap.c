@@ -11,9 +11,6 @@
   #include "ssd1306.h"
 #endif
 
-
-#include "klackygears.h"
-
 extern keymap_config_t keymap_config;
 
 #ifdef RGBLIGHT_ENABLE
@@ -22,83 +19,206 @@ extern rgblight_config_t rgblight_config;
 #endif
 
 extern uint8_t is_master;
-/*
+
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 enum layer_number {
-    _QWERTY = 0,
-    _COLEMAK,
-    _DVORAK,
-    _LOWER,
-    _RAISE,
+    _DVORAK = 0,
+    _SYMB,
+    _NUMB,
     _ADJUST
 };
 
 enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
-  COLEMAK,
-  DVORAK,
-  LOWER,
-  RAISE,
+
+  DVORAK = SAFE_RANGE,
+  SYMB,
+  NUMB,
   ADJUST,
   BACKLIT,
   EISU,
   KANA,
-  RGBRST
+  RGBRST,
+  DYNAMIC_MACRO_RANGE,
 };
+
+ #include "dynamic_macro.h"
 
 enum macro_keycodes {
   KC_SAMPLEMACRO,
 };
 
 
-// Fillers to make layering more clear
-#define _______ KC_TRNS
-#define XXXXXXX KC_NO
-//Macros
+enum {
+  TD_MCROTOG,
+  TD_MCROTG2,
+  TD_BTK,
+  TD_TDE,
+  TD_LPRN,
+  TD_RPRN,
+  TD_MIN,
+  TD_USC,
+  TD_CMWN,
+  TD_ATSH,
+  TD_PSTI,
+  TD_PTSP,
+  TD_FNDR,
+  TD_CCPY,
+  TD_DDEL,
+  TD_ACCW,
+  TD_CAPESC,
+  TD_DTEX,
+  TD_COMQUES,
+  TD_MINPLS,
+  TD_DIVMLT,
+  TD_DOTEQL,
+  TD_LSHSYM,
+  TD_RSHSYM,
+  TD_SCNSP,
+  TD_MCCCPY,
+  TD_MCPSTIN,
+};
+
+
+#define KC________ KC_TRNS
+#define KC_XXXXX KC_NO
+#define KC_KANJI KC_GRV
+#define KC_DVORAK DVORAK
+#define KC_SYMB SYMB
+#define KC_NUMB NUMB
+#define KC_ADJUST ADJUST
+#define KC_BACKLIT BACKLIT
+#define KC_EISU EISU
+#define KC_KATNA KANA
+#define KC_RESET RESET
+#define KC_AU_ON AU_ON
+#define KC_AU_OFF AU_OFF
+#define KC_AG_NORM AG_NORM
+#define KC_KSWP  AG_SWAP
+
+
+
+#define KC_SYMB SYMB
+#define KC_NUMB NUMB
+#define KC_MNMB MNMB
+#define KC_MACD TO(_MDVK)
+#define KC_MCNB TO(_MNMB)
+
+#define KC_RST   RESET
+
+#define KC_LRST  RGBRST
+#define KC_LTOG  RGB_TOG
+#define KC_LMOD  RGB_MOD
+#define KC_LHUI  RGB_HUI
+#define KC_LHUD  RGB_HUD
+#define KC_LSAI  RGB_SAI
+#define KC_LSAD  RGB_SAD
+#define KC_LVAI  RGB_VAI
+#define KC_LVAD  RGB_VAD
+#define KC_LSPI  RGB_SPI
+#define KC_LSPD  RGB_SPD
+#define KC_LRMOD RGB_RMOD
+
+#define KC_SPSY LT(_SYMB,KC_SPC)
+#define KC_BSNB LT(_NUMB,KC_BSPC)
+#define KC_TBNB LT(_NUMB,KC_TAB)
+#define KC_ENSY LT(_SYMB,KC_ENT)
+#define KC_MBNB LT(_MNMB,KC_BSPC)
+#define KC_MTNB LT(_MNMB,KC_TAB)
+
+#define KC_MCRTG TD(TD_MCROTOG)
+#define KC_MCTG2 TD(TD_MCROTG2)
+#define KC_CMWN TD(TD_CMWN)
+#define KC_ATSH TD(TD_ATSH)
+#define KC_PSTI TD(TD_PSTI)
+#define KC_PTSP TD(TD_PTSP)
+#define KC_FNDR TD(TD_FNDR)
+#define KC_CCPY TD(TD_CCPY)
+#define KC_DDEL TD(TD_DDEL)
+#define KC_ACCW TD(TD_ACCW)
+#define KC_CAPES TD(TD_CAPES)
+#define KC_DTEX TD(TD_DTEX)
+#define KC_COMQUES TD(TD_COMQUES)
+#define KC_MINPLS TD(TD_MINPLS)
+#define KC_DIVMLT TD(TD_DIVMLT)
+#define KC_DOTEQL TD(TD_DOTEQL)
+#define KC_LSHSYM TD(TD_LSHSYM)
+#define KC_RSHSYM TD(TD_RSHSYM)
+#define KC_SCNSP TD(TD_SCNSP)
+#define KC_MCCPY TD(TD_MCCCPY)
+#define KC_MCPIN TD(TD_MCPSTIN)
+
+#define KC_WNL  LGUI(KC_L)
+#define KC_MCL  LCTL(LALT(KC_Q))
+#define KC_WNSC MT(MOD_LGUI,KC_SCLN)
+#define KC_CSCN MT(MOD_LCTL,KC_SCLN)
+#define KC_ALTQ MT(MOD_LALT,KC_Q)
+#define KC_CTLJ MT(MOD_LCTL,KC_J)
+#define KC_GUIJ MT(MOD_LGUI,KC_J)
+#define KC_SHFK MT(MOD_LSFT,KC_K)
+#define KC_SHFM MT(MOD_LSFT,KC_M)
+#define KC_CTLW MT(MOD_LCTL,KC_W)
+#define KC_GUIW MT(MOD_LGUI,KC_W)
+#define KC_ALTV MT(MOD_LALT,KC_V)
+#define KC_MDAZ LT(_ADJUST,KC_Z)
+#define KC_CTLA LCTL(KC_A)
+#define KC_CTL2 MT(MOD_LCTL,KC_2)
+#define KC_ALT3 MT(MOD_LALT,KC_3)
+#define KC_CSTC C_S_T(KC_COLN)
+
+#define KC_MRC1 DYN_REC_START1
+#define KC_MPL1 DYN_MACRO_PLAY1
+#define KC_MSP DYN_REC_STOP
+
+#define KC_KNRM  AG_NORM
+#define KC_GUAP  LALT_T(KC_APP)
+
+///Macros
 #define M_SAMPLE M(KC_SAMPLEMACRO)
-*/
+
+
 
 #if HELIX_ROWS == 5
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
-  [_DVRK] = LAYOUT( \
-      KC_LRMOD,   KC______, KC______,   KC______, KC______, KC______,                           KC______, KC______, KC______, KC______, KC______, KC______, \
-      KC_ESC,     KC_QUOT,  KC_COMQUES, KC_DTEX,  KC_P,     KC_Y,                               KC_F,     KC_G,     KC_C,     KC_R,     KC_L,     KC______, \
-      KC_LSFT,    KC_A,     KC_O,       KC_E,     KC_U,     KC_I,                               KC_D,     KC_H,     KC_T,     KC_N,     KC_S,     KC_RSFT, \
-      KC_LSFT,    KC_CSCN,  KC_ALTQ,    KC_GUIJ,  KC_K,     KC_X,       KC_MCRT2,  KC_MCRTG,    KC_B,     KC_M,     KC_GUIW,  KC_ALTV,  KC_MDAZ,  KC_RSFT, \
-      KC_ADJS,    KC_ENT,   KC_LALT,    KC_ENT,   KC_SPSY,  KC_SPSY,    KC_BSNB,   KC_TBNB,     KC_ENSY,  KC_ENSY,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT \
+
+  [_DVORAK] = LAYOUT_kc( \
+      LRMOD,   _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
+      ESC,     QUOT,    COMQUES, DTEX,    P,       Y,                         F,       G,       C,       R,       L,       _______, \
+      LSFT,    A,       O,       E,       U,       I,                         D,       H,       T,       N,       S,       RSFT, \
+      LSFT,    CSCN,    ALTQ,    GUIJ,    K,       X,       MCTG2,  MCRTG,    B,       M,       GUIW,    ALTV,    MDAZ,    RSFT, \
+      ADJUST,  ENT,     LALT,    ENT,     SPSY,    SPSY,    BSNB,   TBNB,     ENSY,    ENSY,    LEFT,    DOWN,    UP,      RGHT \
       ),
 
 
 
-  [_SYMB] = LAYOUT( \
-      KC______, KC______, KC______, KC______, KC______, KC______,                     KC______, KC______, KC______, KC______, KC______, KC______, \
-      KC______, KC_BSLS,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,                      KC______, KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC______, \
-      KC______, KC_PLUS,  KC_MINS,  KC_ASTR,  KC_SLSH,  KC_EQL,                       KC______, KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC______, \
-      KC______, KC_LBRC,  KC_RBRC,  KC_LPRN,  KC_RPRN,  KC_AMPR,  KC______, KC______, KC_GRV,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC______, \
-      KC______, KC______, KC______, KC______, KC_SPC,   KC_DEL,   KC______, KC______, KC_CAPS,  KC______, KC______, KC______, KC______, KC______ \
+  [_SYMB] = LAYOUT_kc( \
+      _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
+      _______, BSLS,    AT,      HASH,    DLR,     PERC,                      _______, F9,      F10,     F11,     F12,     _______, \
+      _______, PLUS,    MINS,    ASTR,    SLSH,    EQL,                       _______, F5,      F6,      F7,      F8,      _______, \
+      _______, LBRC,    RBRC,    LPRN,    RPRN,    AMPR,    _______, _______, GRV,     F1,      F2,      F3,      F4,      _______, \
+      _______, _______, _______, _______, SPC,     DEL,     _______, _______, CAPS,    _______, _______, _______, _______, _______ \
       ),
 
 
-  [_NUMB] = LAYOUT( \
-      KC_GRV,   KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                          KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC______, \
-      KC______, KC_PGUP,    KC_PGDN,    KC_HOME,    KC_END,     KC_FNDR,                       KC_MINPLS,  KC_7,       KC_8,       KC_9,       KC_COLN,    KC______, \
-      KC______, KC_LEFT,    KC_UP,      KC_DOWN,    KC_RIGHT,   KC______,                      KC_DIVMLT,  KC_4,       KC_5,       KC_6,       KC_CSTC,    KC______, \
-      KC______, KC______,   KC_CTLA,    KC_MCCPY,   KC_MCPIN,   KC_DEL,    KC______, KC______, KC_DOTEQL,  KC_1,       KC_2,       KC_ALT3,    KC_RWIN,    KC______, \
-      KC______, KC______,   KC______,   KC______,   KC_SPC,     KC_BSPC,   KC______, KC______, KC______,   KC_0,       KC_0,       KC______,   KC______,   KC______ \
+  [_NUMB] = LAYOUT_kc( \
+      GRV,     1,       2,       3,       4,       5,                         6,       7,       8,       9,       0,       _______, \
+      _______, PGUP,    PGDN,    HOME,    END,     FNDR,                      MINPLS,  7,       8,       9,       COLN,    _______, \
+      _______, LEFT,    UP,      DOWN,    RIGHT,   _______,                   DIVMLT,  4,       5,       6,       CSTC,    _______, \
+      _______, _______, CTLA,    MCCPY,   MCPIN,   DEL,     _______, _______, DOTEQL,  1,       2,       ALT3,    RWIN,    _______, \
+      _______, _______, _______, _______, SPC,     BSPC,    _______, _______, _______, 0,       0,       _______, _______, _______ \
       ),
 
 
-  [_MDIA] =  LAYOUT( \
-      KC______, KC______, KC______, KC______, KC______, KC______,                     KC_LRST,  KC______, KC______, KC______, KC______, KC______, \
-      KC______, KC______, KC______, KC______, KC______, KC______,                     KC______, KC_LHUI,  KC_LSAI,  KC_LVAI,  KC_LSPI,  KC______, \
-      KC______, KC______, KC______, KC______, KC______, KC______,                     KC_LRMOD, KC_LHUD,  KC_LSAD,  KC_LVAD,  KC_LSPD,  KC______, \
-      KC______, KC______, KC______, KC______, KC______, KC______, KC______, KC______, KC_MPLY,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC______, KC______, \
-      KC______, KC______, KC______, KC______, KC______, KC______, KC______, KC______, KC______, KC______, KC______, KC______, KC______, KC______ \
+  [_ADJUST] =  LAYOUT_kc( \
+      _______, _______, _______, _______, _______, _______,                   LRST,    _______, _______, _______, _______, _______, \
+      _______, _______, _______, _______, _______, _______,                   _______, LHUI,    LSAI,    LVAI,    LSPI,    _______, \
+      _______, _______, _______, _______, _______, _______,                   LRMOD,   LHUD,    LSAD,    LVAD,    LSPD,    _______, \
+      _______, _______, _______, _______, _______, _______, _______, _______, MPLY,    MUTE,    VOLD,    VOLU,    _______, _______, \
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
       )
 };
 
@@ -116,7 +236,262 @@ float tone_plover[][2]     = SONG(PLOVER_SOUND);
 float tone_plover_gb[][2]  = SONG(PLOVER_GOODBYE_SOUND);
 float music_scale[][2]     = SONG(MUSIC_SCALE_SOUND);
 #endif
-/*
+
+
+
+
+void macroTogKey(qk_tap_dance_state_t *state, void *user_data) {
+  keyrecord_t kr;
+
+  if (state->count == 1)
+  {
+    kr.event.pressed = false;
+    process_record_dynamic_macro( DYN_MACRO_PLAY1, &kr );
+  }
+  else if (state->count == 2)
+  {
+    kr.event.pressed = true;
+    process_record_dynamic_macro( DYN_REC_STOP, &kr );
+  }
+  else if (state->count == 3)
+  {
+    kr.event.pressed = false;
+    process_record_dynamic_macro( DYN_REC_START1, &kr );
+  }
+}
+
+void macroTogKey2(qk_tap_dance_state_t *state, void *user_data) {
+  keyrecord_t kr;
+
+  if (state->count == 1)
+  {
+    kr.event.pressed = false;
+    process_record_dynamic_macro( DYN_MACRO_PLAY2, &kr );
+  }
+  else if (state->count == 2)
+  {
+    kr.event.pressed = true;
+    process_record_dynamic_macro( DYN_REC_STOP, &kr );
+  }
+  else if (state->count == 3)
+  {
+    kr.event.pressed = false;
+    process_record_dynamic_macro( DYN_REC_START2, &kr );
+  }
+}
+
+
+
+void pstinsrt(qk_tap_dance_state_t *state, void *user_data)
+{
+  if (state->count > 1)
+  {
+    register_code(KC_LALT);
+    register_code(KC_I);
+    unregister_code(KC_I);
+    register_code(KC_E);
+    unregister_code(KC_E);
+    unregister_code(KC_LALT);
+  }
+  else
+  {
+    register_code(KC_LCTL);
+    register_code(KC_V);
+    unregister_code(KC_V);
+    unregister_code(KC_LCTL);
+  }
+  reset_tap_dance(state);
+}
+
+void ccopy(qk_tap_dance_state_t *state, void *user_data)
+{
+  if (state->count > 1)
+  {
+    register_code(KC_LCTL);
+    register_code(KC_X);
+    unregister_code(KC_X);
+    unregister_code(KC_LCTL);
+  }
+  else
+  {
+    register_code(KC_LCTL);
+    register_code(KC_C);
+    unregister_code(KC_C);
+    unregister_code(KC_LCTL);
+  }
+  reset_tap_dance(state);
+}
+
+void pstspecial(qk_tap_dance_state_t *state, void *user_data)
+{
+  if (state->count > 1)
+  {
+    register_code(KC_LALT);
+    register_code(KC_E);
+    unregister_code(KC_E);
+    register_code(KC_S);
+    unregister_code(KC_S);
+    unregister_code(KC_LALT);
+    register_code(KC_V);
+    unregister_code(KC_V);
+  }
+  else
+  {
+    register_code(KC_LALT);
+    register_code(KC_E);
+    unregister_code(KC_E);
+    register_code(KC_S);
+    unregister_code(KC_S);
+    unregister_code(KC_LALT);
+    register_code(KC_T);
+    unregister_code(KC_T);
+  }
+  reset_tap_dance(state);
+}
+
+void deldel(qk_tap_dance_state_t *state, void *user_data)
+{
+  if (state->count > 1)
+  {
+    register_code(KC_LALT);
+    register_code(KC_E);
+    unregister_code(KC_E);
+    register_code(KC_D);
+    unregister_code(KC_D);
+    unregister_code(KC_LALT);
+  }
+  else
+  {
+    register_code(KC_DEL);
+    unregister_code(KC_DEL);
+  }
+  reset_tap_dance(state);
+}
+
+void findreplace(qk_tap_dance_state_t *state, void *user_data)
+{
+  if (state->count > 1)
+  {
+    register_code(KC_LCTL);
+    register_code(KC_H);
+    unregister_code(KC_H);
+    unregister_code(KC_LCTL);
+  }
+  else
+  {
+    register_code(KC_LCTL);
+    register_code(KC_F);
+    unregister_code(KC_F);
+    unregister_code(KC_LCTL);
+  }
+  reset_tap_dance(state);
+}
+
+void cyclawin(qk_tap_dance_state_t *state, void *user_data)
+{
+  if (state->count > 1)
+  {
+    register_code(KC_LCTL);
+    register_code(KC_LSFT);
+    register_code(KC_F6);
+    unregister_code(KC_F6);
+    unregister_code(KC_LSFT);
+    unregister_code(KC_LCTL);
+  }
+  else
+  {
+    register_code(KC_LCTL);
+    register_code(KC_F6);
+    unregister_code(KC_F6);
+    unregister_code(KC_LCTL);
+  }
+  reset_tap_dance(state);
+}
+
+
+void SCRNSNP(qk_tap_dance_state_t *state, void *user_data)
+{
+  if (state->count > 1)
+  {
+    register_code(KC_LALT);
+    register_code(KC_PSCR);
+    unregister_code(KC_PSCR);
+    unregister_code(KC_LALT);
+  }
+  else
+  {
+    SEND_STRING(SS_TAP(X_LGUI));
+    SEND_STRING("SN");
+    register_code(KC_LCTL);
+    register_code(KC_N);
+    unregister_code(KC_N);
+    unregister_code(KC_LCTL);
+  }
+  reset_tap_dance(state);
+}
+
+
+void mcccpy(qk_tap_dance_state_t *state, void *user_data)
+{
+  if (state->count > 1)
+  {
+    register_code(KC_LGUI);
+    register_code(KC_X);
+    unregister_code(KC_X);
+    unregister_code(KC_LGUI);
+  }
+  else
+  {
+    register_code(KC_LGUI);
+    register_code(KC_C);
+    unregister_code(KC_C);
+    unregister_code(KC_LGUI);
+  }
+  reset_tap_dance(state);
+}
+
+void mcpstin(qk_tap_dance_state_t *state, void *user_data)
+{
+  if (state->count > 1)
+  {
+    register_code(KC_LGUI);
+    register_code(KC_I);
+    unregister_code(KC_I);
+    unregister_code(KC_LGUI);
+  }
+  else
+  {
+    register_code(KC_LGUI);
+    register_code(KC_V);
+    unregister_code(KC_V);
+    unregister_code(KC_LGUI);
+  }
+  reset_tap_dance(state);
+}
+
+//Tap Dance Definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+// Other declarations would go here, separated by commas, if you have them
+  [TD_MCROTOG]  = ACTION_TAP_DANCE_FN(macroTogKey),
+  [TD_MCROTG2] = ACTION_TAP_DANCE_FN(macroTogKey2),
+  [TD_PSTI] = ACTION_TAP_DANCE_FN(pstinsrt),
+  [TD_PTSP] = ACTION_TAP_DANCE_FN(pstspecial),
+  [TD_FNDR] = ACTION_TAP_DANCE_FN(findreplace),
+  [TD_CCPY] = ACTION_TAP_DANCE_FN(ccopy),
+  [TD_DDEL] = ACTION_TAP_DANCE_FN(deldel),
+  [TD_ACCW] = ACTION_TAP_DANCE_FN(cyclawin),
+  [TD_CAPESC] = ACTION_TAP_DANCE_DOUBLE(KC_ESC,KC_CAPS),
+  [TD_DTEX] = ACTION_TAP_DANCE_DOUBLE(KC_DOT,KC_EXLM),
+  [TD_COMQUES] = ACTION_TAP_DANCE_DOUBLE(KC_COMM,KC_QUES),
+  [TD_MINPLS] = ACTION_TAP_DANCE_DOUBLE(KC_PMNS,KC_PPLS),
+  [TD_DIVMLT] = ACTION_TAP_DANCE_DOUBLE(KC_PSLS,KC_PAST),
+  [TD_DOTEQL] = ACTION_TAP_DANCE_DOUBLE(KC_DOT,KC_EQL),
+  [TD_SCNSP]  = ACTION_TAP_DANCE_FN(SCRNSNP),
+  [TD_MCCCPY] = ACTION_TAP_DANCE_FN(mcccpy),
+  [TD_MCPSTIN] = ACTION_TAP_DANCE_FN(mcpstin)
+};
+
+
 // define variables for reactive RGB
 bool TOG_STATUS = false;
 int RGB_current_mode;
@@ -139,25 +514,16 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+ if (!process_record_dynamic_macro(keycode, record)) {
+        return false;
+    }
+
   switch (keycode) {
-    case QWERTY:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_qwerty);
-        #endif
-        persistent_default_layer_set(1UL<<_QWERTY);
-      }
+
       return false;
       break;
-    case COLEMAK:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_colemak);
-        #endif
-        persistent_default_layer_set(1UL<<_COLEMAK);
-      }
-      return false;
-      break;
+
     case DVORAK:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
@@ -167,7 +533,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case LOWER:
+    case SYMB:
       if (record->event.pressed) {
           //not sure how to have keyboard check mode and set it to a variable, so my work around
           //uses another variable that would be set to true after the first time a reactive key is pressed.
@@ -178,19 +544,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             //rgblight_mode(RGBLIGHT_MODE_SNAKE + 1);
           #endif
         }
-        layer_on(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        layer_on(_SYMB);
+        update_tri_layer_RGB(_SYMB, _NUMB, _ADJUST);
       } else {
         #ifdef RGBLIGHT_ENABLE
           //rgblight_mode(RGB_current_mode);   // revert RGB to initial mode prior to RGB mode change
         #endif
         TOG_STATUS = false;
-        layer_off(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        layer_off(_SYMB);
+        update_tri_layer_RGB(_SYMB, _NUMB, _ADJUST);
       }
       return false;
       break;
-    case RAISE:
+    case NUMB:
       if (record->event.pressed) {
         //not sure how to have keyboard check mode and set it to a variable, so my work around
         //uses another variable that would be set to true after the first time a reactive key is pressed.
@@ -201,15 +567,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             //rgblight_mode(RGBLIGHT_MODE_SNAKE);
           #endif
         }
-        layer_on(_RAISE);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        layer_on(_NUMB);
+        update_tri_layer_RGB(_SYMB, _NUMB, _ADJUST);
       } else {
         #ifdef RGBLIGHT_ENABLE
           //rgblight_mode(RGB_current_mode);  // revert RGB to initial mode prior to RGB mode change
         #endif
-        layer_off(_RAISE);
+        layer_off(_NUMB);
         TOG_STATUS = false;
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        update_tri_layer_RGB(_SYMB, _NUMB, _ADJUST);
       }
       return false;
       break;
@@ -318,9 +684,22 @@ void music_scale_user(void)
 __attribute__ ((weak))
 void led_test_init(void) {}
 
+
 void matrix_scan_user(void) {
+  //  rgblight_setrgb_at(0,255,0,0);
+  //  rgblight_setrgb_at(0,255,0,1);
+  //  rgblight_setrgb_at(0,255,0,2);
+  //  rgblight_setrgb_at(0,255,0,3);
+  //  rgblight_setrgb_at(0,255,0,4);
+  //  rgblight_setrgb_at(0,255,0,5);
+  //    rgblight_setrgb_at(0,0,255,6);
+  //    rgblight_setrgb_at(10,0,255,17);
+  //    rgblight_setrgb_at(10,0,230,18);
+  //    rgblight_setrgb_at(20,0,220,31);
+
      led_test_init();
      iota_gfx_task();  // this is what updates the display continuously
+
 }
 
 void matrix_update(struct CharacterMatrix *dest,
@@ -333,10 +712,10 @@ void matrix_update(struct CharacterMatrix *dest,
 
 //assign the right code to your layers for OLED display
 #define L_BASE 0
-#define L_LOWER (1<<_LOWER)
-#define L_RAISE (1<<_RAISE)
+#define L_SYMB (1<<_SYMB)
+#define L_NUMB (1<<_NUMB)
 #define L_ADJUST (1<<_ADJUST)
-#define L_ADJUST_TRI (L_ADJUST|L_RAISE|L_LOWER)
+#define L_ADJUST_TRI (L_ADJUST|L_NUMB|L_SYMB)
 
 static void render_logo(struct CharacterMatrix *matrix) {
 
@@ -371,13 +750,13 @@ void render_status(struct CharacterMatrix *matrix) {
   matrix_write_P(matrix, PSTR("\nLayer: "));
     switch (layer_state) {
         case L_BASE:
-           matrix_write_P(matrix, PSTR("Default"));
+           matrix_write_P(matrix, PSTR("Dvorak"));
            break;
-        case L_RAISE:
-           matrix_write_P(matrix, PSTR("Raise"));
+        case L_NUMB:
+           matrix_write_P(matrix, PSTR("Numeric"));
            break;
-        case L_LOWER:
-           matrix_write_P(matrix, PSTR("Lower"));
+        case L_SYMB:
+           matrix_write_P(matrix, PSTR("Punctuation"));
            break;
         case L_ADJUST:
         case L_ADJUST_TRI:
@@ -416,4 +795,3 @@ void iota_gfx_task_user(void) {
 }
 
 #endif
-*/

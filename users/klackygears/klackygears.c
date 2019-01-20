@@ -6,6 +6,7 @@
 #include "process_keycode/process_tap_dance.h"
 #include "dynamic_macro.h"
 
+
 #ifdef RGBLIGHT_ENABLE
 //Following line allows macro to read current RGB settings
 extern rgblight_config_t rgblight_config;
@@ -73,7 +74,7 @@ static tap xtap_state = {
   .is_press_action = true,
   .state = 0
 };
-/*
+
 void sftswap (qk_tap_dance_state_t *state, void *user_data) {
   xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
@@ -98,7 +99,7 @@ void reset_sftswap (qk_tap_dance_state_t *state, void *user_data) {
   }
   xtap_state.state = 0;
 }
-*/
+
 
 // define variables for reactive RGB
 bool TOG_STATUS = false;
@@ -127,7 +128,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-/*
+
   #if defined(KEYBOARD_helix)
     switch (keycode) {
 
@@ -220,23 +221,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 
   #endif
-*/
+
   return true;
 }
 
-// void matrix_init_user(void) {
-//     #ifdef AUDIO_ENABLE
-//         startup_user();
-//     #endif
-//     #ifdef RGBLIGHT_ENABLE
-//       RGB_current_mode = rgblight_config.mode;
-//     #endif
-//     //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
-//     #ifdef SSD1306OLED
-//         iota_gfx_init(!has_usb());   // turns on the display
-//     #endif
-// }
-/*
+ void matrix_init_user(void) {
+     #ifdef AUDIO_ENABLE
+         startup_user();
+     #endif
+     #ifdef RGBLIGHT_ENABLE
+       RGB_current_mode = rgblight_config.mode;
+     #endif
+     //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
+     #ifdef SSD1306OLED
+         iota_gfx_init(!has_usb());   // turns on the display
+     #endif
+ }
+
 case KC_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
     if (!record->event.pressed) {
       uint8_t temp_mod = get_mods();
@@ -262,7 +263,7 @@ case KC_MAKE:  // Compiles the firmware, and adds the flash command based on key
       set_mods(temp_mod);
     }
     break;
-*/
+
 void macroTogKey(qk_tap_dance_state_t *state, void *user_data) {
   keyrecord_t kr;
 
@@ -493,7 +494,7 @@ void mcpstin(qk_tap_dance_state_t *state, void *user_data)
 
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  //[SSWAP]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL,sftswap, reset_sftswap),
+  [SSWAP]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL,sftswap, reset_sftswap),
   [TD_MCROTOG]  = ACTION_TAP_DANCE_FN(macroTogKey),
   [TD_MCROTG2] = ACTION_TAP_DANCE_FN(macroTogKey2),
   [TD_PSTI] = ACTION_TAP_DANCE_FN(pstinsrt),
