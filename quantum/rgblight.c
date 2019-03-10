@@ -642,7 +642,7 @@ void rgblight_sethsv_at(uint16_t hue, uint8_t sat, uint8_t val, uint8_t index) {
   || defined(RGBLIGHT_EFFECT_SNAKE) || defined(RGBLIGHT_EFFECT_KNIGHT)
 
 static uint8_t get_interval_time(const uint8_t* default_interval_address, uint8_t velocikey_min, uint8_t velocikey_max) {
-  return 
+  return
 #ifdef VELOCIKEY_ENABLE
     velocikey_enabled() ? velocikey_match_speed(velocikey_min, velocikey_max) :
 #endif
@@ -845,7 +845,7 @@ void rgblight_effect_breathing(uint8_t interval) {
   float val;
 
   uint8_t interval_time = get_interval_time(&RGBLED_BREATHING_INTERVALS[interval], 1, 100);
-  
+
   if (timer_elapsed(last_timer) < interval_time) {
     return;
   }
@@ -1178,12 +1178,14 @@ void rgblight_effect_hyper(uint8_t interval) {
 
 #endif
 
+
+//these are dependent on the rand function
+
 #ifdef RGBLIGHT_EFFECT_RAINBOW_SPARKLE
 #ifndef RGBLIGHT_RAINBOW_SPARKLE_RANGE
   #define RGBLIGHT_RAINBOW_SPARKLE_RANGE 360
 #endif
 
-//these are dependent on the rand function
 
 __attribute__ ((weak))
 const uint8_t RGBLED_RAINBOW_SPARKLE_INTERVALS[] PROGMEM = {200, 150, 75};
