@@ -79,4 +79,5 @@ const uint32_t PROGMEM unicode_map[] = {
 
 int RGB_current_mode;
 
+
 #endif

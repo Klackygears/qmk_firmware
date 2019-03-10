@@ -23,6 +23,7 @@ extern uint8_t is_master;
 
 
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
@@ -107,7 +108,9 @@ static inline void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t 
     layer_off(layer3);
   }
 }
+
 /*
+
 void matrix_init_user(void) {
     #ifdef RGBLIGHT_ENABLE
       RGB_current_mode = rgblight_config.mode;
@@ -117,7 +120,10 @@ void matrix_init_user(void) {
         iota_gfx_init(!has_usb());   // turns on the display
     #endif
 }
+
 */
+
+
 //SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
 //#ifdef SSD1306OLED
 

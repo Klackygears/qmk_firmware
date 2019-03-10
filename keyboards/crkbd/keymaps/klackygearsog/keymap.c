@@ -141,7 +141,9 @@ enum {
 #define KC_MDAZ LT(_MDIA,KC_Z)
 #define KC_CTLA LCTL(KC_A)
 #define KC_CTL2 MT(MOD_LCTL,KC_2)
+
 #define KC_GUI2 MT(MOD_LGUI,KC_2)
+
 #define KC_ALT3 MT(MOD_LALT,KC_3)
 #define KC_CSTC C_S_T(KC_COLN)
 #define KC_SWP  SH_TT

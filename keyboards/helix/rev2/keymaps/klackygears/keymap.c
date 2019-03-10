@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
+
 #include "klackygears.h"
+
 #include "bootloader.h"
 #ifdef PROTOCOL_LUFA
 #include "lufa.h"
@@ -21,7 +23,9 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
+
 //#if HELIX_ROWS == 5
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
@@ -100,17 +104,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //#error "undefined keymaps"
 //#endif
 
-
-// define variables for reactive RGB
-bool TOG_STATUS = false;
-int RGB_current_mode;
-
-void persistent_default_layer_set(uint16_t default_layer) {
-  eeconfig_update_default_layer(default_layer);
-  default_layer_set(default_layer);
-}
-
-// Setting MDIA layer RGB back to default
 void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
   if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
     #ifdef RGBLIGHT_ENABLE
@@ -122,18 +115,22 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
   }
 }
 
+
 void matrix_init_user(void) {
     #ifdef AUDIO_ENABLE
         startup_user();
     #endif
+
    // #ifdef RGBLIGHT_ENABLE
    //   RGB_current_mode = rgblight_config.mode;
    // #endif
+
     //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
     #ifdef SSD1306OLED
         iota_gfx_init(!has_usb());   // turns on the display
     #endif
 }
+
 
 //SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
 #ifdef SSD1306OLED
@@ -152,6 +149,7 @@ void matrix_scan_user(void) {
 }
 
 
+
 void matrix_update(struct CharacterMatrix *dest,
                           const struct CharacterMatrix *source) {
   if (memcmp(dest->display, source->display, sizeof(dest->display))) {
@@ -168,6 +166,7 @@ void matrix_update(struct CharacterMatrix *dest,
 #define L_NUMB (1<<_NUMB)
 #define L_MDIA (1<<_MDIA)
 #define L_MDIA_TRI (L_MDIA|L_MNMB|L_SYMB)
+
 
 static void render_logo(struct CharacterMatrix *matrix) {
 
@@ -199,6 +198,7 @@ void render_status(struct CharacterMatrix *matrix) {
   // Define layers here, Have not worked out how to have text displayed for each layer. Copy down the number you see and add a case for it below
   char buf[40];
   snprintf(buf,sizeof(buf), "Undef-%ld", layer_state);
+
   matrix_write_P(matrix, PSTR("\nLAYER: "));
     switch (layer_state) {
         case L_BASE:
@@ -219,6 +219,7 @@ void render_status(struct CharacterMatrix *matrix) {
         case L_MDIA:
         case L_MDIA_TRI:
            matrix_write_P(matrix, PSTR("Media"));
+
            break;
         default:
            matrix_write(matrix, buf);
@@ -226,7 +227,9 @@ void render_status(struct CharacterMatrix *matrix) {
 
   // Host Keyboard LED Status
   char led[40];
+
   snprintf(led, sizeof(led), "\n%s  %s  %s",
+
             (host_keyboard_leds() & (1<<USB_LED_NUM_LOCK)) ? "NUMLOCK" : "       ",
             (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) ? "CAPS" : "    ",
             (host_keyboard_leds() & (1<<USB_LED_SCROLL_LOCK)) ? "SCLK" : "    ");

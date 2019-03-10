@@ -36,7 +36,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PREVENT_STUCK_MODIFIERS
 //#define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 200
-#define IGNORE_MOD_TAP_INTERRUPT
+
+#define IGNORE_MOD_TAP_INTERRUPT 
+
 //#define RETRO_TAPPING
 
 #undef RGBLED_NUM
@@ -47,14 +49,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17
 
-//#if defined(LED_ANIMATIONS)
+
+
+#if defined(LED_ANIMATIONS)
 //   #define RGBLIGHT_EFFECT_BREATHING
 //   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
 //   #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-   #define RGBLIGHT_EFFECT_RAINBOW_SPARKLE
-//     #define RGBLIGHT_EFFECT_SNAKE
-//     #undef  RGBLIGHT_EFFECT_SNAKE_LENGTH
-//     #define RGBLIGHT_EFFECT_SNAKE_LENGTH 20
+//   #define RGBLIGHT_EFFECT_SNAKE
 //   #define RGBLIGHT_EFFECT_KNIGHT
 //   #define RGBLIGHT_EFFECT_CHRISTMAS
 //   #define RGBLIGHT_EFFECT_STATIC_GRADIENT
@@ -62,4 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
    //#define RGBLIGHT_EFFECT_ALTERNATING
      #define RGBLIGHT_EFFECT_BEAM
      #define RGBLIGHT_EFFECT_HYPER
-//#endif
+     #define RGBLIGHT_EFFECT_RAINBOW_SPARKLE
+
+#endif
+

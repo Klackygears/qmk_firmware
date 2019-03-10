@@ -27,8 +27,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT         Helix Beta
 #define DESCRIPTION     A split keyboard for the cheap makers
 
+<<<<<<< HEAD
+
+//#define TAPPING_FORCE_HOLD
+//#define TAPPING_TERM 100
+=======
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 100
+>>>>>>> cd9e15036e692477d37a3c1a82c5ba1f29b8a11e
 
 /* Use I2C or Serial */
 #define USE_I2C
