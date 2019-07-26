@@ -16,11 +16,11 @@
 
 #pragma once
 
-<<<<<<< HEAD
+
 // place overrides here
 #undef RGBLED_NUM
 #define RGBLED_NUM 10
-=======
+
 #undef PRODUCT
 #define PRODUCT klackygears xd75 ortho keyboard
 
@@ -62,4 +62,4 @@
 //   #define RGBLIGHT_EFFECT_BEAM
 //   #define RGBLIGHT_EFFECT_HYPERBEAM
 //   #define RGBLIGHT_EFFECT_RAINBOW_SPARKLE
->>>>>>> master
+

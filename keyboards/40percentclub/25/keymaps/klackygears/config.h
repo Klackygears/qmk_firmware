@@ -26,12 +26,8 @@
 #endif
 
  #ifdef RGB_DI_PIN
-<<<<<<< HEAD
-// #define RGBLIGHT_ANIMATIONS
-// #define RGBLED_NUM 16
-=======
+
  #define RGBLIGHT_ANIMATIONS
->>>>>>> master
  #define RGBLIGHT_HUE_STEP 8
  #define RGBLIGHT_SAT_STEP 8
  #define RGBLIGHT_VAL_STEP 8

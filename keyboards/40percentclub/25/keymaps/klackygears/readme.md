@@ -1,1 +1,1 @@
-# The default split keymap for 25
+# klackygears split keymap for 25

@@ -806,37 +806,6 @@ void rgblight_task(void) {
       rgblight_effect_alternating();
     }
 #endif
-<<<<<<< HEAD
-=======
-    if (animation_status.restart) {
-      animation_status.restart = false;
-      animation_status.last_timer = timer_read() - interval_time - 1;
-      animation_status.pos16 = 0; // restart signal to local each effect
-    }
-    if (timer_elapsed(animation_status.last_timer) >= interval_time) {
-#if defined(RGBLIGHT_SPLIT) && !defined(RGBLIGHT_SPLIT_NO_ANIMATION_SYNC)
-      static uint16_t report_last_timer = 0;
-      static bool tick_flag = false;
-      uint16_t oldpos16;
-      if (tick_flag) {
-        tick_flag = false;
-        if (timer_elapsed(report_last_timer) >= 30000) {
-            report_last_timer = timer_read();
-            dprintf("rgblight animation tick report to slave\n");
-            RGBLIGHT_SPLIT_ANIMATION_TICK;
-        }
-      }
-      oldpos16 = animation_status.pos16;
-#endif
-      animation_status.last_timer += interval_time;
-      effect_func(&animation_status);
-#if defined(RGBLIGHT_SPLIT) && !defined(RGBLIGHT_SPLIT_NO_ANIMATION_SYNC)
-      if (animation_status.pos16 == 0 && oldpos16 != 0) {
-          tick_flag = true;
-      }
-#endif
-    }
->>>>>>> master
   }
 }
 
