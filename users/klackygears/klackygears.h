@@ -31,6 +31,7 @@ enum layer_number {
     _MACBASE = 0,
     _WINBASE,
     _QWERTY,
+    _GAMER,
     _NUMB,
     _MNMB,
     _SYMB,
