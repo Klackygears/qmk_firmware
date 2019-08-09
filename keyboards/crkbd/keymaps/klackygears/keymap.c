@@ -51,6 +51,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           __________________WIN_THUMB_CLUSTER_V2______________ \
       ),
 
+  [_GAMER] = LAYOUT_wrapper( \
+
+      KC_TAB,    _________________QWERTY_L1_________________,                   _________________QWERTY_R1_________________, TO(_WINBASE), \
+      KC_LCTL,   _________________QWERTY_L2_________________,                   _________________QWERTY_R2_________________, KC_ENT, \
+      KC_LSFT,   _________________QWERTY_L3_________________,                   _________________QWERTY_R3_________________, KC_RSFT, \
+                                          MO(_NGMR), MT(MOD_LSFT,KC_SPC), KC_SPC, ________WIN_THUMB_R______ \
+      ),
+
+  [_NGMR] = LAYOUT_wrapper( \
+
+      KC_TAB,     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,                     _________________KC_BLANK__________________, TO(_WINBASE), \
+      KC_LCTL,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                     _________________KC_BLANK__________________, KC_ENT, \
+      KC_LSFT,   _________________KC_BLANK__________________,                   _________________MEDIA_____________________, KC_RSFT, \
+                                           KC_____, KC_____, KC_____, KC_____, KC_____, KC_____ \
+      ),
+
   [_SYMB] = LAYOUT_wrapper( \
 
       KC_____, _________________PUNC_L1_ALT_______________,                   _________________PUNC_R1___________________, MAKEKF,  \

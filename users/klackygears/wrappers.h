@@ -141,7 +141,7 @@ NOTE: If you do a search/replace
 #define _________________PUNC_L1_ALT_______________       KC_DQT,     KC_AT,      KC_HASH,    KC_DLR,     KC_PERC
 #define _________________PUNC_L2___________________       KC_PLUS,    KC_MINS,    KC_ASTR,    KC_SLSH,    KC_EQL
 #define _________________PUNC_L3___________________       KC_LBRC,    KC_RBRC,    KC_LPRN,    KC_RPRN,    KC_AMPR
-#define _________________PUNC_L3_ALT_______________       KC_____,    KC_____,    KC_____,    KC_CIRC,    KC_GRV
+#define _________________PUNC_L3_ALT_______________       KC_____,    KC_____,    KC_TILD,    KC_CIRC,    KC_GRV
 
 #define _________________PUNC_R1___________________       TD(TD_MINPLS), KC_DQT,  KC_EQL,  KC_____, KC_____
 #define _________________PUNC_R2___________________       TD(TD_DIVMLT), KC_ASTR, KC_SLSH, KC_PLUS, KC_MINS

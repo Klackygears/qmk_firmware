@@ -39,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
   [_QWERTY] = LAYOUT_wrapper( \
-    KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_MINS, KC_PLUS, KC_QUES,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
+    KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_MINS, KC_PLUS, KC_QUES,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TO(_WINBASE),
     KC_TAB,  _________________QWERTY_L1_________________,  LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_RIGHT), _________________QWERTY_R1_________________, KC_BSPC,
     KC_CAPS, _________________QWERTY_L2_________________,  KC_MUTE, KC_VOLD, KC_VOLU,   _________________QWERTY_R2_________________, KC_ENT,
     KC_LSFT, _________________QWERTY_L3_________________,  KC_PGUP, KC_UP,   KC_PGDN,   _________________QWERTY_R3_________________, KC_RSFT,
@@ -109,14 +109,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // }
 
-// void matrix_scan_user(void) {
-
-// }
-
-// void led_set_user(uint8_t usb_led) {
-
-// }
-
 #ifdef RGBLIGHT_EFFECT_SNAKE
 __attribute__ ((weak))
 const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {35, 25, 15};
@@ -126,3 +118,28 @@ const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {35, 25, 15};
 __attribute__ ((weak))
 const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {35, 29, 17};
 #endif
+
+ void matrix_scan_user(void) {
+
+    switch(biton32(layer_state)) {
+      case _GAMER:
+        rgblight_setrgb_at(75, 55, 100, 43);
+        rgblight_setrgb_at(20, 100, 100, 40);
+        rgblight_setrgb_at(40, 55, 55, 39);
+       // rgblight_setrgb_at(20, 55, 100, 20);
+      break;
+      case _NUMB:
+        rgblight_setrgb_at(200, 55, 100, 43);
+      break;
+      case _SYMB:
+        rgblight_setrgb_at(255, 255, 255, 42);
+      break;
+      case _MNMB:
+        rgblight_setrgb_at(255, 0, 0, 41);
+      break;
+    }
+ }
+
+ //void led_set_user(uint8_t usb_led) {
+
+ //}

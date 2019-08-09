@@ -33,6 +33,13 @@
  39,37,35,33,30,28,25,23,20,18,15,13,10,8,5,\
  3,1,0,2,\
  4,7,9,12,14,17,19,22,24,27,29,32,34,36,38}
+/*middle
+right
+bottom
+left
+top
+ */
+
 
 #undef RGBLIGHT_ANIMATIONS // run RGB animations
 
