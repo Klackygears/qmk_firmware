@@ -123,19 +123,10 @@ const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {35, 29, 17};
 
     switch(biton32(layer_state)) {
       case _GAMER:
-        rgblight_setrgb_at(75, 55, 100, 43);
-        rgblight_setrgb_at(20, 100, 100, 40);
-        rgblight_setrgb_at(40, 55, 55, 39);
-       // rgblight_setrgb_at(20, 55, 100, 20);
+        rgblight_setrgb(0xF4,  0x03, 0xFC);
       break;
       case _NUMB:
-        rgblight_setrgb_at(200, 55, 100, 43);
-      break;
-      case _SYMB:
-        rgblight_setrgb_at(255, 255, 255, 42);
-      break;
-      case _MNMB:
-        rgblight_setrgb_at(255, 0, 0, 41);
+        rgblight_setrgb_at(RGB_BLUE, 43);
       break;
     }
  }
