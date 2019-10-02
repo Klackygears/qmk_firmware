@@ -134,7 +134,7 @@ const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {35, 29, 17};
  }
 
  void led_set_user(uint8_t usb_led) {
-//   rgblight_set_clipping_range(10,7);
+ //  rgblight_set_clipping_range(3,4);
  }
 
 
