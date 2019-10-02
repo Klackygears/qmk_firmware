@@ -21,11 +21,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
   [_MACBASE] = LAYOUT_wrapper( \
-    KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_MINS, KC_GRV,  KC_EQL,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TO(_WINBASE),
+    KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    _______, _______, _______,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TO(_WINBASE),
     _______, _______________DVORAK_L1___________________, LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_RIGHT), _______________DVORAK_R1___________________, _______,
     _______, _______________DVORAK_L2___________________, KC_MUTE, KC_VOLD, KC_VOLU, _______________DVORAK_R2___________________, KC_ENT,
-    KC_LSFT, _______________MACDVK_L3___________________, KC_PGUP, KC_UP,   KC_PGDN, _______________MACDVK_R3___________________, KC_RSFT,
-    RGB_MOD, _______, _______, ________MAC_THUMB_L______, KC_LEFT, KC_DOWN, KC_RGHT, ________MAC_THUMB_R______, _______, _______, _______
+    KC_LSFT, _______________MACDVK_L3___________________, _______, _______, _______, _______________MACDVK_R3___________________, KC_RSFT,
+    RGB_MOD, _______, _______, ________MAC_THUMB_L______, _______, _______, _______, ________MAC_THUMB_R______, _______, _______, _______
   ),
 
 
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_MSEL, _________________PUNC_L1_ALT_______________, KC_P7,   KC_P8,   KC_P9,   _________________PUNC_R1___________________, _______,
     KC_MPRV, _________________PUNC_L3___________________, KC_P4,   KC_P5,   KC_P6,   _________________PUNC_R2___________________, _______,
     KC_VOLD, _________________PUNC_L3_ALT_______________, KC_P1,   KC_P2,   KC_P3,   _________________PUNC_R3___________________, _______,
-    _________________KC_BLANK__________________, _________________KC_BLANK__________________, _________________KC_BLANK__________________
+    _________________KC_BLANK__________________,  KC_DEL, _______, _______, _______, KC_CAPS, _________________KC_BLANK__________________
   ),
 
 
@@ -107,6 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // void matrix_init_user(void) {
 
+
 // }
 
 #ifdef RGBLIGHT_EFFECT_SNAKE
@@ -129,8 +130,11 @@ const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {35, 29, 17};
         rgblight_setrgb_at(RGB_BLUE, 43);
       break;
     }
+
  }
 
- //void led_set_user(uint8_t usb_led) {
+ void led_set_user(uint8_t usb_led) {
+//   rgblight_set_clipping_range(10,7);
+ }
 
- //}
+
