@@ -262,7 +262,8 @@ void render_status_secondary(void) {
     render_default_layer_state();
     render_layer_state();
     render_mod_status(get_mods() | get_oneshot_mods());
-    render_keylogger_status();
+    // render_keylogger_status();
+    render_keylock_status(host_keyboard_leds());
 
 #endif
 }
