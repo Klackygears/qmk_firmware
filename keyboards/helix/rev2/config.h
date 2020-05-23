@@ -86,6 +86,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* ws2812 RGB LED */
 #define RGB_DI_PIN D3
+#define DRIVER_LED_TOTAL 64
 
 //#define RGBLED_NUM 12    // Number of LEDs. see ./keymaps/default/config.h
 
