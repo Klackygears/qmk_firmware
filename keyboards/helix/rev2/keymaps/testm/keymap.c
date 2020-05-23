@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
       KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
       KC_LSFT, KC_Z,    RGB_SPI, RGB_VAI, RGB_SAI,    RGB_HUI,   RGB_MOD, KC_RBRC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
-      RGB_MODE_PLAIN,  RGB_RED,  RGB_SPD, RGB_VAD, RGB_SAD,    RGB_HUD,   RGB_RMOD,  KC_SPC,  RAISE,   KANA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
+      RGB_MODE_PLAIN,  RGBRST,  RGB_SPD, RGB_VAD, RGB_SAD,    RGB_HUD,   RGB_RMOD,  KC_SPC,  RAISE,   KANA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
       ),
 
   /* Colemak
@@ -450,13 +450,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
     case RGBRST:
-      #ifdef RGBLIGHT_ENABLE
+      //#ifdef RGBLIGHT_ENABLE
         if (record->event.pressed) {
-          eeconfig_update_rgblight_default();
-          rgblight_enable();
-          RGB_current_mode = rgblight_config.mode;
+          rgb_matrix_sethsv(255, 0, 0);
+          //eeconfig_update_rgblight_default();
+          //rgblight_enable();
+          //RGB_current_mode = rgblight_config.mode;
         }
-      #endif
+      //#endif
       break;
   }
   return true;
