@@ -187,7 +187,7 @@ NOTE: If you do a search/replace
 #define _____________FUNC_3_______________                KC_F1,      KC_F2,      KC_F3,      KC_F4
 
 //RGB keys
-#ifdef RGBLIGHT_ENABLE
+#if defined RGBLIGHT_ENABLE || RGB_MATRIX_ENABLE
 #define _________________RGB_1_____________________       RGBRST,     RGB_HUI,    RGB_SAI,    RGB_VAI,    RGB_SPI
 #define _________________RGB_2_____________________       RGB_MOD,    RGB_HUD,    RGB_SAD,    RGB_VAD,    RGB_SPD
 #else
