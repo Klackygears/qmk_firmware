@@ -19,4 +19,4 @@ HD44780_ENABLE = no 		# Enable support for HD44780 based LCDs
 
 TAP_DANCE_ENABLE = yes
 RGB_MATRIX_ENABLE = WS2812
-# OPT_DEFS += -DFLIPPED      # Enable if board is flipped to have eek! silk on top
+ OPT_DEFS += -DFLIPPED      # Enable if board is flipped to have eek! silk on top
