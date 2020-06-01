@@ -92,10 +92,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  #endif
 
  #ifdef RGB_MATRIX_ENABLE
-  #define DRIVER_LED_TOTAL 18
+  #define DRIVER_LED_TOTAL 36
   #define RGB_MATRIX_LED_FLUSH_LIMIT 16
-  #define RGB_MATRIX_STARTUP_VAL 100
-  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
+  #define RGB_MATRIX_STARTUP_VAL 150
+  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 200
 
  #endif
 
