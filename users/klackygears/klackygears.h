@@ -32,19 +32,11 @@ enum layer_number {
 
 enum userspace_custom_keycodes {
   KC_MACBASE = SAFE_RANGE,
-  KC_PROTECT, //for some reason, this position does not work. This is just a placeholder
   KC_QWERTY,
   KC_WINBASE,
   KC_GAMER,
   KC_GAMR1,
   KC_GAMR2,
-  SAFE_RANGE_KEYMAP
-};
-
-enum custom_keycodes {
-  MACBASE = SAFE_RANGE_KEYMAP,
-  WINBASE,
-  QWERTY,
   NUMB,
   MNMB,
   SYMB,
@@ -55,6 +47,7 @@ enum custom_keycodes {
   MAKEKF,
   SHRUG,
   //DYNAMIC_MACRO_RANGE,
+  SAFE_RANGE_KEYMAP
 };
 
 
@@ -78,9 +71,8 @@ const uint32_t PROGMEM unicode_map[] = {
 //#include "dynamic_macro.h"
 
 
-
 #define KC_____ KC_TRNS
-#define KC_XXXXX KC_NO
+#define KC_XXXX KC_NO
 
 uint8_t RGB_current_mode;
 
