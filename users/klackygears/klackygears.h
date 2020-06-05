@@ -13,11 +13,6 @@
   #include "tap_dances.h"
 #endif // TAP_DANCE_ENABLE
 
-#ifdef RGBLIGHT_ENABLE
-//Following line allows macro to read current RGB settings
-extern rgblight_config_t rgblight_config;
-
-#endif
 
 enum layer_number {
     _WINBASE = 0,
