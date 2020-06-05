@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 #define PRODUCT     Moduform
+#define DIODE_DIRECTION COL2ROW
 
 #define SPLIT_USB_DETECT
 
@@ -35,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MATRIX_COL_PINS_RIGHT { B5, B4, E6, D7, C6, D4, D1 }
 
-#define DIODE_DIRECTION COL2ROW
+
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
