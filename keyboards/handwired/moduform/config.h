@@ -20,21 +20,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 #define PRODUCT     Moduform
-#define DIODE_DIRECTION COL2ROW
-
-#define SPLIT_USB_DETECT
 
 /* key matrix size */
 // Rows are doubled-up
-#define MATRIX_ROWS 10
-#define MATRIX_COLS 7
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 5
 
 // wiring of each half
-
-#define MATRIX_COL_PINS { D1, D4, C6, D7, E6, B4, B5 }
-#define MATRIX_ROW_PINS { F4, F5, F6, F7, B1 }
-
-#define MATRIX_COL_PINS_RIGHT { B5, B4, E6, D7, C6, D4, D1 }
+#define MATRIX_COL_PINS { D1, D4, C6, D7, E6 }
+//Need to move D1 different pin for I2C as below. I'm not worried about this at this time because I'm not using I2C.
+//#define MATRIX_COL_PINS { D4, C6, D7, E6, B4 }
+#define MATRIX_ROW_PINS { F4, F5, F6, F7 }
 
 
 
@@ -44,7 +40,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    klackygears
 // defined in subfolder
-#define DESCRIPTION     A split ergonomic keyboard with sculpted shell
+#define DESCRIPTION     A split ergonomic modular keyboard
 
 /* mouse config */
 #define MOUSEKEY_INTERVAL       20
@@ -54,13 +50,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_WHEEL_DELAY 0
 
 /* Set 0 if debouncing isn't needed */
-#define DEBOUNCE 0
+#define DEBOUNCE 5
 
 /* serial.c configuration for split keyboard */
-#define SOFT_SERIAL_PIN D0
+#define SOFT_SERIAL_PIN D2
 #define EE_HANDS
-
-//#define SPLIT_HAND_PIN B7
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
@@ -73,11 +67,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* ws2812 RGB LED */
 #define RGB_DI_PIN D3
 
-#define RGBLED_NUM 28    // Number of LEDs
-
-#define RGBLIGHT_LIMIT_VAL 120
-
-#define RGBLIGHT_SPLIT
+#define RGBLED_NUM 18    // Number of LEDs
 
 /*
  * Feature disable options
@@ -96,14 +86,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_ONESHOT
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
-
-
-//#define PREVENT_STUCK_MODIFIERS
-//#define TAPPING_TERM 150
-//#define IGNORE_MOD_TAP_INTERRUPT
-//#define TAPPING_FORCE_HOLD
-
-#define BOOTMAGIC_LITE_ROW 0
-#define BOOTMAGIC_LITE_COLUMN 6
-#define BOOTMAGIC_LITE_ROW_RIGHT 5
-#define BOOTMAGIC_LITE_COLUMN_RIGHT 0

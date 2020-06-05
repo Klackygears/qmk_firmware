@@ -1,4 +1,5 @@
-Copyright <2019> <James Smith> @<klackygears>
+/*
+Copyright 2020 James Smith <bronzegears@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -12,7 +13,24 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
+#pragma once
 
-Most of what I have here was copied and modified from drashna. If it looks a bit messy it's because I'm a total noob and trying to push myself to learn new things. 
+#define USE_SERIAL
+
+#define PERMISSIVE_HOLD
+#define PREVENT_STUCK_MODIFIERS
+#define TAPPING_TERM 150
+#define IGNORE_MOD_TAP_INTERRUPT
+
+#define BOOTMAGIC_LITE_ROW 0
+#define BOOTMAGIC_LITE_COLUMN 0
+
+#define RGB_DI_PIN C7
+
+#define RGBLED_NUM 28    // Number of LEDs
+
+#define RGBLIGHT_LIMIT_VAL 120
+
 

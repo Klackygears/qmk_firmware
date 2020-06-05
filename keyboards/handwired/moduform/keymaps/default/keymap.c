@@ -1,5 +1,8 @@
+/* This is just copied from the MiniDox default because in standard configuration the physical layouts are the same. */
+
 #include QMK_KEYBOARD_H
 
+extern keymap_config_t keymap_config;
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -32,9 +35,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |   Z  |   X  |   C  |   V  |   B  |           |   N  |   M  |   ,  |   .  |   /  |
  * `----------------------------------'           `----------------------------------'
- *             ,--------------------.               ,------,-------------.
- *             | Ctrl | LOWER| Space|               |BckSpc| RAISE| Shift|
- *             `-------------`------'               `------'------+------.
+ *                  ,--------------------.    ,------,-------------.
+ *                  | Ctrl | LOWER|      |    |      | RAISE| Shift|
+ *                  `-------------| Space|    |BckSpc|------+------.
+ *                                |      |    |      |
+ *                                `------'    `------'
  */
 [_QWERTY] = LAYOUT( \
   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
@@ -52,9 +57,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Ctrl|   `  |  GUI |  Alt |      |           |      |      |      |   \  |   '  |
  * `----------------------------------'           `----------------------------------'
- *             ,--------------------.               ,------,-------------.
- *             |      | LOWER|      |               |      | RAISE|      |
- *             `-------------`------'               `------'------+------.
+ *                  ,--------------------.    ,------,-------------.
+ *                  |      | LOWER|      |    |      | RAISE|      |
+ *                  `-------------|      |    |      |------+------.
+ *                                |      |    |      |
+ *                                `------'    `------'
  */
 [_RAISE] = LAYOUT( \
   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    \
@@ -72,9 +79,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Caps|   ~  |      |      |      |           |      |      |      |   |  |   "  |
  * `----------------------------------'           `----------------------------------'
- *             ,--------------------.               ,------,-------------.
- *             |      | LOWER|      |               |      | RAISE|  Del |
- *             `-------------`------'               `------'------+------.
+ *                  ,--------------------.    ,------,-------------.
+ *                  |      | LOWER|      |    |      | RAISE|  Del |
+ *                  `-------------|      |    | Enter|------+------.
+ *                                |      |    |      |
+ *                                `------'    `------'
  */
 [_LOWER] = LAYOUT( \
   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, \
@@ -92,9 +101,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * | Reset|      |      |      |      |           |      |      |      |      |      |
  * `----------------------------------'           `----------------------------------'
- *             ,--------------------.               ,------,-------------.
- *             |      | LOWER|      |               |      | RAISE|      |
- *             `-------------`------'               `------'------+------.
+ *                  ,--------------------.    ,------,-------------.
+ *                  |      | LOWER|      |    |      | RAISE|      |
+ *                  `-------------|      |    |      |------+------.
+ *                                |      |    |      |
+ *                                `------'    `------'
  */
 [_ADJUST] =  LAYOUT( \
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, \

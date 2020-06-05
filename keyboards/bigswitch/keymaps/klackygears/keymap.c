@@ -1,4 +1,5 @@
-Copyright <2019> <James Smith> @<klackygears>
+/*
+Copyright 2018 QMK Contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -12,7 +13,22 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#include "klackygears.h"
+
+#include QMK_KEYBOARD_H
+#define KC_OSX_EJECT 0x66
+#define LOCK_OSX LSFT(LCTL(KC_OSX_EJECT))
+#define SLEEP_OSX LALT(LGUI(KC_OSX_EJECT))
 
 
-Most of what I have here was copied and modified from drashna. If it looks a bit messy it's because I'm a total noob and trying to push myself to learn new things. 
+
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+LAYOUT(TD(TD_RGB)),
+
+};
+
 

@@ -13,7 +13,6 @@
   #include "tap_dances.h"
 #endif // TAP_DANCE_ENABLE
 
-
 enum layer_number {
     _WINBASE = 0,
     _MACBASE,
@@ -69,6 +68,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 //#include "dynamic_macro.h"
+
 
 
 #define KC_____ KC_TRNS

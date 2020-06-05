@@ -54,11 +54,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       #endif
     break;
 
+
   case MAKEK:
       if (record->event.pressed) {
         SEND_STRING("make " QMK_KEYBOARD ":" QMK_KEYMAP);
       }
     break;
+
 
   case MAKEKF:
       if (!record->event.pressed) {
@@ -81,6 +83,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     break;
+
 
 
   case SHRUG:
