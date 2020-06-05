@@ -82,6 +82,6 @@ const uint32_t PROGMEM unicode_map[] = {
 #define KC_____ KC_TRNS
 #define KC_XXXXX KC_NO
 
-int RGB_current_mode;
+uint8_t RGB_current_mode;
 
 #endif
