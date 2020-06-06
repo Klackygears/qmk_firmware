@@ -20,7 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL
 
 #define PERMISSIVE_HOLD
-#define PREVENT_STUCK_MODIFIERS
 #define TAPPING_TERM 150
 #define IGNORE_MOD_TAP_INTERRUPT
 
@@ -47,4 +46,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //   #define RGBLIGHT_EFFECT_ALTERNATING
    #define RGBLIGHT_EFFECT_TWINKLE
     #define RGBLIGHT_EFFECT_TWINKLE_PROBABILITY 1 / 127
-
