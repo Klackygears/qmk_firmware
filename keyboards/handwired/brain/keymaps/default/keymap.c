@@ -8,9 +8,9 @@
 // entirely and just use numbers.
 enum layers {
     _QWERTY,
-    _LOWER
+    _LOWER,
     _RAISE,
-    _ADJUST,
+    _ADJUST
 };
 
 enum custom_keycodes {
