@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "klackygears.h"
 
-
+extern keymap_config_t keymap_config;
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
