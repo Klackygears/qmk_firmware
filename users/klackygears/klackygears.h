@@ -1,14 +1,9 @@
-#ifndef USERSPACE
-#define USERSPACE
+#pragma once 
 
-#include "quantum.h"
+#include QMK_KEYBOARD_H
+
 #include "wrappers.h"
-
-#pragma once
-#include "quantum.h"
-#include "version.h"
 #include "eeprom.h"
-
 #ifdef TAP_DANCE_ENABLE
   #include "tap_dances.h"
 #endif // TAP_DANCE_ENABLE
