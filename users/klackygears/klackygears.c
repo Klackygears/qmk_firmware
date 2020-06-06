@@ -65,20 +65,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case MAKEKF:
       if (!record->event.pressed) {
       SEND_STRING(("make " QMK_KEYBOARD ":" QMK_KEYMAP));
-      #if defined(KEYBOARD_viterbi)
-        SEND_STRING((":dfu" SS_TAP(X_ENTER)));
-      #else
-
-          #if defined(__arm__)
-            SEND_STRING((":dfu-util"));
-          #elif defined(BOOTLOADER_DFU)
-            SEND_STRING((":dfu"));
-          #elif defined(BOOTLOADER_HALFKAY)
-            SEND_STRING((":teensy"));
-          #elif defined(BOOTLOADER_CATERINA)
-            SEND_STRING((":avrdude"));
-          #endif // bootloader options
-      #endif
+        SEND_STRING(":flash");
 
     }
 
@@ -97,5 +84,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       return true;
 }
-
 
