@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "klackygears.h"
 
-
+//For an explanation of what's going on here with the keymap wrappers, check out drashna's user folder.
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

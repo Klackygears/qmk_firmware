@@ -1,4 +1,4 @@
-Copyright <2019> <James Smith> @<klackygears>
+Copyright <2019> <James Smith> <bronzegears@gmail.com> @<klackygears
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
