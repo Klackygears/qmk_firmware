@@ -19,8 +19,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 #include "config_common.h"
-#define PRODUCT     Moduform
-#define DIODE_DIRECTION COL2ROW
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0xFEED
+#define PRODUCT_ID      0x3060
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    klackygears
+#define PRODUCT         Moduform
+#define DESCRIPTION     A split ergonomic keyboard with sculpted shell
 
 #define SPLIT_USB_DETECT
 
@@ -36,15 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MATRIX_COL_PINS_RIGHT { B5, B4, E6, D7, C6, D4, D1 }
 
-
-
-/* USB Device descriptor parameter */
-#define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x3060
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    klackygears
-// defined in subfolder
-#define DESCRIPTION     A split ergonomic keyboard with sculpted shell
+#define DIODE_DIRECTION COL2ROW
 
 /* mouse config */
 #define MOUSEKEY_INTERVAL       20
