@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x3060
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    klackygears
-#define PRODUCT         Moduform
+#define PRODUCT         Brain
 #define DESCRIPTION     A split ergonomic keyboard with sculpted shell
 
 #define SPLIT_USB_DETECT
