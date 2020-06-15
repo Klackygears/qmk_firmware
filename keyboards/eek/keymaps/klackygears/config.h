@@ -23,7 +23,8 @@
 
 #define TAPPING_TERM 150
 #define IGNORE_MOD_TAP_INTERRUPT
-#define B7_AUDIO
+
+
 // place overrides here
 //   #define RGB_MATRIX_STARTUP_VAL 50
 //   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
