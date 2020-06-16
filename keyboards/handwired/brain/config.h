@@ -21,12 +21,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 /* USB Device descriptor parameter */
-#define VENDOR_ID 0xFEED
-#define PRODUCT_ID 0x3060
-#define DEVICE_VER 0x0001
-#define MANUFACTURER klackygears
-#define PRODUCT Brain
-#define DESCRIPTION A split ergonomic keyboard with sculpted shell
+#define VENDOR_ID       0xFEED
+#define PRODUCT_ID      0x3060
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    klackygears
+#define PRODUCT         Brain
+#define DESCRIPTION     A split ergonomic keyboard with sculpted shell
 
 #define SPLIT_USB_DETECT
 
@@ -37,21 +37,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // wiring of each half
 
-#define MATRIX_COL_PINS \
-    { D1, D4, C6, D7, E6, B4, B5 }
-#define MATRIX_ROW_PINS \
-    { F4, F5, F6, F7, B1 }
+#define MATRIX_COL_PINS { D1, D4, C6, D7, E6, B4, B5 }
+#define MATRIX_ROW_PINS { F4, F5, F6, F7, B1 }
 
-#define MATRIX_COL_PINS_RIGHT \
-    { B5, B4, E6, D7, C6, D4, D1 }
+#define MATRIX_COL_PINS_RIGHT { B5, B4, E6, D7, C6, D4, D1 }
 
 #define DIODE_DIRECTION COL2ROW
 
 /* mouse config */
-#define MOUSEKEY_INTERVAL 20
-#define MOUSEKEY_DELAY 0
-#define MOUSEKEY_TIME_TO_MAX 60
-#define MOUSEKEY_MAX_SPEED 7
+#define MOUSEKEY_INTERVAL       20
+#define MOUSEKEY_DELAY          0
+#define MOUSEKEY_TIME_TO_MAX    60
+#define MOUSEKEY_MAX_SPEED      7
 #define MOUSEKEY_WHEEL_DELAY 0
 
 /* Set 0 if debouncing isn't needed */
@@ -73,7 +70,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* ws2812 RGB LED */
 #define RGB_DI_PIN D3
 
-#define RGBLED_NUM 28  // Number of LEDs
+#define RGBLED_NUM 28    // Number of LEDs
 
 #define RGBLIGHT_LIMIT_VAL 120
 
@@ -96,6 +93,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_ONESHOT
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
+
 
 //#define PREVENT_STUCK_MODIFIERS
 //#define TAPPING_TERM 150
