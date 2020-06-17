@@ -14,12 +14,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         KC_NO,   KC_NO,   KC_NO,        KC_NO,   KC_NO,   KC_NO
   ),
 
-  [_MACBASE] = LAYOUT_wrapper( \
-             _______________DVORAK_L1___________________, KC_ESC,       KC_____, _______________DVORAK_R1___________________, \
-    RGB_TOG, _______________DVORAK_L2___________________, KC_____,      KC_____, _______________DVORAK_R2___________________, RGB_TOG, \
-    RGB_MOD, _______________MACDVK_L3___________________, KC_____,      KC_____, _______________MACDVK_R3___________________, RGB_MOD, \
-             KC_____, KC_____,            __________________MAC_THUMB_CLUSTER_V2______________    ,         KC_____, KC_____, \
-                                        KC_NO,   KC_NO,   KC_NO,        KC_NO,   KC_NO,   KC_NO   \
+  [_MACBASE] = LAYOUT_wrapper(
+             _______________DVORAK_L1___________________, KC_ESC,       KC_____, _______________DVORAK_R1___________________,
+    RGB_TOG, _______________DVORAK_L2___________________, KC_____,      KC_____, _______________DVORAK_R2___________________, RGB_TOG,
+    RGB_MOD, _______________MACDVK_L3___________________, KC_____,      KC_____, _______________MACDVK_R3___________________, RGB_MOD,
+             KC_____, KC_____,            __________________MAC_THUMB_CLUSTER_V2______________    ,         KC_____, KC_____,
+                                        KC_NO,   KC_NO,   KC_NO,        KC_NO,   KC_NO,   KC_NO
   ),
 
 
