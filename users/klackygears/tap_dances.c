@@ -71,8 +71,7 @@ void pstspecial(qk_tap_dance_state_t *state, void *user_data) {
         tap_code(KC_E);
         tap_code(KC_S);
         unregister_code(KC_LALT);
-        register_code(KC_V);
-        unregister_code(KC_V);
+        tap_code(KC_V);
     } else {
         register_code(KC_LALT);
         register_code(KC_E);
