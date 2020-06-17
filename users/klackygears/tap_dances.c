@@ -89,8 +89,7 @@ void deldel(qk_tap_dance_state_t *state, void *user_data) {
         tap_code(KC_D);
         unregister_code(KC_LALT);
     } else {
-        register_code(KC_DEL);
-        unregister_code(KC_DEL);
+        tap_code(KC_DEL);
     }
     reset_tap_dance(state);
 }
