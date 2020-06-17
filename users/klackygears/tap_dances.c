@@ -45,10 +45,8 @@ void macroTogKey2(qk_tap_dance_state_t *state, void *user_data) {
 void pstinsrt(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         register_code(KC_LALT);
-        register_code(KC_I);
-        unregister_code(KC_I);
-        register_code(KC_E);
-        unregister_code(KC_E);
+        tap_code(KC_I);
+        tap_code(KC_E);
         unregister_code(KC_LALT);
     } else {
         tap_code16(C(KC_V));
