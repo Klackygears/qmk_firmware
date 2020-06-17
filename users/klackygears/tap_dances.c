@@ -114,32 +114,21 @@ void cyclawin(qk_tap_dance_state_t *state, void *user_data) {
 
 void SCRNSNP(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
-        register_code(KC_LALT);
-        register_code(KC_PSCR);
-        unregister_code(KC_PSCR);
-        unregister_code(KC_LALT);
+        tap_code16(A(KC_PSCR));
     } else {
-        SEND_STRING(SS_TAP(X_LGUI));
-        SEND_STRING("SN");
-        register_code(KC_LCTL);
-        register_code(KC_N);
-        unregister_code(KC_N);
-        unregister_code(KC_LCTL);
+        tap_code(KC_LGUI);
+        tap_code(KC_S);
+        tap_code(KC_N);
+        tap_code16(C(KC_N));
     }
     reset_tap_dance(state);
 }
 
 void mcccpy(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
-        register_code(KC_LGUI);
-        register_code(KC_X);
-        unregister_code(KC_X);
-        unregister_code(KC_LGUI);
+        tap_code16(G(KC_X));
     } else {
-        register_code(KC_LGUI);
-        register_code(KC_C);
-        unregister_code(KC_C);
-        unregister_code(KC_LGUI);
+        tap_code16(G(KC_C));
     }
     reset_tap_dance(state);
 }
