@@ -56,10 +56,7 @@ void pstinsrt(qk_tap_dance_state_t *state, void *user_data) {
 
 void ccopy(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
-        register_code(KC_LCTL);
-        register_code(KC_X);
-        unregister_code(KC_X);
-        unregister_code(KC_LCTL);
+        tap_code16(C(KC_X));
 
         // SEND_STRING( SS_DOWN(KC_LCTL) SS_TAP(KC_X) SS_UP(KC_LCTL));
     } else {
