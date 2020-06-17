@@ -98,10 +98,7 @@ void findreplace(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code16(C(KC_H));
     } else {
-        register_code(KC_LCTL);
-        register_code(KC_F);
-        unregister_code(KC_F);
-        unregister_code(KC_LCTL);
+        tap_code16(C(KC_F));
     }
     reset_tap_dance(state);
 }
