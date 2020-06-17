@@ -185,10 +185,7 @@ void mcpstin(qk_tap_dance_state_t *state, void *user_data) {
         unregister_code(KC_I);
         unregister_code(KC_LGUI);
     } else {
-        register_code(KC_LGUI);
-        register_code(KC_V);
-        unregister_code(KC_V);
-        unregister_code(KC_LGUI);
+        tap_code16(G(KC_V));
     }
     reset_tap_dance(state);
 }
