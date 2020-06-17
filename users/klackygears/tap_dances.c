@@ -74,13 +74,10 @@ void pstspecial(qk_tap_dance_state_t *state, void *user_data) {
         tap_code(KC_V);
     } else {
         register_code(KC_LALT);
-        register_code(KC_E);
-        unregister_code(KC_E);
-        register_code(KC_S);
-        unregister_code(KC_S);
+        tap_code(KC_E);
+        tap_code(KC_S);
         unregister_code(KC_LALT);
-        register_code(KC_T);
-        unregister_code(KC_T);
+        tap_code(KC_T);
     }
     reset_tap_dance(state);
 }
