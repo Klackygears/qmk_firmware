@@ -51,10 +51,7 @@ void pstinsrt(qk_tap_dance_state_t *state, void *user_data) {
         unregister_code(KC_E);
         unregister_code(KC_LALT);
     } else {
-        register_code(KC_LCTL);
-        register_code(KC_V);
-        unregister_code(KC_V);
-        unregister_code(KC_LCTL);
+        tap_code16(C(KC_V));
     }
     reset_tap_dance(state);
 }
