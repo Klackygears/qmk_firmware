@@ -47,12 +47,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         KC_Z,    KC_LSFT,  KC_LSFT,        KC_LEFT, KC_DOWN, KC_RIGHT
   ),
   //Witcher
-  [_GAMR2] = LAYOUT_wrapper( \
-             KC_R,    KC_Q,    KC_W,    KC_E,    KC_1,      KC_ESC,        KC_WINBASE, _________________RGB_1_____________________, \
-    KC_TAB,  KC_LALT,  KC_A,    KC_S,    KC_D,    KC_2,        KC_J,        KC_GAMR1, _________________RGB_2_____________________, RGB_TOG, \
-    KC_X,    KC_I,    KC_F,    KC_C,    KC_V,    KC_3,        KC_M,        KC_GAMR2, _________________MEDIA_____________________, RGB_MOD, \
-             KC_LCTL, KC_V,          KC_HOME,    KC_LSFT,   KC_SPC,        KC_____, KC_UP,   KC_____,           KC_____, KC_____, \
-                                     KC_ENT,     KC_LCTL,  KC_LSFT,        KC_LEFT, KC_DOWN, KC_RIGHT \
+  [_GAMR2] = LAYOUT_wrapper(
+             KC_R,    KC_Q,    KC_W,    KC_E,    KC_1,      KC_ESC,        KC_WINBASE, _________________RGB_1_____________________,
+    KC_TAB,  KC_LALT,  KC_A,    KC_S,    KC_D,    KC_2,        KC_J,        KC_GAMR1, _________________RGB_2_____________________, RGB_TOG,
+    KC_X,    KC_I,    KC_F,    KC_C,    KC_V,    KC_3,        KC_M,        KC_GAMR2, _________________MEDIA_____________________, RGB_MOD,
+             KC_LCTL, KC_V,          KC_HOME,    KC_LSFT,   KC_SPC,        KC_____, KC_UP,   KC_____,           KC_____, KC_____,
+                                     KC_ENT,     KC_LCTL,  KC_LSFT,        KC_LEFT, KC_DOWN, KC_RIGHT
   ),
 
   [_SYMB] = LAYOUT_wrapper( \
