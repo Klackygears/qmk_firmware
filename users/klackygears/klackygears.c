@@ -59,8 +59,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case MAKEKF:
             if (!record->event.pressed) {
-                SEND_STRING(("make " QMK_KEYBOARD ":" QMK_KEYMAP));
-                SEND_STRING(":flash");
+                SEND_STRING("make " QMK_KEYBOARD ":" QMK_KEYMAP ":flash");
             }
 
             break;
