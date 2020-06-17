@@ -194,8 +194,7 @@ void enttab(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code(KC_ENT);
     } else {
-        register_code(KC_TAB);
-        unregister_code(KC_TAB);
+        tap_code(KC_TAB);
     }
     reset_tap_dance(state);
 }
