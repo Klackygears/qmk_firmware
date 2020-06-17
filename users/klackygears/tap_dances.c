@@ -60,10 +60,7 @@ void ccopy(qk_tap_dance_state_t *state, void *user_data) {
 
         // SEND_STRING( SS_DOWN(KC_LCTL) SS_TAP(KC_X) SS_UP(KC_LCTL));
     } else {
-        register_code(KC_LCTL);
-        register_code(KC_C);
-        unregister_code(KC_C);
-        unregister_code(KC_LCTL);
+        tap_code16(C(KC_C));
     }
     reset_tap_dance(state);
 }
