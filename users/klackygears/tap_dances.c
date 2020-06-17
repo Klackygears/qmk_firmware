@@ -85,10 +85,8 @@ void pstspecial(qk_tap_dance_state_t *state, void *user_data) {
 void deldel(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         register_code(KC_LALT);
-        register_code(KC_E);
-        unregister_code(KC_E);
-        register_code(KC_D);
-        unregister_code(KC_D);
+        tap_code(KC_E);
+        tap_code(KC_D);
         unregister_code(KC_LALT);
     } else {
         register_code(KC_DEL);
