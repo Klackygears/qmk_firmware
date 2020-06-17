@@ -195,8 +195,7 @@ void mcpstin(qk_tap_dance_state_t *state, void *user_data) {
 
 void enttab(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
-        register_code(KC_ENT);
-        unregister_code(KC_ENT);
+        tap_code(KC_ENT);
     } else {
         register_code(KC_TAB);
         unregister_code(KC_TAB);
