@@ -66,15 +66,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 //`------------------------'         `--------------------------'
   ),
 
-[_ADJUST] = LAYOUT( \
+[_ADJUST] = LAYOUT(
   //       |------------------------------------------------.         ,-----------------------------------------------------,
-             KC_NO, KC_NO,   KC_NO,  KC_NO,   KC_NO,  KC_NO,             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,\
+             KC_NO, KC_NO,   KC_NO,  KC_NO,   KC_NO,  KC_NO,             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   //|------+------+------+--------+-------+------+---------|         |--------+--------+--------+--------+--------+--------+--------,
-    KC_LCTL, KC_NO, KC_NO,   KC_NO,  KC_NO,   KC_NO,  KC_NO,             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,\
+    KC_LCTL, KC_NO, KC_NO,   KC_NO,  KC_NO,   KC_NO,  KC_NO,             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   //|------+------+------+--------+-------+------+---------|         |--------+--------+--------+--------+--------+--------+--------,
-    KC_LSFT, KC_NO, KC_NO,   KC_NO,  KC_NO,   KC_NO,  KC_NO,             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,\
+    KC_LSFT, KC_NO, KC_NO,   KC_NO,  KC_NO,   KC_NO,  KC_NO,             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   //|------+------+------+---+----+-------+------+---------|         |--------+--------+--------+--------+--------+--------+--------|
-             KC_NO, KC_NO,         KC_LGUI,   LOWER, KC_SPC,            KC_ENT,   RAISE, KC_RALT,            KC_NO,   KC_NO,\
+             KC_NO, KC_NO,         KC_LGUI,   LOWER, KC_SPC,            KC_ENT,   RAISE, KC_RALT,            KC_NO,   KC_NO,
          //|------+------|      //|------+------+----------|         |--------+------+----------|        |--------+--------|
                                      KC_NO,   KC_NO,  KC_NO,             KC_NO,   KC_NO,   KC_NO
                                 //`------------------------'         `--------------------------'
