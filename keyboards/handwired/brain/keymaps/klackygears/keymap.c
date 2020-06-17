@@ -23,12 +23,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
 
-  [_QWERTY] = LAYOUT_wrapper( \
-             _________________QWERTY_L1_________________, KC_ESC,       KC_____, _________________QWERTY_R1_________________, \
-    KC_CAPS, _________________QWERTY_L2_________________, KC_____,      KC_____, _________________QWERTY_R2_________________, KC_ENT, \
-    KC_LSFT, _________________QWERTY_L3_________________, KC_____,      KC_____, _________________QWERTY_R3_________________, KC_RSFT, \
-             KC_LCTL, KC_LALT,      KC_LGUI, MO(_MNMB), MO(_SYMB),      MO(_SYMB), MO(_MNMB), KC_RGUI,  MO(_MDIA), MO(_FUNC), \
-                                         KC_LSFT, KC_SPC,  KC_SPC,      KC_SPC,  KC_SPC,  KC_RSFT \
+  [_QWERTY] = LAYOUT_wrapper(
+             _________________QWERTY_L1_________________, KC_ESC,       KC_____, _________________QWERTY_R1_________________,
+    KC_CAPS, _________________QWERTY_L2_________________, KC_____,      KC_____, _________________QWERTY_R2_________________, KC_ENT,
+    KC_LSFT, _________________QWERTY_L3_________________, KC_____,      KC_____, _________________QWERTY_R3_________________, KC_RSFT,
+             KC_LCTL, KC_LALT,      KC_LGUI, MO(_MNMB), MO(_SYMB),      MO(_SYMB), MO(_MNMB), KC_RGUI,  MO(_MDIA), MO(_FUNC),
+                                         KC_LSFT, KC_SPC,  KC_SPC,      KC_SPC,  KC_SPC,  KC_RSFT
   ),
   //Jedi - Fallen Order
   [_GAMER] = LAYOUT_wrapper( \
