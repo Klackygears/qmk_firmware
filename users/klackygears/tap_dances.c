@@ -180,10 +180,7 @@ void mcccpy(qk_tap_dance_state_t *state, void *user_data) {
 
 void mcpstin(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
-        register_code(KC_LGUI);
-        register_code(KC_I);
-        unregister_code(KC_I);
-        unregister_code(KC_LGUI);
+        tap_code16(G(KC_I));
     } else {
         tap_code16(G(KC_V));
     }
