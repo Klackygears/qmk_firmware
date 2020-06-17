@@ -105,12 +105,7 @@ void findreplace(qk_tap_dance_state_t *state, void *user_data) {
 
 void cyclawin(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
-        register_code(KC_LCTL);
-        register_code(KC_LSFT);
-        register_code(KC_F6);
-        unregister_code(KC_F6);
-        unregister_code(KC_LSFT);
-        unregister_code(KC_LCTL);
+        tap_code16(C(S(KC_F6)));
     } else {
         register_code(KC_LCTL);
         register_code(KC_F6);
