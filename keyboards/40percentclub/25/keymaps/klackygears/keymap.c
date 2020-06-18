@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _________________NUMB_R1___________________, \
     _________________NUMB_R2___________________, \
     _________________NUMB_R3_MAC_______________, \
-    KC_____, ________MAC_THUMB_CLUSTER_________ \
+    _______, ________MAC_THUMB_CLUSTER_________ \
   ),
 };
 
