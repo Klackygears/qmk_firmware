@@ -3,6 +3,7 @@ Copyright 2012 Jun Wako <wakojun@gmail.com>
 Copyright 2015 Jack Humbert
 Copyright 2020 James Smith <bronzegears@gmail.com> @klackygears
 
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -56,6 +57,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Set 0 if debouncing isn't needed */
 
+
 /* serial.c configuration for split keyboard */
 #define SOFT_SERIAL_PIN D0
 #define EE_HANDS
@@ -74,6 +76,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN D3
 
 #define RGBLED_NUM 28  // Number of LEDs
+
 
 #define RGBLIGHT_LIMIT_VAL 120
 

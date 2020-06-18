@@ -6,6 +6,7 @@
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
+
 enum layers {
     _QWERTY,
     _LOWER,
@@ -15,6 +16,7 @@ enum layers {
 
 enum custom_keycodes {
   LOWER = SAFE_RANGE,
+
   RAISE,
   ADJUST,
 };
@@ -66,6 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 //`------------------------'         `--------------------------'
   ),
 
+
 [_ADJUST] = LAYOUT(
   //       |------------------------------------------------.         ,-----------------------------------------------------,
              KC_NO, KC_NO,   KC_NO,  KC_NO,   KC_NO,  KC_NO,             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
@@ -82,6 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 };
+
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
