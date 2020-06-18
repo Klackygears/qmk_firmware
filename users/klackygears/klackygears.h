@@ -1,14 +1,9 @@
-#ifndef USERSPACE
-#define USERSPACE
-
-#include "quantum.h"
-#include "wrappers.h"
-
 #pragma once
-#include "quantum.h"
-#include "version.h"
-#include "eeprom.h"
 
+#include QMK_KEYBOARD_H
+
+#include "wrappers.h"
+#include "eeprom.h"
 #ifdef TAP_DANCE_ENABLE
   #include "tap_dances.h"
 #endif // TAP_DANCE_ENABLE
@@ -71,9 +66,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 
 
-#define KC_____ KC_TRNS
-#define KC_XXXX KC_NO
-
+#if RGBLIGHT_ENABLE
 uint8_t RGB_current_mode;
 
 #endif

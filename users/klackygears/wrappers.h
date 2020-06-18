@@ -143,9 +143,9 @@ NOTE: If you do a search/replace
 //keymaps for tap dance and without
 #ifdef TAP_DANCE_ENABLE
 //Arrow keys and copy-paste shortcuts for MAC OS
-  #define _________________MACNAV_L1_________________       KC_PGUP,    KC_PGDN,    KC_HOME,       KC_END,         KC_____
-  #define _________________MACNAV_L2_________________       KC_LEFT,    KC_UP,      KC_DOWN,       KC_RIGHT,       KC_____
-  #define _________________MACNAV_L3_________________       KC_____,    LGUI(KC_A), TD(TD_MCCCPY), TD(TD_MCPSTIN), KC_DEL
+  #define _________________MACNAV_L1_________________       KC_PGUP,    KC_PGDN,    KC_HOME,       KC_END,         _______
+  #define _________________MACNAV_L2_________________       KC_LEFT,    KC_UP,      KC_DOWN,       KC_RIGHT,       _______
+  #define _________________MACNAV_L3_________________       _______,    LGUI(KC_A), TD(TD_MCCCPY), TD(TD_MCPSTIN), KC_DEL
 
 //Arrow keys and copy-paste shortcuts for Windows and Microsoft Access & Excel
   #define _________________WINNAV_L1_________________       KC_PGUP,     KC_PGDN,    KC_HOME,     KC_END,      TD(TD_FNDR)
@@ -157,22 +157,22 @@ NOTE: If you do a search/replace
   #define _________________NUMB_R2___________________       TD(TD_DIVMLT), KC_4, KC_5,              KC_6,              C_S_T(KC_COLN)
   #define _________________NUMB_R3_MAC_______________       TD(TD_DOTEQL), KC_1, MT(MOD_LGUI,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LCTL,KC_0)
   #define _________________NUMB_R3_WIN_______________       TD(TD_DOTEQL), KC_1, MT(MOD_LCTL,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LGUI,KC_0)
-  #define _________________NUMB_R4___________________       KC_LSFT,       KC_0, KC_0,              KC_____,           KC_____
+  #define _________________NUMB_R4___________________       KC_LSFT,       KC_0, KC_0,              _______,           _______
 #else
 //Arrow keys and copy-paste shortcuts for MAC OS
-  #define _________________MACNAV_L1_________________       KC_PGUP,    KC_PGDN,    KC_HOME,       KC_END,         KC_____
-  #define _________________MACNAV_L2_________________       KC_LEFT,    KC_UP,      KC_DOWN,       KC_RIGHT,       KC_____
-  #define _________________MACNAV_L3_________________       KC_____,    LGUI(KC_A), KC_____,       KC_____, KC_DEL
+  #define _________________MACNAV_L1_________________       KC_PGUP,    KC_PGDN,    KC_HOME,       KC_END,         _______
+  #define _________________MACNAV_L2_________________       KC_LEFT,    KC_UP,      KC_DOWN,       KC_RIGHT,       _______
+  #define _________________MACNAV_L3_________________       _______,    LGUI(KC_A), _______,       _______, KC_DEL
 
 //Arrow keys and copy-paste shortcuts for Windows and Microsoft Access & Excel
-  #define _________________WINNAV_L1_________________       KC_PGUP,     KC_PGDN,    KC_HOME,     KC_END,      KC_____
-  #define _________________WINNAV_L2_________________       KC_LEFT,     KC_UP,      KC_DOWN,     KC_RIGHT,    KC_____
-  #define _________________WINNAV_L3_________________       KC_____,     KC_____,    KC_____,     KC_____,     KC_____
+  #define _________________WINNAV_L1_________________       KC_PGUP,     KC_PGDN,    KC_HOME,     KC_END,      _______
+  #define _________________WINNAV_L2_________________       KC_LEFT,     KC_UP,      KC_DOWN,     KC_RIGHT,    _______
+  #define _________________WINNAV_L3_________________       _______,     _______,    _______,     _______,     _______
   #define _________________NUMB_R1___________________       KC_PMNS,       KC_7, KC_8,              KC_9,              KC_PPLS
   #define _________________NUMB_R2___________________       KC_PSLS,       KC_4, KC_5,              KC_6,              KC_PAST
   #define _________________NUMB_R3_MAC_______________       KC_DOT,        KC_1, MT(MOD_LGUI,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LCTL,KC_0)
   #define _________________NUMB_R3_WIN_______________       KC_DOT,        KC_1, MT(MOD_LCTL,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LGUI,KC_0)
-  #define _________________NUMB_R4___________________       KC_LSFT,       KC_0, KC_0,              KC_____,           KC_____
+  #define _________________NUMB_R4___________________       KC_LSFT,       KC_0, KC_0,              _______,           _______
 #endif
 
 //Function Row
@@ -191,30 +191,30 @@ NOTE: If you do a search/replace
 #define _________________RGB_1_____________________       RGBRST,     RGB_HUI,    RGB_SAI,    RGB_VAI,    RGB_SPI
 #define _________________RGB_2_____________________       RGB_MOD,    RGB_HUD,    RGB_SAD,    RGB_VAD,    RGB_SPD
 #else
-#define _________________RGB_1_____________________       KC_____,    KC_____,    KC_____,    KC_____,    KC_____
-#define _________________RGB_2_____________________       KC_____,    KC_____,    KC_____,    KC_____,    KC_____
+#define _________________RGB_1_____________________       _______,    _______,    _______,    _______,    _______
+#define _________________RGB_2_____________________       _______,    _______,    _______,    _______,    _______
 #endif
 
 //Audio keys
-#define _________________MEDIA_____________________       KC_MPLY,    KC_MUTE,     KC_VOLD,      KC_VOLU,     KC_____
-#define _________________MEDIA_V2__________________       KC_EJCT,    KC_MRWD,     KC_MPLY,      KC_MFFD,     KC_____
+#define _________________MEDIA_____________________       KC_MPLY,    KC_MUTE,     KC_VOLD,      KC_VOLU,     _______
+#define _________________MEDIA_V2__________________       KC_EJCT,    KC_MRWD,     KC_MPLY,      KC_MFFD,     _______
 
 //Base layer keys
-#define _________________LYOUT_____________________       KC_____,    KC_QWERTY,   KC_MACBASE,   KC_WINBASE,  KC_____
+#define _________________LYOUT_____________________       _______,    KC_QWERTY,   KC_MACBASE,   KC_WINBASE,  _______
 
 //Punctuation keys
 #define _________________PUNC_L1___________________       KC_BSLS,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC
 #define _________________PUNC_L1_ALT_______________       KC_DQT,     KC_AT,      KC_HASH,    KC_DLR,     KC_PERC
 #define _________________PUNC_L2___________________       KC_PLUS,    KC_MINS,    KC_ASTR,    KC_SLSH,    KC_EQL
 #define _________________PUNC_L3___________________       KC_LBRC,    KC_RBRC,    KC_LPRN,    KC_RPRN,    KC_AMPR
-#define _________________PUNC_L3_ALT_______________       KC_____,    KC_____,    KC_TILD,    KC_CIRC,    KC_GRV
-#define _________________PUNC_R1___________________       KC_____, KC_DQT,  KC_EQL,  KC_____, KC_____
-#define _________________PUNC_R2___________________       KC_____, KC_ASTR, KC_SLSH, KC_PLUS, KC_MINS
-#define _________________PUNC_R3___________________       KC_____, KC_EQL,  KC_BSLS, KC_____, KC_____
+#define _________________PUNC_L3_ALT_______________       _______,    _______,    KC_TILD,    KC_CIRC,    KC_GRV
+#define _________________PUNC_R1___________________       _______, KC_DQT,  KC_EQL,  _______, _______
+#define _________________PUNC_R2___________________       _______, KC_ASTR, KC_SLSH, KC_PLUS, KC_MINS
+#define _________________PUNC_R3___________________       _______, KC_EQL,  KC_BSLS, _______, _______
 
 //Make Shortcuts and window switching
-#define _____________FUNC_L1_______________________       MAKEKF,   MAKEK,   KC_____, KC_ESC,  LCTL(LALT(KC_DEL))
-#define _____________FUNC_L3_______________________       KC_LGUI, KC_RALT, KC_LCTL, KC_TAB,  KC_____
+#define _____________FUNC_L1_______________________       MAKEKF,   MAKEK,   _______, KC_ESC,  LCTL(LALT(KC_DEL))
+#define _____________FUNC_L3_______________________       KC_LGUI, KC_RALT, KC_LCTL, KC_TAB,  _______
 
 
-#define _________________KC_BLANK__________________       KC_____, KC_____, KC_____, KC_____, KC_____
+#define _________________KC_BLANK__________________       _______, _______, _______, _______, _______
