@@ -6,7 +6,7 @@ The eek! is a 36-key column staggered keyboard, meant to be portable with a stee
 
 Keyboard Maintainer: [klackygears](https://github.com/klackygears)  
 Hardware Supported: The eek! PCBs, Pro Micro supported, Low Profile Elite-C supported 
-Hardware Availability: [PCB & Case Data](https://github.com/klackygears/eek)  
+Hardware Availability: [Case Data](https://github.com/klackygears/eek)  
 
 Make example for this keyboard (after setting up your build environment):
 
