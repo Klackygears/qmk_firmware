@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT, KC_Z,   KC_X,    KC_C,   KC_V,     KC_B,     KC_N,   KC_M,   KC_COMM,  KC_DOT,   KC_SLSH, KC_RSFT, KC_UP,   KC_DEL,
     KC_LCTL, KC_LGUI,KC_LALT, KC_DEL, KC_A, KC_A, KC_SPC, KC_SPC, KC_A, KC_A, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT*/
     _______________DVORAK_L1___________________, _______, _______, _______, _______, _______________DVORAK_R1___________________,
-    _______________DVORAK_L2___________________, KC_MPLY, KC_MUTE, KC_VOLD, KC_VOLU, _______________DVORAK_R2___________________,
+    _______________DVORAK_L2___________________, _______, _______, _______, _______, _______________DVORAK_R2___________________,
     _______________WINDVK_L3___________________, _______, _______, _______, _______, _______________WINDVK_R3___________________,
     _______, _______, LT(_FUNC,KC_ENT), LT(_NUMB,KC_BSPC), _______, _______, MT(MOD_LSFT,KC_SPC), _______, _______, _______, LT(_SYMB,KC_TAB), LT(_SYMB,KC_ENT), _______, _______
   ),
