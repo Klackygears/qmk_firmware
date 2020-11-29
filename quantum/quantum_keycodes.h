@@ -554,6 +554,10 @@ enum quantum_keycodes {
     JS_BUTTON31,
     JS_BUTTON_MAX = JS_BUTTON31,
 
+    ONESHOT_ENABLE,
+    ONESHOT_DISABLE,
+    ONESHOT_TOGGLE,
+
 #if defined(SEQUENCER_ENABLE)
     SQ_ON,
     SQ_OFF,
@@ -890,4 +894,10 @@ enum quantum_keycodes {
 #define DM_PLY1 DYN_MACRO_PLAY1
 #define DM_PLY2 DYN_MACRO_PLAY2
 
-#endif  // QUANTUM_KEYCODES_H
+// One Shot toggle
+#define OST_TOG ONESHOT_TOGGLE
+#define OST_ON  ONESHOT_ENABLE
+#define OST_OFF ONESHOT_DISABLE
+
+
+#endif // QUANTUM_KEYCODES_H
