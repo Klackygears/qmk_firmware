@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_R,    KC_G,    KC_W,    KC_E,    KC_1,      KC_ESC,        KC_WINBASE, _________________RGB_1_____________________,
     KC_TAB,  KC_V,    KC_A,    KC_S,    KC_D,    KC_2,        KC_L,        KC_GAMR1, _________________RGB_2_____________________, RGB_TOG,
     KC_T,    KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,        KC_M,        KC_GAMR2, _________________MEDIA_____________________, RGB_MOD,
-             KC_X,    KC_K,             KC_C,    KC_LSFT,   KC_SPC,        _______, KC_UP,   _______,           _______, _______,
+             KC_X,    KC_K,             KC_C,    KC_LSFT,   KC_SPC,        _______, KC_UP,   _______,           KC_TAB, KC_LALT,
                                         KC_Z,    KC_LCTL,  KC_LCTL,        KC_LEFT, KC_DOWN, KC_RIGHT
   ),
   //Destiny
