@@ -2,9 +2,7 @@
 RGB_MATRIX_EFFECT(TYPING_HEATMAP)
 #    ifdef RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 
-void process_rgb_matrix_typing_heatmap(keyrecord_t* record) {
-    uint8_t row   = record->event.key.row;
-    uint8_t col   = record->event.key.col;
+void process_rgb_matrix_typing_heatmap(uint8_t row, uint8_t col) {
     uint8_t m_row = row - 1;
     uint8_t p_row = row + 1;
     uint8_t m_col = col - 1;
