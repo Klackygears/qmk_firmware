@@ -21,6 +21,7 @@
 #include QMK_KEYBOARD_H
 
 #define ROWS_PER_HAND (MATRIX_ROWS / 2)
+#define SYNC_TIMER_OFFSET 2
 
 #ifdef RGBLIGHT_ENABLE
 #    include "rgblight.h"
@@ -41,12 +42,24 @@ static uint16_t device_cpi    = 0;
 static int8_t   split_mouse_x = 0, split_mouse_y = 0;
 #endif
 
+void set_split_host_leds(uint8_t host_leds);
+
+#ifdef RGB_MATRIX_SPLIT
+#    include "rgb_matrix.h"
+#endif
+
 #if defined(USE_I2C)
 
 #    include "i2c_master.h"
 #    include "i2c_slave.h"
 
 typedef struct _I2C_slave_buffer_t {
+#    ifndef DISABLE_SYNC_TIMER
+    uint32_t sync_timer;
+#    endif
+#    ifdef SPLIT_TRANSPORT_MIRROR
+    matrix_row_t mmatrix[ROWS_PER_HAND];
+#    endif
     matrix_row_t smatrix[ROWS_PER_HAND];
     uint8_t      backlight_level;
 #    if defined(RGBLIGHT_ENABLE) && defined(RGBLIGHT_SPLIT)
@@ -58,6 +71,10 @@ typedef struct _I2C_slave_buffer_t {
 #    ifdef WPM_ENABLE
     uint8_t current_wpm;
 #    endif
+    uint8_t host_leds;
+#    ifdef RGB_MATRIX_SPLIT
+    rgb_config_t rgb_matrix;
+#    endif
     int8_t   mouse_x;
     int8_t   mouse_y;
     uint16_t device_cpi;
@@ -67,12 +84,18 @@ static I2C_slave_buffer_t *const i2c_buffer = (I2C_slave_buffer_t *)i2c_slave_re
 
 #    define I2C_BACKLIGHT_START offsetof(I2C_slave_buffer_t, backlight_level)
 #    define I2C_RGB_START offsetof(I2C_slave_buffer_t, rgblight_sync)
-#    define I2C_KEYMAP_START offsetof(I2C_slave_buffer_t, mmatrix)
+#    define I2C_SYNC_TIME_START offsetof(I2C_slave_buffer_t, sync_timer)
+#    define I2C_KEYMAP_MASTER_START offsetof(I2C_slave_buffer_t, mmatrix)
+#    define I2C_KEYMAP_SLAVE_START offsetof(I2C_slave_buffer_t, smatrix)
 #    define I2C_ENCODER_START offsetof(I2C_slave_buffer_t, encoder_state)
 #    define I2C_WPM_START offsetof(I2C_slave_buffer_t, current_wpm)
+#    define I2C_HOST_LED_START offsetof(I2C_slave_buffer_t, host_leds)
+#    define I2C_RGB_MATRIX_START offsetof(I2C_slave_buffer_t, rgb_matrix)
 #    define I2C_MOUSE_X_START offsetof(I2C_slave_buffer_t, mouse_x)
 #    define I2C_MOUSE_Y_START offsetof(I2C_slave_buffer_t, mouse_y)
 #    define I2C_MOUSE_DPI_START offsetof(I2C_slave_buffer_t, device_cpi)
+
+
 #    define TIMEOUT 100
 
 #    ifndef SLAVE_I2C_ADDRESS
@@ -80,8 +103,11 @@ static I2C_slave_buffer_t *const i2c_buffer = (I2C_slave_buffer_t *)i2c_slave_re
 #    endif
 
 // Get rows from other half over i2c
-bool transport_master(matrix_row_t matrix[]) {
-    i2c_readReg(SLAVE_I2C_ADDRESS, I2C_KEYMAP_START, (void *)matrix, sizeof(i2c_buffer->smatrix), TIMEOUT);
+bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[]) {
+    i2c_readReg(SLAVE_I2C_ADDRESS, I2C_KEYMAP_SLAVE_START, (void *)slave_matrix, sizeof(i2c_buffer->smatrix), TIMEOUT);
+#ifdef SPLIT_TRANSPORT_MIRROR
+    i2c_writeReg(SLAVE_I2C_ADDRESS, I2C_KEYMAP_MASTER_START, (void *)master_matrix, sizeof(i2c_buffer->mmatrix), TIMEOUT);
+#endif
 
     // write backlight info
 #    ifdef BACKLIGHT_ENABLE
@@ -117,6 +143,21 @@ bool transport_master(matrix_row_t matrix[]) {
     }
 #    endif
 
+    uint8_t host_leds = host_keyboard_leds();
+    set_split_host_leds(host_leds);
+    if (i2c_writeReg(SLAVE_I2C_ADDRESS, I2C_HOST_LED_START, (void *)&host_leds, sizeof(host_leds), TIMEOUT) >= 0) {
+        i2c_buffer->host_leds = host_leds;
+    }
+
+#    ifdef RGB_MATRIX_SPLIT
+    i2c_writeReg(SLAVE_I2C_ADDRESS, I2C_RGB_MATRIX_START, (void *)rgb_matrix_config, sizeof(i2c_buffer->rgb_matrix), TIMEOUT);
+#    endif
+
+#    ifndef DISABLE_SYNC_TIMER
+    i2c_buffer->sync_timer = sync_timer_read32() + SYNC_TIMER_OFFSET;
+    i2c_writeReg(SLAVE_I2C_ADDRESS, I2C_SYNC_TIME_START, (void *)&i2c_buffer->sync_timer, sizeof(i2c_buffer->sync_timer), TIMEOUT);
+#    endif
+
 #    ifdef POINTING_DEVICE_ENABLE
     if (is_keyboard_left()) {
         report_mouse_t temp_report = pointing_device_get_report();
@@ -138,8 +179,15 @@ bool transport_master(matrix_row_t matrix[]) {
 }
 
 void transport_slave(matrix_row_t matrix[]) {
+#    ifndef DISABLE_SYNC_TIMER
+    sync_timer_update(i2c_buffer->sync_timer);
+#    endif
+
     // Copy matrix to I2C buffer
-    memcpy((void *)i2c_buffer->smatrix, (void *)matrix, sizeof(i2c_buffer->smatrix));
+    memcpy((void*)i2c_buffer->smatrix, (void *)slave_matrix, sizeof(i2c_buffer->smatrix));
+#ifdef SPLIT_TRANSPORT_MIRROR
+    memcpy((void*)master_matrix, (void *)i2c_buffer->mmatrix, sizeof(i2c_buffer->mmatrix));
+#endif
 
 // Read Backlight Info
 #    ifdef BACKLIGHT_ENABLE
@@ -162,6 +210,12 @@ void transport_slave(matrix_row_t matrix[]) {
     set_current_wpm(i2c_buffer->current_wpm);
 #    endif
 
+    set_split_host_leds(i2c_buffer->host_leds);
+
+#    ifdef RGB_MATRIX_SPLIT
+    memcpy((void*)i2c_buffer->rgb_matrix, (void *)rgb_matrix_config, sizeof(i2c_buffer->rgb_matrix));
+#    endif
+
 #    ifdef POINTING_DEVICE_ENABLE
     if (!is_keyboard_left()) {
         static uint16_t cpi;
@@ -174,7 +228,6 @@ void transport_slave(matrix_row_t matrix[]) {
         i2c_buffer->mouse_y = split_mouse_y;
         i2c_writeReg(SLAVE_I2C_ADDRESS, I2C_MOUSE_Y_START, (void *)&i2c_buffer->mouse_y, sizeof(i2c_buffer->mouse_y), TIMEOUT);
     }
-
 #    endif
 }
 
@@ -189,19 +242,32 @@ void transport_slave_init(void) { i2c_slave_init(SLAVE_I2C_ADDRESS); }
 typedef struct _Serial_s2m_buffer_t {
     // TODO: if MATRIX_COLS > 8 change to uint8_t packed_matrix[] for pack/unpack
     matrix_row_t smatrix[ROWS_PER_HAND];
+
 #    ifdef ENCODER_ENABLE
     uint8_t encoder_state[NUMBER_OF_ENCODERS];
 #    endif
+
     int8_t mouse_x;
     int8_t mouse_y;
+
 } Serial_s2m_buffer_t;
 
 typedef struct _Serial_m2s_buffer_t {
+#    ifndef DISABLE_SYNC_TIMER
+    uint32_t sync_timer;
+#    endif
+#    ifdef SPLIT_TRANSPORT_MIRROR
+    matrix_row_t mmatrix[ROWS_PER_HAND];
+#    endif
 #    ifdef BACKLIGHT_ENABLE
     uint8_t backlight_level;
 #    endif
 #    ifdef WPM_ENABLE
     uint8_t current_wpm;
+#    endif
+    uint8_t host_leds;
+#    ifdef RGB_MATRIX_SPLIT
+    rgb_config_t rgb_matrix;
 #    endif
     uint16_t device_cpi;
 } Serial_m2s_buffer_t;
@@ -280,7 +346,7 @@ void transport_rgblight_slave(void) {
 #        define transport_rgblight_slave()
 #    endif
 
-bool transport_master(matrix_row_t matrix[]) {
+bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[]) {
 #    ifndef SERIAL_USE_MULTI_TRANSACTION
     if (soft_serial_transaction() != TRANSACTION_END) {
         return false;
@@ -294,7 +360,10 @@ bool transport_master(matrix_row_t matrix[]) {
 
     // TODO:  if MATRIX_COLS > 8 change to unpack()
     for (int i = 0; i < ROWS_PER_HAND; ++i) {
-        matrix[i] = serial_s2m_buffer.smatrix[i];
+        slave_matrix[i] = serial_s2m_buffer.smatrix[i];
+#ifdef SPLIT_TRANSPORT_MIRROR
+        serial_m2s_buffer.mmatrix[i] = master_matrix[i];
+#endif
     }
 
 #    ifdef BACKLIGHT_ENABLE
@@ -311,6 +380,17 @@ bool transport_master(matrix_row_t matrix[]) {
     serial_m2s_buffer.current_wpm = get_current_wpm();
 #    endif
 
+    serial_m2s_buffer.host_leds = host_keyboard_leds_raw();
+    set_split_host_leds(serial_m2s_buffer.host_leds);
+
+#    ifdef RGB_MATRIX_SPLIT
+    serial_m2s_buffer.rgb_matrix = rgb_matrix_config;
+#    endif
+
+#    ifndef DISABLE_SYNC_TIMER
+    serial_m2s_buffer.sync_timer = sync_timer_read32() + SYNC_TIMER_OFFSET;
+#    endif
+
 #    ifdef POINTING_DEVICE_ENABLE
     if (is_keyboard_left()) {
         report_mouse_t temp_report = pointing_device_get_report();
@@ -324,14 +404,20 @@ bool transport_master(matrix_row_t matrix[]) {
     return true;
 }
 
-void transport_slave(matrix_row_t matrix[]) {
+void transport_slave(matrix_row_t master_matrix[], matrix_row_t slave_matrix[]) {
     transport_rgblight_slave();
+
+#    ifndef DISABLE_SYNC_TIMER
+    sync_timer_update(serial_m2s_buffer.sync_timer);
+#    endif
 
     // TODO: if MATRIX_COLS > 8 change to pack()
     for (int i = 0; i < ROWS_PER_HAND; ++i) {
-        serial_s2m_buffer.smatrix[i] = matrix[i];
+        serial_s2m_buffer.smatrix[i] = slave_matrix[i];
+#ifdef SPLIT_TRANSPORT_MIRROR
+        master_matrix[i] = serial_m2s_buffer.mmatrix[i];
+#endif
     }
-
 #    ifdef BACKLIGHT_ENABLE
     backlight_set(serial_m2s_buffer.backlight_level);
 #    endif
@@ -342,6 +428,12 @@ void transport_slave(matrix_row_t matrix[]) {
 
 #    ifdef WPM_ENABLE
     set_current_wpm(serial_m2s_buffer.current_wpm);
+#    endif
+
+    set_split_host_leds(serial_m2s_buffer.host_leds);
+
+#    ifdef RGB_MATRIX_SPLIT
+    rgb_matrix_config = serial_m2s_buffer.rgb_matrix;
 #    endif
 
 #    ifdef POINTING_DEVICE_ENABLE

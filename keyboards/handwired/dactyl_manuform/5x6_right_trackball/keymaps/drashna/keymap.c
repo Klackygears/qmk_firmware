@@ -17,8 +17,6 @@
 #include "drashna.h"
 
 #define TG_DBLO TG(_DIABLO)
-#define _MOUSE _MEDIA
-
 
 // clang-format off
 #define LAYOUT_5x6_right_trackball_wrapper(...) LAYOUT_5x6_right_trackball(__VA_ARGS__)
@@ -28,8 +26,8 @@
     K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A  \
   ) \
   LAYOUT_5x6_right_trackball_wrapper( \
-     KC_GRV,  ________________NUMBER_LEFT________________,            ________________NUMBER_RIGHT_______________, KC_MINS, \
-     KC_ESC,  K01,    K02,      K03,     K04,     K05,                K06,     K07,     K08,     K09,     K0A,     KC_BSLS, \
+     KC_ESC,  ________________NUMBER_LEFT________________,            ________________NUMBER_RIGHT_______________, KC_MINS, \
+     SH_TT,   K01,    K02,      K03,     K04,     K05,                K06,     K07,     K08,     K09,     K0A,     SH_TT, \
      LALT_T(KC_TAB), K11, K12,  K13,     K14,     K15,                K16,     K17,     K18,     K19,     K1A,     RALT_T(KC_QUOT), \
      OS_LSFT, CTL_T(K21), K22,  K23,     K24,     K25,                K26,     K27,     K28,     K29, RCTL_T(K2A), OS_RSFT, \
                        OS_LALT, OS_LGUI,                                                TG_GAME, TG_DBLO, \
@@ -90,20 +88,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MOUSE] = LAYOUT_5x6_right_trackball(
-        _______, _______, _______, _______, _______, _______,                     DPI_CONFIG, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,                        KC_WH_U, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                        KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
-        _______, _______, _______, _______, _______, _______,                        _______, KC_BTN4, KC_BTN5, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,                        KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, _______,
+        _______, _______, _______, _______, _______, _______,                        KC_BTN7, KC_BTN4, KC_BTN5, KC_BTN8, _______, _______,
                           _______, _______,                                                            _______, _______,
                                             _______, _______,                                 _______,
                                                      _______, _______,               _______,
                                                      _______, _______,      _______, _______
     ),
     [_GAMEPAD] = LAYOUT_5x6_right_trackball(
-        KC_ESC,  KC_NO,   KC_1,    KC_2,    KC_3,    KC_4,                        DPI_CONFIG, _______, _______, _______, _______, _______,
+        KC_ESC,  KC_NO,   KC_1,    KC_2,    KC_3,    KC_4,                           _______, _______, _______, _______, _______, _______,
         KC_F1,   KC_K,    KC_Q,    KC_W,    KC_E,    KC_R,                           KC_WH_U, _______, _______, _______, _______, _______,
-        KC_TAB,  KC_G,    KC_A,    KC_S,    KC_D,    KC_F,                           KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
-        KC_LCTL, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_H,                           _______, KC_BTN4, KC_BTN5, _______, _______, _______,
+        KC_TAB,  KC_G,    KC_A,    KC_S,    KC_D,    KC_F,                           KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, _______,
+        KC_LCTL, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_H,                           KC_BTN7, KC_BTN4, KC_BTN5, KC_BTN8, _______, _______,
                           KC_I,    KC_T,                                                               TG_GAME, KC_NO,
                                             KC_V,    KC_O,                                    _______,
                                                      KC_SPC,  KC_P,                  _______,
