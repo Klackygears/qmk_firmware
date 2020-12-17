@@ -21,7 +21,7 @@
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
- [_MACBASE] = LAYOUT_wrapper( \
+ [_MACBASE] = LAYOUT_split_3x5_3_wrapper( \
 
 
       _______________DVORAK_L1___________________,             _______________DVORAK_R1___________________, \
@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              __________________MAC_THUMB_CLUSTER_V2______________ \
       ),
 
-  [_WINBASE] = LAYOUT_wrapper( \
+  [_WINBASE] = LAYOUT_split_3x5_3_wrapper( \
 
       _______________DVORAK_L1___________________,                   _______________DVORAK_R1___________________, \
       _______________DVORAK_L2___________________,                   _______________DVORAK_R2___________________, \
@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             __________________WIN_THUMB_CLUSTER_V2______________ \
       ),
 
-  [_QWERTY] = LAYOUT_wrapper( \
+  [_QWERTY] = LAYOUT_split_3x5_3_wrapper( \
 
       _________________QWERTY_L1_________________,             _________________QWERTY_R1_________________, \
       _________________QWERTY_L2_________________,             _________________QWERTY_R2_________________, \
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              __________________WIN_THUMB_CLUSTER_V2______________ \
       ),
 
-  [_GAMER] = LAYOUT_wrapper( \
+  [_GAMER] = LAYOUT_split_3x5_3_wrapper( \
 
       _________________QWERTY_L1_________________,             _________________QWERTY_R1_________________, \
       _________________QWERTY_L2_________________,             _________________QWERTY_R2_________________, \
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              MO(_NGMR), MT(MOD_LSFT,KC_SPC), KC_SPC, ________WIN_THUMB_R______ \
       ),
 
-  [_NGMR] = LAYOUT_wrapper( \
+  [_NGMR] = LAYOUT_split_3x5_3_wrapper( \
 
       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,               _________________KC_BLANK__________________, \
       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,               _________________KC_BLANK__________________, \
@@ -62,23 +62,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              _______, _______, _______, _______, _______, _______ \
       ),
 
-  [_SYMB] = LAYOUT_wrapper( \
+  [_SYMB] = LAYOUT_split_3x5_3_wrapper( \
 
       _________________PUNC_L1_ALT_______________,             _________________PUNC_R1___________________,  \
       _________________PUNC_L3___________________,             _________________PUNC_R2___________________, \
       _________________PUNC_L3_ALT_______________,             _________________PUNC_R3___________________, \
-                             KC_NLCK, KC_SLCK, KC_DEL,  KC_CAPS, _______, _______ \
+                             KC_NLCK, KC_SLCK, KC_DEL,  KC_CAPS, _______, BUZY \
       ),
 
-  [_FUNC] = LAYOUT_wrapper( \
+  [_FUNC] = LAYOUT_split_3x5_3_wrapper( \
 
       _____________FUNC_L1_______________________,             KC_WINBASE, _____________FUNC_1_______________, \
       ________MAC_MISSION_CTRL__________, LGUI(KC_L),          KC_MACBASE, _____________FUNC_2_______________, \
       _____________FUNC_L3_______________________,             KC_GRV,     _____________FUNC_3_______________, \
-                             _______, _______, KC_LSFT, KC_CAPS, KC_LSFT, MO(_MDIA) \
+                             _______, _______, KC_LSFT, KC_LSFT, KC_LSFT, KC_CAPS \
       ),
 
-  [_MNMB] = LAYOUT_wrapper( \
+  [_MNMB] = LAYOUT_split_3x5_3_wrapper( \
 
       _________________MACNAV_L1_________________,             _________________NUMB_R1___________________, \
       _________________MACNAV_L2_________________,             _________________NUMB_R2___________________, \
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              _______, _______, KC_LSFT, _______, KC_LSFT,  KC_0 \
       ),
 
-  [_NUMB] = LAYOUT_wrapper( \
+  [_NUMB] = LAYOUT_split_3x5_3_wrapper( \
 
       _________________WINNAV_L1_________________,             _________________NUMB_R1___________________, \
       _________________WINNAV_L2_________________,             _________________NUMB_R2___________________, \
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ),
 
 
-  [_MDIA] =  LAYOUT_wrapper( \
+  [_MDIA] =  LAYOUT_split_3x5_3_wrapper( \
 
       _________________LYOUT_____________________,             _________________RGB_1_____________________, \
         MU_ON,  MU_OFF,  MU_MOD, _______, _______,            _________________RGB_2_____________________, \
