@@ -25,10 +25,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //joystick config
 joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
-    [0] = JOYSTICK_AXIS_IN(F4, 1000, 0, 600),
-    [1] = JOYSTICK_AXIS_VIRTUAL
+    [0] = JOYSTICK_AXIS_IN(F4, 0, 512, 1023),
+    [1] = JOYSTICK_AXIS_IN(F5, 0, 512, 1023)
 };
-
+/*
 #ifdef ANALOG_JOYSTICK_ENABLE
 static uint8_t precision_val = 70;
 static uint8_t axesFlags = 0;
@@ -39,8 +39,8 @@ enum axes {
     Axis2High = 8,
     Axis2Low = 16
 };
-#endif
-
+#endif */
+/*
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
 #ifdef ANALOG_JOYSTICK_ENABLE
@@ -91,3 +91,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+ */
