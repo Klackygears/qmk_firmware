@@ -25,16 +25,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______________DVORAK_L1___________________, _______, LCTL(KC_LEFT), LCTL(KC_UP), LCTL(KC_RIGHT), _______, _______________DVORAK_R1___________________,
     _______________DVORAK_L2___________________, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______________DVORAK_R2___________________,
     _______________MACDVK_L3___________________, _______, _______, _______, _______, _______, _______________MACDVK_R3___________________,
-    _______, _______, ________MAC_THUMB_L______, _______, RGB_MOD, _______, _______, ________MAC_THUMB_R______, _______, _______, _______
+    _______, _______, ________MAC_THUMB_L______, KC_SPC, RGB_MOD, _______, _______, ________MAC_THUMB_R______, _______, _______, _______
   ),
 
 
   [_WINBASE] = LAYOUT_wrapper( \
     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_MINS, KC_GRV,  KC_EQL,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TO(_GAMER),
-    _______________DVORAK_L1___________________, _______, LCTL(KC_TAB), LGUI(KC_TAB), LCTL(LSFT(KC_TAB)), _______, _______________DVORAK_R1___________________,
+    _______________DVORAK_L1___________________, _______, BL_TOGG, BL_STEP, BL_TOGG, _______, _______________DVORAK_R1___________________,
     _______________DVORAK_L2___________________, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______________DVORAK_R2___________________,
     _______________WINDVK_L3___________________, _______, KC_PGUP, KC_UP,   KC_PGDN, _______, _______________WINDVK_R3___________________,
-    RGB_TOG, _______, ________WIN_THUMB_L______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, ________WIN_THUMB_R______, _______, _______
+    RGB_TOG, _______, ________WIN_THUMB_L______, KC_SPC, KC_LEFT, KC_DOWN, KC_RGHT, _______, ________WIN_THUMB_R______, _______, _______
   ),
 
 
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _________________PUNC_L1_ALT_______________, _______, KC_P7,   KC_P8,   KC_P9,  _______, _________________PUNC_R1___________________,
     _________________PUNC_L3___________________, _______, KC_P4,   KC_P5,   KC_P6,  _______, _________________PUNC_R2___________________,
     _________________PUNC_L3_ALT_______________, _______, KC_P1,   KC_P2,   KC_P3,  _______, _________________PUNC_R3___________________,
-    _______, _______, _______, _______, KC_DEL, _________________KC_BLANK__________________, KC_CAPS, _______, _______, _______, _______
+    _______, _______, _______, _______, KC_DEL, _________________KC_BLANK__________________, KC_CAPS, _______, BUZY, _______, _______
   ),
 
 
@@ -119,22 +119,5 @@ const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {35, 25, 15};
 __attribute__ ((weak))
 const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {35, 29, 17};
 #endif
-
- void matrix_scan_user(void) {
-
-   /* switch(biton32(layer_state)) {
-      case _GAMER:
-        rgblight_setrgb(0xF4,  0x03, 0xFC);
-      break;
-      case _NUMB:
-        rgblight_setrgb_at(RGB_BLUE, 43);
-      break;
-    }*/
-
- }
-
- void led_set_user(uint8_t usb_led) {
- //  rgblight_set_clipping_range(3,4);
- }
 
 

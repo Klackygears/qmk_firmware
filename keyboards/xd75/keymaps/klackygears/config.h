@@ -24,7 +24,13 @@
 #define TAPPING_TERM 150
 #define IGNORE_MOD_TAP_INTERRUPT
 
-// place overrides here
+
+#define RGB_OVERDOSE
+
+
+
+
+#ifdef RGB_OVERDOSE
 #undef RGBLED_NUM
 #define RGBLED_NUM 44
 
@@ -66,3 +72,4 @@ top
 //   #define RGBLIGHT_EFFECT_BEAM
 //   #define RGBLIGHT_EFFECT_HYPERBEAM
 //   #define RGBLIGHT_EFFECT_RAINBOW_SPARKLE
+#endif
