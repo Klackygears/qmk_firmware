@@ -17,7 +17,7 @@
 
 #include "quantum.h"
 
-* This is a shortcut to help you visually see your layout.
+/* This is a shortcut to help you visually see your layout.
  *
  * The first section contains all of the arguments representing the physical
  * layout of the board and position of the keys.
@@ -26,14 +26,13 @@
  * represents the switch matrix.
  */
 #define LAYOUT_split_4x6_2( \
-    K00, K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, K0B, K0C,   \
-    K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, K1B, K1C,  \
-    K20, K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, K2B, K2C,  \
-    K30, K31, K32, K33, K34, K35, K36, K37, K38, K39, K3A, K3B, K3C,  \
-) \
-{ \
+    K00, K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, K0B, K0C,  \
+    K10, K11, K12, K13, K14, K15,      K17, K18, K19, K1A, K1B, K1C,  \
+    K20, K21, K22, K23, K24, K25,      K27, K28, K29, K2A, K2B, K2C,  \
+    K30, K31, K32, K33, K34, K35, K36, K37, K38, K39, K3A, K3B, K3C  \
+) { \
     { K00, K01, K02, K03, K04, K05,   K06,   K07, K08, K09, K0A, K0B, K0C }, \
     { K10, K11, K12, K13, K14, K15,  KC_NO,  K17, K18, K19, K1A, K1B, K1C }, \
     { K20, K21, K22, K23, K24, K25,  KC_NO,  K27, K28, K29, K2A, K2B, K2C }, \
-    { K30, K31, K32, K33, K34, K35,   K36,   K37, K38, K39, K3A, K3B, K3C }, \
+    { K30, K31, K32, K33, K34, K35,   K36,   K37, K38, K39, K3A, K3B, K3C } \
 }

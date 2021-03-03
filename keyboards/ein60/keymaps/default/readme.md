@@ -1,1 +1,1 @@
-# The default keymap for eek!
+# The default keymap for EIN_60

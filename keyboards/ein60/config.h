@@ -1,5 +1,5 @@
 /*
-Copyright 2020 klackygears
+Copyright 2021 klackygears
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,9 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COLS 13
 
 #define MATRIX_ROW_PINS { F1, F2, F3, F4 }
-#define MATRIX_COL_PINS { A3, A2, A1, A0, F6, F0, E0, E1, C0, C1, C2, C3 }
-
-#define UNUSED_PINS { E4, E5, E6, F7, A4, A5, A6, A7, B4, B5, B6, B7, C6, C7, D2, D3, D4, D5, D6, D7 }
+#define MATRIX_COL_PINS { A3, A2, A1, A0, F6, F5, F0, E0, E1, C0, C1, C2, C3 }
 
 #define DIODE_DIRECTION COL2ROW
 
