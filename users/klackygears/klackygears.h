@@ -42,6 +42,7 @@ enum userspace_custom_keycodes {
   MAKEK,
   MAKEKF,
   BUZY,
+  PFWD,
   SHRUG,
   //DYNAMIC_MACRO_RANGE,
   SAFE_RANGE_KEYMAP

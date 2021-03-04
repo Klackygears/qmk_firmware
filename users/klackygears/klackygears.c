@@ -46,12 +46,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
         case RGBRST:
-#ifdef RGBLIGHT_ENABLE
+      #ifdef RGBLIGHT_ENABLE
             if (record->event.pressed) {
                 eeconfig_update_rgblight_default();
                 rgblight_enable();
             }
-#endif
+      #endif
             break;
 
         case MAKEK:
@@ -90,11 +90,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 } else {
                     is_busy_toggled = false;
                 }
+             return true;
             }
-            break;
            }
-    }
+            break;
 
+        case PFWD:
+           {
+            static uint16_t tap_hold_timer;
+            if (record->event.pressed) {
+                tap_hold_timer = timer_read();
+                register_code(KC_W);
+           } else {
+                unregister_code(KC_W);
+                if (timer_elapsed(tap_hold_timer) > 300) {
+                    register_code(KC_W);
+                } else {
+                    unregister_code(KC_W);
+                }
+            return true;
+           }
+          }
+
+    }
     return true;
 }
 
