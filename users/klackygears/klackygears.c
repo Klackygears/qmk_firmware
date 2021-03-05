@@ -90,27 +90,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 } else {
                     is_busy_toggled = false;
                 }
-             return true;
             }
-           }
+            return false;
             break;
+           }
 
-        case PFWD:
+           case PFWD:
            {
-            static uint16_t tap_hold_timer;
+            static uint16_t run_timer;
             if (record->event.pressed) {
-                tap_hold_timer = timer_read();
+                run_timer = timer_read();
                 register_code(KC_W);
-           } else {
-                unregister_code(KC_W);
-                if (timer_elapsed(tap_hold_timer) > 300) {
-                    register_code(KC_W);
+              } else {
+                if (timer_elapsed(run_timer) > 3500) {
                 } else {
                     unregister_code(KC_W);
                 }
-            return true;
+              }
+              return false;
+              break;
            }
-          }
 
     }
     return true;
