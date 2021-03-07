@@ -92,8 +92,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
-            break;
            }
+            break;
 
            case PFWD:
            {
@@ -102,15 +102,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 run_timer = timer_read();
                 register_code(KC_W);
               } else {
-                if (timer_elapsed(run_timer) > 3500) {
+                if (timer_elapsed(run_timer) > 4000) {
                 } else {
                     unregister_code(KC_W);
                 }
               }
               return false;
-              break;
            }
+              break;
 
+           case PBWD:
+           {
+            if (record->event.pressed) {
+                register_code(KC_S);
+              } else {
+                  unregister_code(KC_S);
+                  unregister_code(KC_W);
+                }
+              return false;
+           }
+            break;
     }
     return true;
 }
