@@ -18,12 +18,15 @@ RGBLIGHT_ENABLE = yes       # Enable WS2812 RGB underlight.
 SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 TAP_DANCE_ENABLE = yes
 
+##RGB_MATRIX_ENABLE = WS2812
+
 VELOCIKEY_ENABLE = no
 #BOOTLOADER = qmk-dfu
 BOOTLOADER = atmel-dfu
 
+SPACE_CASE = no
 
-#EXTRAFLAGS += -flto
+EXTRAFLAGS += -flto
 
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
@@ -38,3 +41,5 @@ SRC +=  ./keymaps/klackygears/glcdfont.c \
         # ./lib/mode_icon_reader.c \
         # ./lib/host_led_state_reader.c \
         # ./lib/timelogger.c \
+
+

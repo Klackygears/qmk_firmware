@@ -154,11 +154,11 @@ const char *read_keylogs(void);
 
 __attribute__ ((weak))
 void led_test_init(void) {}
-
+/*
 void matrix_scan_user(void) {
    iota_gfx_task();
 }
-/*
+
 void matrix_render_user(struct CharacterMatrix *matrix) {
   if (is_master) {
     // If you want to change the display of OLED, you need to change here

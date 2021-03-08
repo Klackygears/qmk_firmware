@@ -20,6 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+
+
 //#define USE_MATRIX_I2C
 
 /* Select hand configuration */
@@ -29,6 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define EE_HANDS
 
 #define BOOTMAGIC_LITE_ROW 0
+#undef BOOTMAGIC_LITE_COLUMN
 #define BOOTMAGIC_LITE_COLUMN 5
 #define BOOTMAGIC_LITE_ROW_RIGHT 4
 #define BOOTMAGIC_LITE_COLUMN_RIGHT 5
@@ -52,6 +55,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17
 
+#ifdef SPACE_CASE
+#define RGBLED_NUM 16
+
+#define RGBLIGHT_LED_MAP {0,2,4,6,8,10,12,14,1,3,5,7,9,11,13,15}
+#endif
 
 //#if defined(LED_ANIMATIONS)
   #define RGBLIGHT_EFFECT_BREATHING
@@ -76,7 +84,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT klackygears Corne Keyboard
 
 #define OLED_FONT_H "keyboards/crkbd/keymaps/klackygears/glcdfont.c"
-
 
 
 
