@@ -48,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   //Outriders
   [_GAMR2] = LAYOUT_wrapper(
-             KC_R,    KC_3,    PFWD,    KC_E,    KC_5,      KC_ESC,        KC_WINBASE, _________________RGB_1_____________________,
-    KC_TAB,  KC_F,    KC_A,    PBWD,    KC_D,    KC_6,      KC_DEL,        KC_GAMR1,   _________________RGB_2_____________________, RGB_TOG,
-    KC_O,    KC_I,    KC_2,    KC_Q,    KC_1,    KC_7,        KC_V,        KC_GAMR2,   _________________MEDIA_____________________, RGB_MOD,
+             KC_R,    KC_3,    KC_W,    KC_E,    KC_4,      KC_ESC,        KC_WINBASE, _________________RGB_1_____________________,
+    KC_TAB,  KC_F,    KC_A,    KC_S,    KC_D,    KC_5,      KC_DEL,        KC_GAMR1,   _________________RGB_2_____________________, RGB_TOG,
+    KC_O,    KC_I,    KC_2,    KC_Q,    KC_1,    KC_6,        KC_V,        KC_GAMR2,   _________________MEDIA_____________________, RGB_MOD,
              KC_X,    KC_G,             KC_H,    KC_LSFT,  KC_LCTL,        _______,    KC_UP,   KC_V,              KC_TAB, KC_LALT,
                                         KC_Y,    KC_SPC,      KC_Z,        KC_LEFT,    KC_DOWN, KC_RIGHT
   ),
