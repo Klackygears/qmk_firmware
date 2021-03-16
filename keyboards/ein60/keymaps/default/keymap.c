@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
-
+/*
 #ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 	return OLED_ROTATION_180;
@@ -187,7 +187,7 @@ void oled_task_user(void) {
 
 #endif
 
-
+*/
 void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { /* First encoder */
         if (clockwise) {

@@ -22,5 +22,5 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = no           # Audio output
 RGB_MATRIX_DRIVER = WS2812  # Define RGB Matrix
 ENCODER_ENABLE = yes        # Enables the use of one or more encoders
-OLED_DRIVER_ENABLE = yes    # Enables the use of OLED displays
+OLED_DRIVER_ENABLE = no    # Enables the use of OLED displays
 LAYOUTS = split_4x6_2
