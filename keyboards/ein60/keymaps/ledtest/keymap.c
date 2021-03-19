@@ -23,6 +23,12 @@ enum layer_names {
     _FUNCTION,
     };
 
+
+enum custom_keycodes {
+  RGBRST = SAFE_RANGE
+};
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Qwerty
@@ -37,9 +43,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------'  `------'  `-----------------------------------------'
      */
     [_QWERTY] = LAYOUT_split_4x6_2( \
-     KC_TAB,        KC_Q,   KC_W,    KC_E,    KC_R,  KC_T,   KC_1,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC, \
-     _FUNCTION,     KC_A,   KC_S,    KC_D,    KC_F,  KC_G,             KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,  \
-     OSM(MOD_LSFT), KC_Z,   KC_X,    KC_C,    KC_V,  KC_B,             KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT, \
+     KC_TAB,        KC_Q,   KC_W,    KC_E,    KC_R,  KC_T,   KC_1,   RGBRST,     RGB_HUI,    RGB_SAI,    RGB_VAI,    RGB_SPI,    KC_BSPC, \
+     _FUNCTION,     KC_A,   KC_S,    KC_D,    KC_F,  KC_G,           RGB_MOD,    RGB_HUD,    RGB_SAD,    RGB_VAD,    RGB_SPD, KC_ENT,  \
+     OSM(MOD_LSFT), KC_Z,   KC_X,    KC_C,    KC_V,  KC_B,           RGB_TOG,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT, \
      KC_LCTL,       KC_GRV, KC_LGUI, KC_LALT,_LOWER, KC_SPC, KC_SPC,   KC_SPC,_RAISE, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
     ),
     /* Lower
@@ -202,4 +208,19 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             tap_code(KC_UP);
         }
     }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  switch (keycode) {
+    case RGBRST:
+      #ifdef RGBLIGHT_ENABLE
+        if (record->event.pressed) {
+          eeconfig_update_rgblight_default();
+          rgblight_enable();
+        }
+      #endif
+      break;
+  }
+  return true;
 }
