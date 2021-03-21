@@ -1,1 +1,1 @@
-# The default keymap for EIN_60
+# The keymap for testing the LEDs and OLED on the EIN_60
