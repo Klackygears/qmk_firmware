@@ -1,1 +1,1 @@
-# The default keymap for EIN_60
+# This is the klackygears userspace keymap default keymap for EIN_60
