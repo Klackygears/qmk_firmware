@@ -7,3 +7,4 @@ RGB_MATRIX_DRIVER = WS2812  # Define RGB Matrix
 OLED_DRIVER_ENABLE = yes    # Enables the use of OLED displays
 RGB_MATRIX_ENABLE = yes       # Enable for pretty RGB matrix effects
 WPM_ENABLE = yes
+TAP_DANCE_ENABLE = yes
