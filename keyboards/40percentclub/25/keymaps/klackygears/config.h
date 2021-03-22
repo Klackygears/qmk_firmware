@@ -1,4 +1,5 @@
-/* Copyright 2018
+/* Copyright 2020 klackygears
+
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +23,7 @@
 /* ws2812 RGB LED */
 #define RGB_DI_PIN D3
 #ifdef RGBLIGHT_ENABLE
-#define RGBLED_NUM 4    // Number of LEDs
+#define RGBLED_NUM 7    // Number of LEDs
 #endif
 
  #ifdef RGB_DI_PIN

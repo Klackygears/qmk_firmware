@@ -1,4 +1,4 @@
-/* Copyright 2017 Benjamin Kesselring
+/* Copyright 2020 klackygears
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,9 @@
 #define TAPPING_TERM 150
 #define IGNORE_MOD_TAP_INTERRUPT
 
-// place overrides here
+
+#define RGB_OVERDOSE
+
 #undef RGBLED_NUM
 #define RGBLED_NUM 44
 
@@ -66,3 +68,4 @@ top
 //   #define RGBLIGHT_EFFECT_BEAM
 //   #define RGBLIGHT_EFFECT_HYPERBEAM
 //   #define RGBLIGHT_EFFECT_RAINBOW_SPARKLE
+#endif

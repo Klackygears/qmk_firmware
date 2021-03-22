@@ -1,4 +1,4 @@
-# Copyright 2013 Jun Wako <wakojun@gmail.com>
+# Copyright 2020 klackygears
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,8 @@
 BOOTLOADER = qmk-dfu
 EXTRAFLAGS += -flto
 
+BOOTMAGIC_ENABLE = lite
 EXTRAKEY_ENABLE = yes
 TAP_DANCE_ENABLE = yes
-RGBLIGHT_ENABLE = yes
+RGBLIGHT_ENABLE = no
 BACKLIGHT_ENABLE = no

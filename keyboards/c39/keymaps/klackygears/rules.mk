@@ -67,6 +67,7 @@ TAP_DANCE_ENABLE = yes
 UNICODEMAP_ENABLE = yes
 VELOCIKEY_ENABLE = yes
 
+
 RGBLIGHT_ENABLE = no
 
     POST_CONFIG_H += $(QUANTUM_DIR)/rgblight_post_config.h

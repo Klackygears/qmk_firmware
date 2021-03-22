@@ -1,4 +1,4 @@
-/* Copyright 2018
+/* Copyright 2020 klackygears
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,11 +27,11 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = LAYOUT_ortho_5x5_wrapper(
-    _________________MEDIA_____________________,    \
-    _________________RGB_1_____________________, \
-    _________________RGB_2_____________________, \
-    _______________MACDVK_L3___________________, \
-    MAKEK, ________MAC_THUMB_CLUSTER_________ \
+    _________________MEDIA_____________________,\
+    RGBRST, RGBRST, RGBRST, RGBRST, RGBRST,\
+    RGBRST, RGBRST, RGBRST, RGBRST, RGBRST,\
+    RGBRST, RGBRST, RGBRST, RGBRST, RGBRST,\
+    RGBRST, RGBRST, RGBRST, RGBRST, RGBRST\
   ),
 
 
@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _________________NUMB_R1___________________, \
     _________________NUMB_R2___________________, \
     _________________NUMB_R3_MAC_______________, \
-    KC_____, ________MAC_THUMB_CLUSTER_________ \
+    _______, ________MAC_THUMB_CLUSTER_________ \
   ),
 };
 

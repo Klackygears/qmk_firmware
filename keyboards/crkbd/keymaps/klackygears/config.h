@@ -1,7 +1,8 @@
 /*
 This is the c configuration file for the keymap
 
-Copyright 2012 Jun Wako <wakojun@gmail.com>
+
+Copyright 2020 klackygears
 Copyright 2015 Jack Humbert
 
 This program is free software: you can redistribute it and/or modify
@@ -24,9 +25,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
+
+//#define MASTER_LEFT
 // #define MASTER_RIGHT
-// #define EE_HANDS
+#define EE_HANDS
+
+#define BOOTMAGIC_LITE_ROW 0
+#undef BOOTMAGIC_LITE_COLUMN
+#define BOOTMAGIC_LITE_COLUMN 5
+#define BOOTMAGIC_LITE_ROW_RIGHT 4
+#define BOOTMAGIC_LITE_COLUMN_RIGHT 5
+
 
 #define SSD1306OLED
 
@@ -34,13 +43,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD
 
 #define PREVENT_STUCK_MODIFIERS
-//#define TAPPING_FORCE_HOLD
+
+
 #define TAPPING_TERM 150
 #define IGNORE_MOD_TAP_INTERRUPT
-//#define RETRO_TAPPING
+
 
 #undef RGBLED_NUM
-//#define RGBLIGHT_ANIMATIONS
+
 #define RGBLED_NUM 27
 #define RGBLIGHT_LIMIT_VAL 120
 #define RGBLIGHT_HUE_STEP 10
@@ -48,9 +58,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_VAL_STEP 17
 
 
+#ifdef SPACE_CASE
+#define RGBLED_NUM 16
+
+#define RGBLIGHT_LED_MAP {0,2,4,6,8,10,12,14,1,3,5,7,9,11,13,15}
+#endif
+
 //#if defined(LED_ANIMATIONS)
   #define RGBLIGHT_EFFECT_BREATHING
-//   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
+  #define RGBLIGHT_EFFECT_RAINBOW_MOOD
+
 //   #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 //   #define RGBLIGHT_EFFECT_RAINBOW_SPARKLE
 //     #define RGBLIGHT_EFFECT_SNAKE
@@ -71,3 +88,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT klackygears Corne Keyboard
 
 #define OLED_FONT_H "keyboards/crkbd/keymaps/klackygears/glcdfont.c"
+

@@ -55,15 +55,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_FUNC] = LAYOUT(
             BACKLIT,
-         KC_8, KC_9,
-    KC_0, _______, RESET
+         BL_INC, BL_DEC,
+    BL_ON, _______, RESET
   )
 
 
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
+/*  switch (keycode) {
     case BACKLIT:
       if (record->event.pressed) {
         register_code(KC_RSFT);
@@ -77,6 +77,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-  }
+  }*/
   return true;
 }
