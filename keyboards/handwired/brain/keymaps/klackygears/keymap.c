@@ -62,7 +62,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_LCTL, KC_LALT,       KC_LCTL,    KC_LSFT,   KC_SPC,        _______, KC_UP,   _______,           _______, _______,
                                      KC_NO,      KC_LSFT,  KC_LSFT,        KC_LEFT, KC_DOWN, KC_RIGHT
   ),*/
-
   [_SYMB] = LAYOUT_wrapper(
              _________________PUNC_L1_ALT_______________, _______,      _______, _________________PUNC_R1___________________,
     _______, _________________PUNC_L3___________________, _______,      _______, _________________PUNC_R2___________________, _______,

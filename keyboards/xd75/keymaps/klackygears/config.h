@@ -27,10 +27,6 @@
 
 #define RGB_OVERDOSE
 
-
-
-
-#ifdef RGB_OVERDOSE
 #undef RGBLED_NUM
 #define RGBLED_NUM 44
 

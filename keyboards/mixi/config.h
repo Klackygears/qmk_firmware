@@ -8,7 +8,6 @@
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    gregorio
 #define PRODUCT         Mixi
-#define DESCRIPTION     Mixi macropad by gregorio
 
 /* key matrix size */
 #define MATRIX_ROWS 3
@@ -21,8 +20,8 @@
     { C6, F7, B6 } \
 }
 
-#define ENCODERS_PAD_A { F5 }
-#define ENCODERS_PAD_B { F4 }
+#define ENCODERS_PAD_A { D7, B1 }
+#define ENCODERS_PAD_B { E6, B3 }
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5

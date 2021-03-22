@@ -27,7 +27,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MACBASE] = LAYOUT_wrapper( \
 
-
       KC_ESC,    _______________DVORAK_L1___________________,                   _______________DVORAK_R1___________________, _______, \
       KC_LSFT,   _______________DVORAK_L2___________________,                   _______________DVORAK_R2___________________, KC_RSFT, \
       RGB_MOD,   _______________MACDVK_L3___________________,                   _______________MACDVK_R3___________________, _______, \
@@ -111,7 +110,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool TOG_STATUS = false;
 
-
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
@@ -154,6 +152,7 @@ const char *read_keylogs(void);
 
 __attribute__ ((weak))
 void led_test_init(void) {}
+
 /*
 void matrix_scan_user(void) {
    iota_gfx_task();

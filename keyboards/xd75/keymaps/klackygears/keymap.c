@@ -120,4 +120,3 @@ __attribute__ ((weak))
 const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {35, 29, 17};
 #endif
 
-

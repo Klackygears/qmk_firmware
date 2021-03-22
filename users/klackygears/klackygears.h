@@ -9,7 +9,6 @@
 #endif // TAP_DANCE_ENABLE
 
 
-
 enum layer_number {
     _WINBASE = 0,
     _MACBASE,
