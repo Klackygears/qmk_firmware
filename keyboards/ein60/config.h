@@ -43,7 +43,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef OLED_DRIVER_ENABLE
   #define OLED_DISPLAY_128X64
-  #define OLED_TIMEOUT 400000
+  #define OLED_TIMEOUT 450000
+  #define OLED_FONT_H "keyboards/ein60/glcdfont.c"
 #endif
 
  #define RGB_DI_PIN E7
