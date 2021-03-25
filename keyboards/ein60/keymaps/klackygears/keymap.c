@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  _______________DVORAK_L1___________________,   KC_MUTE,  _______________DVORAK_R1___________________, KC_BSPC,
       RGB_TOG, _______________DVORAK_L2___________________,             _______________DVORAK_R2___________________, RGB_TOG,
       RGB_MOD, _______________WINDVK_L3___________________,             _______________WINDVK_R3___________________, RGB_MOD,
-      _______, _______, _______, ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, _______, _______, _______
+      KC_1,  KC_2, KC_3, ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, KC_1,  KC_2, KC_3
     ),
     [_MACBASE] = LAYOUT_split_4x6_2_wrapper(
       KC_ESC,  _______________DVORAK_L1___________________,   _______,   _______________DVORAK_R1___________________, KC_BSPC,
