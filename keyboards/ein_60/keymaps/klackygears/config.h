@@ -23,7 +23,7 @@
 
 #define TAPPING_TERM 150
 #define IGNORE_MOD_TAP_INTERRUPT
-
+//  #define ENCODER_DIRECTION_FLIP
 
 // place overrides here
 //   #define RGB_MATRIX_STARTUP_VAL 50
