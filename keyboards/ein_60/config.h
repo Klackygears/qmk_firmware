@@ -48,6 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #ifdef AUDIO_ENABLE
+  #define MUSIC_MAP
   #define AUDIO_PIN C6
   #define AUDIO_CLICKY
   #define AUDIO_DAC_SAMPLE_MAX 4095U
