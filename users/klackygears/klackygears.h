@@ -11,6 +11,7 @@
 
 enum layer_number {
     _WINBASE = 0,
+    _COLBASE,
     _MACBASE,
     _QWERTY,
     _GAMER,
@@ -29,6 +30,7 @@ enum userspace_custom_keycodes {
   KC_MACBASE = SAFE_RANGE,
   KC_QWERTY,
   KC_WINBASE,
+  KC_COLBASE,
   KC_GAMER,
   KC_GAMR1,
   KC_GAMR2,

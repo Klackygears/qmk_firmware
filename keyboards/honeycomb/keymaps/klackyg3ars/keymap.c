@@ -7,13 +7,13 @@
 enum honeycomb_layers {
 	_NORM,
 	_FUSIOND,
-    _FUSIONS
+    _FUSIONS,
+    _KICAD
 };
 
 // Macro definitions for readability
 enum honeycomb_keycodes {
-	HW = SAFE_RANGE,
-	COPY,
+	COPY = SAFE_RANGE,
 	PASTA,
     FORBIT
 };
@@ -22,24 +22,31 @@ extern int8_t encoderValue;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_NORM] = LAYOUT( /* Base layout, put whatever defaults. */
-		HW,      COPY,    PASTA,   KC_MUTE,
-		KC_4,    KC_5,    KC_6,    KC_7,
+		KC_1,      COPY,    PASTA,   KC_MUTE,
+		KC_4,    KC_5,    KC_6,    TO(_KICAD),
         KC_8,    KC_9,    KC_A,    TO(_FUSIONS),
 		KC_C,    KC_D,    KC_E,    TO(_FUSIOND)
 	),
 
 	[_FUSIOND] = LAYOUT( /* Alternate layer */
 		_______, _______, FORBIT,  KC_BTN3,
-		_______, _______, _______, _______,
-		_______, _______, _______, _______,
-		_______, _______, _______, _______
+		_______, _______, _______, TO(_KICAD),
+		_______, _______, _______, TO(_FUSIONS),
+		_______, _______, _______, TO(_NORM)
 	),
 
 	[_FUSIONS] = LAYOUT( /* Alternate layer */
 		KC_X,    KC_P,    FORBIT,  KC_BTN3,
-		KC_C,    _______, _______, _______,
-		_______, _______, _______, _______,
-		_______, _______, _______, _______
+		KC_C,    _______, _______, TO(_KICAD),
+		_______, _______, _______, TO(_NORM),
+		_______, _______, _______, TO(_FUSIOND)
+	),
+
+    [_KICAD] = LAYOUT( /* Alternate layer */
+		KC_E,       KC_X,    KC_V,    _______,
+		C(S(KC_M)), KC_O,    KC_A,    TO(_NORM),
+		_______,    _______, _______, TO(_FUSIONS),
+		_______,    _______, _______, TO(_FUSIOND)
 	)
 };
 
@@ -50,13 +57,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 	// Basic example functions
 	switch (keycode) {
-		case HW:
-			if (record->event.pressed) {
-					SEND_STRING("Hello, world!");
-				} else {
-					SEND_STRING("Goodbye, cruel world!");
-				}
-			break;
 			case COPY:
 				if (record->event.pressed) {
 					tap_code16(LCTL(KC_C)); // Replace with tap_code16(LCMD(KC_C)) to enable for Mac
@@ -103,20 +103,20 @@ void matrix_scan_user(void) {
 	}*/
     if(IS_LAYER_ON(_FUSIOND) || IS_LAYER_ON(_FUSIOND)) {
 	    while (encoderValue < 0){
-		    tap_code(KC_WH_D);
+		    tap_code(KC_WH_U);
 	    	encoderValue++;
 	    }
 	    while (encoderValue > 0){
-		    tap_code(KC_WH_U);
+		    tap_code(KC_WH_D);
 		    encoderValue--;
 	    }
     } else {
     	    while (encoderValue < 0){
-		    tap_code(KC_VOLD);
+		    tap_code(KC_VOLU);
 	    	encoderValue++;
 	    }
 	    while (encoderValue > 0){
-		    tap_code(KC_VOLU);
+		    tap_code(KC_VOLD);
 		    encoderValue--;
          }
     }
