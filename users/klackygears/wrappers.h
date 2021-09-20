@@ -58,11 +58,13 @@ NOTE: If you do a search/replace
   //#define _______________DVORAK_L1___________________        KC_QUOT,              TD(TD_COMQUES),    TD(TD_DTEX),        KC_P, KC_Y
   #define _______________DVORAK_L1___________________        KC_QUOT,              KC_COMM,           KC_DOT,             KC_P, KC_Y
   #define _______________DVORAK_L2___________________        KC_A,                 KC_O,              KC_E,               KC_U, KC_I
+  #define _______________DVORAK_L3___________________        KC_SCLN,              KC_Q,              KC_J,               KC_K, KC_X
   #define _______________MACDVK_L3___________________        MT(MOD_LCTL,KC_SCLN), MT(MOD_LALT,KC_Q), MT(MOD_LGUI, KC_J), KC_K, KC_X
   #define _______________WINDVK_L3___________________        MT(MOD_LGUI,KC_SCLN), MT(MOD_LALT,KC_Q), MT(MOD_LCTL, KC_J), KC_K, KC_X
 
   #define _______________DVORAK_R1___________________        KC_F,       KC_G,       KC_C,              KC_R,              KC_L
   #define _______________DVORAK_R2___________________        KC_D,       KC_H,       KC_T,              KC_N,              KC_S
+  #define _______________DVORAK_R3___________________        KC_B,       KC_M,       KC_W,              KC_V,              KC_Z
   #define _______________MACDVK_R3___________________        KC_B,       KC_M,       MT(MOD_LGUI,KC_W), MT(MOD_LALT,KC_V), LT(_MDIA,KC_Z)
   #define _______________WINDVK_R3___________________        KC_B,       KC_M,       MT(MOD_LCTL,KC_W), MT(MOD_LALT,KC_V), LT(_MDIA,KC_Z)
 
@@ -83,19 +85,23 @@ NOTE: If you do a search/replace
 
   #define _________________COLEMAK_L1________________        KC_Q,    KC_W,    KC_F,    KC_P,    KC_G
   #define _________________COLEMAK_L2________________        KC_A,    KC_R,    KC_S,    KC_T,    KC_D
-  #define _________________COLEMAK_L3________________        MT(MOD_LGUI, KC_Z),    MT(MOD_LALT, KC_X),    MT(MOD_LCTL, KC_C),    KC_V,    KC_B
+  #define _________________COLEMAK_L3________________        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
+  #define _________________WINCMAK_L3________________        MT(MOD_LGUI, KC_Z),    MT(MOD_LALT, KC_X),    MT(MOD_LCTL, KC_C),    KC_V,    KC_B
 
   #define _________________COLEMAK_R1________________        KC_J,    KC_L,    KC_U,           KC_Y,        KC_SCLN
   #define _________________COLEMAK_R2________________        KC_H,    KC_N,    KC_E,           KC_I,        KC_O
-  #define _________________COLEMAK_R3________________        KC_K,    KC_M,    MT(MOD_LCTL, KC_COMM), MT(MOD_LALT, KC_DOT), LT(_MDIA, KC_SLASH)
+  #define _________________COLEMAK_R3________________        KC_K,    KC_M,    KC_COMM,        KC_DOT,      KC_SLASH
+  #define _________________WINCMAK_R3________________        KC_K,    KC_M,    MT(MOD_LCTL, KC_COMM), MT(MOD_LALT, KC_DOT), LT(_MDIA, KC_SLASH)
 
   #define _______________DVORAK_L1___________________        KC_QUOT,              KC_COMM,    KC_DOT,        KC_P, KC_Y
-  #define _______________DVORAK_L2___________________        KC_A,                 KC_O,              KC_E,               KC_U, KC_I
+  #define _______________DVORAK_L2___________________        KC_A,                 KC_O,       KC_E,          KC_U, KC_I
+  #define _______________DVORAK_L3___________________        KC_SCLN,              KC_Q,       KC_J,          KC_K, KC_X
   #define _______________MACDVK_L3___________________        MT(MOD_LCTL,KC_SCLN), MT(MOD_LALT,KC_Q), MT(MOD_LGUI, KC_J), KC_K, KC_X
   #define _______________WINDVK_L3___________________        MT(MOD_LGUI,KC_SCLN), MT(MOD_LALT,KC_Q), MT(MOD_LCTL, KC_J), KC_K, KC_X
 
   #define _______________DVORAK_R1___________________        KC_F,       KC_G,       KC_C,              KC_R,              KC_L
   #define _______________DVORAK_R2___________________        KC_D,       KC_H,       KC_T,              KC_N,              KC_S
+  #define _______________DVORAK_R3___________________        KC_B,       KC_M,       KC_W,              KC_V,              KC_Z
   #define _______________MACDVK_R3___________________        KC_B,       KC_M,       MT(MOD_LGUI,KC_W), MT(MOD_LALT,KC_V), LT(_MDIA,KC_Z)
   #define _______________WINDVK_R3___________________        KC_B,       KC_M,       MT(MOD_LCTL,KC_W), MT(MOD_LALT,KC_V), LT(_MDIA,KC_Z)
 #endif
@@ -138,9 +144,9 @@ NOTE: If you do a search/replace
 #define __________________MAC_THUMB_CLUSTER_V2______________ LT(_FUNC,KC_ENT), LT(_MNMB,KC_BSPC), MT(MOD_LSFT,KC_SPC), LT(_MNMB,KC_TAB), LT(_SYMB,KC_ENT), KC_RSFT
 
 #define ________MAC_THUMB_L______                            LT(_FUNC,KC_ENT), LT(_MNMB,KC_BSPC), MT(MOD_LSFT,KC_SPC)
-#define ________MAC_THUMB_R______                            LT(_MNMB,KC_TAB), LT(_SYMB,KC_ENT),  LT(_FUNC,KC_ENT)
+#define ________MAC_THUMB_R______                            LT(_MNMB,KC_TAB), LT(_SYMB,KC_ENT),  LT(_MDIA,KC_ENT)
 #define ________WIN_THUMB_L______                            LT(_FUNC,KC_ENT), LT(_NUMB,KC_BSPC), MT(MOD_LSFT,KC_SPC)
-#define ________WIN_THUMB_R______                            LT(_NUMB,KC_TAB), LT(_SYMB,KC_ENT),  LT(_FUNC,KC_ENT)
+#define ________WIN_THUMB_R______                            LT(_NUMB,KC_TAB), LT(_SYMB,KC_ENT),  LT(_MDIA,KC_ENT)
 
 
 
