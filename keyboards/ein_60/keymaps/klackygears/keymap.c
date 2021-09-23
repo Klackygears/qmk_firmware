@@ -25,19 +25,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  _______________DVORAK_L1___________________,   KC_MUTE,  _______________DVORAK_R1___________________, KC_BSPC,
       AU_TOG,  _______________DVORAK_L2___________________,             _______________DVORAK_R2___________________, RGB_TOG,
       CK_TOGG, _______________WINDVK_L3___________________,             _______________WINDVK_R3___________________, RGB_MOD,
-      KC_1,    KC_2,    KC_3,    ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______,    KC_1,    KC_2, KC_GAMER
+      KC_1,     KC_2,    KC_3,   ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, KC_1,  KC_2, KC_GAMER
     ),
     [_MACBASE] = LAYOUT_wrapper(
       KC_ESC,  _______________DVORAK_L1___________________,   _______,   _______________DVORAK_R1___________________, KC_BSPC,
       RGB_TOG, _______________DVORAK_L2___________________,              _______________DVORAK_R2___________________, RGB_TOG,
-      RGB_MOD, _______________MACDVK_L3___________________,              _______________MACDVK_R3___________________, RGB_MOD,
+      RGB_MOD, _______________DVORAK_L3___________________,              _______________DVORAK_R3___________________, RGB_MOD,
+      //RGB_MOD, _______________MACDVK_L3___________________,              _______________MACDVK_R3___________________, RGB_MOD,
       _______, _______, _______, ________MAC_THUMB_L______,   _______,   ________MAC_THUMB_R______, _______, _______, _______
     ),
     [_QWERTY] = LAYOUT_wrapper(
-      KC_ESC,  _________________COLEMAK_L1________________,    KC_ESC,   _________________QWERTY_R1_________________, KC_BSPC,
-      KC_CAPS, _________________COLEMAK_L2________________,              _________________QWERTY_R2_________________, KC_ENT,
-      KC_LSFT, _________________COLEMAK_L3________________,              _________________QWERTY_R3_________________, KC_RSFT,
+      KC_ESC,  _________________QWERTY_L1_________________,    KC_ESC,   _________________QWERTY_R1_________________, KC_BSPC,
+      KC_CAPS, _________________QWERTY_L1_________________,              _________________QWERTY_R2_________________, KC_ENT,
+      KC_LSFT, _________________QWERTY_L1_________________,              _________________QWERTY_R3_________________, KC_RSFT,
       KC_LCTL, KC_LGUI, KC_LALT, _______, MO(_MNMB), MO(_SYMB), KC_SPC, MO(_SYMB), MO(_MNMB), KC_RGUI,_______, MO(_MDIA), MO(_FUNC)
+    ),
+    [_COLBASE] = LAYOUT_wrapper(
+      KC_ESC,  _________________COLEMAK_L1________________,   KC_MUTE,  _________________COLEMAK_R1________________, KC_BSPC,
+      AU_TOG,  _________________COLEMAK_L2________________,             _________________COLEMAK_R2________________, RGB_TOG,
+      CK_TOGG, _________________COLEMAK_L3________________,             _________________COLEMAK_R3________________, RGB_MOD,
+      KC_WINBASE,  KC_2,  KC_3,  ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______,  KC_1,    KC_2,   KC_GAMER
     ),
 
     //Borderlands
@@ -52,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _________________PUNC_L1_ALT_______________,    _______,  _________________PUNC_R1___________________, _______,
       _______, _________________PUNC_L3___________________,              _________________PUNC_R2___________________, _______,
       RGB_MOD, _________________PUNC_L3_ALT_______________,              _________________PUNC_R3___________________, _______,
-      _______, _______, KC_NLCK, KC_SLCK, KC_DEL,  _______,    _______,  _______, KC_CAPS, _______, _______, _______, _______
+      _______, _______, KC_NLCK, KC_SLCK, KC_DEL,  _______,     _______,  _______, KC_CAPS, BUZY,    _______, _______, _______
     ),
 
     [_FUNC] = LAYOUT_wrapper(
@@ -63,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MNMB] = LAYOUT_wrapper(
-      _______, _________________MACNAV_L1_________________,    _______,  _________________NUMB_R1___________________, _______,
+      _______, _________________MACNAV_L1_________________,    _______,  _________________NUMB_R1___________________, KC_WINBASE,
       _______, _________________MACNAV_L2_________________,              _________________NUMB_R2___________________, _______,
       RGB_MOD, _________________MACNAV_L3_________________,              _________________NUMB_R3_MAC_______________, _______,
       _______, _______, _______, _______, _______, _______,    _______,  _______, RSFT_T(KC_ENT), KC_RSFT, _______, _______, _______
@@ -71,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_NUMB] = LAYOUT_wrapper(
-      _______, _________________WINNAV_L1_________________,    _______,  _________________NUMB_R1___________________, _______,
+      _______, _________________WINNAV_L1_________________,    _______,  _________________NUMB_R1___________________, KC_WINBASE,
       _______, _________________WINNAV_L2_________________,              _________________NUMB_R2___________________, _______,
       RGB_MOD, _________________WINNAV_L3_________________,              _________________NUMB_R3_WIN_______________, _______,
       _______, _______, _______, TO(_WINBASE), _______, _______,    _______,  _______, RSFT_T(KC_ENT), KC_RSFT, _______, _______, _______
@@ -87,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-#ifdef OLED_ENABLE
+#ifdef OLED_DRIVER_ENABLE
 
     char wpm_str[10];
 
@@ -131,6 +138,8 @@ static void render_status(void) {
             // Or use the write_ln shortcut over adding '\n' to the end of your string
             oled_write_ln_P(PSTR("Undefined"), false);
     }
+    //oled_write_ln_P(PSTR(""), false);
+    //render_ein60_logo();
 
     // Host Keyboard LED Status
     led_t led_state = host_keyboard_led_state();
@@ -170,7 +179,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             tap_code(KC_UP);
         }
     }
-    return true;
+  return true;
 }
 
 
