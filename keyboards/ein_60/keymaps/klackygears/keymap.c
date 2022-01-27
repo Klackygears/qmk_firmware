@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  _______________DVORAK_L1___________________,   KC_MUTE,  _______________DVORAK_R1___________________, KC_BSPC,
       AU_TOG,  _______________DVORAK_L2___________________,             _______________DVORAK_R2___________________, RGB_TOG,
       CK_TOGG, _______________WINDVK_L3___________________,             _______________WINDVK_R3___________________, RGB_MOD,
-      KC_1,     KC_2,    KC_3,   ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, KC_1,  KC_2, KC_GAMER
+      KC_1,     KC_2,    KC_3,   ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, KC_1,  KC_GAMR2,  KC_GAMER
     ),
     [_MACBASE] = LAYOUT_wrapper(
       KC_ESC,  _______________DVORAK_L1___________________,   _______,   _______________DVORAK_R1___________________, KC_BSPC,
@@ -53,6 +53,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,  KC_V,    KC_A,    KC_S,    KC_D,    KC_2,                 _________________RGB_2_____________________, _______,
       KC_C,    KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,                 _________________MEDIA_____________________, _______,
       KC_Z,    KC_X,    KC_K,    KC_LCTL, KC_LSFT, KC_SPC,   KC_SPC,     KC_F12,  KC_P,  KC_LEFT,  KC_UP,   KC_DOWN,  KC_RIGHT
+    ),
+
+    //Outriders
+    [_GAMR2] = LAYOUT_wrapper(
+      KC_R,    KC_R,    KC_3,    KC_W,    KC_E,    KC_4,      KC_ESC,    KC_V,    KC_H,    _______, _______, _______, KC_WINBASE,
+      KC_H,    KC_F,    KC_A,    KC_S,    KC_D,    KC_5,                 _______, KC_Y,    _______, _______, _______, _______,
+      KC_TAB,  KC_I,    KC_2,    KC_Q,    KC_1,    KC_6,                 _________________MEDIA_____________________, _______,
+      KC_M,    KC_X,    KC_G,    KC_SPC,  KC_LSFT, KC_LCTL,   KC_Z,      KC_F12,  KC_P,  KC_LEFT,  KC_UP,   KC_DOWN,  KC_RIGHT
     ),
 
     [_SYMB] = LAYOUT_wrapper(
