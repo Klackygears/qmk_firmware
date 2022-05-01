@@ -8,7 +8,10 @@
 #if defined(TAP_DANCE_ENABLE)
 #    define PERMISSIVE_HOLD
 #    define PREVENT_STUCK_MODIFIERS
-#    define TAPPING_TERM 150
+    #if defined(TAPPING_TERM)
+        #undef TAPPING_TERM
+        #define TAPPING_TERM 150
+    #endif
 #    define IGNORE_MOD_TAP_INTERRUPT
 #endif  // tap dance settup
 

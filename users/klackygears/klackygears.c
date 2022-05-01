@@ -2,6 +2,7 @@
 
 bool is_busy_toggled = false;
 uint16_t repeat_press_timer;
+uint16_t repeat_maus_timer;
 
 #ifdef AUDIO_ENABLE
   float imperial[][2] = SONG(IMPERIAL_MARCH);
@@ -137,7 +138,41 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            }
             break;
 
-           case PFWD:
+        case SPAM:
+            #ifdef MOUSEKEY_ENABLE
+           {
+            static uint16_t tap_hold_timer;
+            if (record->event.pressed) {
+                #ifdef AUDIO_ENABLE
+                 PLAY_SONG(ztreasure);
+                #endif
+                tap_hold_timer = timer_read();
+                register_code(KC_BTN1);
+            } else {
+                unregister_code(KC_BTN1);
+                // if held for less than 300ms (0.3 seconds)
+                // then toggle auto tap
+                if (timer_elapsed(tap_hold_timer) < 300) {
+                    is_busy_toggled ^= true; // toggles state
+                    repeat_maus_timer = timer_read() + 1000000;
+                } else {
+                    is_busy_toggled = false;
+                }
+            }
+            return false;
+           }
+            #else
+
+            if (record->event.pressed) {
+                register_code(KC_S);
+            }
+
+            #endif
+
+            break;
+
+
+        case PFWD:
            {
             static uint16_t run_timer;
             if (record->event.pressed) {
@@ -172,5 +207,10 @@ void matrix_scan_user(void) {
     if (is_busy_toggled && timer_elapsed(repeat_press_timer) > 500) {
         repeat_press_timer = timer_read() + rand() % 30;
         tap_code(KC_UP);
+    }
+
+    if (is_busy_toggled && timer_elapsed(repeat_maus_timer) > 500) {
+        repeat_maus_timer = timer_read() + 1000000;
+        tap_code(KC_BTN1);
     }
 }

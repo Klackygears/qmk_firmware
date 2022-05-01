@@ -46,6 +46,7 @@ enum userspace_custom_keycodes {
   PFWD,
   PBWD,
   SHRUG,
+  SPAM,
   //DYNAMIC_MACRO_RANGE,
   SAFE_RANGE_KEYMAP
 };

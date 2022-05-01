@@ -47,12 +47,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_WINBASE,  KC_2,  KC_3,  ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______,  KC_1,    KC_2,   KC_GAMER
     ),
 
-    //Borderlands
+    //1st Game Layer
     [_GAMER] = LAYOUT_wrapper(
-      KC_ESC,  KC_R,    KC_G,    KC_W,    KC_E,    KC_1,     _______,    _________________RGB_1_____________________, KC_WINBASE,
-      KC_TAB,  KC_V,    KC_A,    KC_S,    KC_D,    KC_2,                 _________________RGB_2_____________________, _______,
-      KC_C,    KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,                 _________________MEDIA_____________________, _______,
-      KC_Z,    KC_X,    KC_K,    KC_LCTL, KC_LSFT, KC_SPC,   KC_SPC,     KC_F12,  KC_P,  KC_LEFT,  KC_UP,   KC_DOWN,  KC_RIGHT
+      KC_ESC,  KC_R,    KC_G,    KC_W,    KC_E,    KC_1,     _______,    KC_T,    KC_Z,    _______, _______, KC_UP,   KC_WINBASE,
+      KC_TAB,  KC_V,    KC_A,    KC_S,    KC_D,    KC_2,                 KC_P,    KC_LBRC, KC_RBRC, KC_LEFT, KC_DOWN, KC_RIGHT,
+      KC_C,    KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,                 _________________MEDIA_____________________, SPAM,
+      KC_Z,    KC_X,    KC_C,    KC_LCTL, KC_LSFT, KC_SPC,   KC_F3,      KC_F5,   KC_Q,   KC_C,     KC_ENT,   KC_DOWN,  KC_RIGHT
     ),
 
     //Outriders
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_R,    KC_R,    KC_3,    KC_W,    KC_E,    KC_4,      KC_ESC,    KC_V,    KC_H,    _______, _______, _______, KC_WINBASE,
       KC_H,    KC_F,    KC_A,    KC_S,    KC_D,    KC_5,                 _______, KC_Y,    _______, _______, _______, _______,
       KC_TAB,  KC_I,    KC_2,    KC_Q,    KC_1,    KC_6,                 _________________MEDIA_____________________, _______,
-      KC_M,    KC_X,    KC_G,    KC_SPC,  KC_LSFT, KC_LCTL,   KC_Z,      KC_F12,  KC_P,  KC_LEFT,  KC_UP,   KC_DOWN,  KC_RIGHT
+      KC_M,    KC_X,    KC_G,    KC_SPC,  KC_LSFT, KC_LCTL,   KC_Z,      KC_F12,  KC_P,  KC_Y,      KC_UP,   KC_DOWN,  KC_RIGHT
     ),
 
     [_SYMB] = LAYOUT_wrapper(
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _____________FUNC_L1_______________________,    _______,  _______, _____________FUNC_1_______________, _______,
       _______, ________MAC_MISSION_CTRL__________, LGUI(KC_L),           _______, _____________FUNC_2_______________, _______,
       RGB_MOD, _____________FUNC_L3_______________________,              _______, _____________FUNC_3_______________, _______,
-      _______, _______, _______, _______, _______, _______,    _______,  _______, KC_CAPS, _______, _______, _______, _______
+      _______, _______, _______, _______, KC_LSCR, _______,    _______,  _______, KC_CAPS, _______, _______, _______, _______
     ),
 
     [_MNMB] = LAYOUT_wrapper(
