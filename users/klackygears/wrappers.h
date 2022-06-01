@@ -194,6 +194,9 @@ NOTE: If you do a search/replace
   #define _________________NUMB_R3_MAC_______________       KC_DOT,        KC_1, MT(MOD_LGUI,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LCTL,KC_0)
   #define _________________NUMB_R3_WIN_______________       KC_DOT,        KC_1, MT(MOD_LCTL,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LGUI,KC_0)
   #define _________________NUMB_R4___________________       KC_LSFT,       KC_0, KC_0,              _______,           _______
+  #define _________________NUMB_R1_Game______________       KC_B,          KC_7, KC_8,              KC_9,              KC_COLN
+  #define _________________NUMB_R2_Game______________       KC_N,          KC_4, KC_5,              KC_6,              C_S_T(KC_SCLN)
+  #define _________________NUMB_R3_Game______________       KC_0,          KC_1, KC_2,              KC_3,              KC_0
 
 
 

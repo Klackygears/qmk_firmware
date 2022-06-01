@@ -40,6 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LSFT, _________________QWERTY_L1_________________,              _________________QWERTY_R3_________________, KC_RSFT,
       KC_LCTL, KC_LGUI, KC_LALT, _______, MO(_MNMB), MO(_SYMB), KC_SPC, MO(_SYMB), MO(_MNMB), KC_RGUI,_______, MO(_MDIA), MO(_FUNC)
     ),
+
     [_COLBASE] = LAYOUT_wrapper(
       KC_ESC,  _________________COLEMAK_L1________________,   KC_MUTE,  _________________COLEMAK_R1________________, KC_BSPC,
       AU_TOG,  _________________COLEMAK_L2________________,             _________________COLEMAK_R2________________, RGB_TOG,
@@ -49,32 +50,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     //1st Game Layer
     [_GAMER] = LAYOUT_wrapper(
-      KC_ESC,  KC_R,    KC_G,    KC_W,    KC_E,    KC_1,     _______,    KC_T,    KC_Z,    _______, _______, KC_UP,   KC_WINBASE,
-      KC_TAB,  KC_V,    KC_A,    KC_S,    KC_D,    KC_2,                 KC_P,    KC_LBRC, KC_RBRC, KC_LEFT, KC_DOWN, KC_RIGHT,
-      KC_C,    KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,                 _________________MEDIA_____________________, SPAM,
-      KC_Z,    KC_X,    KC_C,    KC_LCTL, KC_LSFT, KC_SPC,   KC_F3,      KC_F5,   KC_Q,   KC_C,     KC_ENT,   KC_DOWN,  KC_RIGHT
+      KC_ESC,     KC_R,    KC_G,    KC_W,    KC_E,    KC_1,     _______,    KC_T,    KC_Z,    _______, _______, KC_UP,   KC_WINBASE,
+      MO(_GAMR2), KC_V,    KC_A,    KC_S,    KC_D,    KC_2,                 KC_P,    KC_LBRC, KC_RBRC, KC_LEFT, KC_DOWN, KC_RIGHT,
+      KC_C,       KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,                 _________________MEDIA_____________________, SPAM,
+      KC_Z,       KC_X,    KC_C,    KC_LCTL, KC_LSFT, KC_SPC,   KC_F3,      KC_F5,   KC_Q,   KC_C,     KC_ENT,   KC_DOWN,  KC_RIGHT
     ),
 
-    //Outriders
+    //2nd Game Layer
     [_GAMR2] = LAYOUT_wrapper(
-      KC_R,    KC_R,    KC_3,    KC_W,    KC_E,    KC_4,      KC_ESC,    KC_V,    KC_H,    _______, _______, _______, KC_WINBASE,
-      KC_H,    KC_F,    KC_A,    KC_S,    KC_D,    KC_5,                 _______, KC_Y,    _______, _______, _______, _______,
-      KC_TAB,  KC_I,    KC_2,    KC_Q,    KC_1,    KC_6,                 _________________MEDIA_____________________, _______,
-      KC_M,    KC_X,    KC_G,    KC_SPC,  KC_LSFT, KC_LCTL,   KC_Z,      KC_F12,  KC_P,  KC_Y,      KC_UP,   KC_DOWN,  KC_RIGHT
+      KC_R,    _________________NUMB_R1_Game______________,   KC_ESC,    KC_T,    KC_Z,    _______, _______, KC_UP,   KC_WINBASE,
+      KC_H,    _________________NUMB_R2_Game______________,              KC_P,    KC_LBRC, KC_RBRC, KC_LEFT, KC_DOWN, KC_RIGHT,
+      KC_TAB,  _________________NUMB_R3_Game______________,              _________________MEDIA_____________________, _______,
+      KC_Z,     KC_X,    KC_C,    KC_LCTL, KC_LSFT, KC_SPC,   KC_F3,     KC_F5,   KC_Q,   KC_C,     KC_ENT,   KC_DOWN,  KC_RIGHT
     ),
 
     [_SYMB] = LAYOUT_wrapper(
       _______, _________________PUNC_L1_ALT_______________,    _______,  _________________PUNC_R1___________________, _______,
       _______, _________________PUNC_L3___________________,              _________________PUNC_R2___________________, _______,
       RGB_MOD, _________________PUNC_L3_ALT_______________,              _________________PUNC_R3___________________, _______,
-      _______, _______, KC_NLCK, KC_SLCK, KC_DEL,  _______,     _______,  _______, KC_CAPS, BUZY,    _______, _______, _______
+      _______, _______, KC_NLCK, KC_SLCK, KC_DEL,  _______,    _______,  _______, KC_CAPS, BUZY,    _______, _______, _______
     ),
 
     [_FUNC] = LAYOUT_wrapper(
       _______, _____________FUNC_L1_______________________,    _______,  _______, _____________FUNC_1_______________, _______,
       _______, ________MAC_MISSION_CTRL__________, LGUI(KC_L),           _______, _____________FUNC_2_______________, _______,
       RGB_MOD, _____________FUNC_L3_______________________,              _______, _____________FUNC_3_______________, _______,
-      _______, _______, _______, _______, KC_LSCR, _______,    _______,  _______, KC_CAPS, _______, _______, _______, _______
+      _______, KC_PSCR, _______, _______, KC_LSCR, _______,    _______,  _______, KC_CAPS, _______, _______, _______, _______
     ),
 
     [_MNMB] = LAYOUT_wrapper(
