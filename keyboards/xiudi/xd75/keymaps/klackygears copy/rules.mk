@@ -14,15 +14,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 BOOTLOADER = qmk-dfu
-#EXTRAFLAGS += -flto
-LTO_ENABLE = yes
+EXTRAFLAGS += -flto
 
-BOOTMAGIC_ENABLE = yes
+BOOTMAGIC_ENABLE = lite
 EXTRAKEY_ENABLE = yes
 TAP_DANCE_ENABLE = yes
-
-RGBLIGHT_ENABLE = yes
-RGBLIGHT_LAYERS = yes
-
+RGBLIGHT_ENABLE = no
 BACKLIGHT_ENABLE = no
-COMBO_ENABLE = yes

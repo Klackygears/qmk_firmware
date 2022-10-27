@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_GAMER] = LAYOUT_wrapper(
       KC_ESC,     KC_R,    KC_G,    KC_W,    KC_E,    KC_1,     _______,    KC_T,    KC_Z,    _______, _______, KC_UP,   KC_WINBASE,
       MO(_GAMR2), KC_V,    KC_A,    KC_S,    KC_D,    KC_2,                 KC_P,    KC_LBRC, KC_RBRC, KC_LEFT, KC_DOWN, KC_RIGHT,
-      KC_C,       KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,                 _________________MEDIA_____________________, SPAM,
+      KC_C,       KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,                 _________________MEDIA_____________________, _______,
       KC_Z,       KC_X,    KC_C,    KC_LCTL, KC_LSFT, KC_SPC,   KC_F3,      KC_F5,   KC_Q,   KC_C,     KC_ENT,   KC_DOWN,  KC_RIGHT
     ),
 

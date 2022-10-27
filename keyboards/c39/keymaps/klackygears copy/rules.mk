@@ -43,14 +43,13 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 #   Atmel DFU loader 4096
 #   LUFA bootloader  4096
 #   USBaspLoader     2048
-# OPT_DEFS += -DBOOTLOADER_SIZE=4096
-BOOTLOADER = rp2040
-CONVERT_TO=kb2040
-# BOOTLOADER = caterina
+OPT_DEFS += -DBOOTLOADER_SIZE=4096
+
+BOOTLOADER = caterina
 # Build Options
 #   change yes to no to disable
 #
-# BOOTMAGIC_ENABLE = yes       # Virtual DIP switch configuration(+1000)
+BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE = no       # Mouse keys(+4700)
 EXTRAKEY_ENABLE = yes       # Audio control and System control(+450)
 CONSOLE_ENABLE = no        # Console for debug(+400)
@@ -69,7 +68,7 @@ UNICODEMAP_ENABLE = no
 VELOCIKEY_ENABLE = yes
 #RGBLIGHT_RECONFIG_H = yes
 
-RGBLIGHT_ENABLE = yes
+#RGBLIGHT_ENABLE = no
 
 #    POST_CONFIG_H += $(QUANTUM_DIR)/rgblight_post_config.h
 #    OPT_DEFS += -DRGBLIGHT_ENABLE

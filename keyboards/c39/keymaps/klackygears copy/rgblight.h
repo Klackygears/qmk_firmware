@@ -140,7 +140,7 @@ enum RGBLIGHT_EFFECT_MODE {
 #include "ws2812.h"
 #endif
 #include "color.h"
-#include "rgblight_list.h"
+//#include "rgblight_list.h"
 
 #if defined(__AVR__)
     #include <avr/pgmspace.h>

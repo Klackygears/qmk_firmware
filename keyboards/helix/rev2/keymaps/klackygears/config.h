@@ -28,6 +28,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define IGNORE_MOD_TAP_INTERRUPT
 #undef TAPPING_FORCE_HOLD
 
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+#define NO_MUSIC_MODE
 
 //#define RGBLIGHT_EFFECT_BREATHING
-#define RGBLIGHT_EFFECT_KNIGHT
+//#define RGBLIGHT_EFFECT_KNIGHT
