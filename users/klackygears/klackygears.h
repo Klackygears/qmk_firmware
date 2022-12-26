@@ -8,8 +8,10 @@
   #include "tap_dances.h"
 #endif // TAP_DANCE_ENABLE
 
+
 enum layer_number {
     _WINBASE = 0,
+    _COLBASE,
     _MACBASE,
     _QWERTY,
     _GAMER,
@@ -28,6 +30,7 @@ enum userspace_custom_keycodes {
   KC_MACBASE = SAFE_RANGE,
   KC_QWERTY,
   KC_WINBASE,
+  KC_COLBASE,
   KC_GAMER,
   KC_GAMR1,
   KC_GAMR2,
@@ -39,7 +42,11 @@ enum userspace_custom_keycodes {
   RGBRST,
   MAKEK,
   MAKEKF,
+  BUZY,
+  PFWD,
+  PBWD,
   SHRUG,
+  SPAM,
   //DYNAMIC_MACRO_RANGE,
   SAFE_RANGE_KEYMAP
 };
