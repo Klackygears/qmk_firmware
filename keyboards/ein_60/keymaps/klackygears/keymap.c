@@ -50,10 +50,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     //1st Game Layer
     [_GAMER] = LAYOUT_wrapper(
-      KC_ESC,     KC_R,    KC_G,    KC_W,    KC_E,    KC_1,     _______,    KC_T,    KC_Z,    _______, _______, KC_UP,   KC_WINBASE,
-      MO(_GAMR2), KC_V,    KC_A,    KC_S,    KC_D,    KC_2,                 KC_P,    KC_LBRC, KC_RBRC, KC_LEFT, KC_DOWN, KC_RIGHT,
-      KC_C,       KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,                 _________________MEDIA_____________________, _______,
-      KC_Z,       KC_X,    KC_C,    KC_LCTL, KC_LSFT, KC_SPC,   KC_F3,      KC_F5,   KC_Q,   KC_C,     KC_ENT,   KC_DOWN,  KC_RIGHT
+      KC_T,    KC_R,      KC_Q,    KC_W,    KC_E,    KC_R,     _______,    KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,              KC_BSPC,
+      KC_G,    KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,                 KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,           KC_ENT,
+      KC_B,    KC_LSHIFT, KC_Z,    KC_X,    KC_C,    KC_V,                 KC_N,    KC_M,    KC_COMM, KC_DOT,   LT(_MDIA,KC_SLSH), KC_QUOT,
+      KC_ESC,  KC_F5,     KC_LCTL, KC_LALT, KC_LSFT, KC_SPC,   MO(_GAMR1), KC_F3,   KC_F2,   _______, _______,  _______,           KC_WINBASE
+    ),
+
+    [_GAMR1] = LAYOUT_wrapper(
+      KC_ESC,  _______,  KC_9,    KC_8,    KC_7,    _______,  _______,    _______, _______,  _______, _______, _______, _______,
+      _______, _______,  KC_6,    KC_5,    KC_4,    _______,              _______, _______,  _______, _______, _______, _______,
+      _______, _______,  KC_3,    KC_2,    KC_1,    KC_0,                 _______, _______,  _______, _______, KC_UP,   _______,
+      _______, _______,  _______, _______, _______, _______,  _______,    _______, _______,  _______, KC_LEFT, KC_DOWN, KC_RIGHT
     ),
 
     //2nd Game Layer

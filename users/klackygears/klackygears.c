@@ -114,7 +114,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-        case BUZY:
+/*         case BUZY:
            {
             static uint16_t tap_hold_timer;
             if (record->event.pressed) {
@@ -136,7 +136,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
            }
-            break;
+            break; */
+
+        case BUZY:
+           {
+            static uint16_t run_timer;
+            if (record->event.pressed) {
+                run_timer = timer_read();
+                register_code(KC_DOWN);
+              } else {
+                if (timer_elapsed(run_timer) > 1000) {
+                } else {
+                    unregister_code(KC_DOWN);
+                }
+              }
+              return false;
+           }
+              break;
 
         case SPAM:
             #ifdef MOUSEKEY_ENABLE
