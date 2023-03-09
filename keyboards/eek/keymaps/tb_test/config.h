@@ -1,0 +1,1 @@
+#define PMW33XX_CS_PIN  B4
