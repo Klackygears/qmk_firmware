@@ -25,27 +25,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  _______________DVORAK_L1___________________,   KC_MUTE,  _______________DVORAK_R1___________________, KC_BSPC,
       AU_TOGG, _______________DVORAK_L2___________________,             _______________DVORAK_R2___________________, RGB_TOG,
       CK_TOGG, _______________WINDVK_L3___________________,             _______________WINDVK_R3___________________, RGB_MOD,
-      KC_1,    KC_2,    KC_3,    ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______,    KC_1,    KC_2, KC_GAMER
+      KC_1,     KC_2,    KC_3,   ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, KC_1,  KC_GAMR2,  KC_GAMER
     ),
     [_MACBASE] = LAYOUT_wrapper(
       KC_ESC,  _______________DVORAK_L1___________________,   _______,   _______________DVORAK_R1___________________, KC_BSPC,
       RGB_TOG, _______________DVORAK_L2___________________,              _______________DVORAK_R2___________________, RGB_TOG,
-      RGB_MOD, _______________MACDVK_L3___________________,              _______________MACDVK_R3___________________, RGB_MOD,
+      RGB_MOD, _______________DVORAK_L3___________________,              _______________DVORAK_R3___________________, RGB_MOD,
+      //RGB_MOD, _______________MACDVK_L3___________________,              _______________MACDVK_R3___________________, RGB_MOD,
       _______, _______, _______, ________MAC_THUMB_L______,   _______,   ________MAC_THUMB_R______, _______, _______, _______
     ),
     [_QWERTY] = LAYOUT_wrapper(
-      KC_ESC,  _________________COLEMAK_L1________________,    KC_ESC,   _________________QWERTY_R1_________________, KC_BSPC,
-      KC_CAPS, _________________COLEMAK_L2________________,              _________________QWERTY_R2_________________, KC_ENT,
-      KC_LSFT, _________________COLEMAK_L3________________,              _________________QWERTY_R3_________________, KC_RSFT,
+      KC_ESC,  _________________QWERTY_L1_________________,    KC_ESC,   _________________QWERTY_R1_________________, KC_BSPC,
+      KC_CAPS, _________________QWERTY_L1_________________,              _________________QWERTY_R2_________________, KC_ENT,
+      KC_LSFT, _________________QWERTY_L1_________________,              _________________QWERTY_R3_________________, KC_RSFT,
       KC_LCTL, KC_LGUI, KC_LALT, _______, MO(_MNMB), MO(_SYMB), KC_SPC, MO(_SYMB), MO(_MNMB), KC_RGUI,_______, MO(_MDIA), MO(_FUNC)
     ),
 
-    //Borderlands
+    [_COLBASE] = LAYOUT_wrapper(
+      KC_ESC,  _________________COLEMAK_L1________________,   KC_MUTE,  _________________COLEMAK_R1________________, KC_BSPC,
+      AU_TOG,  _________________COLEMAK_L2________________,             _________________COLEMAK_R2________________, RGB_TOG,
+      CK_TOGG, _________________COLEMAK_L3________________,             _________________COLEMAK_R3________________, RGB_MOD,
+      KC_WINBASE,  KC_2,  KC_3,  ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______,  KC_1,    KC_2,   KC_GAMER
+    ),
+
+    //1st Game Layer
     [_GAMER] = LAYOUT_wrapper(
-      KC_ESC,  KC_R,    KC_G,    KC_W,    KC_E,    KC_1,     _______,    _________________RGB_1_____________________, KC_WINBASE,
-      KC_TAB,  KC_V,    KC_A,    KC_S,    KC_D,    KC_2,                 _________________RGB_2_____________________, _______,
-      KC_C,    KC_I,    KC_F,    KC_Q,    KC_4,    KC_3,                 _________________MEDIA_____________________, _______,
-      KC_Z,    KC_X,    KC_K,    KC_LCTL, KC_LSFT, KC_SPC,   KC_SPC,     KC_F12,  KC_P,  KC_LEFT,  KC_UP,   KC_DOWN,  KC_RIGHT
+      KC_T,    KC_R,      KC_Q,    KC_W,    KC_E,    KC_R,     _______,    KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,              KC_BSPC,
+      KC_G,    KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,                 KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,           KC_ENT,
+      KC_B,    KC_LSHIFT, KC_Z,    KC_X,    KC_C,    KC_V,                 KC_N,    KC_M,    KC_COMM, KC_DOT,   LT(_MDIA,KC_SLSH), KC_QUOT,
+      KC_ESC,  KC_F5,     KC_LCTL, KC_LALT, KC_LSFT, KC_SPC,   MO(_GAMR1), KC_F3,   KC_F2,   _______, _______,  _______,           KC_WINBASE
+    ),
+
+    [_GAMR1] = LAYOUT_wrapper(
+      KC_ESC,  _______,  KC_9,    KC_8,    KC_7,    _______,  _______,    _______, _______,  _______, _______, _______, _______,
+      _______, _______,  KC_6,    KC_5,    KC_4,    _______,              _______, _______,  _______, _______, _______, _______,
+      _______, _______,  KC_3,    KC_2,    KC_1,    KC_0,                 _______, _______,  _______, _______, KC_UP,   _______,
+      _______, _______,  _______, _______, _______, _______,  _______,    _______, _______,  _______, KC_LEFT, KC_DOWN, KC_RIGHT
+    ),
+
+    //2nd Game Layer
+    [_GAMR2] = LAYOUT_wrapper(
+      KC_R,    _________________NUMB_R1_Game______________,   KC_ESC,    KC_T,    KC_Z,    _______, _______, KC_UP,   KC_WINBASE,
+      KC_H,    _________________NUMB_R2_Game______________,              KC_P,    KC_LBRC, KC_RBRC, KC_LEFT, KC_DOWN, KC_RIGHT,
+      KC_TAB,  _________________NUMB_R3_Game______________,              _________________MEDIA_____________________, _______,
+      KC_Z,     KC_X,    KC_C,    KC_LCTL, KC_LSFT, KC_SPC,   KC_F3,     KC_F5,   KC_Q,   KC_C,     KC_ENT,   KC_DOWN,  KC_RIGHT
     ),
 
     [_SYMB] = LAYOUT_wrapper(
@@ -59,11 +82,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _____________FUNC_L1_______________________,    _______,  _______, _____________FUNC_1_______________, _______,
       _______, ________MAC_MISSION_CTRL__________, LGUI(KC_L),           _______, _____________FUNC_2_______________, _______,
       RGB_MOD, _____________FUNC_L3_______________________,              _______, _____________FUNC_3_______________, _______,
-      _______, _______, _______, _______, _______, _______,    _______,  _______, KC_CAPS, _______, _______, _______, _______
+      _______, KC_PSCR, _______, _______, KC_LSCR, _______,    _______,  _______, KC_CAPS, _______, _______, _______, _______
     ),
 
     [_MNMB] = LAYOUT_wrapper(
-      _______, _________________MACNAV_L1_________________,    _______,  _________________NUMB_R1___________________, _______,
+      _______, _________________MACNAV_L1_________________,    _______,  _________________NUMB_R1___________________, KC_WINBASE,
       _______, _________________MACNAV_L2_________________,              _________________NUMB_R2___________________, _______,
       RGB_MOD, _________________MACNAV_L3_________________,              _________________NUMB_R3_MAC_______________, _______,
       _______, _______, _______, _______, _______, _______,    _______,  _______, RSFT_T(KC_ENT), KC_RSFT, _______, _______, _______
@@ -71,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_NUMB] = LAYOUT_wrapper(
-      _______, _________________WINNAV_L1_________________,    _______,  _________________NUMB_R1___________________, _______,
+      _______, _________________WINNAV_L1_________________,    _______,  _________________NUMB_R1___________________, KC_WINBASE,
       _______, _________________WINNAV_L2_________________,              _________________NUMB_R2___________________, _______,
       RGB_MOD, _________________WINNAV_L3_________________,              _________________NUMB_R3_WIN_______________, _______,
       _______, _______, _______, TO(_WINBASE), _______, _______,    _______,  _______, RSFT_T(KC_ENT), KC_RSFT, _______, _______, _______
@@ -87,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-#ifdef OLED_ENABLE
+#ifdef OLED_DRIVER_ENABLE
 
     char wpm_str[10];
 
@@ -131,6 +154,8 @@ static void render_status(void) {
             // Or use the write_ln shortcut over adding '\n' to the end of your string
             oled_write_ln_P(PSTR("Undefined"), false);
     }
+    //oled_write_ln_P(PSTR(""), false);
+    //render_ein60_logo();
 
     // Host Keyboard LED Status
     led_t led_state = host_keyboard_led_state();
@@ -171,5 +196,5 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             tap_code(KC_UP);
         }
     }
-    return true;
+  return true;
 }

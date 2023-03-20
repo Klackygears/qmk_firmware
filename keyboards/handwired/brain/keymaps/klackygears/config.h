@@ -39,3 +39,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //   #define RGBLIGHT_EFFECT_ALTERNATING
 #define RGBLIGHT_EFFECT_TWINKLE
 #define RGBLIGHT_EFFECT_TWINKLE_PROBABILITY 1 / 127
+#define TAPPING_TERM_PER_KEY
