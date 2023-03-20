@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32a
+
+# Bootloader selection
+BOOTLOADER = bootloadhid
+
 # Build Options
 #   change yes to no to disable
 #
@@ -12,4 +18,5 @@ AUDIO_ENABLE = no      # Audio output
 RGBLIGHT_ENABLE = yes  # Enable WS2812 RGB underlight. 
 WS2812_DRIVER = i2c
 
+LAYOUTS = planck_mit
 LAYOUTS_HAS_RGB = no

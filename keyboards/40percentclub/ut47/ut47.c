@@ -17,7 +17,7 @@
 #ifdef LED_ENABLE
   #include "uart.h"
 
-void matrix_init_kb(void) {
+void matrix_init_kb() {
   uart_init(9600);
 }
 #endif

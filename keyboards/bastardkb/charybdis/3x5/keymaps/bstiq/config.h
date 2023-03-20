@@ -43,7 +43,7 @@
  *
  * See docs.qmk.fm/using-qmk/software-features/tap_hold#tapping-force-hold
  */
-#define QUICK_TAP_TERM 0
+#define TAPPING_FORCE_HOLD
 
 /*
  * Tap-or-Hold decision modes.
@@ -153,17 +153,14 @@
 
 // Rainbow swirl as startup mode.
 #    define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
-#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
+#    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
 
 // Slow swirl at startup.
-#    undef RGB_MATRIX_DEFAULT_SPD
-#    define RGB_MATRIX_DEFAULT_SPD 32
+#    define RGB_MATRIX_STARTUP_SPD 32
 
 // Startup values.
-#    undef RGB_MATRIX_DEFAULT_HUE
-#    define RGB_MATRIX_DEFAULT_HUE 0
-#    undef RGB_MATRIX_DEFAULT_SAT
-#    define RGB_MATRIX_DEFAULT_SAT 255
-#    undef RGB_MATRIX_DEFAULT_VAL
-#    define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#    define RGB_MATRIX_STARTUP_HUE 0
+#    define RGB_MATRIX_STARTUP_SAT 255
+#    define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#    define RGB_MATRIX_STARTUP_HSV RGB_MATRIX_STARTUP_HUE, RGB_MATRIX_STARTUP_SAT, RGB_MATRIX_STARTUP_VAL
 #endif // RGB_MATRIX_ENABLE

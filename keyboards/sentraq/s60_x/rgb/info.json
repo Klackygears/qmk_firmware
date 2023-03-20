@@ -1,9 +1,3 @@
 {
-    "keyboard_name": "S60-X-RGB",
-    "backlight": {
-        "pin": "B7",
-        "breathing":  true
-    },
-    "processor": "atmega32u4",
-    "bootloader": "atmel-dfu"
+    "keyboard_name": "S60-X-RGB"
 }

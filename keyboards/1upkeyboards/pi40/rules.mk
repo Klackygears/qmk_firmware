@@ -1,3 +1,8 @@
+# MCU name
+MCU = RP2040
+BOOTLOADER = rp2040
+BOARD = GENERIC_RP_RP2040
+
 # Build Options
 #   change yes to no to disable
 #

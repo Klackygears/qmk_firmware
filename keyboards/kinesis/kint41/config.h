@@ -16,6 +16,10 @@
 
 #pragma once
 
+/* key matrix size */
+#define MATRIX_ROWS 15
+#define MATRIX_COLS 7
+
 /*
  * Keyboard Matrix Assignments
  *
@@ -60,6 +64,13 @@
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
+/* Well-worn Cherry MX key switches can bounce for up to 20ms, despite the
+ * Cherry data sheet specifying 5ms. Because we use the sym_eager_pk debounce
+ * algorithm, this debounce latency only affects key releases (not key
+ * presses). */
+#undef DEBOUNCE
+#define DEBOUNCE 20
+
 #define IGNORE_MOD_TAP_INTERRUPT
 
 // The Teensy 4.1 consumes about 100 mA of current at its full speed of 600 MHz
@@ -73,3 +84,9 @@
 
 // in clock cycles
 #define GPIO_INPUT_PIN_DELAY 0
+
+#define LED_PIN_ON_STATE 0
+#define LED_NUM_LOCK_PIN LINE_PIN26
+#define LED_CAPS_LOCK_PIN LINE_PIN12
+#define LED_SCROLL_LOCK_PIN LINE_PIN25
+#define LED_COMPOSE_PIN LINE_PIN24

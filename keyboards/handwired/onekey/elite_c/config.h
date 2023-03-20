@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "config_common.h"
 
 #define RGB_CI_PIN B1
 

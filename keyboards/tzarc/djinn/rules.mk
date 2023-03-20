@@ -2,6 +2,8 @@ CUSTOM_MATRIX = lite
 
 SERIAL_DRIVER = usart
 
+BACKLIGHT_DRIVER = pwm
+
 WS2812_DRIVER = pwm
 CIE1931_CURVE = yes
 

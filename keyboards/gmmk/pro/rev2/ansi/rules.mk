@@ -1,3 +1,9 @@
+# MCU name
+MCU = WB32F3G71
+
+# Bootloader selection
+BOOTLOADER = wb32-dfu
+
 # Build Options
 #   change yes to no to disable
 #

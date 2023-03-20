@@ -20,7 +20,7 @@ void rgb_matrix_layer_helper(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode
             uint16_t time = scale16by8(g_rgb_timer, speed / 8);
             hsv.v         = scale8(abs8(sin8(time) - 128) * 2, hsv.v);
             RGB rgb       = hsv_to_rgb(hsv);
-            for (uint8_t i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
+            for (uint8_t i = 0; i < DRIVER_LED_TOTAL; i++) {
                 if (HAS_FLAGS(g_led_config.flags[i], led_type)) {
                     RGB_MATRIX_INDICATOR_SET_COLOR(i, rgb.r, rgb.g, rgb.b);
                 }
@@ -30,7 +30,7 @@ void rgb_matrix_layer_helper(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode
         default: // Solid Color
         {
             RGB rgb = hsv_to_rgb(hsv);
-            for (uint8_t i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
+            for (uint8_t i = 0; i < DRIVER_LED_TOTAL; i++) {
                 if (HAS_FLAGS(g_led_config.flags[i], led_type)) {
                     RGB_MATRIX_INDICATOR_SET_COLOR(i, rgb.r, rgb.g, rgb.b);
                 }
@@ -40,12 +40,15 @@ void rgb_matrix_layer_helper(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode
     }
 }
 
-void housekeeping_task_rgb_matrix(void) {
+__attribute__((weak)) void rgb_matrix_indicator_keymap(void) {}
+
+void matrix_scan_rgb_matrix(void) {
 #if defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
     if (userspace_config.rgb_matrix_idle_anim && rgb_matrix_get_mode() == RGB_MATRIX_TYPING_HEATMAP && sync_timer_elapsed32(hypno_timer) > 15000) {
         rgb_matrix_mode_noeeprom(RGB_MATRIX_REST_MODE);
     }
 #endif
+    rgb_matrix_indicator_keymap();
 }
 
 void keyboard_post_init_rgb_matrix(void) {
@@ -88,9 +91,9 @@ bool process_record_user_rgb_matrix(uint16_t keycode, keyrecord_t *record) {
 __attribute__((weak)) bool rgb_matrix_indicators_advanced_keymap(uint8_t led_min, uint8_t led_max) {
     return true;
 }
-bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (!rgb_matrix_indicators_advanced_keymap(led_min, led_max)) {
-        return false;
+        return;
     }
 
 #if defined(RGBLIGHT_ENABLE)
@@ -137,12 +140,11 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 break;
         }
     }
-    return false;
 }
 
 __attribute__((weak)) bool rgb_matrix_indicators_keymap(void) {
     return true;
 }
-bool rgb_matrix_indicators_user(void) {
-    return rgb_matrix_indicators_keymap();
+void rgb_matrix_indicators_user(void) {
+    rgb_matrix_indicators_keymap();
 }

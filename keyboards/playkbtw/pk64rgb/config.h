@@ -16,6 +16,11 @@
 
 #pragma once
 
+#include "config_common.h"
+
+/* key matrix size */
+#define MATRIX_ROWS 5
+#define MATRIX_COLS 14
 
 /*
  * Keyboard Matrix Assignments
@@ -36,13 +41,13 @@
 #ifdef RGB_MATRIX_ENABLE
 	#define RGB_MATRIX_KEYPRESSES
 	#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-	#define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+	#define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
 	#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 160
 	#define RGB_MATRIX_LED_PROCESS_LIMIT 20
 	#define RGB_MATRIX_LED_FLUSH_LIMIT 26
 	#define DRIVER_ADDR_1 0b1010000
     #define DRIVER_COUNT 1
-	#define RGB_MATRIX_LED_COUNT 64
+	#define DRIVER_LED_TOTAL 64
 
 
 #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
@@ -74,6 +79,9 @@
 #    define RGBLIGHT_VAL_STEP 5
 #    define RGBLIGHT_SLEEP
 #endif
+
+/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
+#define DEBOUNCE 5
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE

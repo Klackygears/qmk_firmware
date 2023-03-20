@@ -15,9 +15,13 @@
  */
 #pragma once
 
+#include "config_common.h"
 
 #define OLED_DISPLAY_128X64
 #define OLED_TIMEOUT 300000
+
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 8
 
 /* key matrix pins */
 #define MATRIX_ROW_PINS { F4, F5, F6, F7, B1, B3, B6, B2 }
@@ -25,3 +29,6 @@
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
+
+#define DEBOUNCE 5
+

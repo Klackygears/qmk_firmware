@@ -1,3 +1,9 @@
+# MCU name
+MCU = STM32F303
+
+# Bootloader selection
+BOOTLOADER = stm32-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -20,3 +26,5 @@ RGB_MATRIX_ENABLE = no
 RGB_MATRIX_DRIVER = WS2812
 
 SRC += matrix.c
+
+LAYOUTS = ortho_5x12

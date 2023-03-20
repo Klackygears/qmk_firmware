@@ -88,9 +88,7 @@ def find_layouts(file):
             for i, key in enumerate(parsed_layout):
                 if 'label' not in key:
                     cli.log.error('Invalid LAYOUT macro in %s: Empty parameter name in macro %s at pos %s.', file, macro_name, i)
-                elif key['label'] not in matrix_locations:
-                    cli.log.error('Invalid LAYOUT macro in %s: Key %s in macro %s has no matrix position!', file, key['label'], macro_name)
-                else:
+                elif key['label'] in matrix_locations:
                     key['matrix'] = matrix_locations[key['label']]
 
             parsed_layouts[macro_name] = {
@@ -218,9 +216,9 @@ def _validate_led_config(matrix, matrix_rows, matrix_indexes, position, position
     if len(matrix) != matrix_rows and len(matrix) != (matrix_rows / 2):
         raise ValueError("Unable to parse g_led_config matrix data")
     if len(position) != len(flags):
-        raise ValueError(f"Number of g_led_config physical positions ({len(position)}) does not match number of flags ({len(flags)})")
+        raise ValueError("Unable to parse g_led_config position data")
     if len(matrix_indexes) and (max(matrix_indexes) >= len(flags)):
-        raise ValueError(f"LED index {max(matrix_indexes)} is OOB in g_led_config - should be < {len(flags)}")
+        raise ValueError("OOB within g_led_config matrix data")
     if not all(isinstance(n, int) for n in matrix_indexes):
         raise ValueError("matrix indexes are not all ints")
     if (len(position_raw) % 2) != 0:

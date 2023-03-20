@@ -15,10 +15,6 @@
  */
 #include "baguette.h"
 
-#ifndef DEBOUNCE
-#    define DEBOUNCE 5
-#endif
-
 void bootmagic_lite(void)
 {
 	// The lite version of TMK's bootmagic made by Wilba.

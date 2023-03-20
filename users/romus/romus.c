@@ -42,7 +42,7 @@ float tone_windows[][2] = SONG(UNICODE_WINDOWS);
 |*-----TAP-DANCE-----*|
 \*-------------------*/
 #ifdef TAP_DANCE_ENABLE
-tap_dance_action_t tap_dance_actions[] = {
+qk_tap_dance_action_t tap_dance_actions[] = {
     // Shift on double tap of semicolon
     [SCL] = ACTION_TAP_DANCE_DOUBLE( KC_SCLN, KC_COLN )
 };
@@ -142,7 +142,7 @@ void matrix_init_user (void) {
 
     // Correct unicode
 #ifdef UNICODE_ENABLE
-    set_unicode_input_mode(UNICODE_MODE_LINUX);
+    set_unicode_input_mode(UC_LNX);
 #endif
 
     // Make beginning layer DVORAK
@@ -250,7 +250,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-        case QK_MUSIC_TOGGLE:
+        case MU_TOG:
             if (record->event.pressed) {
                 // On press, turn off layer if active
                 if ( layer == _SE ) {
@@ -272,7 +272,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 stop_all_notes();
                 PLAY_SONG(tone_linux);
 #endif
-                set_unicode_input_mode(UNICODE_MODE_LINUX);
+                set_unicode_input_mode(UC_LNX);
             }
             return false;
             break;
@@ -282,7 +282,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 stop_all_notes();
                 PLAY_SONG(tone_windows);
 #endif
-                set_unicode_input_mode(UNICODE_MODE_WINDOWS);
+                set_unicode_input_mode(UC_WIN);
             }
             return false;
             break;

@@ -3,7 +3,8 @@
 #include "quantum.h" 
 
 enum keycodes {
-	DYNAMIC_MACRO_RANGE = QK_KB_0
+	QWERTY = SAFE_RANGE,
+	DYNAMIC_MACRO_RANGE
 };
 
 #include "dynamic_macro.h"

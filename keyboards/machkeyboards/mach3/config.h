@@ -16,6 +16,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include "config_common.h"
+
+/* key matrix size */
+#define MATRIX_ROWS 3
+#define MATRIX_COLS 3
 
 /* key pins */
 #define MATRIX_ROW_PINS { D1, D0, D4 }
@@ -23,3 +28,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
+
+/* backlight */
+#define BACKLIGHT_PIN B6
+#define BACKLIGHT_BREATHING
+#define BACKLIGHT_LEVELS 5
+
+/* debounce */
+#define DEBOUNCE 5

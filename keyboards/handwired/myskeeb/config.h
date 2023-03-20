@@ -1,5 +1,11 @@
 #pragma once
 
+#include "config_common.h"
+
+// Key Matrix Size //
+// Rows are Doubled-up
+#define MATRIX_ROWS 10
+#define MATRIX_COLS 7
 
 // Wiring of Each Half
 #define DIODE_DIRECTION COL2ROW
@@ -9,6 +15,8 @@
 
 // Comunication and Split Detection
 
+#define USE_SERIAL
+#define SOFT_SERIAL_PIN D3
 #define SELECT_SOFT_SERIAL_SPEED 1
 #define SPLIT_USB_DETECT
 #define EE_HANDS
@@ -24,3 +32,8 @@
 // Tap Dance
 
 #define TAPPING_TERM 200
+
+// Other
+
+#define DEBOUNCE 0
+

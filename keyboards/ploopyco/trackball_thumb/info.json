@@ -20,6 +20,7 @@
         "pointing_device": true,
         "encoder": false
     },
+    "debounce": 5,
     "layouts": {
         "LAYOUT": {
             "layout": [

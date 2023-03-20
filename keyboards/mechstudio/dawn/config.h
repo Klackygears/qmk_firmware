@@ -16,6 +16,11 @@
 
 #pragma once
 
+#include "config_common.h"
+
+/* key matrix size */
+#define MATRIX_ROWS 6
+#define MATRIX_COLS 15
 
 // ROWS: Top to bottom, COLS: Left to right
 
@@ -24,3 +29,12 @@
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
+
+/* set 0 if debouncing is not needed */
+#define DEBOUNCE 5
+
+/* define if matrix has ghost (lacks anti-ghosting diodes) */
+//#define MATRIX_HAS_GHOST
+
+#define QMK_ESC_OUTPUT F0 // usually COL
+#define QMK_ESC_INPUT B1 // usually ROW

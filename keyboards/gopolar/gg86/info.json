@@ -8,8 +8,6 @@
         "pid": "0x0007",
         "device_version": "0.0.1"
     },
-    "processor": "atmega32u4",
-    "bootloader": "atmel-dfu",
     "layouts": {
         "LAYOUT_all": {
             "layout": [
@@ -107,7 +105,7 @@
                 {"label":"\u2193", "x":16.25, "y":5.5},
                 {"label":"\u2192", "x":17.25, "y":5.5}
             ]
-        },
+        }
         "LAYOUT_tkl_ansi_tsangan": {
             "layout": [
                 {"label":"Esc", "x":0, "y":0},
@@ -202,7 +200,7 @@
                 {"label":"\u2193", "x":16.25, "y":5.5},
                 {"label":"\u2192", "x":17.25, "y":5.5}
             ]
-        },
+        }
         "LAYOUT_tkl_iso_tsangan": {
             "layout": [
                 {"label":"Esc", "x":0, "y":0},

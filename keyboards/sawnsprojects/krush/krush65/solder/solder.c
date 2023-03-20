@@ -15,6 +15,7 @@
  */
 
 #include "solder.h"
+#include "encoder_actions.h"
 
    /*  Custom encoder control - handles CW/CCW turning of encoder
      *  Default behavior:

@@ -17,6 +17,7 @@
 #pragma once
 
 #ifdef RGBLIGHT_ENABLE
+// #    define RGBLIGHT_ANIMATIONS
 #    define RGBLIGHT_HUE_STEP 8
 #    define RGBLIGHT_SAT_STEP 16
 #    define RGBLIGHT_VAL_STEP 16
@@ -34,7 +35,7 @@
 #    define IGNORE_MOD_TAP_INTERRUPT
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#    define QUICK_TAP_TERM 0
+#    define TAPPING_FORCE_HOLD
 
 #endif
 

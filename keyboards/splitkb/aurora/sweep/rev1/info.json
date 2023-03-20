@@ -3,15 +3,10 @@
     "usb": {
         "pid": "0xEC17"
     },
-    "bootmagic": {
-        "matrix": [0, 4]
-    },
     "features": {
         "mousekey": true,
         "bootmagic": true,
-        "extrakey": true,
-        "oled": true,
-        "rgb_matrix": true
+        "extrakey": true
     },
     "layout_aliases": {
         "LAYOUT": "LAYOUT_split_3x5_2"
@@ -59,16 +54,12 @@
             ]
         }
     },
-    "community_layouts": [
-        "split_3x5_2"
-    ],
     "diode_direction": "ROW2COL",
     "matrix_pins": {
         "rows": ["F6", "F5", "F7", "B1"],
         "cols": ["B6", "D4", "C6", "D7", "E6"]
     },
     "encoder": {
-        "enabled": true,
         "rotary": [
             {
                 "pin_a": "B5",
@@ -81,9 +72,6 @@
         ]
     },
     "split": {
-        "bootmagic": {
-            "matrix": [4, 4]
-        },
         "soft_serial_pin": "D2",
         "main": "pin",
         "matrix_pins": {

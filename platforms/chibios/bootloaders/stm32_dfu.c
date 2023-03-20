@@ -27,7 +27,7 @@ extern uint32_t __ram0_end__;
 #endif
 
 #if STM32_BOOTLOADER_DUAL_BANK
-#    include "gpio.h"
+#    include "config_common.h"
 
 #    ifndef STM32_BOOTLOADER_DUAL_BANK_GPIO
 #        error "No STM32_BOOTLOADER_DUAL_BANK_GPIO defined, don't know which pin to toggle"

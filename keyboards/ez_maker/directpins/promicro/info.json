@@ -3,6 +3,7 @@
     "keyboard_name": "DirectPins ProMicro",
     "maintainer": "skullydazed",
     "bootloader": "atmel-dfu",
+    "debounce": 5,
     "features": {
         "bootmagic": true,
         "extrakey": true,

@@ -37,5 +37,14 @@
 }
 
 enum custom_keycodes {
-    SHIFTSPACE = QK_KB_0,
+#ifdef VIA_ENABLE
+    SHIFTSPACE = USER00,
+#else
+    SHIFTSPACE = SAFE_RANGE,
+#endif
+#ifdef VIA_ENABLE
+    QWERTY = SAFE_RANGE
+#else
+    QWERTY
+#endif
 };

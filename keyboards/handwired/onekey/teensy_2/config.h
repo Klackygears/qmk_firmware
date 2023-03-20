@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "config_common.h"
 
 #define ADC_PIN F6
 

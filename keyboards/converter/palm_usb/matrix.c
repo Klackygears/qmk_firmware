@@ -280,7 +280,7 @@ void matrix_init(void)
     // initialize matrix state: all keys off
     for (uint8_t i=0; i < MATRIX_ROWS; i++) matrix[i] = 0x00;
 
-    matrix_init_kb();
+    matrix_init_quantum();
     return;
     
     
@@ -348,7 +348,7 @@ uint8_t matrix_scan(void)
         }
     }
 
-    matrix_scan_kb();
+    matrix_scan_quantum();
     return code;
 }
 

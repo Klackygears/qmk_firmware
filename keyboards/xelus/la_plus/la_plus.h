@@ -42,5 +42,9 @@ typedef union {
 } keyboard_config_t;
 
 enum la_plus_keycodes {
-    STARTUP_ANIMATION_CONFIG = QK_KB_0,
+#ifdef VIA_ENABLE
+    STARTUP_ANIMATION_CONFIG = USER00,
+#else
+    STARTUP_ANIMATION_CONFIG = SAFE_RANGE,
+#endif
 };

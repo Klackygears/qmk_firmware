@@ -227,7 +227,7 @@ enum unicode_names {
     FOREACH_UNICODE(UCM_NAME)
 };
 
-extern const uint32_t unicode_map[] PROGMEM;
+extern const uint32_t PROGMEM unicode_map[];
 
 enum unicode_keycodes {
     FOREACH_UNICODE(UCM_KEYCODE)

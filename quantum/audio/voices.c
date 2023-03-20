@@ -36,11 +36,11 @@ void set_voice(voice_type v) {
     voice = v;
 }
 
-void voice_iterate(void) {
+void voice_iterate() {
     voice = (voice + 1) % number_of_voices;
 }
 
-void voice_deiterate(void) {
+void voice_deiterate() {
     voice = (voice - 1 + number_of_voices) % number_of_voices;
 }
 

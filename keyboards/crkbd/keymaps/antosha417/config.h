@@ -10,7 +10,7 @@
 #define EE_HANDS
 
 
-#define QUICK_TAP_TERM 0
+#define TAPPING_FORCE_HOLD
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM

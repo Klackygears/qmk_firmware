@@ -16,13 +16,14 @@
 
 #include QMK_KEYBOARD_H
 
-static uint8_t encoder_state[NUM_ENCODERS] = {0};
-static keypos_t encoder_cw[NUM_ENCODERS] = ENCODERS_CW_KEY;
-static keypos_t encoder_ccw[NUM_ENCODERS] = ENCODERS_CCW_KEY;
+#ifdef VIA_ENABLE
+static uint8_t encoder_state[ENCODERS] = {0};
+static keypos_t encoder_cw[ENCODERS] = ENCODERS_CW_KEY;
+static keypos_t encoder_ccw[ENCODERS] = ENCODERS_CCW_KEY;
 
 void encoder_action_unregister(void)
 {
-    for (int index = 0; index < NUM_ENCODERS; ++index)
+    for (int index = 0; index < ENCODERS; ++index)
     {
         if (encoder_state[index])
         {
@@ -55,7 +56,8 @@ bool encoder_update_kb(uint8_t index, bool clockwise)
 {
     encoder_action_register(index, clockwise);
     return true;
-}
+};
+#endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_all(

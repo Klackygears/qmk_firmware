@@ -15,6 +15,7 @@
  */
 #pragma once
 
+#include "config_common.h"
 
 /*
  * Keyboard Matrix Assignments
@@ -28,6 +29,10 @@
  */
 #define MATRIX_ROW_PINS { B3, F6, F7, C7 }
 #define MATRIX_COL_PINS { B2, F0, F1, F4, F5, B5, B4, D7, D6, D4 }
+
+/* Define encoder pads */
+#define ENCODERS_PAD_A { B6 }
+#define ENCODERS_PAD_B { C6 }
 
 /*
  * WS2812 Underglow Matrix options

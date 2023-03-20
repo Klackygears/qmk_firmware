@@ -1,3 +1,9 @@
+# MCU name
+MCU = STM32F303
+
+# Bootloader selection
+BOOTLOADER = stm32-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -14,3 +20,5 @@ ENCODER_ENABLE = yes        # Rotary encoder
 
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = IS31FL3741
+
+LAYOUTS = 65_ansi_blocker 65_ansi_blocker_split_bs 65_ansi_blocker_tsangan 65_iso_blocker 65_iso_blocker_split_bs

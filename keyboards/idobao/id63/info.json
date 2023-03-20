@@ -4,6 +4,7 @@
     "maintainer": "vinorodrigues",
     "bootloader": "atmel-dfu",
     "diode_direction": "COL2ROW",
+    "debounce": 5,
     "features": {
         "bootmagic": true,
         "command": false,

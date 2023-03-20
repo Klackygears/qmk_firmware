@@ -18,7 +18,7 @@ LUFA_SRC = lufa.c \
 	$(LUFA_SRC_USB)
 
 ifeq ($(strip $(MIDI_ENABLE)), yes)
-	LUFA_SRC += $(LUFA_ROOT_PATH)/Drivers/USB/Class/Device/MIDIClassDevice.c
+	include $(TMK_PATH)/protocol/midi.mk
 endif
 
 ifeq ($(strip $(VIRTSER_ENABLE)), yes)

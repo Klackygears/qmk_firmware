@@ -3,7 +3,5 @@
     "usb": {
         "pid": "0x8774",
         "device_version": "0.0.3"
-    },
-    "processor": "STM32F411",
-    "bootloader": "stm32-dfu"
+    }
 }

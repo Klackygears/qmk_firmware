@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "config_common.h"
 
 /* underglow */
 #define RGB_DI_PIN B6

@@ -62,7 +62,6 @@ include $(PLATFORM_PATH)/common.mk
 include $(TMK_PATH)/protocol.mk
 include $(QUANTUM_PATH)/debounce/tests/rules.mk
 include $(QUANTUM_PATH)/encoder/tests/rules.mk
-include $(QUANTUM_PATH)/os_detection/tests/rules.mk
 include $(QUANTUM_PATH)/sequencer/tests/rules.mk
 include $(QUANTUM_PATH)/wear_leveling/tests/rules.mk
 include $(QUANTUM_PATH)/logging/print.mk
@@ -72,7 +71,7 @@ include $(BUILDDEFS_PATH)/build_full_test.mk
 endif
 
 $(TEST)_SRC += \
-	tests/test_common/main.cpp \
+	tests/test_common/main.c \
 	$(QUANTUM_PATH)/logging/print.c
 
 $(TEST_OBJ)/$(TEST)_SRC := $($(TEST)_SRC)

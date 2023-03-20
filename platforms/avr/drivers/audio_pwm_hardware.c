@@ -217,7 +217,7 @@ void channel_2_stop(void) {
 }
 #endif
 
-void audio_driver_initialize(void) {
+void audio_driver_initialize() {
 #ifdef AUDIO1_PIN_SET
     channel_1_stop();
     setPinOutput(AUDIO1_PIN);
@@ -258,7 +258,7 @@ void audio_driver_initialize(void) {
 #endif
 }
 
-void audio_driver_stop(void) {
+void audio_driver_stop() {
 #ifdef AUDIO1_PIN_SET
     channel_1_stop();
 #endif

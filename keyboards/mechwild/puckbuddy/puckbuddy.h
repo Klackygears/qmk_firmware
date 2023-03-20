@@ -40,7 +40,11 @@ extern keyboard_config_t keyboard_config;
 extern uint16_t          dpi_array[];
 
 enum keyboard_keycodes {
-    DPI_UP = QK_KB_0,
+#ifdef VIA_ENABLE
+    DPI_UP = USER00,
+#else
+    DPI_UP = SAFE_RANGE,
+#endif
     DPI_DN,
     DPI_FINE,
     TAP_UP,
@@ -48,4 +52,5 @@ enum keyboard_keycodes {
     TAP_ON,
     TAP_OFF,
     TAP_TOG,
+    NEW_SAFE_RANGE
 };

@@ -1,3 +1,10 @@
+# MCU name
+MCU = STM32F303
+BOARD = QMK_PROTON_C
+
+# Bootloader selection
+BOOTLOADER = stm32-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -17,4 +24,5 @@ RGB_MATRIX_DRIVER = WS2812
 ENCODER_ENABLE = yes
 DIP_SWITCH_ENABLE = yes
 
+LAYOUTS = ortho_4x12 planck_mit
 LAYOUTS_HAS_RGB = no

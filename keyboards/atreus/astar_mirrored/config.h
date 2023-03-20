@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "config_common.h"
 
 /*
  * Keyboard Matrix Assignments

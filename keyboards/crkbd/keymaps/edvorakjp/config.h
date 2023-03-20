@@ -8,7 +8,7 @@
 
 #define SWAP_SCLN
 
-// #define QUICK_TAP_TERM 0
+// #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 300
 #define IGNORE_MOD_TAP_INTERRUPT
 

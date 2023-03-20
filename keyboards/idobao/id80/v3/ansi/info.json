@@ -25,9 +25,6 @@
         "pid": "0x0380",
         "device_version": "3.0.0"
     },
-    "bootmagic": {
-        "matrix": [0, 5]
-    },
     "layouts": {
         "LAYOUT_80_ansi": {
             "layout": [

@@ -1,3 +1,9 @@
+# MCU name
+MCU = STM32F303
+
+# Bootloader selection
+BOOTLOADER = stm32-dfu
+
 # Touch encoder needs
 VPATH += keyboards/rgbkb/common
 SRC += touch_encoder.c

@@ -1,5 +1,11 @@
+# MCU name
+MCU = atmega32a
+
 # Processor frequency
 F_CPU = 16000000
+
+# Bootloader selection
+BOOTLOADER = usbasploader
 
 # Build Options
 #   change yes to no to disable
@@ -17,3 +23,5 @@ UNICODE_ENABLE = yes
 OLED_ENABLE = yes
 OLED_DRIVER = SSD1306
 ENCODER_ENABLE = yes
+
+LAYOUTS = 65_ansi 65_iso

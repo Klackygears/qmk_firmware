@@ -1,6 +1,5 @@
 {
     "keyboard_name": "shisaku",
-    "manufacturer": "ADPenrose",
     "url": "https://github.com/ADPenrose/shisaku_keeb",
     "maintainer": "ADPenrose",
     "usb": {
@@ -8,8 +7,6 @@
         "pid": "0x0003",
         "device_version": "0.0.1"
     },
-    "processor": "atmega328p",
-    "bootloader": "usbasploader",
     "layouts": {
         "LAYOUT_all": {
             "layout": [

@@ -1,7 +1,22 @@
 #pragma once
 
+#include "config_common.h"
+
+/* key matrix size */
+#define MATRIX_ROWS 5
+#define MATRIX_COLS 14
+
+/* number of backlight levels */
+#define BACKLIGHT_PIN B7
+#ifdef BACKLIGHT_PIN
+#define BACKLIGHT_LEVELS 6
+#endif
+
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION ROW2COL
+
+/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
+#define DEBOUNCE 5
 
 /* Set power consumption to work with mobile devices */
 #define USB_MAX_POWER_CONSUMPTION 100
@@ -18,18 +33,13 @@
 
 #define RGB_DI_PIN F7
 #ifdef RGB_DI_PIN
-#define RGBLIGHT_EFFECT_BREATHING
-#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#define RGBLIGHT_EFFECT_SNAKE
-#define RGBLIGHT_EFFECT_KNIGHT
-#define RGBLIGHT_EFFECT_CHRISTMAS
-#define RGBLIGHT_EFFECT_STATIC_GRADIENT
-#define RGBLIGHT_EFFECT_RGB_TEST
-#define RGBLIGHT_EFFECT_ALTERNATING
-#define RGBLIGHT_EFFECT_TWINKLE
+#define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 10
 #define RGBLIGHT_HUE_STEP 12
 #define RGBLIGHT_SAT_STEP 12
 #define RGBLIGHT_VAL_STEP 12
 #endif
+
+/* For Production */
+#define QMK_ESC_OUTPUT F0 // usually COL
+#define QMK_ESC_INPUT D0 // usually ROW

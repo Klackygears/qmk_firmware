@@ -16,6 +16,11 @@
 
 #pragma once
 
+#include "config_common.h"
+
+/* key matrix size */
+#define MATRIX_ROWS 12
+#define MATRIX_COLS 11
 
 /*
  * Keyboard Matrix Assignments

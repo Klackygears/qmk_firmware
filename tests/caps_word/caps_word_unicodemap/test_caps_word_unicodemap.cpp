@@ -93,7 +93,7 @@ TEST_F(CapsWord, ShiftedUnicodeMapKey) {
     tap_keys(key_delta, key_spc, key_delta);
 
     EXPECT_EQ(is_caps_word_on(), false);
-    VERIFY_AND_CLEAR(driver);
+    testing::Mock::VerifyAndClearExpectations(&driver);
 }
 
 // Tests typing U_ENDASH while Caps Word is on.
@@ -117,5 +117,5 @@ TEST_F(CapsWord, UnshiftedUnicodeMapKey) {
     tap_key(key_dash);
 
     EXPECT_EQ(is_caps_word_on(), true);
-    VERIFY_AND_CLEAR(driver);
+    testing::Mock::VerifyAndClearExpectations(&driver);
 }

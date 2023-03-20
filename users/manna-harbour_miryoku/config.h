@@ -5,8 +5,6 @@
 
 #pragma once
 
-#include "custom_config.h"
-
 // default but used in macros
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
@@ -15,7 +13,7 @@
 #define IGNORE_MOD_TAP_INTERRUPT
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define QUICK_TAP_TERM 0
+#define TAPPING_FORCE_HOLD
 
 // Auto Shift
 #define NO_AUTO_SHIFT_ALPHA
@@ -40,3 +38,6 @@
   #define COMBO_TERM 200
   #define EXTRA_SHORT_COMBOS
 #endif
+
+#include "custom_config.h"
+

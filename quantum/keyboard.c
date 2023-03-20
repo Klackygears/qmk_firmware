@@ -66,6 +66,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef JOYSTICK_ENABLE
 #    include "process_joystick.h"
 #endif
+#ifdef PROGRAMMABLE_BUTTON_ENABLE
+#    include "programmable_button.h"
+#endif
 #ifdef HD44780_ENABLE
 #    include "hd44780.h"
 #endif
@@ -90,6 +93,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #if defined(CRC_ENABLE)
 #    include "crc.h"
 #endif
+#ifdef DIGITIZER_ENABLE
+#    include "digitizer.h"
+#endif
 #ifdef VIRTSER_ENABLE
 #    include "virtser.h"
 #endif
@@ -100,13 +106,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    include "split_util.h"
 #endif
 #ifdef BLUETOOTH_ENABLE
-#    include "bluetooth.h"
+#    include "outputselect.h"
 #endif
 #ifdef CAPS_WORD_ENABLE
 #    include "caps_word.h"
-#endif
-#ifdef LEADER_ENABLE
-#    include "leader.h"
 #endif
 
 static uint32_t last_input_modification_time = 0;
@@ -167,11 +170,12 @@ uint32_t get_matrix_scan_rate(void) {
 #endif
 
 #ifdef MATRIX_HAS_GHOST
-static matrix_row_t get_real_keys(uint8_t row, matrix_row_t rowdata) {
+extern const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS];
+static matrix_row_t   get_real_keys(uint8_t row, matrix_row_t rowdata) {
     matrix_row_t out = 0;
     for (uint8_t col = 0; col < MATRIX_COLS; col++) {
         // read each key in the row data and check if the keymap defines it as a real key
-        if (keycode_at_keymap_location(0, row, col) && (rowdata & (1 << col))) {
+        if (pgm_read_byte(&keymaps[0][row][col]) && (rowdata & (1 << col))) {
             // this creates new row data, if a key is defined in the keymap, it will be set here
             out |= 1 << col;
         }
@@ -241,7 +245,7 @@ __attribute__((weak)) void keyboard_pre_init_kb(void) {
  * FIXME: needs doc
  */
 
-__attribute__((weak)) void keyboard_post_init_user(void) {}
+__attribute__((weak)) void keyboard_post_init_user() {}
 
 /** \brief keyboard_post_init_kb
  *
@@ -250,14 +254,6 @@ __attribute__((weak)) void keyboard_post_init_user(void) {}
 
 __attribute__((weak)) void keyboard_post_init_kb(void) {
     keyboard_post_init_user();
-}
-
-/** \brief matrix_can_read
- *
- * Allows overriding when matrix scanning operations should be executed.
- */
-__attribute__((weak)) bool matrix_can_read(void) {
-    return true;
 }
 
 /** \brief keyboard_setup
@@ -350,6 +346,9 @@ void quantum_init(void) {
 #ifdef HAPTIC_ENABLE
     haptic_init();
 #endif
+#if defined(BLUETOOTH_ENABLE) && defined(OUTPUT_AUTO_ENABLE)
+    set_output(OUTPUT_AUTO);
+#endif
 }
 
 /** \brief keyboard_init
@@ -364,9 +363,6 @@ void keyboard_init(void) {
 #endif
 #ifdef SPLIT_KEYBOARD
     split_pre_init();
-#endif
-#ifdef ENCODER_ENABLE
-    encoder_init();
 #endif
     matrix_init();
     quantum_init();
@@ -387,6 +383,9 @@ void keyboard_init(void) {
 #endif
 #ifdef RGBLIGHT_ENABLE
     rgblight_init();
+#endif
+#ifdef ENCODER_ENABLE
+    encoder_init();
 #endif
 #ifdef STENO_ENABLE_ALL
     steno_init();
@@ -410,9 +409,6 @@ void keyboard_init(void) {
 #ifdef POINTING_DEVICE_ENABLE
     // init after split init
     pointing_device_init();
-#endif
-#ifdef BLUETOOTH_ENABLE
-    bluetooth_init();
 #endif
 
 #if defined(DEBUG_MATRIX_SCAN_RATE) && defined(CONSOLE_ENABLE)
@@ -457,14 +453,10 @@ static inline void generate_tick_event(void) {
  * @return false Matrix didn't change
  */
 static bool matrix_task(void) {
-    if (!matrix_can_read()) {
-        generate_tick_event();
-        return false;
-    }
-
     static matrix_row_t matrix_previous[MATRIX_ROWS];
 
     matrix_scan();
+
     bool matrix_changed = false;
     for (uint8_t row = 0; row < MATRIX_ROWS && !matrix_changed; row++) {
         matrix_changed |= matrix_previous[row] ^ matrix_get_row(row);
@@ -561,10 +553,6 @@ void quantum_task(void) {
     combo_task();
 #endif
 
-#ifdef LEADER_ENABLE
-    leader_task();
-#endif
-
 #ifdef WPM_ENABLE
     decay_wpm();
 #endif
@@ -598,10 +586,6 @@ void keyboard_task(void) {
     }
 
     quantum_task();
-
-#if defined(SPLIT_WATCHDOG_ENABLE)
-    split_watchdog_task();
-#endif
 
 #if defined(RGBLIGHT_ENABLE)
     rgblight_task();
@@ -678,8 +662,12 @@ void keyboard_task(void) {
     joystick_task();
 #endif
 
-#ifdef BLUETOOTH_ENABLE
-    bluetooth_task();
+#ifdef DIGITIZER_ENABLE
+    digitizer_task();
+#endif
+
+#ifdef PROGRAMMABLE_BUTTON_ENABLE
+    programmable_button_send();
 #endif
 
     led_task();

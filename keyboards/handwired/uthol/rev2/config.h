@@ -17,6 +17,7 @@
 
 #pragma once
 
+#include "config_common.h"
 
 /* Uthol PCB default pin-out */
 #define MATRIX_ROW_PINS { B1, F7, F6, F5, F4 }
@@ -25,4 +26,5 @@
 //RGB Stuff
 #define RGB_DI_PIN E6
 #define RGBLED_NUM 39
+#define RGBLIGHT_ANIMATIONS
 #define RGBLIGHT_DEFAULT_HUE 201

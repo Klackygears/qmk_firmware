@@ -16,6 +16,11 @@
 
 #pragma once
 
+#include "config_common.h"
+
+/* key matrix size */
+#define MATRIX_ROWS         8
+#define MATRIX_COLS         9
 
 /* key matrix pins */
 #define MATRIX_ROW_PINS     { B4, B5, B7, D5, C7, F1, F0, B6 }
@@ -26,5 +31,13 @@
 #define LED_INDICATOR_MID   D4
 #define LED_INDICATOR_BOT   C6
 
+/* Rotary encoder rotation pins */
+#define ENCODERS_PAD_A      { D0, D3 }
+#define ENCODERS_PAD_B      { D1, D2 }
+
+
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION     COL2ROW
+
+/* Set 0 if debouncing isn't needed */
+#define DEBOUNCE            5

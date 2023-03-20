@@ -97,7 +97,7 @@ void matrix_init(void)
 
     /* PORTD &= ~(1<<6); */
 
-    matrix_init_kb();
+    matrix_init_quantum();
     return;
 }
 
@@ -148,7 +148,7 @@ uint8_t matrix_scan(void)
         }
     }
 
-    matrix_scan_kb();
+    matrix_scan_quantum();
     return code;
 }
 

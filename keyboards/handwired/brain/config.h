@@ -20,8 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include "config_common.h"
 
 #define SPLIT_USB_DETECT
+
+/* key matrix size */
+// Rows are doubled-up
+#define MATRIX_ROWS 10
+#define MATRIX_COLS 7
 
 // wiring of each half
 
@@ -42,6 +48,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_MAX_SPEED 7
 #define MOUSEKEY_WHEEL_DELAY 0
 
+/* Set 0 if debouncing isn't needed */
+
+
+/* serial.c configuration for split keyboard */
+#define SOFT_SERIAL_PIN D0
 #define EE_HANDS
 
 //#define SPLIT_HAND_PIN B7
@@ -82,4 +93,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define TAPPING_TERM 150
 //#define IGNORE_MOD_TAP_INTERRUPT
-//#define QUICK_TAP_TERM 0
+//#define TAPPING_FORCE_HOLD
+
+#define BOOTMAGIC_LITE_ROW 0
+#define BOOTMAGIC_LITE_COLUMN 6
+#define BOOTMAGIC_LITE_ROW_RIGHT 5
+#define BOOTMAGIC_LITE_COLUMN_RIGHT 0

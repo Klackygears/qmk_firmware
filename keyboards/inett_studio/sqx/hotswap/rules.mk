@@ -1,3 +1,9 @@
+# MCU name
+MCU = atmega32u4
+
+# Bootloader selection
+BOOTLOADER = atmel-dfu
+
 # Build Options
 #   change yes to no to disable
 #
@@ -14,3 +20,5 @@ RGB_MATRIX_DRIVER = IS31FL3731
 AUDIO_ENABLE = no           # Audio output
 
 LTO_ENABLE = yes            # Reducing firmware size
+
+LAYOUTS = 60_tsangan_hhkb

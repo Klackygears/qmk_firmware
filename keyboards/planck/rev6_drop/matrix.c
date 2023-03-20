@@ -17,10 +17,6 @@
 
 #include "quantum.h"
 
-#ifndef DEBOUNCE
-#    define DEBOUNCE 5
-#endif
-
 /*
  *     col: { B11, B10, B2, B1, A7, B0 }
  *     row: { A10, A9, A8, B15, C13, C14, C15, A2 }
@@ -67,7 +63,7 @@ void matrix_init(void) {
     memset(matrix, 0, MATRIX_ROWS * sizeof(matrix_row_t));
     memset(matrix_debouncing, 0, MATRIX_COLS * sizeof(matrix_row_t));
 
-    matrix_init_kb();
+    matrix_init_quantum();
 }
 
 uint8_t matrix_scan(void) {
@@ -142,7 +138,7 @@ uint8_t matrix_scan(void) {
         debouncing = false;
     }
 
-    matrix_scan_kb();
+    matrix_scan_quantum();
 
     return 1;
 }

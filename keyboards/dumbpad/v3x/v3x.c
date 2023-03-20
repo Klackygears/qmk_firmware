@@ -54,7 +54,7 @@ void keyboard_pre_init_kb(void) {
     keyboard_pre_init_user();
 }
 
-void shutdown_user(void) {
+void shutdown_user() {
     // Shutdown LEDs
     writePinLow(LED_00);
     writePinLow(LED_01);

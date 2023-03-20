@@ -16,6 +16,10 @@
 
 #pragma once
 
+/* key matrix size */
+#define MATRIX_ROWS 6
+#define MATRIX_COLS 14
+
 /*
  * Keyboard Matrix Assignments
  *
