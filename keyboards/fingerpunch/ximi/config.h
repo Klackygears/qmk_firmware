@@ -17,38 +17,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "config_common.h"
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 
 /* key matrix size */
 // Rows are doubled-up
-#define MATRIX_ROWS 6
-#define MATRIX_COLS 16
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 8
 
 // For shift register (and optionally trackball)
-#define SPI_SCK_PIN GP2
-#define SPI_MOSI_PIN GP3
-#define SPI_MISO_PIN GP4
+#define SPI_SCK_PIN GP22
+#define SPI_MOSI_PIN GP23
+#define SPI_MISO_PIN GP20
 
-#define SHIFTREG_MATRIX_COL_CS GP1
-#define SHIFTREG_DIVISOR 8 // needs to be the same as the PMW33XX_CS_DIVISOR below
-// These next two should match the MATRIX_ROWS and MATRIX_COLS if a unibody, and should be cut in half if a split keyboard
-#define SHIFTREG_ROWS 3
-#define SHIFTREG_COLS 8
+// wiring of each half
+#define MATRIX_ROW_PINS { GP29, GP28, GP27, GP24 }
+#define MATRIX_COL_PINS { GP10, GP11, GP26, GP12, GP13, GP14, GP15, GP16 }
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
-#define MATRIX_ROW_PINS_SR { GP27, GP28, GP29 }
 
+#define ENCODERS_PAD_A { GP7 }
+#define ENCODERS_PAD_B { GP8 }
+
+// Got help from https://www.eisbahn.jp/yoichiro/2022/08/luankey_pico_qmk_firmware.html
 #define MASTER_LEFT
 #define SPLIT_TRANSPORT_MIRROR
 #define SPLIT_POINTING_ENABLE
 #define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_MODS_ENABLE
-#define SOFT_SERIAL_PIN GP0
-#define USE_SERIAL
-#define SELECT_SOFT_SERIAL_SPEED 0
+#define SPLIT_HAPTIC_ENABLE
+#define SERIAL_PIO_USE_PIO1
+#define SERIAL_USART_FULL_DUPLEX   // Enable full duplex operation mode.
+#define SERIAL_USART_TX_PIN GP0     // USART TX pin
+#define SERIAL_USART_RX_PIN GP1     // USART RX pin
 
-#define RGB_DI_PIN GP26
+#define RGB_DI_PIN GP25
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SPLIT
     #define RGBLED_SPLIT { 21, 21 }
@@ -56,7 +59,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGBLIGHT_HUE_STEP 16
     #define RGBLIGHT_SAT_STEP 16
     #define RGBLIGHT_VAL_STEP 16
-    #define RGBLIGHT_LIMIT_VAL 180 /* The maximum brightness level for RGBLIGHT_ENABLE */
+    #define RGBLIGHT_LIMIT_VAL 130 /* The maximum brightness level for RGBLIGHT_ENABLE */
     #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
     #define RGBLIGHT_EFFECT_ALTERNATING
     #define RGBLIGHT_EFFECT_BREATHING
@@ -73,7 +76,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define SPLIT_TRANSPORT_MIRROR
     #define RGB_MATRIX_LED_COUNT 42 // Number of LEDs
     #define RGB_MATRIX_SPLIT { 21, 21 }
-    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180
+    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 130
     #define RGB_MATRIX_STARTUP_HUE 35
     #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
     #define RGB_DISABLE_WHEN_USB_SUSPENDED
@@ -119,15 +122,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
 
-/* audio support */
-// Pending https://github.com/qmk/qmk_firmware/pull/17723 and https://github.com/qmk/qmk_firmware/pull/17706
 #ifdef AUDIO_ENABLE
     #define AUDIO_VOICES
-    #define AUDIO_PIN GP4
-    #define AUDIO_PWM_DRIVER PWMD2
-    #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_4
-    #define NO_MUSIC_MODE
-    #define STARTUP_SONG SONG(PREONIC_SOUND)
+    #define AUDIO_PIN GP18
+    #define AUDIO_PWM_DRIVER PWMD1
+    #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_A
+    #define AUDIO_ENABLE_TONE_MULTIPLEXING
+    #define AUDIO_TONE_MULTIPLEXING_RATE_DEFAULT 10
+    #define FP_AUDIO_MOUSE_BUTTONS
+    #define FP_AUDIO_CUT_COPY_PASTE
+    #define FP_AUDIO_SAVE
+    #define FP_STARTUP_FLOW_DOWN WHOLE_NOTE(_E6), HALF_NOTE(_REST), HALF_NOTE(_C6), WHOLE_NOTE(_G5), HALF_NOTE(_A5), WHOLE_NOTE(_D5), WHOLE_NOTE(_E5), WHOLE_NOTE(_C5),
+    #define STARTUP_SONG SONG(FP_STARTUP_FLOW_DOWN)
     #define DEFAULT_LAYER_SONGS \
         { SONG(QWERTY_SOUND), SONG(COLEMAK_SOUND) }
 #endif
@@ -141,6 +147,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define V_RMS 2.0
     #define F_LRA 150 // resonance freq
     #define DRV_GREETING  alert_750ms
+    #define FP_HAPTIC_MOUSE_BUTTONS
+    #define FP_HAPTIC_CUT_COPY_PASTE
+    #define FP_HAPTIC_SAVE
 #endif
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
@@ -148,14 +157,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-#define I2C_DRIVER I2CD2
-#define I2C1_SDA_PIN GP6
-#define I2C1_SCL_PIN GP7
-
 #ifdef CIRQUE_ENABLE
     // cirque trackpad config
     #define CIRQUE_PINNACLE_ADDR 0x2A
-    // Comment line above, and uncomment 2 lines below to switch to relative mode and enable right click
+    // Uncomment 2 lines below to switch to relative mode and enable right click
     // Note that tap to click doesn't work on the slave side unless you enable relative mode
     // #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
     // #define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
@@ -163,21 +168,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define POINTING_DEVICE_TASK_THROTTLE_MS 5
     #define POINTING_DEVICE_ROTATION_90 // move to cirque specific config
     #define POINTING_DEVICE_ROTATION_90_RIGHT
-    #define I2C1_CLOCK_SPEED  400000
-    #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
 #endif
 
 #ifdef FP_TRACKBALL_ENABLE
     // Trackball config
-    #define PMW33XX_CS_PIN GP26
-    #define PMW33XX_CPI 800
-    #define PMW33XX_CS_DIVISOR 8 // needs to be the same as the SHIFTREG_DIVISOR above
+    #define FP_POINTING_DEFAULT_DPI 800
+    #define PMW33XX_CS_PIN GP9
+    #define PMW33XX_CPI FP_POINTING_DEFAULT_DPI
+    #define PMW33XX_CS_DIVISOR 8
 
     /* SPI config for pmw3360 sensor. */
     #define SPI_DRIVER SPID0
     // #define SPI_SCK_PAL_MODE 5 // already defined in chibios
     // #define SPI_MOSI_PAL_MODE 5 // already defined in chibios
-    #define SPI_MISO_PIN GP4
     // #define SPI_MISO_PAL_MODE 5 // already defined in chibios
 #endif
 

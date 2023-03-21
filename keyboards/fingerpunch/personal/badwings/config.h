@@ -1,7 +1,5 @@
 #pragma once
 
-#include "config_common.h"
-
 #define MATRIX_COLS 8
 #define MATRIX_ROWS  5
 

@@ -40,4 +40,4 @@
     { K37,   K28,   K08,   K19, K38, K27 }, \
 }
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"

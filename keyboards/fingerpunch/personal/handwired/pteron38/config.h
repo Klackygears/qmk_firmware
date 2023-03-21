@@ -16,11 +16,6 @@
 
 #pragma once
 
-#include "config_common.h"
-
-/* key matrix size */
-#define MATRIX_ROWS 4
-#define MATRIX_COLS 10
 
 /* key matrix pins */
 #define MATRIX_ROW_PINS { D2, D1, D0, D4 }

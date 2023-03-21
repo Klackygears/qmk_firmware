@@ -32,12 +32,20 @@ led_config_t g_led_config = { {
     {175, 20}, {167, 11}, {160, 1}, {178, 0}, {186, 9}, {194, 18}, {201, 28}, {209, 38}, {223, 30}, {215, 20},
     {208, 11}, {200, 1}
 }, {
-    4, 4, 4, 4, 1, 4, 4, 4, 4, 4,
-    4, 4, 4, 1, 4, 4, 4, 4, 4, 4,
-    4, 4, 1, 1, 1, 1, 1, 1, 1, 1,
-    4, 4, 4, 4, 4, 4, 4, 4, 1, 4,
-    4, 4, 4, 4, 4, 4, 4, 1, 4, 4,
-    4, 4
+    4, 4, 12, 4,       // col 1 - top to bottom
+    1, 4, 12, 4, 4,    // col 2 - bottom to top
+    4, 4, 12, 4, 1,    // col 3 - top to bottom
+    4, 12, 4, 4,       // col 4 - bottom to top
+    4, 4,  4, 4,       // col 5 - top to bottom
+    1, 9,  1,          // left thumb cluster - left to right
+    1,                 // upper left thumb
+    1,                 // upper right thumb
+    1, 9,  1,          // right thumb cluster - left to right
+    4, 4,  4,  4,      // col 6 - bottom to top
+    4, 4,  12, 4,      // col 7 - top to bottom
+    1, 4,  12, 4, 4,   // col 8 - bottom to top
+    4, 4,  12, 4, 1,   // col 9 - top to bottom
+    4, 12, 4,  4       // col 10 - bottom to top
 } };
 
 #endif

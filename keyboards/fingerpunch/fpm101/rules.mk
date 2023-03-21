@@ -1,6 +1,8 @@
 # MCU name
 MCU = atmega32u4
 
+PIN_COMPATIBLE=elite_c
+
 # Bootloader selection
 #   Teensy       halfkay
 #   Pro Micro    caterina
@@ -23,7 +25,7 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
-MOUSEKEY_ENABLE = no
+MOUSEKEY_ENABLE = yes
 
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 RGBLIGHT_ENABLE = no
@@ -38,7 +40,7 @@ ENCODER_ENABLE = no
 # EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
 MOUSEKEY_ENABLE = no
 
-SRC += keyboards/fingerpunch/fp_matrix_74hc595_spi.c
+SRC += keyboards/fingerpunch/src/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
@@ -69,11 +71,11 @@ ifeq ($(strip $(FP_TRACKBALL_ENABLE)), yes)
 endif
 
 DEFERRED_EXEC_ENABLE = yes
-SRC +=  keyboards/fingerpunch/fp.c \
-        keyboards/fingerpunch/fp_haptic.c \
-        keyboards/fingerpunch/fp_audio.c \
-        keyboards/fingerpunch/fp_keyhandler.c \
-        keyboards/fingerpunch/fp_pointing.c \
-        keyboards/fingerpunch/fp_rgb_common.c \
-        keyboards/fingerpunch/fp_rgblight.c \
-        keyboards/fingerpunch/fp_rgb_matrix.c
+SRC +=  keyboards/fingerpunch/src/fp.c \
+        keyboards/fingerpunch/src/fp_haptic.c \
+        keyboards/fingerpunch/src/fp_audio.c \
+        keyboards/fingerpunch/src/fp_keyhandler.c \
+        keyboards/fingerpunch/src/fp_pointing.c \
+        keyboards/fingerpunch/src/fp_rgb_common.c \
+        keyboards/fingerpunch/src/fp_rgblight.c \
+        keyboards/fingerpunch/src/fp_rgb_matrix.c

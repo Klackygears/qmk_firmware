@@ -9,4 +9,4 @@ extern kb_runtime_config kb_state;
 
 void housekeeping_task_sync(void);
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"

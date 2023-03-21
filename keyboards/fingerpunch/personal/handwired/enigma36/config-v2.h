@@ -16,8 +16,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-#include "config_common.h"
-
 
 /* USB Device descriptor parameter */
 #define DEVICE_VER      0x0002
