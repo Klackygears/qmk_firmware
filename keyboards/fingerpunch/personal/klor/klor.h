@@ -17,7 +17,7 @@
 
 //#pragma once
 #include "quantum.h"
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"
 
 /* This a shortcut to help you visually see your layout.
  *
@@ -105,4 +105,4 @@
 
 #define LAYOUT LAYOUT_saegewerk
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"

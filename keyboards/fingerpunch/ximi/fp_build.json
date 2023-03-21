@@ -14,9 +14,19 @@
         "user_input": "What config would you like to use? (FP_TRACKBALL_BOTH, FP_CIRQUE_BOTH, FP_TRACKBALL_LEFT_ONLY, FP_TRACKBALL_RIGHT_ONLY, FP_CIRQUE_LEFT_ONLY, FP_CIRQUE_RIGHT_ONLY, FP_TRACKBALL_LEFT_CIRQUE_RIGHT, FP_CIRQUE_LEFT_TRACKBALL_RIGHT): "
     },
     {
+        "type" : "one-of",
+        "names" : [ "RGBLIGHT_ENABLE", "RGB_MATRIX_ENABLE" ],
+        "user_input": "No RGB, RGB light, RGB matrix?"
+    },
+    {
         "type" : "single",
-        "name" : "RGBLIGHT_ENABLE",
-        "user_input": "Do you have RGB?"
+        "name" : "ENCODER_ENABLE",
+        "user_input": "Do you have one or more rotary encoders?"
+    },
+    {
+        "type" : "single",
+        "name" : "AUDIO_ENABLE",
+        "user_input": "Do you have an audio buzzer?"
     },
     {
         "type" : "single",

@@ -41,4 +41,4 @@
     { K60,   K61, K62, K64, K65, K63 } \
 }
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"

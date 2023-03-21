@@ -42,4 +42,4 @@
     { KC_NO, KC_NO,  KC_NO, K51,   K50, K10,   K20, K30, K40 }, \
 }
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"

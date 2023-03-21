@@ -31,4 +31,4 @@
 
 #define LAYOUT LAYOUT_3x5_3
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"

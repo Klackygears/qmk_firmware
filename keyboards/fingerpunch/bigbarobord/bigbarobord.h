@@ -45,4 +45,4 @@
     { ___,   K3B,   K3C,   K0A, K2B, K1A, K2A, K3A, K4A } \
 }
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"
