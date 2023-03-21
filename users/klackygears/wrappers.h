@@ -7,6 +7,11 @@ Most of this is copied from drashna. I added and changed a few things but, it's 
 #define LAYOUT KEYMAP
 #endif
 
+// Since fpm101 uses the name LAYOUT_fpm101 instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_fpm101))
+#    define LAYOUT LAYOUT_fpm101
+#endif
+
 //Added other layout options
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
 #define LAYOUT_ergodox_pretty_wrapper(...)   LAYOUT_ergodox_pretty(__VA_ARGS__)
@@ -15,6 +20,9 @@ Most of this is copied from drashna. I added and changed a few things but, it's 
 #define LAYOUT_ortho_4x12_wrapper(...)       LAYOUT_ortho_4x12(__VA_ARGS__)
 #define LAYOUT_ortho_5x10_wrapper(...)       LAYOUT_ortho_5x10(__VA_ARGS__)
 #define LAYOUT_ortho_5x5_wrapper(...)        LAYOUT_ortho_5x5(__VA_ARGS__)
+#define LAYOUT_split_3x5_3_wrapper(...)      LAYOUT_split_3x5_3(__VA_ARGS__)
+#define LAYOUT_split_4x6_2_wrapper(...)      LAYOUT_split_4x6_2(__VA_ARGS__)
+#define LAYOUT_fpm101_wrapper(...)           LAYOUT_fpm101(__VA_ARGS__)
 
 
 /*
@@ -33,13 +41,16 @@ NOTE: If you do a search/replace
   #define _________________QWERTY_R3_________________        KC_N,    KC_M,    TD(TD_COMQUES), TD(TD_DTEX), LT(_MDIA,KC_SLASH)
 
 
-  #define _________________COLEMAK_L1________________        KC_Q,    KC_W,    KC_F,    KC_P,    KC_G
-  #define _________________COLEMAK_L2________________        KC_A,    KC_R,    KC_S,    KC_T,    KC_D
-  #define _________________COLEMAK_L3________________        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
+  #define _________________COLEMAK_L1________________        KC_Q,               KC_W,               KC_F,               KC_P, KC_G
+  #define _________________COLEMAK_L2________________        KC_A,               KC_R,               KC_S,               KC_T, KC_D
+  #define _________________COLEMAK_L3________________        MT(MOD_LGUI, KC_Z),    MT(MOD_LALT, KC_X),    MT(MOD_LCTL, KC_C),    KC_V,    KC_B
+  #define _________________WINCOLE_L3________________        MT(MOD_LGUI, KC_Z), MT(MOD_LALT, KC_X), MT(MOD_LCTL, KC_C), KC_V, KC_B
 
-  #define _________________COLEMAK_R1________________        KC_J,    KC_L,    KC_U,           KC_Y,        KC_SCLN
-  #define _________________COLEMAK_R2________________        KC_H,    KC_N,    KC_E,           KC_I,        KC_O
-  #define _________________COLEMAK_R3________________        KC_K,    KC_M,    TD(TD_COMQUES), TD(TD_DTEX), KC_SLASH
+  #define _________________WINCOLE_R1________________        KC_J,    KC_L,    MT(MOD_LCTL,KC_U), MT(MOD_LALT,KC_Y), KC_SCLN
+  #define _________________COLEMAK_R1________________        KC_J,    KC_L,    KC_U,              KC_Y,              KC_SCLN
+  #define _________________COLEMAK_R2________________        KC_H,    KC_N,    KC_E,              KC_I,              KC_O
+  #define _________________COLEMAK_R3________________        KC_K,    KC_M,    MT(MOD_LCTL, KC_COMM), MT(MOD_LALT, KC_DOT), LT(_MDIA, KC_SLASH)
+  #define _________________WINCOLE_R3________________        KC_K,    KC_M,    KC_COMM,           KC_DOT,       LT(_MDIA,KC_SLASH)
 /*
   #define ______________COLEMAK_MOD_DH_L1____________        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
   #define ______________COLEMAK_MOD_DH_L2____________        KC_A,    KC_R,    KC_S,    KC_T,    KC_G
@@ -50,13 +61,16 @@ NOTE: If you do a search/replace
   #define ______________COLEMAK_MOD_DH_R3____________        KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
 */
 
-  #define _______________DVORAK_L1___________________        KC_QUOT,              TD(TD_COMQUES),    TD(TD_DTEX),        KC_P, KC_Y
+  //#define _______________DVORAK_L1___________________        KC_QUOT,              TD(TD_COMQUES),    TD(TD_DTEX),        KC_P, KC_Y
+  #define _______________DVORAK_L1___________________        KC_QUOT,              KC_COMM,           KC_DOT,             KC_P, KC_Y
   #define _______________DVORAK_L2___________________        KC_A,                 KC_O,              KC_E,               KC_U, KC_I
+  #define _______________DVORAK_L3___________________        KC_SCLN,              KC_Q,              KC_J,               KC_K, KC_X
   #define _______________MACDVK_L3___________________        MT(MOD_LCTL,KC_SCLN), MT(MOD_LALT,KC_Q), MT(MOD_LGUI, KC_J), KC_K, KC_X
   #define _______________WINDVK_L3___________________        MT(MOD_LGUI,KC_SCLN), MT(MOD_LALT,KC_Q), MT(MOD_LCTL, KC_J), KC_K, KC_X
 
   #define _______________DVORAK_R1___________________        KC_F,       KC_G,       KC_C,              KC_R,              KC_L
   #define _______________DVORAK_R2___________________        KC_D,       KC_H,       KC_T,              KC_N,              KC_S
+  #define _______________DVORAK_R3___________________        KC_B,       KC_M,       KC_W,              KC_V,              KC_Z
   #define _______________MACDVK_R3___________________        KC_B,       KC_M,       MT(MOD_LGUI,KC_W), MT(MOD_LALT,KC_V), LT(_MDIA,KC_Z)
   #define _______________WINDVK_R3___________________        KC_B,       KC_M,       MT(MOD_LCTL,KC_W), MT(MOD_LALT,KC_V), LT(_MDIA,KC_Z)
 
@@ -72,24 +86,29 @@ NOTE: If you do a search/replace
 
   #define _________________QWERTY_R1_________________        KC_Y,    KC_U,    KC_I,           KC_O,        KC_P
   #define _________________QWERTY_R2_________________        KC_H,    KC_J,    KC_K,           KC_L,        KC_SCLN
-  #define _________________QWERTY_R3_________________        KC_N,    KC_M,    KC_COMM, KC_DOT, LT(_MDIA,KC_SLASH)
+  #define _________________QWERTY_R3_________________        KC_N,    KC_M,    MT(MOD_LCTL,KC_COMM), MT(MOD_LALT,KC_DOT), LT(_MDIA,KC_SLASH)
+  #define _________________QWERTY_R3_BASIC___________        KC_N,    KC_M,    KC_COMM,        KC_DOT,      KC_SLASH
 
 
   #define _________________COLEMAK_L1________________        KC_Q,    KC_W,    KC_F,    KC_P,    KC_G
   #define _________________COLEMAK_L2________________        KC_A,    KC_R,    KC_S,    KC_T,    KC_D
   #define _________________COLEMAK_L3________________        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
+  #define _________________WINCMAK_L3________________        MT(MOD_LGUI, KC_Z),    MT(MOD_LALT, KC_X),    MT(MOD_LCTL, KC_C),    KC_V,    KC_B
 
   #define _________________COLEMAK_R1________________        KC_J,    KC_L,    KC_U,           KC_Y,        KC_SCLN
   #define _________________COLEMAK_R2________________        KC_H,    KC_N,    KC_E,           KC_I,        KC_O
-  #define _________________COLEMAK_R3________________        KC_K,    KC_M,    KC_COMM, KC_DOT, KC_SLASH
+  #define _________________COLEMAK_R3________________        KC_K,    KC_M,    KC_COMM,        KC_DOT,      KC_SLASH
+  #define _________________WINCMAK_R3________________        KC_K,    KC_M,    MT(MOD_LCTL, KC_COMM), MT(MOD_LALT, KC_DOT), LT(_MDIA, KC_SLASH)
 
   #define _______________DVORAK_L1___________________        KC_QUOT,              KC_COMM,    KC_DOT,        KC_P, KC_Y
-  #define _______________DVORAK_L2___________________        KC_A,                 KC_O,              KC_E,               KC_U, KC_I
+  #define _______________DVORAK_L2___________________        KC_A,                 KC_O,       KC_E,          KC_U, KC_I
+  #define _______________DVORAK_L3___________________        KC_SCLN,              KC_Q,       KC_J,          KC_K, KC_X
   #define _______________MACDVK_L3___________________        MT(MOD_LCTL,KC_SCLN), MT(MOD_LALT,KC_Q), MT(MOD_LGUI, KC_J), KC_K, KC_X
   #define _______________WINDVK_L3___________________        MT(MOD_LGUI,KC_SCLN), MT(MOD_LALT,KC_Q), MT(MOD_LCTL, KC_J), KC_K, KC_X
 
   #define _______________DVORAK_R1___________________        KC_F,       KC_G,       KC_C,              KC_R,              KC_L
   #define _______________DVORAK_R2___________________        KC_D,       KC_H,       KC_T,              KC_N,              KC_S
+  #define _______________DVORAK_R3___________________        KC_B,       KC_M,       KC_W,              KC_V,              KC_Z
   #define _______________MACDVK_R3___________________        KC_B,       KC_M,       MT(MOD_LGUI,KC_W), MT(MOD_LALT,KC_V), LT(_MDIA,KC_Z)
   #define _______________WINDVK_R3___________________        KC_B,       KC_M,       MT(MOD_LCTL,KC_W), MT(MOD_LALT,KC_V), LT(_MDIA,KC_Z)
 #endif
@@ -122,19 +141,26 @@ NOTE: If you do a search/replace
 #define _________________NORMAN_R3_________________       KC_P,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH
 */
 
+
+
 // thumb key layouts
-#define ________WIN_THUMB_CLUSTER_________                LT(_SYMB,KC_SPC), LT(_NUMB,KC_BSPC), LT(_NUMB,KC_TAB), LT(_SYMB,KC_ENT)
-#define ________MAC_THUMB_CLUSTER_________                LT(_SYMB,KC_SPC), LT(_MNMB,KC_BSPC), LT(_MNMB,KC_TAB), LT(_SYMB,KC_ENT)
+#define ________WIN_THUMB_CLUSTER_________                   LT(_SYMB,KC_SPC), LT(_NUMB,KC_BSPC), LT(_NUMB,KC_TAB), LT(_SYMB,KC_ENT)
+#define ________MAC_THUMB_CLUSTER_________                   LT(_SYMB,KC_SPC), LT(_MNMB,KC_BSPC), LT(_MNMB,KC_TAB), LT(_SYMB,KC_ENT)
 
 #define __________________WIN_THUMB_CLUSTER_V2______________ LT(_FUNC,KC_ENT), LT(_NUMB,KC_BSPC), MT(MOD_LSFT,KC_SPC), LT(_NUMB,KC_TAB), LT(_SYMB,KC_ENT), KC_RSFT
 #define __________________MAC_THUMB_CLUSTER_V2______________ LT(_FUNC,KC_ENT), LT(_MNMB,KC_BSPC), MT(MOD_LSFT,KC_SPC), LT(_MNMB,KC_TAB), LT(_SYMB,KC_ENT), KC_RSFT
+
 #define ________MAC_THUMB_L______                            LT(_FUNC,KC_ENT), LT(_MNMB,KC_BSPC), MT(MOD_LSFT,KC_SPC)
-#define ________MAC_THUMB_R______                            LT(_MNMB,KC_TAB), LT(_SYMB,KC_ENT),    LT(_MDIA,KC_ENT)
+#define ________MAC_THUMB_R______                            LT(_MNMB,KC_TAB), LT(_SYMB,KC_ENT),  LT(_MDIA,KC_ENT)
 #define ________WIN_THUMB_L______                            LT(_FUNC,KC_ENT), LT(_NUMB,KC_BSPC), MT(MOD_LSFT,KC_SPC)
-#define ________WIN_THUMB_R______                            LT(_NUMB,KC_TAB), LT(_SYMB,KC_ENT),    LT(_MDIA,KC_ENT)
+#define ________WIN_THUMB_R______                            LT(_NUMB,KC_TAB), LT(_SYMB,KC_ENT),  LT(_MDIA,KC_ENT)
+
+
 
 // Mission Control Commands
 #define ________MAC_MISSION_CTRL__________                LCTL(KC_LEFT),    LCTL(KC_UP),       LCTL(KC_DOWN),    LCTL(KC_RGHT)
+
+
 
 //Number Row
 #define _________________NUMBER_L__________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
@@ -153,33 +179,39 @@ NOTE: If you do a search/replace
   #define _________________WINNAV_L3_________________       TD(TD_ACCW), LCTL(KC_A), TD(TD_CCPY), TD(TD_PSTI), TD(TD_DDEL)
 
 //Numpad layout with different mod-tap keys for MAC OS and Windows
-  #define _________________NUMB_R1___________________       TD(TD_MINPLS), KC_7, KC_8,              KC_9,              KC_COLN
-  #define _________________NUMB_R2___________________       TD(TD_DIVMLT), KC_4, KC_5,              KC_6,              C_S_T(KC_COLN)
-  #define _________________NUMB_R3_MAC_______________       TD(TD_DOTEQL), KC_1, MT(MOD_LGUI,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LCTL,KC_0)
-  #define _________________NUMB_R3_WIN_______________       TD(TD_DOTEQL), KC_1, MT(MOD_LCTL,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LGUI,KC_0)
-  #define _________________NUMB_R4___________________       KC_LSFT,       KC_0, KC_0,              _______,           _______
+  #define ______________TD_NUMB_R1___________________       TD(TD_MINPLS), KC_7, KC_8,              KC_9,              KC_COLN
+  #define ______________TD_NUMB_R2___________________       TD(TD_DIVMLT), KC_4, KC_5,              KC_6,              C_S_T(KC_SCLN)
+  #define ______________TD_NUMB_R3_MAC_______________       TD(TD_DOTEQL), KC_1, MT(MOD_LGUI,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LCTL,KC_0)
+  #define ______________TD_NUMB_R3_WIN_______________       TD(TD_DOTEQL), KC_1, MT(MOD_LCTL,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LGUI,KC_0)
 #else
 //Arrow keys and copy-paste shortcuts for MAC OS
   #define _________________MACNAV_L1_________________       KC_PGUP,    KC_PGDN,    KC_HOME,       KC_END,         _______
   #define _________________MACNAV_L2_________________       KC_LEFT,    KC_UP,      KC_DOWN,       KC_RIGHT,       _______
-  #define _________________MACNAV_L3_________________       _______,    LGUI(KC_A), _______,       _______, KC_DEL
+  #define _________________MACNAV_L3_________________       _______,    LGUI(KC_A), _______,       _______,        KC_DEL
 
 //Arrow keys and copy-paste shortcuts for Windows and Microsoft Access & Excel
   #define _________________WINNAV_L1_________________       KC_PGUP,     KC_PGDN,    KC_HOME,     KC_END,      _______
   #define _________________WINNAV_L2_________________       KC_LEFT,     KC_UP,      KC_DOWN,     KC_RIGHT,    _______
   #define _________________WINNAV_L3_________________       _______,     _______,    _______,     _______,     _______
-  #define _________________NUMB_R1___________________       KC_PMNS,       KC_7, KC_8,              KC_9,              KC_PPLS
-  #define _________________NUMB_R2___________________       KC_PSLS,       KC_4, KC_5,              KC_6,              KC_PAST
+#endif
+
+//Numpad layout with different mod-tap keys for MAC OS and Windows
+  #define _________________NUMB_R1___________________       KC_PMNS,       KC_7, KC_8,              KC_9,              KC_COLN
+  #define _________________NUMB_R2___________________       KC_PSLS,       KC_4, KC_5,              KC_6,              C_S_T(KC_SCLN)
   #define _________________NUMB_R3_MAC_______________       KC_DOT,        KC_1, MT(MOD_LGUI,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LCTL,KC_0)
   #define _________________NUMB_R3_WIN_______________       KC_DOT,        KC_1, MT(MOD_LCTL,KC_2), MT(MOD_LALT,KC_3), MT(MOD_LGUI,KC_0)
   #define _________________NUMB_R4___________________       KC_LSFT,       KC_0, KC_0,              _______,           _______
-#endif
+  #define _________________NUMB_R1_Game______________       KC_B,          KC_7, KC_8,              KC_9,              KC_COLN
+  #define _________________NUMB_R2_Game______________       KC_N,          KC_4, KC_5,              KC_6,              C_S_T(KC_SCLN)
+  #define _________________NUMB_R3_Game______________       KC_0,          KC_1, KC_2,              KC_3,              KC_0
+
+
 
 //Function Row
-/*
+
 #define _________________FUNC_LEFT_________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
 #define _________________FUNC_RIGHT________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
-*/
+
 
 //Function keys as macropad
 #define _____________FUNC_1_______________                KC_F9,      KC_F10,     KC_F11,     KC_F12
@@ -200,7 +232,7 @@ NOTE: If you do a search/replace
 #define _________________MEDIA_V2__________________       KC_EJCT,    KC_MRWD,     KC_MPLY,      KC_MFFD,     _______
 
 //Base layer keys
-#define _________________LYOUT_____________________       _______,    KC_QWERTY,   KC_MACBASE,   KC_WINBASE,  _______
+#define _________________LYOUT_____________________       KC_COLBASE, KC_QWERTY, KC_MACBASE, KC_WINBASE, _______
 
 //Punctuation keys
 #define _________________PUNC_L1___________________       KC_BSLS,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC
@@ -208,7 +240,7 @@ NOTE: If you do a search/replace
 #define _________________PUNC_L2___________________       KC_PLUS,    KC_MINS,    KC_ASTR,    KC_SLSH,    KC_EQL
 #define _________________PUNC_L3___________________       KC_LBRC,    KC_RBRC,    KC_LPRN,    KC_RPRN,    KC_AMPR
 #define _________________PUNC_L3_ALT_______________       _______,    _______,    KC_TILD,    KC_CIRC,    KC_GRV
-#define _________________PUNC_R1___________________       _______, KC_DQT,  KC_EQL,  _______, _______
+#define _________________PUNC_R1___________________       _______, KC_DQT,  KC_EQL,  _______, KC_UNDS
 #define _________________PUNC_R2___________________       _______, KC_ASTR, KC_SLSH, KC_PLUS, KC_MINS
 #define _________________PUNC_R3___________________       _______, KC_EQL,  KC_BSLS, _______, _______
 

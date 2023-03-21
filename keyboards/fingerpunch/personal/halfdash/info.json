@@ -1,0 +1,11 @@
+{
+    "manufacturer": "Omkbd",
+    "keyboard_name": "HalfDash",
+    "url": "https://github.com/omkbd/ErgoDash",
+    "maintainer": "Omkbd",
+    "usb": {
+        "vid": "0xFEED",
+        "pid": "0x6060",
+        "device_version": "1.0.0"
+    }
+}
