@@ -22,12 +22,21 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT_fpm101(
+    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,                                                KC_8,       KC_9,      KC_0,      LSFT(KC_A),      LSFT(KC_B),      LSFT(KC_C),      LSFT(KC_D),
+    LSFT(KC_E),   KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,                                                                       KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      LSFT(KC_F),
+    LSFT(KC_G),   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      LSFT(KC_1),                                             LSFT(KC_2),    KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOT,
+    LSFT(KC_H),   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      LSFT(KC_I),                                             LSFT(KC_J),    KC_N,      KC_M,      LSFT(KC_K),   KC_DOT,    KC_SLSH,   LSFT(KC_L),
+                          LSFT(KC_M),   LSFT(KC_N),   LSFT(KC_O),   LSFT(KC_P),    LSFT(KC_Q),   LSFT(KC_R), LSFT(KC_S), LSFT(KC_T),    LSFT(KC_U),   LSFT(KC_V),    LSFT(KC_W),     LSFT(KC_X),   LSFT(KC_Y)
+),
+
+/*
+[_QWERTY] = LAYOUT_fpm101(
     KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_LPRN,                                          KC_RPRN,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
     KC_TAB,    KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,                                                                   KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      KC_BSLS,
     KC_CAPS,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_LCBR,                                          KC_RCBR,   KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOT,
     KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      ADJUST,                                           ADJUST,    KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,
                           KC_MUTE,   KC_LGUI,   LOWER,     KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    RAISE,     KC_RGUI,   KC_MUTE
-),
+), */
 
 
 [_COLEMAK] = LAYOUT_fpm101(
@@ -99,21 +108,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     return true;
-}
-
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { /* First encoder */
-        if (clockwise) {
-            tap_code(KC_VOLU);
-        } else {
-            tap_code(KC_VOLD);
-        }
-    } else if (index == 1) { /* Second encoder */
-        if (clockwise) {
-            tap_code(KC_DOWN);
-        } else {
-            tap_code(KC_UP);
-        }
-    }
-  return true;
 }
