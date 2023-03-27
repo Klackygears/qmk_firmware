@@ -114,30 +114,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-/*         case BUZY:
-           {
-            static uint16_t tap_hold_timer;
-            if (record->event.pressed) {
-                #ifdef AUDIO_ENABLE
-                 PLAY_SONG(ztreasure);
-                #endif
-                tap_hold_timer = timer_read();
-                register_code(KC_UP);
-            } else {
-                unregister_code(KC_UP);
-                // if held for less than 300ms (0.3 seconds)
-                // then toggle auto tap
-                if (timer_elapsed(tap_hold_timer) < 300) {
-                    is_busy_toggled ^= true; // toggles state
-                    repeat_press_timer = timer_read() + rand();
-                } else {
-                    is_busy_toggled = false;
-                }
-            }
-            return false;
-           }
-            break; */
-
         case BUZY:
            {
             static uint16_t run_timer;

@@ -26,8 +26,16 @@ enum layer_number {
     _MEME
 };
 
+// Check to see which keyboard you're using, and define the PLACEHOLDER_SAFE_RANGE based on that.
+#if defined(KEYBOARD_fingerpunch_ffkb)
+#    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
+#else
+#    define PLACEHOLDER_SAFE_RANGE SAFE_RANGE
+#endif
+
+
 enum userspace_custom_keycodes {
-  KC_MACBASE = SAFE_RANGE,
+  KC_MACBASE = PLACEHOLDER_SAFE_RANGE,   //KC_MACBASE = SAFE_RANGE,
   KC_QWERTY,
   KC_WINBASE,
   KC_COLBASE,
@@ -48,7 +56,7 @@ enum userspace_custom_keycodes {
   SHRUG,
   SPAM,
   //DYNAMIC_MACRO_RANGE,
-  SAFE_RANGE_KEYMAP
+  NEW_SAFE_RANGE    //SAFE_RANGE_KEYMAP
 };
 
 
