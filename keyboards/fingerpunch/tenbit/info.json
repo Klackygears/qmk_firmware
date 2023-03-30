@@ -1,0 +1,11 @@
+{
+    "manufacturer": "sadekbaroudi",
+    "keyboard_name": "tenbit",
+    "url": "https://fingerpunch.xyz/product/tenbit/",
+    "maintainer": "Sadek Baroudi <sadekbaroudi@gmail.com>",
+    "usb": {
+        "vid": "0xFEFE",
+        "pid": "0x7E17",
+        "device_version": "1.0.0"
+    }
+}
