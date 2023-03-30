@@ -1,0 +1,17 @@
+[
+    {
+        "type" : "single",
+        "name" : "CIRQUE_ENABLE",
+        "user_input": "Do you have a cirque?"
+    },
+    {
+        "type" : "single",
+        "name" : "RGB_MATRIX_ENABLE",
+        "user_input": "Do you have per key leds?"
+    },
+    {
+        "type" : "single",
+        "name" : "AUDIO_ENABLE",
+        "user_input": "Do you have an audio buzzer?"
+    }
+]
