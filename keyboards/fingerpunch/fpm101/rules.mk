@@ -45,7 +45,21 @@ QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
 AUDIO_ENABLE ?= no
+ifeq ($(strip $(CONVERT_TO)), stemcell)
 AUDIO_DRIVER = pwm_software
+endif
+ifeq ($(strip $(CONVERT_TO)), elite_pi)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), rp2040_ce)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), helios)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), liatris)
+AUDIO_DRIVER = pwm_hardware
+endif
 
 HAPTIC_ENABLE ?= no
 HAPTIC_DRIVER = DRV2605L
