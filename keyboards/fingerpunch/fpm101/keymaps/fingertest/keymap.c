@@ -22,11 +22,11 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT_fpm101(
-    KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_LPRN,                                          KC_RPRN,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
+    KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_LPRN,                                          EE_CLR,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
     KC_TAB,    KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,                                                                   RGB_MOD,      RGB_HUI,      RGB_SPI,      RGB_SAI,      RGB_VAI,      RGB_TOG,
     KC_CAPS,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_LCBR,                                          KC_RCBR,   RGB_RMOD,     RGB_HUD,      RGB_SPD,      RGB_SAD,      RGB_VAD,   KC_QUOT,
     KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      ADJUST,                                           ADJUST,    KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,
-                          KC_MUTE,   KC_LGUI,   LOWER,     KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    RAISE,     KC_RGUI,   KC_MUTE
+                          KC_1,   KC_LGUI,   LOWER,     KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    RAISE,     KC_RGUI,   KC_2
 ),
 
 
@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,    KC_Q,      KC_W,      KC_F,      KC_P,      KC_B,                                                                   KC_J,      KC_L,      KC_U,      KC_Y,      KC_SCLN,   KC_BSLS,
     KC_CAPS,   KC_A,      KC_R,      KC_S,      KC_T,      KC_G,      KC_LCBR,                                          KC_RCBR,   KC_M,      KC_N,      KC_E,      KC_I,      KC_O,      KC_QUOT,
     KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_D,      KC_V,      ADJUST,                                           ADJUST,    KC_K,      KC_H,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,
-                          KC_MUTE,   KC_LGUI,   LOWER,     KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    RAISE,     KC_RGUI,   KC_MUTE
+                          KC_1,   KC_LGUI,   LOWER,     KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    RAISE,     KC_RGUI,   KC_2
 ),
 
 
@@ -103,20 +103,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool encoder_update_kb(uint8_t index, bool clockwise) {
     if (!encoder_update_user(index, clockwise)) {
-      return false; /* Don't process further events if user function exists and returns false */
+      return false;
     }
-    if (index == 0) { /* First encoder */
+    if (index == 0) {
         if (clockwise) {
-            tap_code_delay(KC_VOLU, 10);
+            tap_code(KC_4);
         } else {
-            tap_code_delay(KC_VOLD, 10);
+            tap_code(KC_5);
         }
-    } else if (index == 1) { /* Second encoder */
+    } else if (index == 1) {
         if (clockwise) {
-            tap_code(KC_PGUP);
+            tap_code(KC_6);
         } else {
-            tap_code(KC_PGDN);
+            tap_code(KC_7);
+        }
+    } else if (index == 2) {
+        if (clockwise) {
+            tap_code(KC_8);
+        } else {
+            tap_code(KC_9);
         }
     }
     return true;
 }
+
