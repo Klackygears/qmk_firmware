@@ -21,11 +21,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    /*
-     if (!process_record_dynamic_macro(keycode, record)) {
-            return false;
-        }
-    */
+
     switch (keycode) {
         case KC_MACBASE:
             if (record->event.pressed) {

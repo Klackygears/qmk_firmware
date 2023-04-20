@@ -56,7 +56,6 @@ enum combos {
     FP_EXLM,
 };
 //DVORAK COMBOs
-//const uint16_t PROGMEM quot_com[]              = {KC_QUOT, KC_COMMA, COMBO_END};
 const uint16_t PROGMEM dot_p[]                 = {KC_DOT, KC_P, COMBO_END};
 const uint16_t PROGMEM com_dot[]               = {KC_COMMA, KC_DOT, COMBO_END};
 
@@ -93,11 +92,6 @@ const uint16_t PROGMEM vm_combo[]              = {KC_V, KC_M, COMBO_END};
 const uint16_t PROGMEM jk_combo[]              = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM qj_combo[]              = {KC_Q, KC_J, COMBO_END};
 const uint16_t PROGMEM qk_combo[]              = {KC_Q, KC_K, COMBO_END};
-
-
-//const uint16_t PROGMEM sn_combo[]              = {KC_S, KC_N, COMBO_END};
-//const uint16_t PROGMEM tg_combo[]              = {KC_T, KC_G, COMBO_END};
-//const uint16_t PROGMEM nc_combo[]              = {KC_N, KC_C, COMBO_END};
 
 const uint16_t PROGMEM ux_combo[]              = {KC_U, KC_X, COMBO_END};
 const uint16_t PROGMEM ek_combo[]              = {KC_E, KC_K, COMBO_END};
@@ -150,12 +144,6 @@ combo_t key_combos[COMBO_COUNT] = {
     [JK_LCTL]    = COMBO(jk_combo, KC_LCTL),
     [QJ_LALT]    = COMBO(qj_combo, KC_LALT),
     [QK_L_GUI]    = COMBO(qk_combo, KC_LGUI),
-
-
-    //[SN_MINS]   = COMBO(sn_combo, KC_MINS),
-    //[TD_DQT]    = COMBO(td_combo, KC_DQT),
-    //[TG_BSLS]   = COMBO(tg_combo, KC_BSLS),
-    //[NC_UNDS]   = COMBO(nc_combo, KC_UNDS),
 
     [UX_GRV]    = COMBO(ux_combo, KC_GRV),
     [EK_TILD]   = COMBO(ek_combo, KC_TILD),

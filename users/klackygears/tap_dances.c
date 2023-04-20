@@ -37,8 +37,6 @@ void pstinsrt(tap_dance_state_t *state, void *user_data) {
 void ccopy(tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code16(C(KC_X));
-
-        // SEND_STRING( SS_DOWN(KC_LCTL) SS_TAP(KC_X) SS_UP(KC_LCTL));
     } else {
         tap_code16(C(KC_C));
     }
