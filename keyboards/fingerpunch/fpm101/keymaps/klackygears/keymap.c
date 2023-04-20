@@ -81,7 +81,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
  */
 
-#include "encoder_stuff.h"
 
 __attribute__((weak)) bool encoder_update_keymap(uint8_t index, bool clockwise) { return true; }
 
@@ -93,10 +92,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     // default behavior if undefined
     if (index == 0) {
         switch(biton32(layer_state)){
-            case _SYMBOLS:
+            /*case _SYMBOLS:
                 // Page up / page down
-                if (clockwise) {
-                    #ifdef ENCODERS_A_REVERSE
+               if (clockwise) {
+                 //   #ifdef ENCODERS_A_REVERSE
                     tap_code(KC_PGUP);
                     #else
                     tap_code(KC_PGDN);
@@ -124,7 +123,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code16(C(KC_MINS));
                     #endif
                 }
-                break;
+                break;*/
             default:
                 // volume up and down
                 if (clockwise){
@@ -144,7 +143,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) {
         switch(biton32(layer_state)){
-            case _NAVIGATION:
+            /*case _NAVIGATION:
                 // word select left and right
                 if (clockwise) {
                     #ifdef ENCODERS_B_REVERSE
@@ -175,21 +174,21 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     press_super_tab(true);
                     #endif
                 }
-                break;
+                break;*/
             default:
                 // super ctrl tab
                 // switch between browser windows, or files in vscode
                 if (clockwise) {
-                    #ifdef ENCODERS_B_REVERSE
-                    press_super_ctrl_tab(true);
+                    #ifdef ENCODERS_A_REVERSE
+                    tap_code(KC_PGUP);
                     #else
-                    press_super_ctrl_tab(false);
+                    tap_code(KC_PGDN);
                     #endif
                 } else {
-                    #ifdef ENCODERS_B_REVERSE
-                    press_super_ctrl_tab(false);
+                    #ifdef ENCODERS_A_REVERSE
+                    tap_code(KC_PGDN);
                     #else
-                    press_super_ctrl_tab(true);
+                    tap_code(KC_PGUP);
                     #endif
                 }
                 break;
@@ -201,15 +200,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 // scroll wheel
                 if (clockwise){
                     #ifdef ENCODERS_B_REVERSE
-                    tap_code16(KC_MS_WH_UP);
+                    tap_code16(KC_1);
                     #else
-                    tap_code16(KC_MS_WH_DOWN);
+                    tap_code16(KC_2);
                     #endif
                 } else{
                     #ifdef ENCODERS_B_REVERSE
-                    tap_code16(KC_MS_WH_DOWN);
+                    tap_code16(KC_2);
                     #else
-                    tap_code16(KC_MS_WH_UP);
+                    tap_code16(KC_1);
                     #endif
                 }
                 break;

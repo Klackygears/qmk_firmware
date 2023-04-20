@@ -1,47 +1,5 @@
 #include "tap_dances.h"
 
-/*
-void macroTogKey(tap_dance_state_t *state, void *user_data) {
-  keyrecord_t kr;
-
-  if (state->count == 1)
-  {
-    kr.event.pressed = false;
-    process_record_dynamic_macro( DYN_MACRO_PLAY1, &kr );
-  }
-  else if (state->count == 2)
-  {
-    kr.event.pressed = true;
-    process_record_dynamic_macro( DYN_REC_STOP, &kr );
-  }
-  else if (state->count == 3)
-  {
-    kr.event.pressed = false;
-    process_record_dynamic_macro( DYN_REC_START1, &kr );
-  }
-}
-
-void macroTogKey2(tap_dance_state_t *state, void *user_data) {
-  keyrecord_t kr;
-
-  if (state->count == 1)
-  {
-    kr.event.pressed = false;
-    process_record_dynamic_macro( DYN_MACRO_PLAY2, &kr );
-  }
-  else if (state->count == 2)
-  {
-    kr.event.pressed = true;
-    process_record_dynamic_macro( DYN_REC_STOP, &kr );
-  }
-  else if (state->count == 3)
-  {
-    kr.event.pressed = false;
-    process_record_dynamic_macro( DYN_REC_START2, &kr );
-  }
-}
-*/
-
 void pstinsrt(tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         register_code(KC_LALT);
@@ -57,8 +15,6 @@ void pstinsrt(tap_dance_state_t *state, void *user_data) {
 void ccopy(tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
         tap_code16(C(KC_X));
-
-        // SEND_STRING( SS_DOWN(KC_LCTL) SS_TAP(KC_X) SS_UP(KC_LCTL));
     } else {
         tap_code16(C(KC_C));
     }

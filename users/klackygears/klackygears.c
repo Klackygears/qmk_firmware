@@ -16,11 +16,7 @@ uint16_t repeat_maus_timer;
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    /*
-     if (!process_record_dynamic_macro(keycode, record)) {
-            return false;
-        }
-    */
+
     switch (keycode) {
         case KC_MACBASE:
             if (record->event.pressed) {

@@ -3,8 +3,6 @@
 
 #ifdef TAP_DANCE_ENABLE
 enum {
-    // TD_MCROTOG,
-    // TD_MCROTG2,
     TD_BTK,
     TD_TDE,
     TD_LPRN,

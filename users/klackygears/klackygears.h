@@ -6,7 +6,7 @@
 #include "eeprom.h"
 #ifdef TAP_DANCE_ENABLE
   #include "tap_dances.h"
-#endif // TAP_DANCE_ENABLE
+#endif
 
 
 enum layer_number {
@@ -27,7 +27,8 @@ enum layer_number {
 };
 
 // Check to see which keyboard you're using, and define the PLACEHOLDER_SAFE_RANGE based on that.
-#if defined(KEYBOARD_fingerpunch_ffkb)
+#if defined(KEYBOARD_fingerpunch_fpm101) \
+ || defined(KEYBOARD_fingerpunch_ffkb)
 #    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
 #else
 #    define PLACEHOLDER_SAFE_RANGE SAFE_RANGE
@@ -55,30 +56,8 @@ enum userspace_custom_keycodes {
   PBWD,
   SHRUG,
   SPAM,
-  //DYNAMIC_MACRO_RANGE,
-  NEW_SAFE_RANGE    //SAFE_RANGE_KEYMAP
+  SAFE_RANGE_KEYMAP    //SAFE_RANGE_KEYMAP
 };
-
-
-/*
-#ifdef UNICODEMAP_ENABLE
-enum unicode_names {
-  BANG,
-  IRONY,
-  SNEK,
-};
-
-const uint32_t PROGMEM unicode_map[] = {
-  [BANG]  = 0x203D,  // ‽
-  [IRONY] = 0x2E2E,  // ⸮
-  [SNEK]  = 0x1F40D, // 🐍
-};
-#endif // UNICODEMAP_ENABLE
-*/
-
-
-//#include "dynamic_macro.h"
-
 
 
 #if RGBLIGHT_ENABLE
