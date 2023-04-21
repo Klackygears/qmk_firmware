@@ -42,44 +42,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_MUTE,   KC_LGUI,   _WINBASE,  KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    _WINBASE,  KC_RGUI,   KC_MUTE
 )
 };
-/*
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LOWER:
-            if (record->event.pressed) {
-                layer_on(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
-            return false;
-            break;
-        case RAISE:
-            if (record->event.pressed) {
-                layer_on(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
-            return false;
-            break;
-        case ADJUST:
-            if (record->event.pressed) {
-                layer_on(_ADJUST);
-            } else {
-                layer_off(_ADJUST);
-            }
-            return false;
-            break;
-        default:
-            break;
-    }
-
-    return true;
-}
- */
 
 
 __attribute__((weak)) bool encoder_update_keymap(uint8_t index, bool clockwise) { return true; }
@@ -178,26 +140,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             default:
                 // super ctrl tab
                 // switch between browser windows, or files in vscode
-                if (clockwise) {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_PGUP);
-                    #else
-                    tap_code(KC_PGDN);
-                    #endif
-                } else {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_PGDN);
-                    #else
-                    tap_code(KC_PGUP);
-                    #endif
-                }
-                break;
-        }
-    }
-    else if (index == 2) {
-        switch(biton32(layer_state)){
-            default:
-                // scroll wheel
                 if (clockwise){
                     #ifdef ENCODERS_B_REVERSE
                     tap_code16(KC_1);
@@ -209,6 +151,28 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code16(KC_2);
                     #else
                     tap_code16(KC_1);
+                    #endif
+                }
+                break;
+        }
+    }
+    else if (index == 2) {
+        switch(biton32(layer_state)){
+            default:
+                // scroll wheel
+
+
+                if (clockwise) {
+                    #ifdef ENCODERS_A_REVERSE
+                    tap_code(KC_PGUP);
+                    #else
+                    tap_code(KC_PGDN);
+                    #endif
+                } else {
+                    #ifdef ENCODERS_A_REVERSE
+                    tap_code(KC_PGDN);
+                    #else
+                    tap_code(KC_PGUP);
                     #endif
                 }
                 break;
