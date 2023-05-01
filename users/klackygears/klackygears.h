@@ -29,7 +29,7 @@ enum layer_number {
 // Check to see which keyboard you're using, and define the PLACEHOLDER_SAFE_RANGE based on that.
 #if defined(KEYBOARD_fingerpunch_fpm101) \
  || defined(KEYBOARD_fingerpunch_ffkb)
-#    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
+#    define PLACEHOLDER_SAFE_RANGE QK_USER
 #else
 #    define PLACEHOLDER_SAFE_RANGE SAFE_RANGE
 #endif

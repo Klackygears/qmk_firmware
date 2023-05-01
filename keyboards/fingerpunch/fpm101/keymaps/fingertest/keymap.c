@@ -22,7 +22,7 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT_fpm101(
-    KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_LPRN,                                          EE_CLR,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
+    KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      DB_TOGG,                                          EE_CLR,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
     KC_TAB,    KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,                                                                   RGB_MOD,      RGB_HUI,      RGB_SPI,      RGB_SAI,      RGB_VAI,      RGB_TOG,
     KC_CAPS,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_LCBR,                                          KC_RCBR,   RGB_RMOD,     RGB_HUD,      RGB_SPD,      RGB_SAD,      RGB_VAD,   KC_QUOT,
     KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      ADJUST,                                           ADJUST,    KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,
@@ -65,40 +65,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LOWER:
-            if (record->event.pressed) {
-                layer_on(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
-            return false;
-            break;
-        case RAISE:
-            if (record->event.pressed) {
-                layer_on(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
-            return false;
-            break;
-        case ADJUST:
-            if (record->event.pressed) {
-                layer_on(_ADJUST);
-            } else {
-                layer_off(_ADJUST);
-            }
-            return false;
-            break;
-        default:
-            break;
-    }
-
-    return true;
+  // If console is enabled, it will print the matrix position and status of each key pressed
+#ifdef CONSOLE_ENABLE
+    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+#endif
+  return true;
 }
 
 bool encoder_update_kb(uint8_t index, bool clockwise) {
@@ -127,3 +98,10 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
     return true;
 }
 
+void keyboard_post_init_user(void) {
+  // Customise these values to desired behaviour
+  debug_enable=true;
+  //debug_matrix=true;
+  debug_keyboard=true;
+  //debug_mouse=true;
+}
