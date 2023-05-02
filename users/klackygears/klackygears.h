@@ -27,8 +27,7 @@ enum layer_number {
 };
 
 // Check to see which keyboard you're using, and define the PLACEHOLDER_SAFE_RANGE based on that.
-#if defined(KEYBOARD_fingerpunch_fpm101) \
- || defined(KEYBOARD_fingerpunch_ffkb)
+#if defined(KEYBOARD_fingerpunch_fpm101)
 #    define PLACEHOLDER_SAFE_RANGE QK_USER
 #else
 #    define PLACEHOLDER_SAFE_RANGE SAFE_RANGE
@@ -56,7 +55,7 @@ enum userspace_custom_keycodes {
   PBWD,
   SHRUG,
   SPAM,
-  SAFE_RANGE_KEYMAP    //SAFE_RANGE_KEYMAP
+  SAFE_RANGE_KEYMAP
 };
 
 
