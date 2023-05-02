@@ -25,7 +25,6 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
-MOUSEKEY_ENABLE = yes
 
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 RGBLIGHT_ENABLE = no
@@ -38,43 +37,17 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = no
 # EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
-MOUSEKEY_ENABLE = no
 
 SRC += keyboards/fingerpunch/fpm101_kg/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
 AUDIO_ENABLE ?= no
-ifeq ($(strip $(CONVERT_TO)), stemcell)
-AUDIO_DRIVER = pwm_software
-endif
+
 ifeq ($(strip $(CONVERT_TO)), elite_pi)
 AUDIO_DRIVER = pwm_hardware
 endif
-ifeq ($(strip $(CONVERT_TO)), rp2040_ce)
-AUDIO_DRIVER = pwm_hardware
-endif
-ifeq ($(strip $(CONVERT_TO)), helios)
-AUDIO_DRIVER = pwm_hardware
-endif
-ifeq ($(strip $(CONVERT_TO)), liatris)
-AUDIO_DRIVER = pwm_hardware
-endif
 
-HAPTIC_ENABLE ?= no
-HAPTIC_DRIVER = DRV2605L
-
-ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
-   RGB_MATRIX_CUSTOM_KB = yes
-   OPT_DEFS += -DRGB_MATRIX_CUSTOM_KB
-endif
-
-ifeq ($(strip $(CIRQUE_ENABLE)), yes)
-   MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
-   POINTING_DEVICE_ENABLE := yes
-   POINTING_DEVICE_DRIVER := cirque_pinnacle_i2c
-   OPT_DEFS += -DCIRQUE_ENABLE
-endif
 
 ifeq ($(strip $(FP_TRACKBALL_ENABLE)), yes)
    MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
