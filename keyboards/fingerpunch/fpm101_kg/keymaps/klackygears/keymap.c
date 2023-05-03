@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "klackygears.h"
-
+/*
 // Defines names for use in layer keycodes and the keymap
  enum layer_names {
     _QWERTY,
@@ -10,7 +10,7 @@
     _ADJUST,
     _MDIA
 };
-
+*/
 /* enum custom_keycodes {
     QWERTY = SAFE_RANGE,
     LOWER,

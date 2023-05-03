@@ -1,5 +1,5 @@
 #include "klackygears.h"
-/*
+
 bool is_busy_toggled = false;
 uint16_t repeat_press_timer;
 uint16_t repeat_maus_timer;
@@ -238,4 +238,4 @@ void matrix_scan_user(void) {
         tap_code(KC_BTN1);
     }
 }
-*/
+
