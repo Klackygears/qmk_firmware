@@ -43,6 +43,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
+/*
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][3] = {
+    [_QWERTY] =   { ENCODER_CCW_CW(KC_1, KC_2), ENCODER_CCW_CW(KC_1, KC_2), ENCODER_CCW_CW(KC_1, KC_2)  },
+    [_MDIA]   =   { ENCODER_CCW_CW(KC_1, KC_2), ENCODER_CCW_CW(KC_1, KC_2), ENCODER_CCW_CW(KC_1, KC_2)  },
+};
+#endif
+ */
 __attribute__((weak)) bool encoder_update_keymap(uint8_t index, bool clockwise) { return true; }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
@@ -53,38 +61,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     // default behavior if undefined
     if (index == 0) {
         switch(biton32(layer_state)){
-            /*case _SYMBOLS:
-                // Page up / page down
-               if (clockwise) {
-                 //   #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_PGUP);
-                    #else
-                    tap_code(KC_PGDN);
-                    #endif
-                } else {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_PGDN);
-                    #else
-                    tap_code(KC_PGUP);
-                    #endif
-                }
-                break;
-            case _MEDIA:
-                // zoom in and out
-                if (clockwise) {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code16(C(KC_MINS));
-                    #else
-                    tap_code16(C(S(KC_EQL)));
-                    #endif
-                } else {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code16(C(S(KC_EQL)));
-                    #else
-                    tap_code16(C(KC_MINS));
-                    #endif
-                }
-                break;*/
+
             default:
                 // volume up and down
                 if (clockwise){
@@ -104,38 +81,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) {
         switch(biton32(layer_state)){
-            /*case _NAVIGATION:
-                // word select left and right
-                if (clockwise) {
-                    #ifdef ENCODERS_B_REVERSE
-                    tap_code16(C(S(KC_LEFT)));
-                    #else
-                    tap_code16(C(S(KC_RIGHT)));
-                    #endif
-                } else {
-                    #ifdef ENCODERS_B_REVERSE
-                    tap_code16(C(S(KC_RIGHT)));
-                    #else
-                    tap_code16(C(S(KC_LEFT)));
-                    #endif
-                }
-                break;
-            case _FUNCTION:
-                // super alt tab
-                if (clockwise) {
-                    #ifdef ENCODERS_B_REVERSE
-                    press_super_tab(true);
-                    #else
-                    press_super_tab(false);
-                    #endif
-                } else {
-                    #ifdef ENCODERS_B_REVERSE
-                    press_super_tab(false);
-                    #else
-                    press_super_tab(true);
-                    #endif
-                }
-                break;*/
+
             default:
                 // super ctrl tab
                 // switch between browser windows, or files in vscode
@@ -163,15 +109,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
                 if (clockwise) {
                     #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_PGUP);
+                    tap_code(KC_1);
                     #else
-                    tap_code(KC_PGDN);
+                    tap_code(KC_2);
                     #endif
                 } else {
                     #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_PGDN);
+                    tap_code(KC_2);
                     #else
-                    tap_code(KC_PGUP);
+                    tap_code(KC_1);
                     #endif
                 }
                 break;
@@ -179,13 +125,4 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     }
 
     return true;
-}
-
-
-void keyboard_post_init_user(void) {
-  // Customise these values to desired behaviour
-  debug_enable=true;
-  //debug_matrix=true;
-  debug_keyboard=true;
-  //debug_mouse=true;
 }

@@ -3,7 +3,7 @@
 bool is_busy_toggled = false;
 uint16_t repeat_press_timer;
 uint16_t repeat_maus_timer;
-
+/*
 #ifdef AUDIO_ENABLE
   float imperial[][2] = SONG(IMPERIAL_MARCH);
   float ztreasure[][2] = SONG(ZELDA_TREASURE);
@@ -14,75 +14,76 @@ uint16_t repeat_maus_timer;
   float oneup[][2] = SONG(ONE_UP_SOUND);
   float windo[][2] = SONG(UNICODE_WINDOWS);
 #endif
+*/
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // If console is enabled, it will print the matrix position and status of each key pressed
-#ifdef CONSOLE_ENABLE
-    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-#endif
+//#ifdef CONSOLE_ENABLE
+//    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+//#endif
   return true;
 
     switch (keycode) {
         case KC_MACBASE:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_MACBASE);
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(coin);
-                #endif
+                #endif */
             }
             break;
 
         case KC_QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(windo);
-                #endif
+                #endif */
             }
             break;
 
         case KC_WINBASE:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_WINBASE);
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(imperial);
-                #endif
+                #endif */
             }
             break;
 
         case KC_COLBASE:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_COLBASE);
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(oneup);
-                #endif
+                #endif */
             }
             break;
 
         case KC_GAMER:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_GAMER);
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(rroll);
-                #endif
+                #endif */
             }
             break;
 
         case KC_GAMR1:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_GAMR1);
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(victory);
-                #endif
+                #endif */
             }
             break;
 
         case KC_GAMR2:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_GAMR2);
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(mush);
-                #endif
+                #endif */
             }
             break;
         case RGBRST:
@@ -136,9 +137,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            {
             static uint16_t tap_hold_timer;
             if (record->event.pressed) {
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(ztreasure);
-                #endif
+                #endif */
                 tap_hold_timer = timer_read();
                 register_code(KC_BTN1);
             } else {
@@ -207,3 +208,4 @@ void matrix_scan_user(void) {
         tap_code(KC_BTN1);
     }
 }
+

@@ -35,7 +35,7 @@ enum layer_number {
 
 
 enum userspace_custom_keycodes {
-  KC_MACBASE = PLACEHOLDER_SAFE_RANGE,   //KC_MACBASE = SAFE_RANGE,
+  KC_MACBASE = PLACEHOLDER_SAFE_RANGE,  //SAFE_RANGE,
   KC_QWERTY,
   KC_WINBASE,
   KC_COLBASE,

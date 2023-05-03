@@ -14,7 +14,7 @@
     #endif
 #    define IGNORE_MOD_TAP_INTERRUPT
 #endif  // tap dance settup
-
+/*
 #ifdef AUDIO_ENABLE
 #    define AUDIO_CLICKY
 #    define AUDIO_CLICKY_FREQ_RANDOMNESS 1.5f
@@ -43,4 +43,4 @@
 #        define UNICODE_SONG_BSD  SONG(WORKMAN_SOUND)
 #        define UNICODE_SONG_WINC SONG(PLOVER_GOODBYE_SOUND)
 #    endif
-#endif  // !AUDIO_ENABLE
+#endif  */ // !AUDIO_ENABLE

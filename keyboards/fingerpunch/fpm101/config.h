@@ -15,8 +15,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #pragma once
+
+#include "keyboards/fingerpunch/src/config.h"
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
@@ -57,7 +58,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGB_MATRIX_ENABLE
   #define RGB_MATRIX_LED_COUNT 65
   #define RGB_MATRIX_CENTER {100, 32}
-  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 50  /* The maximum brightness level for RGB_MATRIX */
+  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150  /* The maximum brightness level for RGB_MATRIX */
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
   #define RGB_MATRIX_KEYPRESSES
   #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
@@ -122,13 +123,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // If we have audio enabled, that means we're not using the left encoder, as they share a pin on the controller
 // Note that you need to solder the jumper on the pcb to use the audio buzzer on the pcb if you are not using the left encoder
 #ifdef AUDIO_ENABLE
-
     #define ENCODERS_PAD_A {C7, B7}
     #define ENCODERS_PAD_B {D2, D5}
-    /*
-    #define ENCODERS_PAD_A {F1, B7}
-    #define ENCODERS_PAD_B {F0, D5}
- */
     #define ENCODER_RESOLUTIONS { 2, 1 }
 #else
     #define ENCODERS_PAD_A {C7, F1, B7}
@@ -136,14 +132,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define ENCODER_RESOLUTIONS { 2, 2, 1 }
 #endif
 
-// #define MOUSEKEY_WHEEL_DELAY 0
-// #define MOUSEKEY_WHEEL_INTERVAL 10
-// #define MK_W_OFFSET_UNMOD 4
-// #define MK_W_INTERVAL_UNMOD 10
-// #define MOUSEKEY_WHEEL_INITIAL_MOVEMENTS 32
-
-
 #ifdef AUDIO_ENABLE
+    // reduce the rgb brightness to avoid overloading
+    #ifdef RGBLIGHT_LIMIT_VAL
+      #undef RGBLIGHT_LIMIT_VAL
+      #define RGBLIGHT_LIMIT_VAL 100
+    #endif
+    #ifdef RGB_MATRIX_STARTUP_VAL
+      #undef RGB_MATRIX_STARTUP_VAL
+      #undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
+      #define RGB_MATRIX_STARTUP_VAL 100
+      #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100
+    #endif
     #define AUDIO_VOICES
     #define AUDIO_PIN F1
     #ifdef CONVERT_TO_STEMCELL
@@ -195,9 +195,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef FP_TRACKBALL_ENABLE
   // Trackball config
-  #define FP_POINTING_DEFAULT_DPI 800
   #define PMW33XX_CS_PIN B5
-  #define PMW33XX_CPI FP_POINTING_DEFAULT_DPI
   #define PMW33XX_CS_DIVISOR 8 // needs to be the same as the SHIFTREG_DIVISOR above
   #define POINTING_DEVICE_INVERT_Y
 #endif
