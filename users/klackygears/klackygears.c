@@ -1,5 +1,5 @@
 #include "klackygears.h"
-
+/*
 bool is_busy_toggled = false;
 uint16_t repeat_press_timer;
 uint16_t repeat_maus_timer;
@@ -15,11 +15,14 @@ uint16_t repeat_maus_timer;
   float windo[][2] = SONG(UNICODE_WINDOWS);
 #endif
 
+<<<<<<< HEAD
 
 __attribute__ ((weak))
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
+=======
+>>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // If console is enabled, it will print the matrix position and status of each key pressed
@@ -32,15 +35,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_MACBASE:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_MACBASE);
-                /* #ifdef AUDIO_ENABLE
+                #ifdef AUDIO_ENABLE
                  PLAY_SONG(coin);
-                #endif */
+                #endif
             }
             break;
 
         case KC_QWERTY:
             if (record->event.pressed) {
+<<<<<<< HEAD
                 set_single_default_layer(_QWERTY);
+=======
+                set_single_persistent_default_layer(_QWERTY);
+>>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(windo);
                 #endif
@@ -50,15 +57,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_WINBASE:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_WINBASE);
-                /* #ifdef AUDIO_ENABLE
+                #ifdef AUDIO_ENABLE
                  PLAY_SONG(imperial);
-                #endif */
+                #endif
             }
             break;
 
         case KC_COLBASE:
             if (record->event.pressed) {
+<<<<<<< HEAD
                 set_single_default_layer(_COLBASE);
+=======
+                set_single_persistent_default_layer(_COLBASE);
+>>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(oneup);
                 #endif
@@ -67,16 +78,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_GAMER:
             if (record->event.pressed) {
+<<<<<<< HEAD
                 set_single_default_layer(_GAMER);
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(rroll); 
+=======
+                set_single_persistent_default_layer(_GAMER);
+                #ifdef AUDIO_ENABLE
+                 PLAY_SONG(rroll);
+>>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #endif
             }
             break;
 
         case KC_GAMR1:
             if (record->event.pressed) {
+<<<<<<< HEAD
                 set_single_default_layer(_GAMR1);
+=======
+                set_single_persistent_default_layer(_GAMR1);
+>>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(victory);
                 #endif
@@ -85,7 +106,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_GAMR2:
             if (record->event.pressed) {
+<<<<<<< HEAD
                 set_single_default_layer(_GAMR2);
+=======
+                set_single_persistent_default_layer(_GAMR2);
+>>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(mush);
                 #endif
@@ -142,9 +167,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            {
             static uint16_t tap_hold_timer;
             if (record->event.pressed) {
-                /* #ifdef AUDIO_ENABLE
+                #ifdef AUDIO_ENABLE
                  PLAY_SONG(ztreasure);
-                #endif */
+                #endif
                 tap_hold_timer = timer_read();
                 register_code(KC_BTN1);
             } else {
@@ -213,4 +238,4 @@ void matrix_scan_user(void) {
         tap_code(KC_BTN1);
     }
 }
-
+*/

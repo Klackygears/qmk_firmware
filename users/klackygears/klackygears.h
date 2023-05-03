@@ -4,6 +4,7 @@
 
 #include "wrappers.h"
 #include "eeprom.h"
+/*
 #ifdef TAP_DANCE_ENABLE
   #include "tap_dances.h"
 #endif
@@ -66,3 +67,4 @@ enum userspace_custom_keycodes {
 uint8_t RGB_current_mode;
 
 #endif
+ */
