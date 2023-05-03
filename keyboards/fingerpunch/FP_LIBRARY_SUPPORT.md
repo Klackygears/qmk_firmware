@@ -22,12 +22,18 @@ SRC +=  keyboards/fingerpunch/src/fp.c \
         keyboards/fingerpunch/src/fp_haptic.c \
         keyboards/fingerpunch/src/fp_audio.c \
         keyboards/fingerpunch/src/fp_keyhandler.c \
+        keyboards/fingerpunch/src/fp_encoder.c \
         keyboards/fingerpunch/src/fp_pointing.c \
         keyboards/fingerpunch/src/fp_rgb_common.c \
         keyboards/fingerpunch/src/fp_rgblight.c \
         keyboards/fingerpunch/src/fp_rgb_matrix.c
 
 ```
+
+### Custom config.h
+
+Add this to the keyboard's config.h to allow for custom fingerpunch config.h inclusions
+`#include "keyboards/fingerpunch/src/config.h"`
 
 ### Audio startup sound
 

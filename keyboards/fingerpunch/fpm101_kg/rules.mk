@@ -1,5 +1,6 @@
 # MCU name
 MCU = atmega32u4
+CONVERT_TO=elite_pi
 
 PIN_COMPATIBLE=elite_c
 

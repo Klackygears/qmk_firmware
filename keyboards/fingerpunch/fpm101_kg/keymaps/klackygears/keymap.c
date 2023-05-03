@@ -1,15 +1,16 @@
 #include QMK_KEYBOARD_H
 #include "klackygears.h"
-
+/*
 // Defines names for use in layer keycodes and the keymap
-/* enum layer_names {
+ enum layer_names {
     _QWERTY,
     _COLEMAK,
     _LOWER,
     _RAISE,
-    _ADJUST
-}; */
-
+    _ADJUST,
+    _MDIA
+};
+ */
 /* enum custom_keycodes {
     QWERTY = SAFE_RANGE,
     LOWER,
@@ -24,21 +25,21 @@
 //                                                                                            --> KC_MUTE <--
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-[_QWERTY] = LAYOUT_fpm101_wrapper(
+[_QWERTY] = LAYOUT_fpm101(
     KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,       DB_TOGG,                                            KC_RPRN,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
-    KC_TAB,    _______________DVORAK_L1___________________,                                                                         RGBRST,     RGB_HUI,    RGB_SAI,    RGB_VAI,    RGB_SPI,        KC_BSLS,
-    KC_CAPS,   _________________WINNAV_L2_________________,       KC_LCBR,                                            KC_RCBR,      RGB_MOD,    RGB_HUD,    RGB_SAD,    RGB_VAD,    RGB_SPD,        KC_QUOT,
-    KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,       _WINBASE,                                           _WINBASE,  KC_N,      KC_M,         KC_COMM,   KC_DOT, KC_SLSH,   KC_ENT,
-                          KC_MUTE,   KC_LGUI,   _WINBASE,  KC_SPC,     KC_LALT,     KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    _WINBASE,     KC_RGUI,   KC_MUTE
+    KC_TAB,    KC_Q,      KC_W,      KC_F,      KC_P,      KC_B,                                                                         KC_SPC,     RGB_HUI,    RGB_SAI,    RGB_VAI,    RGB_SPI,        KC_BSLS,
+    KC_CAPS,   KC_Q,      KC_W,      KC_F,      KC_P,      KC_B,       KC_LCBR,                                            KC_RCBR,      RGB_MOD,    RGB_HUD,    RGB_SAD,    RGB_VAD,    RGB_SPD,        KC_QUOT,
+    KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,       _QWERTY,                                           _QWERTY,  KC_N,      KC_M,         KC_COMM,   KC_DOT, KC_SLSH,   KC_ENT,
+                          KC_MUTE,   KC_LGUI,   _QWERTY,  KC_SPC,     KC_LALT,     KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    _QWERTY,     KC_RGUI,   KC_MUTE
 ),
 
 
-[_MDIA] = LAYOUT_fpm101_wrapper(
+[_MDIA] = LAYOUT_fpm101(
     KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_LPRN,                                          KC_RPRN,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
     KC_TAB,    KC_Q,      KC_W,      KC_F,      KC_P,      KC_B,                                                                   KC_J,      KC_L,      KC_U,      KC_Y,      KC_SCLN,   KC_BSLS,
     KC_CAPS,   KC_A,      KC_R,      KC_S,      KC_T,      KC_G,      KC_LCBR,                                          KC_RCBR,   KC_M,      KC_N,      KC_E,      KC_I,      KC_O,      KC_QUOT,
-    KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_D,      KC_V,      _WINBASE,                                         _WINBASE,  KC_K,      KC_H,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,
-                          KC_MUTE,   KC_LGUI,   _WINBASE,  KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    _WINBASE,  KC_RGUI,   KC_MUTE
+    KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_D,      KC_V,      _QWERTY,                                         _QWERTY,  KC_K,      KC_H,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,
+                          KC_MUTE,   KC_LGUI,   _QWERTY,  KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    _QWERTY,  KC_RGUI,   KC_MUTE
 )
 };
 
@@ -53,38 +54,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     // default behavior if undefined
     if (index == 0) {
         switch(biton32(layer_state)){
-            /*case _SYMBOLS:
-                // Page up / page down
-               if (clockwise) {
-                 //   #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_PGUP);
-                    #else
-                    tap_code(KC_PGDN);
-                    #endif
-                } else {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_PGDN);
-                    #else
-                    tap_code(KC_PGUP);
-                    #endif
-                }
-                break;
-            case _MEDIA:
-                // zoom in and out
-                if (clockwise) {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code16(C(KC_MINS));
-                    #else
-                    tap_code16(C(S(KC_EQL)));
-                    #endif
-                } else {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code16(C(S(KC_EQL)));
-                    #else
-                    tap_code16(C(KC_MINS));
-                    #endif
-                }
-                break;*/
             default:
                 // volume up and down
                 if (clockwise){
@@ -104,41 +73,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) {
         switch(biton32(layer_state)){
-            /*case _NAVIGATION:
-                // word select left and right
-                if (clockwise) {
-                    #ifdef ENCODERS_B_REVERSE
-                    tap_code16(C(S(KC_LEFT)));
-                    #else
-                    tap_code16(C(S(KC_RIGHT)));
-                    #endif
-                } else {
-                    #ifdef ENCODERS_B_REVERSE
-                    tap_code16(C(S(KC_RIGHT)));
-                    #else
-                    tap_code16(C(S(KC_LEFT)));
-                    #endif
-                }
-                break;
-            case _FUNCTION:
-                // super alt tab
-                if (clockwise) {
-                    #ifdef ENCODERS_B_REVERSE
-                    press_super_tab(true);
-                    #else
-                    press_super_tab(false);
-                    #endif
-                } else {
-                    #ifdef ENCODERS_B_REVERSE
-                    press_super_tab(false);
-                    #else
-                    press_super_tab(true);
-                    #endif
-                }
-                break;*/
             default:
-                // super ctrl tab
-                // switch between browser windows, or files in vscode
                 if (clockwise){
                     #ifdef ENCODERS_B_REVERSE
                     tap_code16(KC_1);
@@ -180,4 +115,3 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
     return true;
 }
-

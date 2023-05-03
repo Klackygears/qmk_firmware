@@ -15,6 +15,7 @@ uint16_t repeat_maus_timer;
   float windo[][2] = SONG(UNICODE_WINDOWS);
 #endif
 
+
 __attribute__ ((weak))
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
   return true;
@@ -22,18 +23,18 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // If console is enabled, it will print the matrix position and status of each key pressed
-#ifdef CONSOLE_ENABLE
-    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-#endif
+//#ifdef CONSOLE_ENABLE
+//    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+//#endif
   return true;
 
     switch (keycode) {
         case KC_MACBASE:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_MACBASE);
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(coin);
-                #endif
+                #endif */
             }
             break;
 
@@ -49,9 +50,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_WINBASE:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_WINBASE);
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(imperial);
-                #endif
+                #endif */
             }
             break;
 
@@ -141,9 +142,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            {
             static uint16_t tap_hold_timer;
             if (record->event.pressed) {
-                #ifdef AUDIO_ENABLE
+                /* #ifdef AUDIO_ENABLE
                  PLAY_SONG(ztreasure);
-                #endif
+                #endif */
                 tap_hold_timer = timer_read();
                 register_code(KC_BTN1);
             } else {
@@ -212,3 +213,4 @@ void matrix_scan_user(void) {
         tap_code(KC_BTN1);
     }
 }
+
