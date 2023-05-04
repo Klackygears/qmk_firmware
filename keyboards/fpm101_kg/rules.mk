@@ -39,8 +39,8 @@ FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = no
 # EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
 
-SRC += keyboards/fingerpunch/fpm101_kg/fp_matrix_74hc595_spi.c
-QUANTUM_LIB_SRC += spi_master.c
+SRC += keyboards/fpm101_kg/fp_matrix_74hc595_spi.c
+#QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
 AUDIO_ENABLE ?= no
