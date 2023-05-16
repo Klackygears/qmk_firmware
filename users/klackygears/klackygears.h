@@ -10,11 +10,11 @@
 #endif
 
 
-enum layer_number {
+enum userspace_layers {
     _WINBASE = 0,
-    _COLBASE,
-    _MACBASE,
-    _QWERTY,
+    _COLBASE = 0,
+    _MACBASE = 0,
+    _QWERTY = 0,
     _GAMER,
     _GAMR1,
     _GAMR2,
@@ -24,7 +24,7 @@ enum layer_number {
     _SYMB,
     _FUNC,
     _MDIA,
-    _MEME
+    _MEME,
 };
 /*
 // Check to see which keyboard you're using, and define the PLACEHOLDER_SAFE_RANGE based on that.
@@ -34,7 +34,7 @@ enum layer_number {
 #else
 #    define PLACEHOLDER_SAFE_RANGE SAFE_RANGE
 #endif
- */
+  */
 
 enum userspace_custom_keycodes {
   KC_MACBASE = QK_USER,
@@ -57,7 +57,7 @@ enum userspace_custom_keycodes {
   PBWD,
   SHRUG,
   SPAM,
-  PLACEHOLDER,
+  USER_SAFE_RANGE2,
 };
 
 
@@ -68,3 +68,4 @@ enum userspace_custom_keycodes {
 uint8_t RGB_current_mode;
 
 #endif
+

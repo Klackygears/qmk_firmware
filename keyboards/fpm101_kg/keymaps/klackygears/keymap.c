@@ -10,7 +10,7 @@
     _ADJUST,
     _MDIA
 };
-*/
+ */
 /* enum custom_keycodes {
     QWERTY = SAFE_RANGE,
     LOWER,
