@@ -8,7 +8,9 @@
 #ifdef TAP_DANCE_ENABLE
   #include "tap_dances.h"
 #endif
+#if (__has_include("secrets.h") && !defined(NO_SECRETS))
 #include "secrets.h"
+#endif
 
 enum userspace_layers {
     _WINBASE = 0,
@@ -45,7 +47,6 @@ enum userspace_custom_keycodes {
   RGBRST,
   MAKEK,
   MAKEKF,
-  BUZY,
   PFWD,
   PBWD,
   SHRUG,

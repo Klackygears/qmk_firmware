@@ -7,8 +7,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MACBASE] = LAYOUT_fpm101_wrapper(
     KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
     KC_ESC,  _______________DVORAK_L1___________________,                                                       _______________DVORAK_R1___________________, KC_BSPC,
-    RGB_TOG, _______________DVORAK_L2___________________, _______,                                     KC_SECRET_2, _______________DVORAK_R2___________________, RGB_TOG,
-    RGB_MOD, _______________MACDVK_L3___________________, M_TEAMS,                                     BUZY,    _______________MACDVK_R3___________________, RGB_MOD,
+    RGB_TOG, _______________DVORAK_L2___________________, _______,                                     _______, _______________DVORAK_R2___________________, RGB_TOG,
+    RGB_MOD, _______________MACDVK_L3___________________, M_TEAMS,                                     KC_SCT1, _______________MACDVK_R3___________________, RGB_MOD,
                       _______, ________MAC_THUMB_L______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________MAC_THUMB_R______, KC_MUTE
 ),
 
@@ -16,7 +16,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
     KC_ESC,  _________________QWERTY_L1_________________,                                                       _________________QWERTY_R1_________________, KC_BSPC,
     KC_CAPS, _________________QWERTY_L1_________________, _______,                                     _______, _________________QWERTY_R2_________________, KC_ENT,
-    KC_LSFT, _________________QWERTY_L1_________________, M_TEAMS,                                     _______, _________________QWERTY_R3_________________, KC_RSFT,
+    KC_LSFT, _________________QWERTY_L1_________________, M_TEAMS,                                     KC_SCT1, _________________QWERTY_R3_________________, KC_RSFT,
                   _______, KC_LGUI, KC_LALT, MO(_MNMB), MO(_SYMB), KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, MO(_SYMB), MO(_MNMB), MO(_MDIA), KC_MUTE
 ),
 
@@ -24,15 +24,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
     KC_ESC,  _________________COLEMAK_L1________________,                                                       _________________COLEMAK_R1________________, KC_BSPC,
     AU_TOGG, _________________COLEMAK_L2________________, _WINBASE,                                    _______, _________________COLEMAK_R2________________, RGB_TOG,
-    CK_TOGG, _________________COLEMAK_L3________________, M_TEAMS,                                     BUZY,    _________________COLEMAK_R3________________, RGB_MOD,
+    CK_TOGG, _________________COLEMAK_L3________________, M_TEAMS,                                     KC_SCT1, _________________COLEMAK_R3________________, RGB_MOD,
                       _______, ________WIN_THUMB_L______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________WIN_THUMB_R______, KC_MUTE
 ),
 
 [_WINBASE] = LAYOUT_fpm101_wrapper(
     KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                  TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
     KC_TAB,  _______________DVORAK_L1___________________,                                                        _______________DVORAK_R1___________________, KC_BSPC,
-    AU_TOGG, _______________DVORAK_L2___________________, _______,                                      KC_SECRET_2, _______________DVORAK_R2___________________, RGB_TOG,
-    CK_TOGG, _______________WINDVK_L3___________________, M_TEAMS,                                      BUZY,    _______________WINDVK_R3___________________, RGB_MOD,
+    AU_TOGG, _______________DVORAK_L2___________________, _______,                                      _______, _______________DVORAK_R2___________________, RGB_TOG,
+    CK_TOGG, _______________WINDVK_L3___________________, M_TEAMS,                                      KC_SCT1, _______________WINDVK_R3___________________, RGB_MOD,
                       _______, ________WIN_THUMB_L______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________WIN_THUMB_R______, KC_MUTE
 ),
 
@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _________________PUNC_L1_ALT_______________,                                                       _________________PUNC_R1___________________, _______,
     _______, _________________PUNC_L3___________________, _______,                                     _______, _________________PUNC_R2___________________, _______,
     RGB_MOD, _________________PUNC_L3_ALT_______________, M_TEAMS,                                     _______, _________________PUNC_R3___________________, _______,
-                      _______, KC_NUM,  KC_LSCR, KC_DEL,  _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, _______, KC_CAPS, BUZY,    _______
+                      _______, KC_NUM,  KC_LSCR, KC_DEL,  _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, _______, KC_CAPS, KC_SCT1, _______
 ),
 
 [_FUNC] = LAYOUT_fpm101_wrapper(
