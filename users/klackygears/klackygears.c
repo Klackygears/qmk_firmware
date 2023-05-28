@@ -3,6 +3,7 @@
 bool is_busy_toggled = false;
 uint16_t repeat_press_timer;
 uint16_t repeat_maus_timer;
+static uint16_t mute_hold_timer = 0;  //create a timer variable
 
 #ifdef AUDIO_ENABLE
   float imperial[][2] = SONG(IMPERIAL_MARCH);
@@ -15,13 +16,13 @@ uint16_t repeat_maus_timer;
   float windo[][2] = SONG(UNICODE_WINDOWS);
 #endif
 
+__attribute__ ((weak))
+bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
+  return true;
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // If console is enabled, it will print the matrix position and status of each key pressed
-#ifdef CONSOLE_ENABLE
-    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-#endif
-  return true;
 
     switch (keycode) {
         case KC_MACBASE:
@@ -193,8 +194,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
               return false;
            }
             break;
+           case M_TEAMS:
+            if (record->event.pressed) {                           //when keycode MUTE_TEAMS is pressed
+             mute_hold_timer = timer_read();                       //mark the time the key was pressed
+             tap_code16(LCTL(LSFT(KC_M)));                         //tap Ctrl + Shift + M (mute shortcut)
+           } else {                                                //when keycode MUTE_TEAMS is released
+            if (timer_elapsed(mute_hold_timer) > MUTE_HOLD_DELAY)  //if held longer than MUTE_HOLD_DELAY
+                tap_code16(LCTL(LSFT(KC_M)));                      //tap the mute shortcut again
+           }                                                       //otherwise do nothing
+            break;
     }
-    return true;
+    return process_record_secrets(keycode, record);
+    //return true;
 }
 
 void matrix_scan_user(void) {

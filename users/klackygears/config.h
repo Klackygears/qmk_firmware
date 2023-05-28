@@ -14,7 +14,9 @@
     #endif
 #    define IGNORE_MOD_TAP_INTERRUPT
 #endif  // tap dance settup
-/*
+
+#define MUTE_HOLD_DELAY 400  //400ms, minimum time that MUTE_TEAMS must be held to send again
+
 #ifdef AUDIO_ENABLE
 #    define AUDIO_CLICKY
 #    define AUDIO_CLICKY_FREQ_RANDOMNESS 1.5f
@@ -43,4 +45,4 @@
 #        define UNICODE_SONG_BSD  SONG(WORKMAN_SOUND)
 #        define UNICODE_SONG_WINC SONG(PLOVER_GOODBYE_SOUND)
 #    endif
-#endif  */ // !AUDIO_ENABLE
+#endif   // !AUDIO_ENABLE

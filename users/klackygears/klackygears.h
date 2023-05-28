@@ -8,12 +8,12 @@
 #ifdef TAP_DANCE_ENABLE
   #include "tap_dances.h"
 #endif
-
+#include "secrets.h"
 
 enum userspace_layers {
     _WINBASE = 0,
-    _COLBASE = 0,
     _MACBASE = 0,
+    _COLBASE = 0,
     _QWERTY = 0,
     _GAMER,
     _GAMR1,
@@ -25,16 +25,9 @@ enum userspace_layers {
     _FUNC,
     _MDIA,
     _MEME,
+    _MAUS,
 };
-/*
-// Check to see which keyboard you're using, and define the PLACEHOLDER_SAFE_RANGE based on that.
-#if defined(KEYBOARD_fingerpunch_fpm101) \
-      || defined(KEYBOARD_fingerpunch_fpm101_kg)
-#    define PLACEHOLDER_SAFE_RANGE QK_USER
-#else
-#    define PLACEHOLDER_SAFE_RANGE SAFE_RANGE
-#endif
-  */
+
 
 enum userspace_custom_keycodes {
   KC_MACBASE = QK_USER,
@@ -57,7 +50,8 @@ enum userspace_custom_keycodes {
   PBWD,
   SHRUG,
   SPAM,
-  USER_SAFE_RANGE2,
+  M_TEAMS,
+  USER_SAFE_RANGE,
 };
 
 

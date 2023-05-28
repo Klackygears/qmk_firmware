@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/src/fp_pointing.h"
-#include "keyboards/fingerpunch/src/fp_keyhandler.h"
+#include "keyboards/klackygears_fp/src/fp_pointing.h"
+#include "keyboards/klackygears_fp/src/fp_keyhandler.h"
 #include "math.h"
 // is_keyboard_master()
 
@@ -24,53 +24,17 @@
 #ifdef FP_POINTING_ACCELERATION_ENABLE
 static bool acceleration_enabled = true;
 #endif
-static bool scrolling_keycode_enabled = false;
+static bool scrolling_enabled = false;
 static bool scrolling_layer_enabled = false;
-static bool sniping_keycode_enabled = false;
+static bool sniping_enabled = false;
 static bool sniping_layer_enabled = false;
-static bool zooming_keycode_enabled = false;
+static bool zooming_enabled = false;
 static bool zooming_layer_enabled = false;
 static bool zooming_hold = false;
 
-uint8_t fp_get_cpi_value_from_mode(uint8_t mode_index) {
-    switch (mode_index) {
-        case FP_POINTING_MODE:
-            return fp_config.pointing_dpi;
-        case FP_SCROLLING_MODE:
-            return fp_config.scrolling_dpi;
-        case FP_SNIPING_MODE:
-            return fp_config.sniping_dpi;
-        default:
-            xprintf("fp_get_cpi_value_from_mode: invalid mode, this should never happen");
-            return 10;
-    }
-
-    return 10;
-}
-
-#ifndef POINTING_DEVICE_COMBINED
 void fp_set_cpi(uint8_t value) {
     pointing_device_set_cpi((uint16_t)value * FP_POINTING_DPI_MULTIPLIER);
-    xprintf("fp_set_cpi: setting value to: %d\n", ((uint16_t)value * FP_POINTING_DPI_MULTIPLIER));
 }
-
-void fp_set_cpi_by_mode(uint8_t mode_index) {
-    fp_set_cpi(fp_get_cpi_value_from_mode(mode_index) * FP_POINTING_DPI_MULTIPLIER);
-}
-#endif
-
-#ifdef POINTING_DEVICE_COMBINED
-void fp_set_cpi_combined(uint8_t left_value, uint8_t right_value) {
-    pointing_device_set_cpi_on_side(true, (uint16_t)left_value * FP_POINTING_DPI_MULTIPLIER);
-    pointing_device_set_cpi_on_side(false, (uint16_t)right_value * FP_POINTING_DPI_MULTIPLIER);
-}
-
-void fp_set_cpi_combined_by_mode(uint8_t left_mode_index, uint8_t right_mode_index) {
-    pointing_device_set_cpi_on_side(true, (uint16_t)fp_get_cpi_value_from_mode(left_mode_index) * FP_POINTING_DPI_MULTIPLIER);
-    pointing_device_set_cpi_on_side(false, (uint16_t)fp_get_cpi_value_from_mode(right_mode_index) * FP_POINTING_DPI_MULTIPLIER);
-}
-#endif
-
 
 void fp_point_dpi_update(uint8_t action) {
     xprintf("Pointing DPI update, action %u, before value: %u\n", action, fp_config.pointing_dpi);
@@ -83,8 +47,8 @@ void fp_point_dpi_update(uint8_t action) {
             }
             break;
         case FP_DPI_DOWN:
-            if (fp_config.pointing_dpi <= FP_POINTING_MIN_DPI) {
-                fp_config.pointing_dpi = FP_POINTING_MIN_DPI;
+            if (fp_config.pointing_dpi <= 1) {
+                fp_config.pointing_dpi = 1;
             } else {
                 fp_config.pointing_dpi -= 1;
             }
@@ -100,10 +64,44 @@ void fp_point_dpi_update(uint8_t action) {
     #ifdef CONSOLE_ENABLE
     fp_log_eeprom();
     #endif
-    fp_apply_dpi();
+    // This may be a bad decision, but use this function to apply the changes, since it covers sniping, scrolling, or regular cpi, based on what is active
+    fp_scroll_apply_dpi();
     xprintf("Pointing DPI update, action %u, after value: %u\n", action, fp_config.pointing_dpi);
 }
 
+void fp_scroll_layer_set(bool scroll_value) {
+    scrolling_layer_enabled = scroll_value;
+    fp_scroll_apply_dpi();
+}
+
+void fp_scroll_keycode_set(bool scroll_value) {
+    scrolling_enabled = scroll_value;
+    fp_scroll_apply_dpi();
+}
+
+void fp_scroll_keycode_toggle(void) {
+    scrolling_enabled = !scrolling_enabled;
+    fp_scroll_apply_dpi();
+}
+
+bool fp_scroll_get(void) {
+    return (scrolling_enabled || scrolling_layer_enabled);
+}
+
+void fp_scroll_apply_dpi(void) {
+    // We don't want to apply the dpi change if sniping mode is enabled, since that will win!
+    if(!fp_snipe_get()) {
+        if(fp_scroll_get()) {
+            fp_set_cpi(fp_config.scrolling_dpi);
+        } else {
+#ifdef POINTING_DEVICE_COMBINED
+            fp_set_cpi_combined_defaults();
+#else
+            fp_set_cpi(fp_config.pointing_dpi);
+#endif
+        }
+    }
+}
 
 void fp_scroll_dpi_update(uint8_t action) {
     xprintf("Scrolling DPI update, action %u, before value: %u\n", action, fp_config.scrolling_dpi);
@@ -116,8 +114,8 @@ void fp_scroll_dpi_update(uint8_t action) {
             }
             break;
         case FP_DPI_DOWN:
-            if (fp_config.scrolling_dpi <= FP_POINTING_SCROLLING_MIN_DPI) {
-                fp_config.scrolling_dpi = FP_POINTING_SCROLLING_MIN_DPI;
+            if (fp_config.scrolling_dpi <= 1) {
+                fp_config.scrolling_dpi = 1;
             } else {
                 fp_config.scrolling_dpi -= 1;
             }
@@ -130,8 +128,36 @@ void fp_scroll_dpi_update(uint8_t action) {
     }
 
     eeconfig_update_kb_datablock(&fp_config.raw);
-    fp_apply_dpi();
+    // This may be a bad decision, but use this function to apply the changes, since it covers sniping, scrolling, or regular cpi, based on what is active
+    fp_scroll_apply_dpi();
     xprintf("Scrolling DPI update, action %u, after value: %u\n", action, fp_config.scrolling_dpi);
+}
+
+void fp_snipe_layer_set(bool snipe_value) {
+    sniping_layer_enabled = snipe_value;
+    fp_snipe_apply_dpi();
+}
+
+void fp_snipe_keycode_set(bool snipe_value) {
+    sniping_enabled = snipe_value;
+    fp_snipe_apply_dpi();
+}
+
+void fp_snipe_keycode_toggle(void) {
+    sniping_enabled = !sniping_enabled;
+    fp_snipe_apply_dpi();
+}
+
+bool fp_snipe_get(void) {
+    return (sniping_enabled || sniping_layer_enabled);
+}
+
+void fp_snipe_apply_dpi(void) {
+    if(fp_snipe_get()) {
+        fp_set_cpi(fp_config.sniping_dpi);
+    } else {
+        fp_set_cpi(fp_config.pointing_dpi);
+    }
 }
 
 void fp_snipe_dpi_update(uint8_t action) {
@@ -145,8 +171,8 @@ void fp_snipe_dpi_update(uint8_t action) {
             }
             break;
         case FP_DPI_DOWN:
-            if (fp_config.sniping_dpi <= FP_POINTING_SNIPING_MIN_DPI) {
-                fp_config.sniping_dpi = FP_POINTING_SNIPING_MIN_DPI;
+            if (fp_config.sniping_dpi <= 1) {
+                fp_config.sniping_dpi = 1;
             } else {
                 fp_config.sniping_dpi -= 1;
             }
@@ -159,108 +185,25 @@ void fp_snipe_dpi_update(uint8_t action) {
     }
 
     eeconfig_update_kb_datablock(&fp_config.raw);
-    fp_apply_dpi();
+    // This may be a bad decision, but use this function to apply the changes, since it covers sniping, scrolling, or regular cpi, based on what is active
+    fp_scroll_apply_dpi();
     xprintf("Sniping DPI update, action %u, after value: %u\n", action, fp_config.sniping_dpi);
-}
-
-void fp_apply_dpi_defaults(void) {
-#ifdef POINTING_DEVICE_COMBINED
-    if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
-        fp_set_cpi_combined_by_mode(FP_SCROLLING_MODE, FP_POINTING_MODE);
-    } else if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
-        fp_set_cpi_combined_by_mode(FP_POINTING_MODE, FP_SCROLLING_MODE);
-    } else {
-        fp_set_cpi_combined_by_mode(FP_POINTING_MODE, FP_POINTING_MODE);
-    }
-#else
-    fp_set_cpi_by_mode(FP_POINTING_MODE);
-#endif
-}
-
-void fp_apply_dpi(void) {
-    // sniping dpi always wins, since the intent of it is to be moving slowly in sniping mode
-    if(fp_snipe_layer_get() || fp_snipe_keycode_get()) {
-#ifdef POINTING_DEVICE_COMBINED
-        fp_set_cpi_combined_by_mode(FP_SNIPING_MODE, FP_SNIPING_MODE);
-#else
-        fp_set_cpi_by_mode(FP_SNIPING_MODE);
-#endif
-    } else if (fp_scroll_layer_get() || fp_snipe_keycode_get()) {
-#ifdef POINTING_DEVICE_COMBINED
-        fp_set_cpi_combined_by_mode(FP_SCROLLING_MODE, FP_SCROLLING_MODE);
-#else
-        fp_set_cpi_by_mode(FP_SCROLLING_MODE);
-#endif
-    } else {
-        // if not sniping or scrolling, set to default values
-        fp_apply_dpi_defaults();
-    }
-}
-
-void fp_scroll_layer_set(bool scroll_value) {
-    scrolling_layer_enabled = scroll_value;
-    fp_apply_dpi();
-}
-
-bool fp_scroll_layer_get(void) {
-    return scrolling_layer_enabled;
-}
-
-void fp_scroll_keycode_toggle(void) {
-    scrolling_keycode_enabled = !scrolling_keycode_enabled;
-    fp_apply_dpi();
-}
-
-void fp_scroll_keycode_set(bool scroll_value) {
-    scrolling_keycode_enabled = scroll_value;
-    fp_apply_dpi();
-}
-
-bool fp_scroll_keycode_get(void) {
-    return scrolling_keycode_enabled;
-}
-
-void fp_snipe_layer_set(bool snipe_value) {
-    sniping_layer_enabled = snipe_value;
-    fp_apply_dpi();
-}
-
-bool fp_snipe_layer_get(void) {
-    return sniping_layer_enabled;
-}
-
-void fp_snipe_keycode_toggle(void) {
-    sniping_keycode_enabled = !sniping_keycode_enabled;
-    fp_apply_dpi();
-}
-
-void fp_snipe_keycode_set(bool snipe_value) {
-    sniping_keycode_enabled = snipe_value;
-    fp_apply_dpi();
-}
-
-bool fp_snipe_keycode_get(void) {
-    return sniping_keycode_enabled;
 }
 
 void fp_zoom_layer_set(bool zoom_value) {
     zooming_layer_enabled = zoom_value;
 }
 
-bool fp_zoom_layer_get(void) {
-    return zooming_layer_enabled;
+void fp_zoom_keycode_set(bool zoom_value) {
+    zooming_enabled = zoom_value;
 }
 
 void fp_zoom_keycode_toggle(void) {
-    zooming_keycode_enabled = !zooming_keycode_enabled;
+    zooming_enabled = !zooming_enabled;
 }
 
-void fp_zoom_keycode_set(bool zoom_value) {
-    zooming_keycode_enabled = zoom_value;
-}
-
-bool fp_zoom_keycode_get(void) {
-    return zooming_keycode_enabled;
+bool fp_zoom_get(void) {
+    return (zooming_enabled || zooming_layer_enabled);
 }
 
 uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg) {
@@ -269,20 +212,12 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg) {
 }
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
-#ifdef CONSOLE_ENABLE
-    if (mouse_report.x != 0) {
-        xprintf("fingerpunch mouse report x: %d\n", mouse_report.x);
-    }
-    if (mouse_report.y != 0) {
-        xprintf("fingerpunch mouse report y: %d\n", mouse_report.y);
-    }
-#endif
-    if (fp_scroll_layer_get() || fp_scroll_keycode_get()) {
+    if (fp_scroll_get()) {
         mouse_report.h = mouse_report.x;
         mouse_report.v = -mouse_report.y;
         mouse_report.x = 0;
         mouse_report.y = 0;
-    } else if (fp_zoom_layer_get() || fp_zoom_keycode_get()) {
+    } else if (fp_zoom_get()) {
         bool zoom_in = false;
         mouse_xy_report_t zoom_value = mouse_report.y;
         if (zoom_value < 0) {
@@ -321,7 +256,7 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     }
 #ifdef FP_POINTING_ACCELERATION_ENABLE
     // Don't run acceleration unless you're in regular mousing mode, and acceleration is explicitly enabled
-    if (!fp_scroll_layer_get() && !fp_scroll_keycode_get() && !fp_snipe_layer_get() && !fp_snipe_keycode_get() && !fp_zoom_layer_get() && !fp_zoom_keycode_get() && acceleration_enabled) {
+    if (!fp_scroll_get() && !fp_snipe_get() && !fp_zoom_get() && acceleration_enabled) {
         mouse_xy_report_t x = mouse_report.x, y = mouse_report.y;
         mouse_report.x = 0;
         mouse_report.y = 0;
@@ -336,32 +271,6 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     mouse_report = pointing_device_task_user(mouse_report);
     return mouse_report;
 }
-
-#ifdef POINTING_DEVICE_COMBINED
-report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, report_mouse_t right_report) {
-    // if we have any modes activated, we should process each report first
-    if (fp_scroll_layer_get() || fp_scroll_keycode_get() || fp_zoom_layer_get() || fp_zoom_keycode_get()) {
-        left_report = pointing_device_task_kb(left_report);
-        right_report = pointing_device_task_kb(right_report);
-    } else {
-        if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
-            left_report.h = left_report.x;
-            left_report.v = -left_report.y;
-            left_report.x = 0;
-            left_report.y = 0;
-        }
-
-        if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
-            right_report.h = right_report.x;
-            right_report.v = -right_report.y;
-            right_report.x = 0;
-            right_report.y = 0;
-        }
-    }
-
-    return pointing_device_task_combined_user(left_report, right_report);
-}
-#endif
 
 layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
     switch (get_highest_layer(state)) {
@@ -390,17 +299,17 @@ layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
                 break;
             }
 #endif
-            if (fp_scroll_layer_get()) {
+            if (scrolling_layer_enabled) {
 #ifdef FP_POINTING_SCROLLING_LAYER_ENABLE
                 fp_scroll_layer_set(false);
 #endif
             }
-            if (fp_snipe_layer_get()) {
+            if (sniping_layer_enabled) {
 #ifdef FP_POINTING_SNIPING_LAYER_ENABLE
                 fp_snipe_layer_set(false);
 #endif
             }
-            if (fp_zoom_layer_get()) {
+            if (zooming_layer_enabled) {
 #ifdef FP_POINTING_ZOOMING_LAYER_ENABLE
                 fp_zoom_layer_set(false);
 #endif
@@ -409,6 +318,40 @@ layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
     }
     return state;
 }
+
+#ifdef POINTING_DEVICE_COMBINED
+report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, report_mouse_t right_report) {
+    if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
+        left_report.h = left_report.x;
+        left_report.v = -left_report.y;
+        left_report.x = 0;
+        left_report.y = 0;
+    }
+
+    if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
+        right_report.h = right_report.x;
+        right_report.v = -right_report.y;
+        right_report.x = 0;
+        right_report.y = 0;
+    }
+
+    return pointing_device_task_combined_user(left_report, right_report);
+}
+
+void fp_set_cpi_combined_defaults(void) {
+    if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
+        pointing_device_set_cpi_on_side(true, (uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on left side to a low value for slower scrolling.
+    } else {
+        pointing_device_set_cpi_on_side(true, (uint16_t)fp_config.pointing_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on left side to a reasonable value for mousing.
+    }
+
+    if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
+        pointing_device_set_cpi_on_side(false, (uint16_t)fp_config.scrolling_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on right side to a low value for slower scrolling.
+    } else {
+        pointing_device_set_cpi_on_side(false, (uint16_t)fp_config.pointing_dpi * FP_POINTING_DPI_MULTIPLIER); //Set cpi on right side to a reasonable value for mousing.
+    }
+}
+#endif
 
 void pointing_device_init_kb(void) {
 #   ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
@@ -422,7 +365,7 @@ void pointing_device_init_kb(void) {
 // Override when using a trackball so that you can account for acciental triggers due to a sensitive sensor
 bool auto_mouse_activation(report_mouse_t mouse_report) {
     // If we're in sniping mode, lower the threshold, otherwise give it some room to move for accidental triggers of auto mouse layer
-    if (fp_snipe_layer_get() || fp_snipe_keycode_get()) {
+    if (fp_snipe_get()) {
         return fabs(mouse_report.x) >= 0.5 || fabs(mouse_report.y) >= 0.5 || fabs(mouse_report.h) >= 0.5 || fabs(mouse_report.v) >= 0.5 || mouse_report.buttons;
     } else {
         return fabs(mouse_report.x) >= FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY ||
