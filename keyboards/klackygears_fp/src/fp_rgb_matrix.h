@@ -15,39 +15,15 @@
  */
 
 #pragma once
-#include "quantum.h"
 #include QMK_KEYBOARD_H
+#include "keyboards/klackygears_fp/src/fp.h"
 
-#ifndef FP_DISABLE_CUSTOM_KEYCODES
-enum fp_keycodes {
-#   ifdef VIAL_ENABLE
-    FP_SCROLL_TOG = USER00,
-#   else
-    FP_SCROLL_TOG = QK_KB,
-#   endif // VIA_ENABLE
-    FP_ACCEL_TOG,
-    FP_POINT_DPI_UP,
-    FP_POINT_DPI_DN,
-    FP_POINT_DPI_RESET,
-    FP_SCROLL_ON,
-    FP_SCROLL_OFF,
-    FP_SCROLL_MOMENT,
-    FP_SCROLL_DPI_UP,
-    FP_SCROLL_DPI_DN,
-    FP_SCROLL_DPI_RESET,
-    FP_SNIPE_TOG,
-    FP_SNIPE_ON,
-    FP_SNIPE_OFF,
-    FP_SNIPE_MOMENT,
-    FP_SNIPE_DPI_UP,
-    FP_SNIPE_DPI_DN,
-    FP_SNIPE_DPI_RESET,
-    FP_ZOOM_TOG,
-    FP_ZOOM_ON,
-    FP_ZOOM_OFF,
-    FP_ZOOM_MOMENT,
-    FP_SUPER_TAB,
-    FP_SUPER_CTRL_TAB,
-    FP_SAFE_RANGE
-};
-#endif // FP_DISABLE_CUSTOM_KEYCODES
+#ifdef RGB_MATRIX_ENABLE
+#    ifndef FP_LAYER_LIGHTING_MODE
+#        define FP_LAYER_LIGHTING_MODE RGB_MATRIX_SOLID_COLOR
+#    endif
+#endif
+
+layer_state_t fp_layer_state_set_rgb_matrix(layer_state_t state);
+bool fp_process_record_rgb_matrix(uint16_t keycode, keyrecord_t *record);
+void fp_post_init_rgb_matrix(void);

@@ -1,130 +1,124 @@
 #include QMK_KEYBOARD_H
 #include "klackygears.h"
 
-// Defines names for use in layer keycodes and the keymap
-/* enum layer_names {
-    _QWERTY,
-    _COLEMAK,
-    _LOWER,
-    _RAISE,
-    _ADJUST
-}; */
 
-/* enum custom_keycodes {
-    QWERTY = SAFE_RANGE,
-    LOWER,
-    RAISE,
-    ADJUST
-}; */
-
-
-
-// All the KC_MUTE keycodes below represent the encoders. If you aren't using encoders, you can ignore these:
-//            -->  KC_MUTE,   KC_LCTL,   KC_LGUI,   LOWER,     KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    RAISE,     KC_RGUI,   KC_RCTL,   KC_MUTE, <--
-//                                                                                            --> KC_MUTE <--
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+[_MACBASE] = LAYOUT_fpm101_wrapper(
+    KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
+    KC_ESC,  _______________DVORAK_L1___________________,                                                       _______________DVORAK_R1___________________, KC_BSPC,
+    RGB_TOG, _______________DVORAK_L2___________________, _______,                                     KC_SECRET_2, _______________DVORAK_R2___________________, RGB_TOG,
+    RGB_MOD, _______________MACDVK_L3___________________, M_TEAMS,                                     BUZY,    _______________MACDVK_R3___________________, RGB_MOD,
+                      _______, ________MAC_THUMB_L______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________MAC_THUMB_R______, KC_MUTE
+),
+
+[_QWERTY] = LAYOUT_fpm101_wrapper(
+    KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
+    KC_ESC,  _________________QWERTY_L1_________________,                                                       _________________QWERTY_R1_________________, KC_BSPC,
+    KC_CAPS, _________________QWERTY_L1_________________, _______,                                     _______, _________________QWERTY_R2_________________, KC_ENT,
+    KC_LSFT, _________________QWERTY_L1_________________, M_TEAMS,                                     _______, _________________QWERTY_R3_________________, KC_RSFT,
+                  _______, KC_LGUI, KC_LALT, MO(_MNMB), MO(_SYMB), KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, MO(_SYMB), MO(_MNMB), MO(_MDIA), KC_MUTE
+),
+
+[_COLBASE] = LAYOUT_fpm101_wrapper(
+    KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
+    KC_ESC,  _________________COLEMAK_L1________________,                                                       _________________COLEMAK_R1________________, KC_BSPC,
+    AU_TOGG, _________________COLEMAK_L2________________, _WINBASE,                                    _______, _________________COLEMAK_R2________________, RGB_TOG,
+    CK_TOGG, _________________COLEMAK_L3________________, M_TEAMS,                                     BUZY,    _________________COLEMAK_R3________________, RGB_MOD,
+                      _______, ________WIN_THUMB_L______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________WIN_THUMB_R______, KC_MUTE
+),
+
 [_WINBASE] = LAYOUT_fpm101_wrapper(
-    KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      EE_CLR,                                          KC_RPRN,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
-    KC_TAB,      _______________DVORAK_L1___________________,                                                               _________________RGB_1_____________________, KC_BSPC,
-    AU_TOGG,     _______________DVORAK_L2___________________,  KC_LCBR,                                          KC_RCBR,   _________________RGB_2_____________________, RGB_TOG,
-    CK_TOGG,     _______________WINDVK_L3___________________,  _WINBASE,                                         _WINBASE,  _______________WINDVK_R3___________________, RGB_MOD,
-                        KC_MUTE,   KC_LGUI,   ________WIN_THUMB_L______,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,   ________WIN_THUMB_R______,  _WINBASE,  KC_MUTE
+    KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                  TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
+    KC_TAB,  _______________DVORAK_L1___________________,                                                        _______________DVORAK_R1___________________, KC_BSPC,
+    AU_TOGG, _______________DVORAK_L2___________________, _______,                                      KC_SECRET_2, _______________DVORAK_R2___________________, RGB_TOG,
+    CK_TOGG, _______________WINDVK_L3___________________, M_TEAMS,                                      BUZY,    _______________WINDVK_R3___________________, RGB_MOD,
+                      _______, ________WIN_THUMB_L______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________WIN_THUMB_R______, KC_MUTE
+),
+
+[_GAMER] = LAYOUT_fpm101_wrapper(
+    KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
+    KC_TAB,  _________________QWERTY_L1_________________,                                                       _________________QWERTY_R1_________________, KC_BSPC,
+    KC_CAPS, _________________QWERTY_L1_________________, _______,                                     _______, _________________QWERTY_R2_________________, KC_ENT,
+    KC_LSFT, _________________QWERTY_L1_________________, M_TEAMS,                                     _______, _________________QWERTY_R3_________________, KC_RSFT,
+                  _______, KC_LGUI, KC_LALT, MO(_MNMB), MO(_SYMB), KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, MO(_SYMB), MO(_MNMB), MO(_MDIA), KC_MUTE
+),
+
+[_SYMB] = LAYOUT_fpm101_wrapper(
+    KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
+    _______, _________________PUNC_L1_ALT_______________,                                                       _________________PUNC_R1___________________, _______,
+    _______, _________________PUNC_L3___________________, _______,                                     _______, _________________PUNC_R2___________________, _______,
+    RGB_MOD, _________________PUNC_L3_ALT_______________, M_TEAMS,                                     _______, _________________PUNC_R3___________________, _______,
+                      _______, KC_NUM,  KC_LSCR, KC_DEL,  _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, _______, KC_CAPS, BUZY,    _______
+),
+
+[_FUNC] = LAYOUT_fpm101_wrapper(
+    KC_ESC,  _________________LYOUT_____________________, EE_CLR,                                    EE_CLR, _________________NUMBER_R__________________, KC_BSPC,
+    _______, _____________FUNC_L1_______________________,                                                       _______, _____________FUNC_1_______________, _______,
+    _______, ________MAC_MISSION_CTRL__________, LGUI(KC_L), _______,                                  _______, _______, _____________FUNC_2_______________, _______,
+    RGB_MOD, _____________FUNC_L3_______________________, M_TEAMS,                                     _______, _______, _____________FUNC_3_______________, _______,
+                      _______, _______, _______, _______, _______, _______,    _______,    _______,    _______, KC_CAPS, KC_PSCR, KC_LSCR, _______
+),
+
+[_MNMB] = LAYOUT_fpm101_wrapper(
+    KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
+    _______, _________________MACNAV_L1_________________,                                                       _________________NUMB_R1___________________, KC_WINBASE,
+    _______, _________________MACNAV_L2_________________, _______,                                     _______, _________________NUMB_R2___________________, _______,
+    RGB_MOD, _________________MACNAV_L3_________________, M_TEAMS,                                     _______, _________________NUMB_R3_MAC_______________, _______,
+                      _______, _______, _______, _______, _______, _______,    _______,    _______,    _______, RSFT_T(KC_ENT), KC_RSFT, _______, _______
 ),
 
 
+[_NUMB] = LAYOUT_fpm101_wrapper(
+    KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
+    _______, _________________WINNAV_L1_________________,                                                       _________________NUMB_R1___________________, KC_WINBASE,
+    _______, _________________WINNAV_L2_________________, TO(_MEME),                                   _______, _________________NUMB_R2___________________, _______,
+    RGB_MOD, _________________WINNAV_L3_________________, M_TEAMS,                                     _______, _________________NUMB_R3_WIN_______________, _______,
+                 _______, _______, TO(_WINBASE), _______, _______, _______,    _______,    _______,    _______, RSFT_T(KC_ENT), KC_RSFT, _______, LCTL(KC_HOME)
+),
+
 [_MDIA] = LAYOUT_fpm101_wrapper(
-    KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_LPRN,                                          KC_RPRN,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
-    KC_TAB,    KC_Q,      KC_W,      KC_F,      KC_P,      KC_B,                                                                   KC_J,      KC_L,      KC_U,      KC_Y,      KC_SCLN,   KC_BSLS,
-    KC_CAPS,   KC_A,      KC_R,      KC_S,      KC_T,      KC_G,      KC_LCBR,                                          KC_RCBR,   KC_M,      KC_N,      KC_E,      KC_I,      KC_O,      KC_QUOT,
-    KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_D,      KC_V,      _WINBASE,                                         _WINBASE,  KC_K,      KC_H,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,
-                          KC_MUTE,   KC_LGUI,   _WINBASE,  KC_SPC,    KC_LALT,   KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,    KC_RALT,   KC_SPC,    _WINBASE,  KC_RGUI,   KC_MUTE
+    KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
+    _______, _________________LYOUT_____________________,                                                       _________________RGB_1_____________________, RGB_TOG,
+    _______, MU_TOGG, _______, _______, _______, CK_UP,   _______,                                     _______, _________________RGB_2_____________________, _______,
+    RGB_MOD, MU_NEXT, MU_TOGG, CK_TOGG, CK_RST,  CK_DOWN, M_TEAMS,                                     _______, _________________MEDIA_____________________, _______,
+                      _______, _______, _______, _______, _______, _______,    _______,    _______,    _______, _______, _______, _______, _______
+),
+
+[_MAUS] = LAYOUT_fpm101_wrapper(
+    KC_ESC,  _______, FP_SNIPE_TOG, FP_POINT_DPI_RESET, FP_POINT_DPI_DN, FP_POINT_DPI_UP, _______,                                TO(_WINBASE), _______, _______, _______, _______, _______, KC_BSPC,
+    //KC_ESC,  _______, _______, _______, _______, _______, _______,                                TO(_WINBASE), _______, _______, _______, _______, _______, KC_BSPC,
+    _______, _______, _______, _______, _______, _______,                                                       _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, KC_ACL0, KC_ACL1, KC_ACL2, _______,                                     _______, _______, _______, _______, _______, _______, _______,
+                      _______, _______, _______, _______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, _______, _______, _______, _______
+),
+
+[_MEME] = LAYOUT_fpm101_wrapper(
+    _______, _________________KC_BLANK__________________, _______,                                     _______, _______, _______, _______, _______, _______, _______,
+    _______, _________________KC_BLANK__________________,                                                       _________________KC_BLANK__________________, _______,
+    _______, _________________KC_BLANK__________________, _______,                                     _______, _________________KC_BLANK__________________, _______,
+    _______, _________________KC_BLANK__________________, TO(_WINBASE),                                _______, _________________KC_BLANK__________________, _______,
+                      _______, _______, _______, _______, _______, _______,    _______,    _______,    _______, _______, _______, _______, _______
 )
+
+
 };
 
 
-/*
+
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_QWERTY] =   { ENCODER_CCW_CW(KC_1, KC_2), ENCODER_CCW_CW(KC_1, KC_2) },
-    [_MDIA]   =   { ENCODER_CCW_CW(KC_1, KC_2), ENCODER_CCW_CW(KC_1, KC_2) },
+    [_WINBASE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_MACBASE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_QWERTY]  =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_COLBASE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_GAMER]   =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_SYMB]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_FUNC]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_MNMB]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(LCTL(KC_PGUP), LCTL(KC_PGDN)) },
+    [_NUMB]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_MDIA]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_MAUS]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
 };
 #endif
- */
-
-__attribute__((weak)) bool encoder_update_keymap(uint8_t index, bool clockwise) { return true; }
-
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (!encoder_update_keymap(index, clockwise)) {
-        return true;
-    }
-
-    // default behavior if undefined
-    if (index == 0) {
-        switch(biton32(layer_state)){
-
-            default:
-                // volume up and down
-                if (clockwise){
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_VOLD);
-                    #else
-                    tap_code(KC_VOLU);
-                    #endif
-                } else{
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_VOLU);
-                    #else
-                    tap_code(KC_VOLD);
-                    #endif
-                }
-                break;
-        }
-    } else if (index == 1) {
-        switch(biton32(layer_state)){
-
-            default:
-                // super ctrl tab
-                // switch between browser windows, or files in vscode
-                if (clockwise){
-                    #ifdef ENCODERS_B_REVERSE
-                    tap_code16(KC_1);
-                    #else
-                    tap_code16(KC_2);
-                    #endif
-                } else{
-                    #ifdef ENCODERS_B_REVERSE
-                    tap_code16(KC_2);
-                    #else
-                    tap_code16(KC_1);
-                    #endif
-                }
-                break;
-        }
-    }
-    else if (index == 2) {
-        switch(biton32(layer_state)){
-            default:
-                // scroll wheel
-
-
-                if (clockwise) {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_1);
-                    #else
-                    tap_code(KC_2);
-                    #endif
-                } else {
-                    #ifdef ENCODERS_A_REVERSE
-                    tap_code(KC_2);
-                    #else
-                    tap_code(KC_1);
-                    #endif
-                }
-                break;
-        }
-    }
-
-    return true;
-}
-

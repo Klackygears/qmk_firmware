@@ -15,20 +15,17 @@ uint16_t repeat_maus_timer;
   float windo[][2] = SONG(UNICODE_WINDOWS);
 #endif
 
-<<<<<<< HEAD
 
 __attribute__ ((weak))
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
-=======
->>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // If console is enabled, it will print the matrix position and status of each key pressed
-#ifdef CONSOLE_ENABLE
-    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-#endif
+//#ifdef CONSOLE_ENABLE
+//    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+//#endif
   return true;
 
     switch (keycode) {
@@ -43,11 +40,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_QWERTY:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_QWERTY);
-=======
-                set_single_persistent_default_layer(_QWERTY);
->>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(windo);
                 #endif
@@ -65,11 +58,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_COLBASE:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_COLBASE);
-=======
-                set_single_persistent_default_layer(_COLBASE);
->>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(oneup);
                 #endif
@@ -78,26 +67,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_GAMER:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_GAMER);
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(rroll); 
-=======
-                set_single_persistent_default_layer(_GAMER);
-                #ifdef AUDIO_ENABLE
-                 PLAY_SONG(rroll);
->>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #endif
             }
             break;
 
         case KC_GAMR1:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_GAMR1);
-=======
-                set_single_persistent_default_layer(_GAMR1);
->>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(victory);
                 #endif
@@ -106,11 +85,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_GAMR2:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_GAMR2);
-=======
-                set_single_persistent_default_layer(_GAMR2);
->>>>>>> 86ad47da83 (works with wrappers, not custom keycodes)
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(mush);
                 #endif
@@ -238,4 +213,3 @@ void matrix_scan_user(void) {
         tap_code(KC_BTN1);
     }
 }
-

@@ -10,8 +10,15 @@ SRC += klackygears.c
 # #   INTROSPECTION_KEYMAP_C = tap_dances.c
 # # endif
 
-
 ifeq ($(strip $(COMBO_ENABLE)), yes)
 #    SRC += combo.c
      INTROSPECTION_KEYMAP_C = combo.c
+endif
+
+ifneq ("$(wildcard $(USER_PATH)/secrets.c)","")
+  SRC += secrets.c
+endif
+
+ifeq ($(strip $(NO_SECRETS)), yes)
+    OPT_DEFS += -DNO_SECRETS
 endif

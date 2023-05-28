@@ -14,16 +14,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keyboards/fingerpunch/src/fp.h"
+#include "keyboards/klackygears_fp/src/fp.h"
 #include "eeconfig.h"
 
 fp_config_t fp_config;
 
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
-#include "keyboards/fingerpunch/src/fp_rgb_common.h"
+#include "keyboards/klackygears_fp/src/fp_rgb_common.h"
 #endif
 #if defined(POINTING_DEVICE_ENABLE)
-#include "keyboards/fingerpunch/src/fp_pointing.h"
+#include "keyboards/klackygears_fp/src/fp_pointing.h"
 #endif
 #if defined(PIMORONI_TRACKBALL_ENABLE)
 #include "color.h"
@@ -150,7 +150,15 @@ void keyboard_post_init_kb(void) {
     #endif
 
     #if defined(POINTING_DEVICE_ENABLE)
-    fp_apply_dpi();
+    #if defined(POINTING_DEVICE_COMBINED)
+    // In theory, this should update the pointing dpi based on eeprom, but it doesn't seem to be working.
+    // It may be because of the fact that there are two eeproms on split keyboards, and the values are being stored independently on
+    // each half, but I'm not sure.
+    fp_set_cpi_combined_defaults();
+    #else
+    // This may be a bad decision, but use this function to apply the changes, since it covers sniping, scrolling, or regular cpi, based on what is active
+    fp_scroll_apply_dpi();
+    #endif
     #endif
 
     #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
@@ -178,9 +186,9 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
 #ifdef RGB_MATRIX_ENABLE
     state = fp_layer_state_set_rgb_matrix(state);
 #endif  // RGB_MATRIX_ENABLE
-#ifdef ENCODER_ENABLE
+/* #ifdef ENCODER_ENABLE
     state = fp_layer_state_set_encoder(state);
-#endif  // ENCODER_ENABLE
+#endif  // ENCODER_ENABLE */
 #ifdef HAPTIC_ENABLE
     state = fp_layer_state_set_haptic(state);
 #endif  // HAPTIC_ENABLE

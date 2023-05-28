@@ -16,45 +16,30 @@
 
 #pragma once
 #include QMK_KEYBOARD_H
-#include "keyboards/fingerpunch/src/fp.h"
+#include "keyboards/klackygears_fp/src/fp.h"
 
-uint8_t fp_get_cpi_value_from_mode(uint8_t mode_index);
-#ifndef POINTING_DEVICE_COMBINED
-void fp_set_cpi(uint8_t value);
-void fp_set_cpi_by_mode(uint8_t mode_index);
-#else
-void fp_set_cpi_combined(uint8_t left_value, uint8_t right_value);
-void fp_set_cpi_combined_by_mode(uint8_t left_mode_index, uint8_t right_mode_index);
-#endif
-void fp_point_dpi_update(uint8_t action);
-void fp_scroll_dpi_update(uint8_t action);
-void fp_snipe_dpi_update(uint8_t action);
-void fp_apply_dpi_defaults(void);
-void fp_apply_dpi(void);
-void fp_scroll_layer_set(bool scroll_value);
-bool fp_scroll_layer_get(void);
-void fp_scroll_keycode_toggle(void);
-void fp_scroll_keycode_set(bool scroll_value);
-bool fp_scroll_keycode_get(void);
-void fp_snipe_layer_set(bool snipe_value);
-bool fp_snipe_layer_get(void);
-void fp_snipe_keycode_toggle(void);
-void fp_snipe_keycode_set(bool snipe_value);
-bool fp_snipe_keycode_get(void);
-void fp_zoom_layer_set(bool zoom_value);
-bool fp_zoom_layer_get(void);
-void fp_zoom_keycode_toggle(void);
-void fp_zoom_keycode_set(bool zoom_value);
-bool fp_zoom_keycode_get(void);
-uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 layer_state_t fp_layer_state_set_pointing(layer_state_t state);
 bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
-
-// indexes for modes
-#define FP_POINTING_MODE 0
-#define FP_SCROLLING_MODE 1
-#define FP_SNIPING_MODE 2
-#define FP_ZOOMING_MODE 3
+void fp_set_cpi(uint8_t);
+void fp_set_cpi_combined_defaults(void);
+void fp_point_dpi_update(uint8_t action);
+void fp_scroll_layer_set(bool scroll_value);
+void fp_scroll_keycode_set(bool scroll_value);
+bool fp_scroll_get(void);
+void fp_scroll_keycode_toggle(void);
+void fp_scroll_apply_dpi(void);
+void fp_scroll_dpi_update(uint8_t action);
+void fp_snipe_layer_set(bool snipe_value);
+void fp_snipe_keycode_set(bool snipe_value);
+bool fp_snipe_get(void);
+void fp_snipe_keycode_toggle(void);
+void fp_snipe_apply_dpi(void);
+void fp_snipe_dpi_update(uint8_t action);
+void fp_zoom_layer_set(bool zoom_value);
+void fp_zoom_keycode_set(bool zoom_value);
+void fp_zoom_keycode_toggle(void);
+bool fp_zoom_get(void);
+uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
 
 // indexes for DPI adjustments, used by dpi update functions
 #define FP_DPI_UP 1
@@ -72,16 +57,12 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 #        define FP_POINTING_DEFAULT_DPI 10
 #    endif
 
-#    ifndef FP_POINTING_MIN_DPI
-#        define FP_POINTING_MIN_DPI 2
-#    endif
-
 #    ifndef FP_POINTING_MAX_DPI
-#        define FP_POINTING_MAX_DPI 60
+#        define FP_POINTING_MAX_DPI 30
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_DPI
-#        define FP_POINTING_SNIPING_DPI 2
+#        define FP_POINTING_SNIPING_DPI 1
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_LAYER
@@ -89,27 +70,19 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_MAX_DPI
-#        define FP_POINTING_SNIPING_MAX_DPI 2
-#    endif
-
-#    ifndef FP_POINTING_SNIPING_MIN_DPI
-#        define FP_POINTING_SNIPING_MIN_DPI 10
+#        define FP_POINTING_SNIPING_MAX_DPI 30
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_DPI
-#        define FP_POINTING_SCROLLING_DPI 2
+#        define FP_POINTING_SCROLLING_DPI 1
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_LAYER
 #        define FP_POINTING_SCROLLING_LAYER 3
 #    endif
 
-#    ifndef FP_POINTING_SCROLLING_MIN_DPI
-#        define FP_POINTING_SCROLLING_MIN_DPI 2
-#    endif
-
 #    ifndef FP_POINTING_SCROLLING_MAX_DPI
-#        define FP_POINTING_SCROLLING_MAX_DPI 10
+#        define FP_POINTING_SCROLLING_MAX_DPI 30
 #    endif
 
 #    ifndef FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY
