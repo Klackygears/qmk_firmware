@@ -100,12 +100,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case MAKEK:
             if (record->event.pressed) {
                 SEND_STRING("make " QMK_KEYBOARD ":" QMK_KEYMAP);
+                #if defined(KEYBOARD_fingerpunch_fpm101)
+                SEND_STRING(" CONVERT_TO=elite_pi RGB_MATRIX_ENABLE=yes FP_TRACKBALL_ENABLE=yes ENCODER_ENABLE=yes");
+                #endif
             }
             break;
 
         case MAKEKF:
             if (!record->event.pressed) {
                 SEND_STRING("make " QMK_KEYBOARD ":" QMK_KEYMAP ":flash");
+                #if defined(KEYBOARD_fingerpunch_fpm101)
+                SEND_STRING(" CONVERT_TO=elite_pi RGB_MATRIX_ENABLE=yes FP_TRACKBALL_ENABLE=yes ENCODER_ENABLE=yes");
+                #endif
             }
 
             break;
