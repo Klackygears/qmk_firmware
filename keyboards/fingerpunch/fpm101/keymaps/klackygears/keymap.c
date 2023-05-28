@@ -15,7 +15,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_fpm101_wrapper(
     KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                 TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
     KC_ESC,  _________________QWERTY_L1_________________,                                                       _________________QWERTY_R1_________________, KC_BSPC,
-    KC_CAPS, _________________QWERTY_L1_________________, _______,                                     _______, _________________QWERTY_R2_________________, KC_ENT,
+    KC_CAPS, _________________QWERTY_L1_________________, MO(_FUNC),                                   _______, _________________QWERTY_R2_________________, KC_ENT,
     KC_LSFT, _________________QWERTY_L1_________________, M_TEAMS,                                     KC_SCT1, _________________QWERTY_R3_________________, KC_RSFT,
                   _______, KC_LGUI, KC_LALT, MO(_MNMB), MO(_SYMB), KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, MO(_SYMB), MO(_MNMB), MO(_MDIA), KC_MUTE
 ),
@@ -116,9 +116,9 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [_GAMER]   =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
     [_SYMB]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
     [_FUNC]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
-    [_MNMB]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(LCTL(KC_PGUP), LCTL(KC_PGDN)) },
-    [_NUMB]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
-    [_MDIA]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_MNMB]    =   { ENCODER_CCW_CW(LCTL(KC_PGUP), LCTL(KC_PGDN)), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_NUMB]    =   { ENCODER_CCW_CW(LCTL(KC_PGUP), LCTL(KC_PGDN)), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
+    [_MDIA]    =   { ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_RMOD, RGB_MOD) },
     [_MAUS]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
 };
 #endif

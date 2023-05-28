@@ -14,9 +14,9 @@
 
 enum userspace_layers {
     _WINBASE = 0,
-    _MACBASE = 0,
-    _COLBASE = 0,
-    _QWERTY = 0,
+    _MACBASE,
+    _COLBASE,
+    _QWERTY,
     _GAMER,
     _GAMR1,
     _GAMR2,
@@ -52,6 +52,11 @@ enum userspace_custom_keycodes {
   SHRUG,
   SPAM,
   M_TEAMS,
+  KC_SCT1,
+  KC_SCT2,
+  KC_SCT3,
+  KC_SCT4,
+  KC_SCT5,
   USER_SAFE_RANGE,
 };
 
