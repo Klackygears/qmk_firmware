@@ -117,22 +117,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-        case BUZY:
-           {
-            static uint16_t run_timer;
-            if (record->event.pressed) {
-                run_timer = timer_read();
-                register_code(KC_DOWN);
-              } else {
-                if (timer_elapsed(run_timer) > 1000) {
-                } else {
-                    unregister_code(KC_DOWN);
-                }
-              }
-              return false;
-           }
-              break;
-
         case SPAM:
             #ifdef MOUSEKEY_ENABLE
            {
@@ -166,7 +150,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
             break;
 
-
         case PFWD:
            {
             static uint16_t run_timer;
@@ -194,6 +177,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
               return false;
            }
             break;
+
            case M_TEAMS:
             if (record->event.pressed) {                           //when keycode MUTE_TEAMS is pressed
              mute_hold_timer = timer_read();                       //mark the time the key was pressed
@@ -209,10 +193,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void matrix_scan_user(void) {
-    if (is_busy_toggled && timer_elapsed(repeat_press_timer) > 500) {
-        repeat_press_timer = timer_read() + rand() % 30;
-        tap_code(KC_UP);
-    }
 
     if (is_busy_toggled && timer_elapsed(repeat_maus_timer) > 500) {
         repeat_maus_timer = timer_read() + 1000000;
