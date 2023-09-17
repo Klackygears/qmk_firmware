@@ -9,7 +9,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  _______________DVORAK_L1___________________,                                                       _______________DVORAK_R1___________________, KC_BSPC,
     RGB_TOG, _______________DVORAK_L2___________________, _______,                                     _______, _______________DVORAK_R2___________________, RGB_TOG,
     RGB_MOD, _______________MACDVK_L3___________________, M_TEAMS,                                     KC_SCT1, _______________MACDVK_R3___________________, RGB_MOD,
-                      _______, ________MAC_THUMB_L______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________MAC_THUMB_R______, KC_MUTE
+                      _______, ________MAC_THUMB_L______, MO(_MAUS), KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________MAC_THUMB_R______, KC_MUTE
 ),
 
 [_QWERTY] = LAYOUT_fpm101_wrapper(
@@ -25,15 +25,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  _________________COLEMAK_L1________________,                                                       _________________COLEMAK_R1________________, KC_BSPC,
     AU_TOGG, _________________COLEMAK_L2________________, _WINBASE,                                    _______, _________________COLEMAK_R2________________, RGB_TOG,
     CK_TOGG, _________________COLEMAK_L3________________, M_TEAMS,                                     KC_SCT1, _________________COLEMAK_R3________________, RGB_MOD,
-                      _______, ________WIN_THUMB_L______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________WIN_THUMB_R______, KC_MUTE
+                      _______, ________WIN_THUMB_L______, MO(_MAUS), KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________WIN_THUMB_R______, KC_MUTE
 ),
 
 [_WINBASE] = LAYOUT_fpm101_wrapper(
     KC_ESC,  _________________NUMBER_L__________________, MO(_MAUS),                                  TO(_MAUS), _________________NUMBER_R__________________, KC_BSPC,
     KC_TAB,  _______________DVORAK_L1___________________,                                                        _______________DVORAK_R1___________________, KC_BSPC,
-    AU_TOGG, _______________DVORAK_L2___________________, _______,                                      _______, _______________DVORAK_R2___________________, RGB_TOG,
+    _______, _______________DVORAK_L2___________________, _______,                                      _______, _______________DVORAK_R2___________________, RGB_TOG,
     CK_TOGG, _______________WINDVK_L3___________________, M_TEAMS,                                      KC_SCT1, _______________WINDVK_R3___________________, RGB_MOD,
-                      _______, ________WIN_THUMB_L______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________WIN_THUMB_R______, KC_MUTE
+                      _______, ________WIN_THUMB_L______, MO(_MAUS), KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, ________WIN_THUMB_R______, KC_MUTE
 ),
 
 [_GAMER] = LAYOUT_fpm101_wrapper(
@@ -86,11 +86,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_MAUS] = LAYOUT_fpm101_wrapper(
-    KC_ESC,  _______, FP_SNIPE_TOG, FP_POINT_DPI_RESET, FP_POINT_DPI_DN, FP_POINT_DPI_UP, _______,                                TO(_WINBASE), _______, _______, _______, _______, _______, KC_BSPC,
-    //KC_ESC,  _______, _______, _______, _______, _______, _______,                                TO(_WINBASE), _______, _______, _______, _______, _______, KC_BSPC,
+    KC_ACL0, KC_ACL1, KC_ACL2, FP_POINT_DPI_RESET, FP_POINT_DPI_DN, FP_POINT_DPI_UP, _______,                                TO(_WINBASE), _______, _______, _______, _______, _______, KC_BSPC,
     _______, _______, _______, _______, _______, _______,                                                       _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, KC_ACL0, KC_ACL1, KC_ACL2, _______,                                     _______, _______, _______, _______, _______, _______, _______,
+    _______, KC_BTN4, KC_BTN3, KC_BTN2, KC_BTN1, _______, _______,                                     _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, LSFT(KC_BTN3), _______, _______,                                     _______, _______, _______, _______, _______, _______, _______,
                       _______, _______, _______, _______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _______, _______, _______, _______, _______
 ),
 
@@ -122,3 +121,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [_MAUS]    =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_WH_U, KC_WH_D) },
 };
 #endif
+
+
+//make fingerpunch/fpm101:klackygears:flash CONVERT_TO=elite_pi RGB_MATRIX_ENABLE=yes FP_TRACKBALL_ENABLE=yes ENCODER_ENABLE=yes
