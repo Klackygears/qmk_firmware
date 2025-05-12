@@ -1,0 +1,11 @@
+{
+    "manufacturer": "sadekbaroudi",
+    "keyboard_name": "bgkeeb",
+    "url": "https://github.com/sadekbaroudi/bgkeeb",
+    "maintainer": "Sadek Baroudi <sadekbaroudi@gmail.com>",
+    "usb": {
+        "vid": "0xFEFE",
+        "pid": "0x8814",
+        "device_version": "1.0.0"
+    }
+}

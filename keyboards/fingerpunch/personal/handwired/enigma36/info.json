@@ -1,0 +1,11 @@
+{
+    "manufacturer": "sadekbaroudi",
+    "keyboard_name": "enigma36",
+    "url": "https://github.com/sadekbaroudi/enigma36/",
+    "maintainer": "Sadek Baroudi <sadekbaroudi@gmail.com>",
+    "usb": {
+        "vid": "0xFEFE",
+        "pid": "0x5BCB",
+        "device_version": "1.0.0"
+    }
+}

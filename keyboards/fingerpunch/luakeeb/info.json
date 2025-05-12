@@ -1,0 +1,11 @@
+{
+    "manufacturer": "sadekbaroudi",
+    "keyboard_name": "luakeeb",
+    "url": "https://fingerpunch.xyz/product/luakeeb/",
+    "maintainer": "Sadek Baroudi <sadekbaroudi@gmail.com>",
+    "usb": {
+        "vid": "0xFEFE",
+        "pid": "0x7178",
+        "device_version": "1.0.0"
+    }
+}

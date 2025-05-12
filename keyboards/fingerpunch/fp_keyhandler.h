@@ -1,5 +1,4 @@
-/* Copyright 2022 Vladislav Kucheriavykh
- * Copyright 2024 Google LLC
+/* Copyright 2022 Sadek Baroudi
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +15,30 @@
  */
 
 #pragma once
+#include "quantum.h"
+#include QMK_KEYBOARD_H
 
-#include "test_common.h"
-#define CHORDAL_HOLD
-#define PERMISSIVE_HOLD
+#ifndef FP_DISABLE_CUSTOM_KEYCODES
+enum fp_keycodes {
+#   ifdef VIA_ENABLE
+    FP_SCROLL_TOG = USER00,
+#   else
+    FP_SCROLL_TOG = SAFE_RANGE,
+#   endif // VIA_ENABLE
+    FP_ACCEL_TOG,
+    FP_SCROLL_ON,
+    FP_SCROLL_OFF,
+    FP_SCROLL_MOMENT,
+    FP_SNIPE_TOG,
+    FP_SNIPE_ON,
+    FP_SNIPE_OFF,
+    FP_SNIPE_MOMENT,
+    FP_ZOOM_TOG,
+    FP_ZOOM_ON,
+    FP_ZOOM_OFF,
+    FP_ZOOM_MOMENT,
+    FP_SUPER_TAB,
+    FP_SUPER_CTRL_TAB,
+    FP_SAFE_RANGE
+};
+#endif // FP_DISABLE_CUSTOM_KEYCODES

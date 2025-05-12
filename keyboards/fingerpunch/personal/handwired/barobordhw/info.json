@@ -1,0 +1,11 @@
+{
+    "manufacturer": "sadekbaroudi",
+    "keyboard_name": "barobordhw",
+    "url": "https://github.com/sadekbaroudi/barobord/",
+    "maintainer": "Sadek Baroudi <sadekbaroudi@gmail.com>",
+    "usb": {
+        "vid": "0xFEFE",
+        "pid": "0xBB00",
+        "device_version": "1.0.0"
+    }
+}

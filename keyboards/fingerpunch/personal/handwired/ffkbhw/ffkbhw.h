@@ -1,5 +1,4 @@
-/* Copyright 2022 Vladislav Kucheriavykh
- * Copyright 2024 Google LLC
+/* Copyright 2020 Sadek Baroudi
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +16,16 @@
 
 #pragma once
 
-#include "test_common.h"
-#define CHORDAL_HOLD
-#define PERMISSIVE_HOLD
+#include "quantum.h"
+
+#define LAYOUT_ffkbhw( \
+    K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, \
+    K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, \
+    K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, \
+         K32, K33, K34, K35, K36, K37, K38, K39  \
+) { \
+    { K01,   K02, K03, K04, K05, K06, K07, K08, K09, K0A }, \
+    { K11,   K12, K13, K14, K15, K16, K17, K18, K19, K1A }, \
+    { K21,   K22, K23, K24, K25, K26, K27, K28, K29, K2A }, \
+    { KC_NO, K32, K33, K34, K35, K36, K37, K38, K39, KC_NO }  \
+}

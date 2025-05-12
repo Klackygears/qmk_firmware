@@ -1,5 +1,4 @@
-/* Copyright 2022 Vladislav Kucheriavykh
- * Copyright 2024 Google LLC
+/* Copyright 2021 Sadek Baroudi <sadekbaroudi@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,9 +13,5 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "rockon.h"
 
-#pragma once
-
-#include "test_common.h"
-#define CHORDAL_HOLD
-#define PERMISSIVE_HOLD

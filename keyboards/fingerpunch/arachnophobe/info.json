@@ -1,0 +1,11 @@
+{
+    "keyboard_name": "arachnophobe",
+    "manufacturer": "sadekbaroudi",
+    "url": "https://github.com/sadekbaroudi/arachnophobe",
+    "maintainer": "sadekbaroudi",
+    "usb": {
+      "vid": "0xFEFE",
+      "pid": "0xA17A",
+      "device_version": "1.0.0"
+    }
+}

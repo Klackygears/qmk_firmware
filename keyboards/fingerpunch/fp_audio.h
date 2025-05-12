@@ -1,5 +1,4 @@
-/* Copyright 2022 Vladislav Kucheriavykh
- * Copyright 2024 Google LLC
+/* Copyright 2022 Sadek Baroudi
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +15,8 @@
  */
 
 #pragma once
+#include QMK_KEYBOARD_H
+#include "keyboards/fingerpunch/fp.h"
 
-#include "test_common.h"
-#define CHORDAL_HOLD
-#define PERMISSIVE_HOLD
+layer_state_t fp_layer_state_set_audio(layer_state_t state);
+bool fp_process_record_audio(uint16_t keycode, keyrecord_t *record);

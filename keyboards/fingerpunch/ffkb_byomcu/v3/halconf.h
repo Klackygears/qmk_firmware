@@ -1,5 +1,5 @@
-/* Copyright 2022 Vladislav Kucheriavykh
- * Copyright 2024 Google LLC
+/*
+ * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,9 @@
 
 #pragma once
 
-#include "test_common.h"
-#define CHORDAL_HOLD
-#define PERMISSIVE_HOLD
+#define HAL_USE_SERIAL TRUE
+#define HAL_USE_SPI TRUE
+#define SPI_USE_WAIT TRUE
+#define SPI_SELECT_MODE SPI_SELECT_MODE_PAD
+
+#include_next "halconf.h"
