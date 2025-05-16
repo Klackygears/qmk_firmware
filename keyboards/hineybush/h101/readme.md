@@ -1,3 +1,4 @@
+<<<<<<<< HEAD:keyboards/hineybush/h101/readme.md
 # h101
 
 ![h101](https://i.imgur.com/LqmvjS1h.png)
@@ -15,6 +16,25 @@ Make example for this keyboard (after setting up your build environment):
 Flashing example for this keyboard:
 
     make hineybush/h101:default:flash
+========
+# archaeoptereeks
+
+![archaeoptereeks](imgur.com image replace me!)
+
+*A short description of the keyboard/project*
+
+* Keyboard Maintainer: [James Smith](https://github.com/klackygears)
+* Hardware Supported: *The PCBs, controllers supported*
+* Hardware Availability: *Links to where you can find this hardware*
+
+Make example for this keyboard (after setting up your build environment):
+
+    make archaeoptereeks:default
+
+Flashing example for this keyboard:
+
+    make archaeoptereeks:default:flash
+>>>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415:keyboards/archaeoptereek/readme.md
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 

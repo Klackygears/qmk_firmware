@@ -1,4 +1,4 @@
-/* Copyright 2022 QMK
+/* Copyright 2021 klackygears
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +16,11 @@
 
 #pragma once
 
+<<<<<<<< HEAD:keyboards/tweetydabird/lotus58/rp2040_ce/halconf.h
 #define HAL_USE_I2C TRUE
 
 #include_next <halconf.h>
+========
+
+#define FP_LAYER_LIGHTING_DISABLE
+>>>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415:keyboards/fpm101_kg/keymaps/fingertest/config.h

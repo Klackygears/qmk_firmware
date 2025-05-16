@@ -12,6 +12,10 @@
         #undef TAPPING_TERM
         #define TAPPING_TERM 150
     #endif
+<<<<<<< HEAD
+=======
+#    define IGNORE_MOD_TAP_INTERRUPT
+>>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
 #endif  // tap dance settup
 
 #define MUTE_HOLD_DELAY 400  //400ms, minimum time that MUTE_TEAMS must be held to send again

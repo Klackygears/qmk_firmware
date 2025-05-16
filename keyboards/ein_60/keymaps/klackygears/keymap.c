@@ -28,7 +28,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  _______________DVORAK_L1___________________,   KC_MUTE,  _______________DVORAK_R1___________________, KC_BSPC,
       AU_TOGG, _______________DVORAK_L2___________________,             _______________DVORAK_R2___________________, RGB_TOG,
       CK_TOGG, _______________WINDVK_L3___________________,             _______________WINDVK_R3___________________, RGB_MOD,
+<<<<<<< HEAD
       KC_1,     KC_2,    BUZY,   ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, KC_1,  KC_GAMR2,  KC_GAMER
+=======
+      KC_1,     KC_2,    KC_3,   ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, KC_1,  KC_GAMR2,  KC_GAMER
+>>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
     ),
     [_MACBASE] = LAYOUT_wrapper(
       KC_ESC,  _______________DVORAK_L1___________________,   _______,   _______________DVORAK_R1___________________, KC_BSPC,
@@ -46,7 +50,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_COLBASE] = LAYOUT_wrapper(
       KC_ESC,  _________________COLEMAK_L1________________,   KC_MUTE,  _________________COLEMAK_R1________________, KC_BSPC,
+<<<<<<< HEAD
       AU_TOGG, _________________COLEMAK_L2________________,             _________________COLEMAK_R2________________, RGB_TOG,
+=======
+      AU_TOGG,  _________________COLEMAK_L2________________,             _________________COLEMAK_R2________________, RGB_TOG,
+>>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
       CK_TOGG, _________________COLEMAK_L3________________,             _________________COLEMAK_R3________________, RGB_MOD,
       KC_WINBASE,  KC_2,  KC_3,  ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______,  KC_1,    KC_2,   KC_GAMER
     ),
@@ -113,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-#ifdef OLED_ENABLE
+#ifdef OLED_DRIVER_ENABLE
 
     char wpm_str[10];
 
@@ -156,6 +164,8 @@ static void render_status(void) {
             // Or use the write_ln shortcut over adding '\n' to the end of your string
             oled_write_ln_P(PSTR("Undefined"), false);
     }
+    //oled_write_ln_P(PSTR(""), false);
+    //render_ein60_logo();
 
 
     // Host Keyboard LED Status
@@ -199,8 +209,11 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     }
   return true;
+<<<<<<< HEAD
 }
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
   return true;
+=======
+>>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
 }

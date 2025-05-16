@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:keyboards/strech/soulstone/config.h
 /* Copyright 2023 Strech
+========
+/* Copyright 2021 klackygears
+>>>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415:keyboards/fingerpunch/fpm101/keymaps/fingertest/config.h
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,4 +20,9 @@
 
 #pragma once
 
+<<<<<<<< HEAD:keyboards/strech/soulstone/config.h
 #define LAYER_INDICATOR_LED_PIN B3
+========
+
+#define FP_LAYER_LIGHTING_DISABLE
+>>>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415:keyboards/fingerpunch/fpm101/keymaps/fingertest/config.h
