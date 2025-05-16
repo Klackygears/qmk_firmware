@@ -22,7 +22,7 @@ Most of this is copied from drashna. I added and changed a few things but, it's 
 #define LAYOUT_ortho_5x5_wrapper(...)        LAYOUT_ortho_5x5(__VA_ARGS__)
 #define LAYOUT_split_3x5_3_wrapper(...)      LAYOUT_split_3x5_3(__VA_ARGS__)
 #define LAYOUT_split_4x6_2_wrapper(...)      LAYOUT_split_4x6_2(__VA_ARGS__)
-#define LAYOUT_fpm101_wrapper(...)           LAYOUT_fpm101(__VA_ARGS__)
+//#define LAYOUT_fpm101_wrapper(...)           LAYOUT_fpm101(__VA_ARGS__)
 
 
 /*

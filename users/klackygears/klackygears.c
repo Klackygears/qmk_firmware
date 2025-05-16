@@ -119,7 +119,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-
         case BUZY:
            {
             static uint16_t run_timer;
