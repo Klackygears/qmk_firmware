@@ -22,10 +22,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  // If console is enabled, it will print the matrix position and status of each key pressed
-//#ifdef CONSOLE_ENABLE
-//    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-//#endif
+
   return true;
 
     switch (keycode) {
@@ -126,6 +123,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // send_unicode_hex_string(0x2122);
             }
             break;
+            
+        case BUZY:
+           {
+            static uint16_t run_timer;
+            if (record->event.pressed) {
+                run_timer = timer_read();
+                register_code(KC_DOWN);
+              } else {
+                if (timer_elapsed(run_timer) > 1000) {
+                } else {
+                    unregister_code(KC_DOWN);
+                }
+              }
+              return false;
+           }
+              break;
 
         case SPAM:
             #ifdef MOUSEKEY_ENABLE

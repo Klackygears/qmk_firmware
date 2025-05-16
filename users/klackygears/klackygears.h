@@ -50,6 +50,7 @@ enum userspace_custom_keycodes {
   PFWD,
   PBWD,
   SHRUG,
+  BUZY,
   SPAM,
   M_TEAMS,
   KC_SCT1,
