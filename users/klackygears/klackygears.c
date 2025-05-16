@@ -3,10 +3,7 @@
 bool is_busy_toggled = false;
 uint16_t repeat_press_timer;
 uint16_t repeat_maus_timer;
-<<<<<<< HEAD
-=======
 static uint16_t mute_hold_timer = 0;  //create a timer variable
->>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
 
 #ifdef AUDIO_ENABLE
   float imperial[][2] = SONG(IMPERIAL_MARCH);
@@ -19,24 +16,13 @@ static uint16_t mute_hold_timer = 0;  //create a timer variable
   float windo[][2] = SONG(UNICODE_WINDOWS);
 #endif
 
-<<<<<<< HEAD
 
 __attribute__ ((weak))
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-=======
-__attribute__ ((weak))
-bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
->>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
   return true;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-<<<<<<< HEAD
-
-  return true;
-=======
-  // If console is enabled, it will print the matrix position and status of each key pressed
->>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
 
     switch (keycode) {
         case KC_MACBASE:
@@ -50,11 +36,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_QWERTY:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_QWERTY);
-=======
-                set_single_persistent_default_layer(_QWERTY);
->>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(windo);
                 #endif
@@ -72,11 +54,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_COLBASE:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_COLBASE);
-=======
-                set_single_persistent_default_layer(_COLBASE);
->>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(oneup);
                 #endif
@@ -85,26 +63,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_GAMER:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_GAMER);
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(rroll); 
-=======
-                set_single_persistent_default_layer(_GAMER);
-                #ifdef AUDIO_ENABLE
-                 PLAY_SONG(rroll);
->>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
                 #endif
             }
             break;
 
         case KC_GAMR1:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_GAMR1);
-=======
-                set_single_persistent_default_layer(_GAMR1);
->>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(victory);
                 #endif
@@ -113,11 +81,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_GAMR2:
             if (record->event.pressed) {
-<<<<<<< HEAD
                 set_single_default_layer(_GAMR2);
-=======
-                set_single_persistent_default_layer(_GAMR2);
->>>>>>> c978fc327f9d784bb75ec473570c1557a85f1415
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(mush);
                 #endif
@@ -247,7 +211,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
 
     }
-    return process_record_keymap(keycode, record); //&& return process_record_keymap(keycode, record);
+    return process_record_keymap(keycode, record); 
 }
 
 void matrix_scan_user(void) {
@@ -261,12 +225,3 @@ void matrix_scan_user(void) {
         tap_code(KC_BTN1);
     }
 }
-
-void matrix_scan_user(void) {
-
-    if (is_busy_toggled && timer_elapsed(repeat_maus_timer) > 500) {
-        repeat_maus_timer = timer_read() + 1000000;
-        tap_code(KC_BTN1);
-    }
-}
-
