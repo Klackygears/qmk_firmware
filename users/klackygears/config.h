@@ -12,7 +12,6 @@
         #undef TAPPING_TERM
         #define TAPPING_TERM 150
     #endif
-#    define IGNORE_MOD_TAP_INTERRUPT
 #endif  // tap dance settup
 
 #ifdef AUDIO_ENABLE

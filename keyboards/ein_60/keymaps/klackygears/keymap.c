@@ -16,7 +16,10 @@
 
 #include QMK_KEYBOARD_H
 #include "klackygears.h"
+//#include "users/klackygears/klackygears.h"
 #include "stdio.h"
+#include "users/klackygears/tap_dances.c"
+
 
 //For an explanation of what's going on here with the keymap wrappers, check out drashna's user folder.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -25,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  _______________DVORAK_L1___________________,   KC_MUTE,  _______________DVORAK_R1___________________, KC_BSPC,
       AU_TOGG, _______________DVORAK_L2___________________,             _______________DVORAK_R2___________________, RGB_TOG,
       CK_TOGG, _______________WINDVK_L3___________________,             _______________WINDVK_R3___________________, RGB_MOD,
-      KC_1,     KC_2,    KC_3,   ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, KC_1,  KC_GAMR2,  KC_GAMER
+      KC_1,     KC_2,    BUZY,   ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______, KC_1,  KC_GAMR2,  KC_GAMER
     ),
     [_MACBASE] = LAYOUT_wrapper(
       KC_ESC,  _______________DVORAK_L1___________________,   _______,   _______________DVORAK_R1___________________, KC_BSPC,
@@ -43,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_COLBASE] = LAYOUT_wrapper(
       KC_ESC,  _________________COLEMAK_L1________________,   KC_MUTE,  _________________COLEMAK_R1________________, KC_BSPC,
-      AU_TOGG,  _________________COLEMAK_L2________________,             _________________COLEMAK_R2________________, RGB_TOG,
+      AU_TOGG, _________________COLEMAK_L2________________,             _________________COLEMAK_R2________________, RGB_TOG,
       CK_TOGG, _________________COLEMAK_L3________________,             _________________COLEMAK_R3________________, RGB_MOD,
       KC_WINBASE,  KC_2,  KC_3,  ________WIN_THUMB_L______,   KC_SPC,   ________WIN_THUMB_R______,  KC_1,    KC_2,   KC_GAMER
     ),
@@ -110,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 
     char wpm_str[10];
 
@@ -123,7 +126,6 @@ static void render_ein60_logo(void) {
         };
         oled_write_raw_P(ein60_logo, sizeof(ein60_logo));
     }
-
 
 
 static void render_status(void) {
@@ -154,8 +156,7 @@ static void render_status(void) {
             // Or use the write_ln shortcut over adding '\n' to the end of your string
             oled_write_ln_P(PSTR("Undefined"), false);
     }
-    //oled_write_ln_P(PSTR(""), false);
-    //render_ein60_logo();
+
 
     // Host Keyboard LED Status
     led_t led_state = host_keyboard_led_state();
@@ -168,6 +169,7 @@ static void render_status(void) {
     oled_set_cursor(1,2);
     oled_write(wpm_str, false);
 
+    
 }
 
 bool oled_task_user(void) {
@@ -196,5 +198,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             tap_code(KC_UP);
         }
     }
+  return true;
+}
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
   return true;
 }

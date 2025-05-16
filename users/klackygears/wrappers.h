@@ -232,7 +232,7 @@ NOTE: If you do a search/replace
 #define _________________MEDIA_V2__________________       KC_EJCT,    KC_MRWD,     KC_MPLY,      KC_MFFD,     _______
 
 //Base layer keys
-#define _________________LYOUT_____________________       KC_COLBASE, KC_QWERTY, KC_MACBASE, KC_WINBASE, _______
+#define _________________LYOUT_____________________       KC_COLBASE, KC_QWERTY, KC_MACBASE, KC_WINBASE, QK_RBT
 
 //Punctuation keys
 #define _________________PUNC_L1___________________       KC_BSLS,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC

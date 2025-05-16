@@ -15,6 +15,11 @@ uint16_t repeat_maus_timer;
   float windo[][2] = SONG(UNICODE_WINDOWS);
 #endif
 
+__attribute__ ((weak))
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+  return true;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /*
      if (!process_record_dynamic_macro(keycode, record)) {
@@ -33,7 +38,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_QWERTY:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_QWERTY);
+                set_single_default_layer(_QWERTY);
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(windo);
                 #endif
@@ -51,7 +56,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_COLBASE:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_COLBASE);
+                set_single_default_layer(_COLBASE);
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(oneup);
                 #endif
@@ -60,16 +65,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_GAMER:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_GAMER);
+                set_single_default_layer(_GAMER);
                 #ifdef AUDIO_ENABLE
-                 PLAY_SONG(rroll);
+                 PLAY_SONG(rroll); 
                 #endif
             }
             break;
 
         case KC_GAMR1:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_GAMR1);
+                set_single_default_layer(_GAMR1);
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(victory);
                 #endif
@@ -78,7 +83,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KC_GAMR2:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_GAMR2);
+                set_single_default_layer(_GAMR2);
                 #ifdef AUDIO_ENABLE
                  PLAY_SONG(mush);
                 #endif
@@ -114,29 +119,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-/*         case BUZY:
-           {
-            static uint16_t tap_hold_timer;
-            if (record->event.pressed) {
-                #ifdef AUDIO_ENABLE
-                 PLAY_SONG(ztreasure);
-                #endif
-                tap_hold_timer = timer_read();
-                register_code(KC_UP);
-            } else {
-                unregister_code(KC_UP);
-                // if held for less than 300ms (0.3 seconds)
-                // then toggle auto tap
-                if (timer_elapsed(tap_hold_timer) < 300) {
-                    is_busy_toggled ^= true; // toggles state
-                    repeat_press_timer = timer_read() + rand();
-                } else {
-                    is_busy_toggled = false;
-                }
-            }
-            return false;
-           }
-            break; */
 
         case BUZY:
            {
@@ -216,13 +198,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            }
             break;
     }
-    return true;
+    return process_record_keymap(keycode, record); //&& return process_record_keymap(keycode, record);
 }
 
 void matrix_scan_user(void) {
     if (is_busy_toggled && timer_elapsed(repeat_press_timer) > 500) {
         repeat_press_timer = timer_read() + rand() % 30;
-        tap_code(KC_UP);
+        tap_code(KC_DOWN);
     }
 
     if (is_busy_toggled && timer_elapsed(repeat_maus_timer) > 500) {

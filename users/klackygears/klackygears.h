@@ -48,25 +48,11 @@ enum userspace_custom_keycodes {
   SHRUG,
   SPAM,
   //DYNAMIC_MACRO_RANGE,
-  SAFE_RANGE_KEYMAP
+  NEW_SAFE_RANGE
+  //SAFE_RANGE_KEYMAP
 };
 
 
-/*
-#ifdef UNICODEMAP_ENABLE
-enum unicode_names {
-  BANG,
-  IRONY,
-  SNEK,
-};
-
-const uint32_t PROGMEM unicode_map[] = {
-  [BANG]  = 0x203D,  // ‽
-  [IRONY] = 0x2E2E,  // ⸮
-  [SNEK]  = 0x1F40D, // 🐍
-};
-#endif // UNICODEMAP_ENABLE
-*/
 
 
 //#include "dynamic_macro.h"

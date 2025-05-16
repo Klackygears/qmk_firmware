@@ -20,26 +20,6 @@ void macroTogKey(tap_dance_state_t *state, void *user_data) {
     process_record_dynamic_macro( DYN_REC_START1, &kr );
   }
 }
-
-void macroTogKey2(tap_dance_state_t *state, void *user_data) {
-  keyrecord_t kr;
-
-  if (state->count == 1)
-  {
-    kr.event.pressed = false;
-    process_record_dynamic_macro( DYN_MACRO_PLAY2, &kr );
-  }
-  else if (state->count == 2)
-  {
-    kr.event.pressed = true;
-    process_record_dynamic_macro( DYN_REC_STOP, &kr );
-  }
-  else if (state->count == 3)
-  {
-    kr.event.pressed = false;
-    process_record_dynamic_macro( DYN_REC_START2, &kr );
-  }
-}
 */
 
 void pstinsrt(tap_dance_state_t *state, void *user_data) {
