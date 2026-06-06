@@ -83,9 +83,9 @@ void findreplace(tap_dance_state_t *state, void *user_data) {
 
 void cyclawin(tap_dance_state_t *state, void *user_data) {
     if (state->count > 1) {
-        tap_code16(C(S(KC_F6)));
+        tap_code16((A(KC_TAB)));
     } else {
-        tap_code16(C(KC_F6));
+        tap_code16(G(S(KC_RIGHT)));
     }
     reset_tap_dance(state);
 }

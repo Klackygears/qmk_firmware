@@ -1,7 +1,6 @@
-/* Copyright 2021 Colin Lam (Ploopy Corporation)
- * Copyright 2020 Christopher Courtney, aka Drashna Jael're  (@drashna) <drashna@live.com>
+/* Copyright 2020 Christopher Courtney, aka Drashna Jael're  (@drashna) <drashna@live.com>
  * Copyright 2019 Sunjun Kim
- * Copyright 2019 Hiroyuki Okada
+ * Copyright 2020 Ploopy Corporation
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +18,4 @@
 
 #pragma once
 
-// These pins are not broken out, and cannot be used normally.
-// They are set as output and pulled high, by default
-/* #define UNUSABLE_PINS \
-    { B5, B6, C7, D0, D1, D2, D3, D4, D5, D6, D7, E6, F1, F3, F5, F6, F7 } */
+#include "huge_arduino.h"

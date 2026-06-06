@@ -52,6 +52,11 @@ enum combos {
     NUMBY,
     NUMBHOME,
 
+    EDFD_FDR,
+    RPST_PST,
+    RDL_DEL,
+    DNPIN_PSTI,
+
     //COLEMAK COMBOS
     FP_EXLM,
 };
@@ -102,11 +107,16 @@ const uint16_t PROGMEM fourdot_combo[]         = {KC_4, KC_DOT, COMBO_END};
 const uint16_t PROGMEM ynumb_combo[]           = {KC_Y, KC_P, KC_DOT, COMBO_END};
 const uint16_t PROGMEM endhome_combo[]         = {KC_HOME, KC_END, COMBO_END};
 
+const uint16_t PROGMEM edfd_combo[]            = {TD(TD_FNDR), KC_END, COMBO_END};
+const uint16_t PROGMEM rpst_combo[]            = {KC_RIGHT, TD(TD_PTSP), COMBO_END};
+const uint16_t PROGMEM rdel_combo[]            = {KC_RIGHT, TD(TD_DDEL), COMBO_END};
+const uint16_t PROGMEM dnpin_combo[]           = {KC_DOWN, TD(TD_PSTI), COMBO_END};
+
 //COLEMAK COMBOS
 const uint16_t PROGMEM fp_combo[]              = {KC_F, KC_P, COMBO_END};
 
 
-combo_t key_combos[COMBO_COUNT] = {
+combo_t key_combos[] = {
     //DVORAK COMBOs
     [DOTP_EXLM]  = COMBO(dot_p, KC_EXLM),
     [COM_DOT]   = COMBO(com_dot, KC_QUES),
@@ -133,7 +143,7 @@ combo_t key_combos[COMBO_COUNT] = {
     [RG_BSLS]   = COMBO(rg_combo, KC_BSLS),
     [CG_PIPE]   = COMBO(cg_combo, KC_PIPE),
     [RC_UNDS]   = COMBO(rc_combo, KC_UNDS),
-    [GF_MINS]   = COMBO(gf_combo, KC_MINS),
+    [GF_MINS]   = COMBO(gf_combo, KC_MINS), 
     [TM_EQL]    = COMBO(tm_combo, KC_EQL),
     [MB_GRV]    = COMBO(mb_combo, KC_GRV),
 
@@ -154,6 +164,11 @@ combo_t key_combos[COMBO_COUNT] = {
     [NUMBY]     = COMBO_ACTION(ynumb_combo),
     [NUMBHOME]   = COMBO_ACTION(endhome_combo),
 
+    [EDFD_FDR]    = COMBO(edfd_combo, LCTL(KC_H)),
+    [RPST_PST]    = COMBO_ACTION(rpst_combo),
+    [RDL_DEL]    = COMBO_ACTION(rdel_combo),
+    [DNPIN_PSTI]    = COMBO_ACTION(dnpin_combo),
+
     //COLEMAK COMBOS
     [FP_EXLM]  = COMBO(fp_combo, KC_EXLM),
 };
@@ -168,6 +183,32 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case NUMBHOME:
       if (pressed) {
         layer_invert(8);
+      }
+      break;
+    case RPST_PST:
+      if (pressed) {
+        register_code(KC_LALT);
+        tap_code(KC_E);
+        tap_code(KC_S);
+        unregister_code(KC_LALT);
+        tap_code(KC_V);
+        tap_code(KC_ENT);
+      }
+      break;
+    case RDL_DEL:
+      if (pressed) {
+        register_code(KC_LALT);
+        tap_code(KC_E);
+        tap_code(KC_D);
+        unregister_code(KC_LALT);
+      }
+      break;
+    case DNPIN_PSTI:
+      if (pressed) {
+        register_code(KC_LALT);
+        tap_code(KC_I);
+        tap_code(KC_E);
+        unregister_code(KC_LALT);
       }
       break;
   }
