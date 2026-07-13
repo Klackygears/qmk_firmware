@@ -56,6 +56,7 @@ enum combos {
     RPST_PST,
     RDL_DEL,
     DNPIN_PSTI,
+    COMBO_CCOPY,
 
     //COLEMAK COMBOS
     FP_EXLM,
@@ -111,6 +112,7 @@ const uint16_t PROGMEM edfd_combo[]            = {TD(TD_FNDR), KC_END, COMBO_END
 const uint16_t PROGMEM rpst_combo[]            = {KC_RIGHT, TD(TD_PTSP), COMBO_END};
 const uint16_t PROGMEM rdel_combo[]            = {KC_RIGHT, TD(TD_DDEL), COMBO_END};
 const uint16_t PROGMEM dnpin_combo[]           = {KC_DOWN, TD(TD_PSTI), COMBO_END};
+const uint16_t PROGMEM ccopy_combo[]           = {KC_DOWN, TD(TD_CCPY), COMBO_END};
 
 //COLEMAK COMBOS
 const uint16_t PROGMEM fp_combo[]              = {KC_F, KC_P, COMBO_END};
@@ -168,7 +170,7 @@ combo_t key_combos[] = {
     [RPST_PST]    = COMBO_ACTION(rpst_combo),
     [RDL_DEL]    = COMBO_ACTION(rdel_combo),
     [DNPIN_PSTI]    = COMBO_ACTION(dnpin_combo),
-
+    [COMBO_CCOPY]  = COMBO(ccopy_combo, LCTL(KC_X)),
     //COLEMAK COMBOS
     [FP_EXLM]  = COMBO(fp_combo, KC_EXLM),
 };

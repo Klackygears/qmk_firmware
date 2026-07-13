@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "klackygears.h"
+#include "tap_dances.c"  
 
 //For an explanation of what's going on here with the keymap wrappers, check out drashna's user folder.
 
@@ -54,22 +55,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_X,    KC_K,             KC_C,    KC_LSFT,   KC_SPC,        KC_F12,     KC_UP,   KC_P,              KC_TAB, KC_LALT,
                                         KC_Z,    KC_LCTL,  KC_LCTL,        KC_LEFT,    KC_DOWN, KC_RIGHT
   ),
-  //Outriders
-  [_GAMR2] = LAYOUT_wrapper(
-             KC_R,    KC_3,    KC_W,    KC_E,    KC_4,      KC_ESC,        KC_WINBASE, _________________RGB_1_____________________,
-    KC_TAB,  KC_F,    KC_A,    KC_S,    KC_D,    KC_5,      KC_DEL,        KC_GAMR1,   _________________RGB_2_____________________, RGB_TOG,
-    KC_V,    KC_I,    KC_2,    KC_Q,    KC_1,    KC_6,        KC_M,        KC_GAMR2,   _________________MEDIA_____________________, RGB_MOD,
-             KC_X,    KC_G,             KC_H,    KC_LSFT,  KC_LCTL,        KC_F12,    KC_UP,   KC_V,              KC_TAB, KC_LALT,
-                                        KC_Y,    KC_SPC,      KC_Z,        KC_LEFT,    KC_DOWN, KC_RIGHT
-  ),
-  /*Jedi - Fallen Order
+  //Jedi - Fallen Order
   [_GAMR2] = LAYOUT_wrapper(
              KC_R,    KC_Q,    KC_W,    KC_E,    KC_1,      KC_ESC,        KC_WINBASE, _________________RGB_1_____________________,
     KC_TAB,  KC_F,    KC_A,    KC_S,    KC_D,    KC_2, LSFT(KC_F2),        KC_GAMR1, _________________RGB_2_____________________, RGB_TOG,
     KC_TAB,  KC_TAB,  KC_X,    KC_Z,    KC_C,    KC_3,        KC_M,        KC_GAMR2, _________________MEDIA_____________________, RGB_MOD,
              KC_LCTL, KC_LALT,       KC_LCTL,    KC_LSFT,   KC_SPC,        _______, KC_UP,   _______,           _______, _______,
                                      KC_NO,      KC_LSFT,  KC_LSFT,        KC_LEFT, KC_DOWN, KC_RIGHT
-  ),*/
+  ),
   [_SYMB] = LAYOUT_wrapper(
              _________________PUNC_L1_ALT_______________, _______,      _______, _________________PUNC_R1___________________,
     _______, _________________PUNC_L3___________________, _______,      _______, _________________PUNC_R2___________________, _______,

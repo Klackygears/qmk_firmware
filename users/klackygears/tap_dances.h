@@ -3,14 +3,14 @@
 
 #ifdef TAP_DANCE_ENABLE
 enum {
-    TD_BTK,
-    TD_TDE,
-    TD_LPRN,
-    TD_RPRN,
-    TD_MIN,
-    TD_USC,
-    TD_CMWN,
-    TD_ATSH,
+    //TD_BTK,
+    //TD_TDE,
+    //TD_LPRN,
+    //TD_RPRN,
+    //TD_MIN,
+    //TD_USC,
+    //TD_CMWN,
+    //TD_ATSH,
     TD_PSTI,
     TD_PTSP,
     TD_FNDR,
@@ -23,8 +23,8 @@ enum {
     TD_MINPLS,
     TD_DIVMLT,
     TD_DOTEQL,
-    TD_LSHSYM,
-    TD_RSHSYM,
+    //TD_LSHSYM,
+    //TD_RSHSYM,
     TD_SCNSP,
     TD_MCCCPY,
     TD_MCPSTIN,
@@ -32,4 +32,6 @@ enum {
     TD_XSPC,
     TD_RGB,
 };
+
+extern tap_dance_action_t tap_dance_actions[];
 #endif
