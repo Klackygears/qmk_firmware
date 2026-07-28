@@ -102,9 +102,9 @@ const uint16_t PROGMEM qk_combo[]              = {KC_Q, KC_K, COMBO_END};
 const uint16_t PROGMEM ux_combo[]              = {KC_U, KC_X, COMBO_END};
 const uint16_t PROGMEM ek_combo[]              = {KC_E, KC_K, COMBO_END};
 const uint16_t PROGMEM kx_combo[]              = {KC_K, KC_X, COMBO_END};
-const uint16_t PROGMEM foursslsh_combo[]       = {KC_4, KC_PSLS, COMBO_END};
-const uint16_t PROGMEM fourmin_combo[]         = {KC_4, KC_PMNS, COMBO_END};
-const uint16_t PROGMEM fourdot_combo[]         = {KC_4, KC_DOT, COMBO_END};
+const uint16_t PROGMEM foursslsh_combo[]       = {KC_KP_4, KC_PSLS, COMBO_END};
+const uint16_t PROGMEM fourmin_combo[]         = {KC_KP_4, KC_PMNS, COMBO_END};
+const uint16_t PROGMEM fourdot_combo[]         = {KC_KP_4, KC_DOT, COMBO_END};
 const uint16_t PROGMEM ynumb_combo[]           = {KC_Y, KC_P, KC_DOT, COMBO_END};
 const uint16_t PROGMEM endhome_combo[]         = {KC_HOME, KC_END, COMBO_END};
 

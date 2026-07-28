@@ -1,0 +1,11 @@
+{
+    "manufacturer": "sadekbaroudi",
+    "keyboard_name": "fpm101",
+    "url": "https://fingerpunch.xyz/product/fpm101/",
+    "maintainer": "Sadek Baroudi <sadekbaroudi@gmail.com>",
+    "usb": {
+        "vid": "0xFEFE",
+        "pid": "0xF177",
+        "device_version": "1.0.0"
+    }
+}
