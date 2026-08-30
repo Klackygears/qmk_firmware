@@ -1,11 +1,11 @@
-
-RGBLIGHT_ENABLE = yes #Enable WS2812 RGB underlight.
+ENCODER_ENABLE = no       # ENables the use of one or more encoders
+WPM_ENABLE = no
+RGB_MATRIX_ENABLE = no       # Enable for pretty RGB matrix effects
+##RGB_MATRIX_DRIVER = ws2812  # Define RGB Matrix
+RGBLIGHT_ENABLE = no #Enable WS2812 RGB underlight.
+AUDIO_ENABLE = no
 TAP_DANCE_ENABLE = yes
 COMBO_ENABLE = yes
 
-RGB_MATRIX_ENABLE = no
-AUDIO_ENABLE = no
-CONSOLE_ENABLE = no
-COMMAND_ENABLE = no
 MOUSEKEY_ENABLE = no
-LTO_ENABLE = yes
+LTO_ENABLE = no

@@ -9,9 +9,13 @@
     },
     "features": {
         "bootmagic": true,
+        "command": false,
+        "console": false,
+        "encoder": false,
         "extrakey": true,
         "mousekey": false,
-        "nkro": false
+        "nkro": false,
+        "oled": false
     },
     "qmk": {
         "locking": {

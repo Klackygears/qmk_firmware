@@ -12,7 +12,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     UG_TOGG, _______________DVORAK_L2___________________, _______,         KC_GAMR1, _______________DVORAK_R2___________________, UG_TOGG,
     UG_NEXT, _______________WINDVK_L3___________________, _______,         KC_GAMR2, _______________WINDVK_R3___________________, UG_NEXT,
              _______, _______,             __________________WIN_THUMB_CLUSTER_V2______________,                _______, _______,
-                                        KC_NO,   KC_NO,   KC_NO,           KC_NO,   KC_NO,   KC_SCT1
+                              KC_NO,   KC_NO,   LALT(RCTL(KC_TAB)),           KC_NO,   KC_NO,   KC_SCT1
   ),
 
   [_COLBASE] = LAYOUT_wrapper(

@@ -39,8 +39,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_QWERTY] = LAYOUT_wrapper(
       KC_ESC,  _________________QWERTY_L1_________________,    KC_ESC,   _________________QWERTY_R1_________________, KC_BSPC,
-      KC_CAPS, _________________QWERTY_L1_________________,              _________________QWERTY_R2_________________, KC_ENT,
-      KC_LSFT, _________________QWERTY_L1_________________,              _________________QWERTY_R3_________________, KC_RSFT,
+      KC_CAPS, _________________QWERTY_L2_________________,              _________________QWERTY_R2_________________, KC_ENT,
+      KC_LSFT, _________________QWERTY_L3_________________,              _________________QWERTY_R3_________________, KC_RSFT,
       KC_LCTL, KC_LGUI, KC_LALT, _______, MO(_MNMB), MO(_SYMB), KC_SPC, MO(_SYMB), MO(_MNMB), KC_RGUI,_______, MO(_MDIA), MO(_FUNC)
     ),
 
@@ -53,10 +53,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     //1st Game Layer
     [_GAMER] = LAYOUT_wrapper(
-      KC_T,    KC_R,      KC_Q,    KC_W,    KC_E,    KC_R,     _______,    KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,              KC_BSPC,
-      KC_G,    KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,                 KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,           KC_ENT,
-      KC_B,    KC_LSFT,   KC_Z,    KC_X,    KC_C,    KC_V,                 KC_N,    KC_M,    KC_COMM, KC_DOT,   LT(_MDIA,KC_SLSH), KC_QUOT,
-      KC_ESC,  KC_F5,     KC_LCTL, KC_LALT, KC_LSFT, KC_SPC,   MO(_GAMR1), KC_F3,   KC_F2,   _______, _______,  _______,           KC_WINBASE
+      KC_ESC,    KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,     _______,    _________________QWERTY_R1_________________,            KC_BSPC,
+      KC_TAB,    KC_G,    KC_A,    KC_S,    KC_D,    KC_F,                 _________________QWERTY_R2_________________,            KC_ENT,
+      KC_ENT,    KC_B,    KC_Z,    KC_X,    KC_C,    KC_V,                 KC_N,    KC_M,    KC_COMM, KC_DOT,   LT(_MDIA,KC_SLSH), KC_QUOT,
+      KC_F3,     KC_F5,   KC_LCTL, KC_LALT, KC_LSFT, KC_SPC,   MO(_GAMR1),  KC_F3,   KC_F2,   _______, _______,  _______,           KC_WINBASE
     ),
 
     [_GAMR1] = LAYOUT_wrapper(
